@@ -1,0 +1,361 @@
+2025-07-16 16:45:27,249 | 20250716T154527Z | INFO |
+[1/4] Building dataset with leakage-free feature engineering...
+2025-07-16 16:45:27,250 | 20250716T154527Z | INFO | Found data file: data\mail.csv
+2025-07-16 16:45:27,251 | 20250716T154527Z | INFO | Found data file: data\callvolumes.csv
+2025-07-16 16:45:27,251 | 20250716T154527Z | INFO | Found data file: data\callintetn.csv
+2025-07-16 16:45:27,252 | 20250716T154527Z | INFO | Found data file: data\mail.csv
+2025-07-16 16:45:27,252 | 20250716T154527Z | INFO | Loading mail data from: data\mail.csv
+2025-07-16 16:45:28,690 | 20250716T154527Z | INFO | Loaded 1409780 mail records
+2025-07-16 16:45:29,725 | 20250716T154527Z | INFO | Found data file: data\callvolumes.csv
+2025-07-16 16:45:29,726 | 20250716T154527Z | INFO | Loading calls data from: data\callvolumes.csv
+2025-07-16 16:45:32,206 | 20250716T154527Z | INFO | Loaded 1043025 call records
+2025-07-16 16:45:32,921 | 20250716T154527Z | INFO | Found data file: data\callintetn.csv
+2025-07-16 16:45:32,921 | 20250716T154527Z | INFO | Loading calls data from: data\callintetn.csv
+2025-07-16 16:45:40,764 | 20250716T154527Z | INFO | Loaded 1053601 call records
+2025-07-16 16:45:43,059 | 20250716T154527Z | INFO | Loaded 1409780 mail, 1043025 calls, 1053601 intent records
+2025-07-16 16:45:43,773 | 20250716T154527Z | INFO | Applied scaling factor 4.505 to legacy call data
+2025-07-16 16:45:43,784 | 20250716T154527Z | INFO | Intent data columns: ['rowid', 'conversationid', 'date', 'mediatype', 'originatingdirection', 'dnis', 'callbackdnis', 'externaltag', 'queueid', 'systemcompanyid', 'queued', 'abandoned', 'hangup', 'answered', 'waittime', 'abantime', 'held', 'alerttime', 'agentresponsetime', 'talktime', 'holdtime', 'acwtime', 'error', 'transferred', 'outbound', 'outboundattempted', 'outboundconnected', 'outboundabandoned', 'asatarget', 'isoffshore', 'uui_coy', 'uui_hin', 'intent', 'uui_relationship', 'context_special', 'context_service', 'context_client', 'context_language', 'callback_offered', 'region', 'genesysinstanceregion', 'cnid'] 
+2025-07-16 16:45:43,788 | 20250716T154527Z | INFO | Using intent column: 'intent'
+2025-07-16 16:45:44,344 | 20250716T154527Z | INFO | Processed 116 intent types
+2025-07-16 16:45:44,368 | 20250716T154527Z | INFO | Processed 231 mail types
+2025-07-16 16:45:45,225 | 20250716T154527Z | INFO | Daily dataset after filtering: (446, 348)
+2025-07-16 16:45:45,228 | 20250716T154527Z | INFO | Fetching SP500 (^GSPC)...
+2025-07-16 16:45:45,229 | 20250716T154527Z | WARNING | Failed to fetch SP500 (^GSPC): download() got an unexpected keyword argument 'show_errors'
+2025-07-16 16:45:45,229 | 20250716T154527Z | INFO | Fetching UNRATE (UNRATE)...
+2025-07-16 16:45:45,229 | 20250716T154527Z | WARNING | Failed to fetch UNRATE (UNRATE): download() got an unexpected keyword argument 'show_errors'
+2025-07-16 16:45:45,230 | 20250716T154527Z | INFO | Fetching DGS10 (DGS10)...
+2025-07-16 16:45:45,230 | 20250716T154527Z | WARNING | Failed to fetch DGS10 (DGS10): download() got an unexpected keyword argument 'show_errors'
+2025-07-16 16:45:45,231 | 20250716T154527Z | WARNING | No economic data could be loaded
+2025-07-16 16:45:45,231 | 20250716T154527Z | INFO | Resampling to weekly frequency...
+2025-07-16 16:45:45,258 | 20250716T154527Z | INFO | Weekly dataset shape: (101, 348)
+2025-07-16 16:45:45,259 | 20250716T154527Z | INFO | Creating time-aware features...
+2025-07-16 16:45:45,323 | 20250716T154527Z | INFO | Created 21 time-aware features
+2025-07-16 16:45:45,343 | 20250716T154527Z | INFO | Added calendar and seasonal features
+2025-07-16 16:45:45,344 | 20250716T154527Z | INFO | Adding weekly lag features...
+2025-07-16 16:45:45,350 | 20250716T154527Z | INFO | Dataset after dropna: (101, 380) → (78, 380)
+2025-07-16 16:45:45,591 | 20250716T154527Z | INFO | Memory optimization: 0.2MB → 0.1MB
+2025-07-16 16:45:46,189 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in 1099OID
+2025-07-16 16:45:46,189 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in 1099_Int        
+2025-07-16 16:45:46,190 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in 1099_Misc       
+2025-07-16 16:45:46,190 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in 1099_NEC        
+2025-07-16 16:45:46,191 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in 592B
+2025-07-16 16:45:46,191 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in ACH 1099        
+2025-07-16 16:45:46,191 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in ACH Conf.       
+2025-07-16 16:45:46,191 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in AIP_issuance_statement
+2025-07-16 16:45:46,192 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in AIP_order_acknowledgement
+2025-07-16 16:45:46,192 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Award_Expiration
+2025-07-16 16:45:46,192 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Award_Notification
+2025-07-16 16:45:46,192 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Bank_Account_Update
+2025-07-16 16:45:46,193 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Beneficiary_Update
+2025-07-16 16:45:46,193 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in CA_Due_Dill     
+2025-07-16 16:45:46,193 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Check
+2025-07-16 16:45:46,194 | 20250716T154527Z | WARNING | Data quality: Found 3 extreme outliers in Cheque
+2025-07-16 16:45:46,194 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Cheque 1099     
+2025-07-16 16:45:46,194 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Class Action    
+2025-07-16 16:45:46,194 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Collateral_Rcpt 
+2025-07-16 16:45:46,195 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Consol_Confirm  
+2025-07-16 16:45:46,195 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in DRP 1099        
+2025-07-16 16:45:46,195 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in DS14CE
+2025-07-16 16:45:46,196 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in DS14CI
+2025-07-16 16:45:46,197 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Digital_Insert_Images
+2025-07-16 16:45:46,197 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Digital_Insert_Sets
+2025-07-16 16:45:46,198 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Due Diligence   
+2025-07-16 16:45:46,198 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Due_Dill        
+2025-07-16 16:45:46,199 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in E-STATEMENTS    
+2025-07-16 16:45:46,199 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Elec_Del_Fail_Ltrs
+2025-07-16 16:45:46,200 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Elig_Enr_CancAll_Ltr
+2025-07-16 16:45:46,200 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Elig_Enr_CancRef_Ltr
+2025-07-16 16:45:46,200 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Elig_Enr_Confirm_Ltr
+2025-07-16 16:45:46,201 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Envision        
+2025-07-16 16:45:46,201 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Errors
+2025-07-16 16:45:46,202 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Exch_chks       
+2025-07-16 16:45:46,202 | 20250716T154527Z | WARNING | Data quality: Found 3 extreme outliers in ExerCancel      
+2025-07-16 16:45:46,203 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Exercise_Converted
+2025-07-16 16:45:46,203 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Foreign Credit  
+2025-07-16 16:45:46,203 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Foreign Wire    
+2025-07-16 16:45:46,203 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Funds Not       
+2025-07-16 16:45:46,203 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in G_Statements    
+2025-07-16 16:45:46,204 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in General Comm    
+2025-07-16 16:45:46,204 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in IAR
+2025-07-16 16:45:46,204 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Initial_Grant_Acknowledgement
+2025-07-16 16:45:46,205 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Invoice
+2025-07-16 16:45:46,205 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in LTR Transmittal 
+2025-07-16 16:45:46,205 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Label Mailing   
+2025-07-16 16:45:46,205 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Last_Contact    
+2025-07-16 16:45:46,205 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Leveraged_Plan_Trans_Advice
+2025-07-16 16:45:46,206 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in MASS
+2025-07-16 16:45:46,206 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in MultiClientLaser
+2025-07-16 16:45:46,206 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in MultiClientLodgeCourier
+2025-07-16 16:45:46,207 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in NCOA
+2025-07-16 16:45:46,207 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in NR301
+2025-07-16 16:45:46,207 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in NewShareHolderPack
+2025-07-16 16:45:46,207 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in New_Chk
+2025-07-16 16:45:46,208 | 20250716T154527Z | WARNING | Data quality: Found 3 extreme outliers in Notice
+2025-07-16 16:45:46,208 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Once Off CORPORATE ACTION
+2025-07-16 16:45:46,208 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Once Off LABEL MAILING
+2025-07-16 16:45:46,208 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Once Off PERSONALIZED MAILING
+2025-07-16 16:45:46,209 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Once Off PRINT JOB ONLY
+2025-07-16 16:45:46,209 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Option_Vest     
+2025-07-16 16:45:46,209 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Options_Transaction_Advice
+2025-07-16 16:45:46,209 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (2nd Page of 19A Notice)
+2025-07-16 16:45:46,210 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (3rd Page of 19A Notice)
+2025-07-16 16:45:46,210 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (401K Letter)
+2025-07-16 16:45:46,210 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (6K)      
+2025-07-16 16:45:46,210 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (Annual Report)
+2025-07-16 16:45:46,211 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (Annual report)
+2025-07-16 16:45:46,211 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (Attendance Card)
+2025-07-16 16:45:46,214 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (Blank Letter for GSC)
+2025-07-16 16:45:46,214 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (Bounce Letter)
+2025-07-16 16:45:46,215 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (Buck Slip)
+2025-07-16 16:45:46,215 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (Buckslip)
+2025-07-16 16:45:46,215 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (Company Circular)
+2025-07-16 16:45:46,216 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Other (Company Letter)
+2025-07-16 16:45:46,217 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (Company letter)
+2025-07-16 16:45:46,217 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (DRS)     
+2025-07-16 16:45:46,217 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (Deposiatry Notice)
+2025-07-16 16:45:46,218 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (Depositary Notice ADR)
+2025-07-16 16:45:46,218 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (Depositary Notice)
+2025-07-16 16:45:46,218 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (Depositary Notice-ADR)
+2025-07-16 16:45:46,218 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (Depositary notice)
+2025-07-16 16:45:46,219 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (Depository Notice)
+2025-07-16 16:45:46,219 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (ESOP Letter)
+2025-07-16 16:45:46,219 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (Explanatory Note)
+2025-07-16 16:45:46,220 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (Explanatory Notes)
+2025-07-16 16:45:46,221 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (Financial Information)
+2025-07-16 16:45:46,221 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (Letter pg2)
+2025-07-16 16:45:46,222 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (Letter)  
+2025-07-16 16:45:46,222 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (Logo ACH Form)
+2025-07-16 16:45:46,222 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (Meeting Agenda AGM-EGM)
+2025-07-16 16:45:46,223 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (Meeting Agenda EGM)
+2025-07-16 16:45:46,223 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (Meeting Agenda)
+2025-07-16 16:45:46,223 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (Meeting Notice)
+2025-07-16 16:45:46,223 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (Meeting notice)
+2025-07-16 16:45:46,224 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (Misc Info)
+2025-07-16 16:45:46,224 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (Misc Information)
+2025-07-16 16:45:46,225 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (Proxy Statement Notice of Meeting)
+2025-07-16 16:45:46,225 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (Proxy Statement)
+2025-07-16 16:45:46,225 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (Q AND A) 
+2025-07-16 16:45:46,226 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (Q and A) 
+2025-07-16 16:45:46,226 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Other (Section 19)
+2025-07-16 16:45:46,226 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (US)      
+2025-07-16 16:45:46,226 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Other (non US Letter)
+2025-07-16 16:45:46,227 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in PDF Hosting     
+2025-07-16 16:45:46,227 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in PIN
+2025-07-16 16:45:46,227 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Personalized    
+2025-07-16 16:45:46,228 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Plan_Removal_Ltrs
+2025-07-16 16:45:46,228 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Plans Stmt.     
+2025-07-16 16:45:46,228 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Plans Tax       
+2025-07-16 16:45:46,228 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Print Only      
+2025-07-16 16:45:46,229 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Proxy (US)      
+2025-07-16 16:45:46,229 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Proxy_Reject_Ltrs
+2025-07-16 16:45:46,231 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Purch_Adv_CPM   
+2025-07-16 16:45:46,231 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in RecordsProcessing
+2025-07-16 16:45:46,231 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Reject_Ltrs     
+2025-07-16 16:45:46,232 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Rep_1099B       
+2025-07-16 16:45:46,232 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Rep_1099BN      
+2025-07-16 16:45:46,233 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Rep_1099B_Tax_Info
+2025-07-16 16:45:46,234 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Rep_1099Div     
+2025-07-16 16:45:46,234 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Rep_NR4
+2025-07-16 16:45:46,234 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Request_Taxpayer_ID_Cert
+2025-07-16 16:45:46,235 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Restricted_Award_Payment
+2025-07-16 16:45:46,235 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Restricted_Award_Tax_Election
+2025-07-16 16:45:46,236 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Restricted_Award_Trans_Advice
+2025-07-16 16:45:46,236 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Rights Card     
+2025-07-16 16:45:46,236 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in SLR_FailedPOSTNET
+2025-07-16 16:45:46,237 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in SLR_FollowerImages
+2025-07-16 16:45:46,238 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in SLR_ImagePages  
+2025-07-16 16:45:46,238 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in SLR_MailToFi    
+2025-07-16 16:45:46,238 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in SLR_TextPages   
+2025-07-16 16:45:46,239 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in SLR_ValidFinalistAddress
+2025-07-16 16:45:46,239 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in SOP_Chk
+2025-07-16 16:45:46,239 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Scheduled 1042S 
+2025-07-16 16:45:46,239 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Scheduled 1099 DIV
+2025-07-16 16:45:46,240 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Scheduled 1099B 
+2025-07-16 16:45:46,240 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Scheduled 1099B TAX INFO STATEMENT
+2025-07-16 16:45:46,240 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Scheduled 1099OID
+2025-07-16 16:45:46,240 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Scheduled 1099S 
+2025-07-16 16:45:46,241 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Scheduled 1099_INT
+2025-07-16 16:45:46,241 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Scheduled 1099_MISC
+2025-07-16 16:45:46,241 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Scheduled ACH 1099D
+2025-07-16 16:45:46,241 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Scheduled ACH_DEBIT_ENROLLMENT
+2025-07-16 16:45:46,242 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Scheduled CONS_TAX
+2025-07-16 16:45:46,242 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Scheduled Check +1099 Duplex
+2025-07-16 16:45:46,242 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Scheduled Combo 1099DIV & 1099B Form
+2025-07-16 16:45:46,243 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Scheduled Corporate Action Due Diligence Letter
+2025-07-16 16:45:46,243 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Scheduled DISQUALIFYING DISPOSITION LETTER
+2025-07-16 16:45:46,243 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Scheduled DRP_ENROLLMENT
+2025-07-16 16:45:46,244 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Scheduled EFTS  
+2025-07-16 16:45:46,244 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Scheduled Exchange Advice
+2025-07-16 16:45:46,244 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Scheduled Exchange Checks
+2025-07-16 16:45:46,245 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Scheduled FA STATEMENT
+2025-07-16 16:45:46,245 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Scheduled FORM 592B
+2025-07-16 16:45:46,245 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Scheduled GenComm General Restricted Statement
+2025-07-16 16:45:46,245 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Scheduled LOSED END FUNDS SEMI-ANNUAL & ANNUAL REP
+2025-07-16 16:45:46,246 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Scheduled NR4 FORM
+2025-07-16 16:45:46,247 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Scheduled PAYMENT CHECKS
+2025-07-16 16:45:46,247 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Scheduled PROXY RD SHAREHOLDER LISTS
+2025-07-16 16:45:46,247 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Scheduled SMS   
+2025-07-16 16:45:46,248 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Scheduled SPECIAL INSERT
+2025-07-16 16:45:46,249 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Scheduled Standard Due Diligence Letter
+2025-07-16 16:45:46,249 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Scheduled Statements
+2025-07-16 16:45:46,250 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Scheduled Stmt+Div
+2025-07-16 16:45:46,250 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Scheduled T3922 
+2025-07-16 16:45:46,251 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Scheduled W8    
+2025-07-16 16:45:46,251 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Scheduled W8BEN E FORM
+2025-07-16 16:45:46,251 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Scheduled W9    
+2025-07-16 16:45:46,252 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Sec_Addr        
+2025-07-16 16:45:46,252 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Successful_Grant_Acknowledgement
+2025-07-16 16:45:46,252 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in T3922
+2025-07-16 16:45:46,253 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Tax Non-Mtch    
+2025-07-16 16:45:46,254 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Tax Non-Mtch TE 
+2025-07-16 16:45:46,254 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Tax StndAlone   
+2025-07-16 16:45:46,254 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Tax_Ltrs        
+2025-07-16 16:45:46,254 | 20250716T154527Z | WARNING | Data quality: Found 4 extreme outliers in UPS_Req52_CharDon
+2025-07-16 16:45:46,255 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Unresponsive_Payee
+2025-07-16 16:45:46,255 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in V2
+2025-07-16 16:45:46,255 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Vol Elec Form   
+2025-07-16 16:45:46,256 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in W8
+2025-07-16 16:45:46,256 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in W8E
+2025-07-16 16:45:46,256 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in W9
+2025-07-16 16:45:46,256 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Welcome_letter  
+2025-07-16 16:45:46,256 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Access account information for Consolidated Edison Inc.
+2025-07-16 16:45:46,257 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Assistance related to shareholder account concerns
+2025-07-16 16:45:46,257 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Assistance with the account of a deceased shareholder.
+2025-07-16 16:45:46,257 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Assistance with transferring stock for Bank of America Corporation shares.
+2025-07-16 16:45:46,258 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Assistance with transferring stock for Consolidated Edison Inc.
+2025-07-16 16:45:46,258 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Balance
+2025-07-16 16:45:46,259 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Balance, Stock Quote
+2025-07-16 16:45:46,259 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Banking Details 
+2025-07-16 16:45:46,259 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Beneficiary     
+2025-07-16 16:45:46,259 | 20250716T154527Z | WARNING | Data quality: Found 3 extreme outliers in Blank
+2025-07-16 16:45:46,260 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Buy stocks      
+2025-07-16 16:45:46,260 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Certified W-9 Form
+2025-07-16 16:45:46,260 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Change Registration
+2025-07-16 16:45:46,261 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Change address on account
+2025-07-16 16:45:46,261 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Check Replacement
+2025-07-16 16:45:46,261 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Company Information
+2025-07-16 16:45:46,261 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Connect with a representative
+2025-07-16 16:45:46,262 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Consolidating multiple accounts into one.
+2025-07-16 16:45:46,263 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Contact Information
+2025-07-16 16:45:46,264 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Corporate Action
+2025-07-16 16:45:46,264 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Cost Basis      
+2025-07-16 16:45:46,264 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Customer requested electric service restoration, unrelated to shareholder services.
+2025-07-16 16:45:46,265 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Customer requested general customer service assistance
+2025-07-16 16:45:46,265 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Data Protection 
+2025-07-16 16:45:46,265 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Deceased Estate 
+2025-07-16 16:45:46,266 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Deceased Shareholder
+2025-07-16 16:45:46,266 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Direct Registration
+2025-07-16 16:45:46,267 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Dividend Reinvestment
+2025-07-16 16:45:46,267 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in End Call        
+2025-07-16 16:45:46,268 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Financial management for elderly care
+2025-07-16 16:45:46,269 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Follow-up on a transaction
+2025-07-16 16:45:46,269 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Fulfilment      
+2025-07-16 16:45:46,269 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Get balance on account
+2025-07-16 16:45:46,270 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Help
+2025-07-16 16:45:46,270 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Help with medallion signature
+2025-07-16 16:45:46,271 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Inquiry about account balance
+2025-07-16 16:45:46,271 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Investor Center Login
+2025-07-16 16:45:46,272 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in James is requesting a summary of his tax information related to his shareholder account.
+2025-07-16 16:45:46,272 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Legal Department
+2025-07-16 16:45:46,272 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Make a payment to account
+2025-07-16 16:45:46,273 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Not Collected   
+2025-07-16 16:45:46,273 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Pay bill on behalf of client
+2025-07-16 16:45:46,274 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Power of Attorney
+2025-07-16 16:45:46,274 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Press and Media 
+2025-07-16 16:45:46,274 | 20250716T154527Z | WARNING | Data quality: Found 3 extreme outliers in Privacy Breach  
+2025-07-16 16:45:46,275 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Proxy Inquiry   
+2025-07-16 16:45:46,275 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Receive Letter
+2025-07-16 16:45:46,275 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Refund
+2025-07-16 16:45:46,276 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Representative  
+2025-07-16 16:45:46,276 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Request to speak with a representative
+2025-07-16 16:45:46,276 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Restricted Shares
+2025-07-16 16:45:46,277 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Sell shares     
+2025-07-16 16:45:46,277 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Start New Service
+2025-07-16 16:45:46,277 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Stockholder's report
+2025-07-16 16:45:46,277 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Tax Forms       
+2025-07-16 16:45:46,278 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in The shareholder wants to add a beneficiary to his account.
+2025-07-16 16:45:46,278 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in The user requested a copy of her account statement for Consolidated Edison Inc shares.
+2025-07-16 16:45:46,278 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Transfer Call   
+2025-07-16 16:45:46,279 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Transfer Funds  
+2025-07-16 16:45:46,279 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Transfer Status 
+2025-07-16 16:45:46,280 | 20250716T154527Z | WARNING | Data quality: Found 2 extreme outliers in Transfer Stock  
+2025-07-16 16:45:46,280 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Transfer call to senior support representative
+2025-07-16 16:45:46,281 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Transfer shares 
+2025-07-16 16:45:46,281 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Transfer to representative
+2025-07-16 16:45:46,282 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Unknown
+2025-07-16 16:45:46,283 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Update Account  
+2025-07-16 16:45:46,283 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Update address  
+2025-07-16 16:45:46,283 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Update address details
+2025-07-16 16:45:46,284 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in User is inquiring about pension payment.
+2025-07-16 16:45:46,285 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in User is requesting assistance with transferring stock.
+2025-07-16 16:45:46,285 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in User is requesting information about the recent share price of Consolidated Edison Inc.
+2025-07-16 16:45:46,286 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in User is seeking a stock quote for Consolidated Edison Inc.
+2025-07-16 16:45:46,286 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in User is seeking assistance to transfer shares.
+2025-07-16 16:45:46,287 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in User is seeking assistance to transfer stock of Consolidated Edison Inc.
+2025-07-16 16:45:46,287 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in User is seeking assistance to transfer stock.
+2025-07-16 16:45:46,288 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in User is seeking assistance to transfer their stock in Bank of America Corporation.
+2025-07-16 16:45:46,288 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in User needs help managing physical stock shares.
+2025-07-16 16:45:46,288 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in User requested assistance regarding their Consolidated Edison Inc stock, but the specific request was unclear or not mentioned.  
+2025-07-16 16:45:46,289 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in User requested to know the balance in their Consolidated Edison Inc account.
+2025-07-16 16:45:46,289 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in User requested to speak with a senior support representative for further assistance.
+2025-07-16 16:45:46,289 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in User seeks assistance to add a beneficiary to the account.
+2025-07-16 16:45:46,290 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in User seeks assistance to update his address on his shareholder account for Alphabet Inc.
+2025-07-16 16:45:46,290 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in User sought specific assistance regarding Consolidated Edison Inc. shares, but the request was unclear.
+2025-07-16 16:45:46,290 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in User wants to add a beneficiary to their shareholder account.
+2025-07-16 16:45:46,291 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in User wants to sell some shares in Consolidated Edison Inc.
+2025-07-16 16:45:46,291 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in User wants to transfer stock in Consolidated Edison Inc.
+2025-07-16 16:45:46,292 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Value
+2025-07-16 16:45:46,292 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in Verify if spouse's name is on the account
+2025-07-16 16:45:46,292 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in new service     
+2025-07-16 16:45:46,292 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in speak to a representative
+2025-07-16 16:45:46,293 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in start service   
+2025-07-16 16:45:46,293 | 20250716T154527Z | WARNING | Data quality: Found 1 extreme outliers in verify account  
+2025-07-16 16:45:46,301 | 20250716T154527Z | INFO | Final dataset: 78 samples, 379 features
+2025-07-16 16:45:46,302 | 20250716T154527Z | INFO | Target statistics: mean=58307.8, std=28634.0, range=[6172, 95291]
+2025-07-16 16:45:46,653 | 20250716T154527Z | INFO | ✅ Dataset built in 0:00:19.402703
+2025-07-16 16:45:46,653 | 20250716T154527Z | INFO | Final dataset: 78 samples, 379 features
+2025-07-16 16:45:46,654 | 20250716T154527Z | INFO |
+[2/4] Creating comprehensive EDA visualizations...
+2025-07-16 16:45:46,655 | 20250716T154527Z | INFO | Creating EDA visualizations...
+2025-07-16 16:45:48,528 | 20250716T154527Z | INFO | ✅ Time series plots created
+2025-07-16 16:45:48,529 | 20250716T154527Z | INFO | ✅ EDA completed in 0:00:01.874440
+2025-07-16 16:45:48,529 | 20250716T154527Z | INFO |
+[3/4] Training models with nested CV and robust evaluation...
+2025-07-16 16:45:48,529 | 20250716T154527Z | INFO | Starting model training with nested CV...
+2025-07-16 16:45:48,543 | 20250716T154527Z | INFO | Training ElasticNet...
+2025-07-16 16:46:05,535 | 20250716T154527Z | ERROR | Nested CV failed for ElasticNet: Input X contains infinity or a value too large for dtype('float64').
+2025-07-16 16:46:05,537 | 20250716T154527Z | WARNING | Skipping ElasticNet due to CV failure
+2025-07-16 16:46:05,537 | 20250716T154527Z | INFO | Training RandomForest...
+2025-07-16 16:46:24,756 | 20250716T154527Z | ERROR | Nested CV failed for RandomForest: Input X contains infinity or a value too large for dtype('float32').
+2025-07-16 16:46:24,758 | 20250716T154527Z | WARNING | Skipping RandomForest due to CV failure
+2025-07-16 16:46:24,758 | 20250716T154527Z | INFO | Training LightGBM...
+[LightGBM] [Fatal] Do not support special JSON characters in feature name.
+[LightGBM] [Fatal] Do not support special JSON characters in feature name.
+[LightGBM] [Fatal] Do not support special JSON characters in feature name.
+[LightGBM] [Fatal] Do not support special JSON characters in feature name.
+2025-07-16 16:46:44,309 | 20250716T154527Z | ERROR | Nested CV failed for LightGBM: Do not support special JSON characters in feature name.
+2025-07-16 16:46:44,310 | 20250716T154527Z | WARNING | Skipping LightGBM due to CV failure
+2025-07-16 16:46:44,311 | 20250716T154527Z | INFO | Training XGBoost...
+2025-07-16 16:46:58,698 | 20250716T154527Z | ERROR | Nested CV failed for XGBoost: 'DataFrame' object has no attribute 'dtype'
+2025-07-16 16:46:58,700 | 20250716T154527Z | WARNING | Skipping XGBoost due to CV failure
+2025-07-16 16:46:58,701 | 20250716T154527Z | WARNING | Insufficient models (0) for ensemble creation
+2025-07-16 16:46:58,713 | 20250716T154527Z | INFO | Metrics written atomically to dist\metrics.json
+2025-07-16 16:46:58,739 | 20250716T154527Z | ERROR | Failed to write Prometheus metrics: [WinError 1314] A required privilege is not held by the client: 'prometheus_metrics_20250716T154527Z.prom' -> 'dist\\prometheus_metrics_latest.prom'
+2025-07-16 16:46:58,741 | 20250716T154527Z | WARNING | Prediction interval coverage 0.0% below threshold 85.0%   
+2025-07-16 16:46:58,741 | 20250716T154527Z | WARNING | ⚠️ 1 performance alerts generated
+2025-07-16 16:46:58,742 | 20250716T154527Z | INFO | ✅ Model training completed successfully
+2025-07-16 16:46:58,742 | 20250716T154527Z | INFO | ✅ Model training completed in 0:01:10.212933
+2025-07-16 16:46:58,743 | 20250716T154527Z | INFO |
+[4/4] Generating executive summary and validation...
+2025-07-16 16:46:59,274 | 20250716T154527Z | ERROR | Failed to generate summary report: 'charmap' codec can't encode character '\U0001f4ca' in position 146: character maps to <undefined>
+2025-07-16 16:46:59,275 | 20250716T154527Z | INFO | ================================================================================
+2025-07-16 16:46:59,275 | 20250716T154527Z | INFO | ✅ PIPELINE COMPLETED SUCCESSFULLY
+2025-07-16 16:46:59,275 | 20250716T154527Z | INFO | ================================================================================
+2025-07-16 16:46:59,276 | 20250716T154527Z | INFO | Total runtime: 0:01:32.030028
+2025-07-16 16:46:59,279 | 20250716T154527Z | INFO | All outputs saved to: C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\dist
+2025-07-16 16:46:59,279 | 20250716T154527Z | INFO |
+✅ All models passed performance validation
+2025-07-16 16:46:59,280 | 20250716T154527Z | INFO |
+📋 View detailed results: dist/summary_report.md
+2025-07-16 16:46:59,280 | 20250716T154527Z | INFO | 🔍 Monitor performance: dist/metrics.json
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> 
