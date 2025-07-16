@@ -531,16 +531,45 @@ def build_dataset() -> Tuple[pd.DataFrame, pd.Series, pd.DataFrame]:
     calls_total = calls_intent_daily.combine_first(calls_long_daily)
 
     # Process intents (remove nulls)
-    valid_intents = calls_intent_raw[~calls_intent_raw["intent"].isin(CONFIG["null_intents"])]
-    
-    if len(valid_intents) > 0:
-        intents_daily = valid_intents.groupby(["date", "intent"]).size().unstack(fill_value=0)
-        # Convert intent columns to category for memory efficiency
-        intents_daily.columns = intents_daily.columns.astype('category')
-        logger.info(f"Processed {intents_daily.shape[1]} intent types")
-    else:
-        intents_daily = pd.DataFrame()
-        logger.warning("No valid intent data found")
+    # Process intents (remove nulls) - FIXED: Find intent column automatically
+            logger.info(f"Intent data columns: {list(calls_intent_raw.columns)}")
+            
+            # Find intent column with multiple possible names
+            intent_candidates = {"intent", "uui_intent", "call_intent", "intent_type", "category"}
+            intent_col = None
+            
+            for col in calls_intent_raw.columns:
+                if col.lower() in intent_candidates:
+                    intent_col = col
+                    break
+            
+            if intent_col is None:
+                # Take first non-date column that looks like intent data
+                non_date_cols = [col for col in calls_intent_raw.columns if col != "date"]
+                if non_date_cols:
+                    intent_col = non_date_cols[0]  # Use first non-date column
+                    logger.warning(f"No standard intent column found, using '{intent_col}'")
+                else:
+                    logger.warning("No intent column found - skipping intent processing")
+                    intents_daily = pd.DataFrame()
+            
+            if intent_col and intent_col in calls_intent_raw.columns:
+                logger.info(f"Using intent column: '{intent_col}'")
+                
+                # Process intents (remove nulls)
+                valid_intents = calls_intent_raw[~calls_intent_raw[intent_col].isin(CONFIG["null_intents"])]
+                
+                if len(valid_intents) > 0:
+                    intents_daily = valid_intents.groupby(["date", intent_col]).size().unstack(fill_value=0)
+                    # Convert intent columns to category for memory efficiency
+                    intents_daily.columns = intents_daily.columns.astype('category')
+                    logger.info(f"Processed {intents_daily.shape[1]} intent types")
+                else:
+                    intents_daily = pd.DataFrame()
+                    logger.warning("No valid intent data found after filtering nulls")
+            else:
+                intents_daily = pd.DataFrame()
+                logger.warning("No valid intent data found")
 
     # Create mail pivot
     mail_wide = mail_daily.pivot(index="date", columns="mail_type", values="mail_volume").fillna(0)
