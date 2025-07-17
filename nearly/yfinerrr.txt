@@ -1,4 +1,31 @@
-2025-07-17 15:26:38,233 | mail_input_local | WARNING | Could not load or find economic data for prediction date: Date 2025-07-17 not found in economic data file.. Using long-term averages as fallback.
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> & C:/Users/BhungarD/python.exe "c:/Users/BhungarD/OneDrive - Computershare/Desktop/finprod/rangefin.py"
+2025-07-17 15:30:18,961 | mail_input_local | INFO | === ADVANCED MAIL INPUT FORECAST (from Local Data) ===
+2025-07-17 15:30:35,422 | mail_input_local | INFO | Loading historical economic data from 'economic_data_for_model.csv'...
+2025-07-17 15:30:35,431 | mail_input_local | INFO | Engineering advanced economic features (lags, rolling avgs, regimes)...
+2025-07-17 15:30:35,456 | mail_input_local | INFO | Found and filled 20 missing values in economic features.
+2025-07-17 15:30:35,465 | mail_input_local | INFO | Daily mail-calls-economic data: (349, 253)
+2025-07-17 15:30:35,783 | mail_input_local | INFO | Mail input features: 347 samples x 252 features
+2025-07-17 15:30:35,783 | mail_input_local | INFO | Feature columns sample: ['1099OID', '1099_Int', '1099_Misc', '1099_NEC', '592B']
+2025-07-17 15:30:35,784 | mail_input_local | INFO | Training mail input models...
+2025-07-17 15:30:35,784 | mail_input_local | INFO |   Training 10% quantile model...
+2025-07-17 15:30:35,921 | mail_input_local | INFO |     Validation MAE: 26083
+2025-07-17 15:30:35,921 | mail_input_local | INFO |   Training 25% quantile model...
+2025-07-17 15:30:36,043 | mail_input_local | INFO |     Validation MAE: 38488
+2025-07-17 15:30:36,044 | mail_input_local | INFO |   Training 50% quantile model...
+2025-07-17 15:30:36,201 | mail_input_local | INFO |     Validation MAE: 38741
+2025-07-17 15:30:36,201 | mail_input_local | INFO |   Training 75% quantile model...
+2025-07-17 15:30:36,305 | mail_input_local | INFO |     Validation MAE: 33248
+2025-07-17 15:30:36,306 | mail_input_local | INFO |   Training 90% quantile model...
+2025-07-17 15:30:36,392 | mail_input_local | INFO |     Validation MAE: 68278
+2025-07-17 15:30:36,393 | mail_input_local | INFO |   Training bootstrap ensemble...
+2025-07-17 15:30:53,577 | mail_input_local | INFO | === SCENARIO TESTING (Local Data Model) ===
+2025-07-17 15:30:53,577 | mail_input_local | INFO |
+Scenario: High Reject Letters
+2025-07-17 15:30:53,578 | mail_input_local | INFO | Mail inputs: {'Reject_Ltrs': 2000, 'Cheque 1099': 500}
+2025-07-17 15:30:53,584 | mail_input_local | INFO | Loading historical economic data from 'economic_data_for_model.csv'...
+2025-07-17 15:30:53,599 | mail_input_local | INFO | Engineering advanced economic features (lags, rolling avgs, regimes)...
+2025-07-17 15:30:53,630 | mail_input_local | INFO | Found and filled 20 missing values in economic features.
+2025-07-17 15:30:53,643 | mail_input_local | WARNING | Could not load or find economic data for prediction date: Date 2025-07-17 not found in economic data file.. Using long-term averages as fallback.
 Traceback (most recent call last):
   File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\rangefin.py", line 282, in <module>
     main()
@@ -21,4 +48,68 @@ Traceback (most recent call last):
   File "C:\Users\BhungarD\Lib\site-packages\pandas\core\indexes\base.py", line 6252, in _raise_if_missing
     raise KeyError(f"{not_found} not in index")
 KeyError: "['1099OID', '1099_Int', '1099_Misc', '1099_NEC', '592B', 'ACH 1099', 'ACH Conf.', 'ACH_Credit_Enrollment', 'AIP_issuance_statement', 'AIP_order_acknowledgement', 'Ach_Deb', 'Award_Expiration', 'Award_Notification', 'Award_Status', 'BROKER_TRANSFER', 'Bank_Account_Update', 'Beneficiary_Update', 'CA_Due_Dill', 'CIP_Insert', 'Cert_Transcript', 'Check', 'Cheque', 'Class Action', 'Collateral_Rcpt', 'Consol_Confirm', 'DRP 1099', 'DRP Stmt.', 'DRP_Enrollment', 'DRS', 'DRS_Advices', 'DS14CE', 'DS14CI', 'Digital_Insert_Images', 'Digital_Insert_Sets', 'Digital_Insert_Sheets', 'Dir_Cred_Confirm_Ltr', 'Due Diligence', 'Due_Dill', 'E-STATEMENTS', 'ESPP_Statements', 'ESPP_Terminations', 'Elec_Del_Fail_Ltrs', 'Elig_Enr_CancAll_Ltr', 'Elig_Enr_CancRef_Ltr', 'Elig_Enr_Confirm_Ltr', 'Elig_Enr_DedChg_Ltr', 'Envision', 'Errors', 'Exch_Adv', 'ExerCancel', 'Foreign Credit', 'Foreign Wire', 'Funds Not', 'G_Statements', 'General Comm', 'Hypo_Recon', 'IAR', 'Initial_Grant_Acknowledgement', 'Invoice', 'LTR Transmittal', 'Label Mailing', 'Last_Contact', 'Leveraged_Plan_Trans_Advice', 'MASS', 'MultiClientLaser', 'MultiClientLodgeCourier', 'NCOA', 'NR301', 'NewShareHolderPack', 'New_Chk', 'Notice', 'Once Off CORPORATE ACTION', 'Once Off FULFILLMENT', 'Once Off LABEL MAILING', 'Once Off PERSONALIZED MAILING', 'Once Off PRINT JOB ONLY', 'Once Off RESTRICTED AWARD TAX ELECTION NOTICE', 'Option_Vest', 'Options_Transaction_Advice', 'Other (2nd Page of 19A Notice)', 'Other (3rd Page of 19A Notice)', 'Other (401K Letter)', 'Other (6K)', 'Other (Annual Report)', 'Other (Annual report)', 'Other (Attendance Card)', 'Other (Blank Letter for GSC)', 'Other (Bounce Letter)', 'Other (Buck Slip)', 'Other (Buckslip)', 'Other (Company Circular)', 'Other (Company Letter)', 'Other (Company letter)', 'Other (DRS)', 'Other (Deposiatry Notice)', 'Other (Depositary Notice ADR)', 'Other (Depositary Notice)', 'Other (Depositary Notice-ADR)', 'Other (Depositary notice)', 'Other (Depository Notice)', 'Other (ESOP Letter)', 'Other (Explanatory Note)', 'Other (Explanatory Notes)', 'Other (Financial Information)', 'Other (Letter pg2)', 'Other (Letter)', 'Other (Logo ACH Form)', 'Other (Meeting Agenda AGM-EGM)', 'Other (Meeting Agenda EGM)', 'Other (Meeting Agenda)', 'Other (Meeting Notice)', 'Other (Meeting notice)', 'Other (Misc Info)', 'Other (Misc Information)', 'Other (Proxy Statement Notice of Meeting)', 'Other (Proxy Statement)', 'Other (Q AND A)', 'Other (Q and A)', 'Other (Section 19)', 'Other (US)', 'Other (non US Letter)', 'PDF Hosting', 'PIN', 'Paym_chks', 'Personalized', 'Plan_Enr_Confirm_Ltr', 'Plan_Removal_Ltrs', 'Plans Stmt.', 'Plans Tax', 'Print Only', 'Proxy (US)', 'Proxy_Reject_Ltrs', 'Purch_Adv', 'Purch_Adv_CPM', 'RecordsProcessing', 'Refund_Chk', 'Reminder_Grant_Acknowledgement', 'Rep_1042S', 'Rep_1099B', 'Rep_1099BN', 'Rep_1099B_Tax_Info', 'Rep_1099Div', 'Rep_NR4', 'Request_Taxpayer_ID_Cert', 'Restricted_Award_Payment', 'Restricted_Award_Tax_Election', 'Restricted_Award_Trans_Advice', 'Rights Card', 'SLR_FailedPOSTNET', 'SLR_FollowerImages', 'SLR_ImagePages', 'SLR_MailToFi', 'SLR_TextPages', 'SLR_ValidFinalistAddress', 'SOI_Advices', 'SOP_Chk', 'Sales_Chk', 'Sales_Chk_CPM', 'Sales_Wire', 'Sales_Wire_CPM', 'Scheduled 1042S', 'Scheduled 1099 DIV', 'Scheduled 1099B', 'Scheduled 1099B TAX INFO STATEMENT', 'Scheduled 1099OID', 'Scheduled 1099S', 'Scheduled 1099_INT', 'Scheduled 1099_MISC', 'Scheduled ACH 1099D', 'Scheduled ACH_DEBIT_ENROLLMENT', 'Scheduled CONS_TAX', 'Scheduled Check +1099 Duplex', 'Scheduled Combo 1099DIV & 1099B Form', 'Scheduled Corporate Action Due Diligence Letter', 'Scheduled DISQUALIFYING DISPOSITION LETTER', 'Scheduled DRP_ENROLLMENT', 'Scheduled EFTS', 'Scheduled Exchange Advice', 'Scheduled Exchange Checks', 'Scheduled Extracts', 'Scheduled FA STATEMENT', 'Scheduled FORM 592B', 'Scheduled GenComm General Restricted Statement', 'Scheduled LOSED END FUNDS SEMI-ANNUAL & ANNUAL REP', 'Scheduled NR4 FORM', 'Scheduled PAYMENT CHECKS', 'Scheduled PROXY RD SHAREHOLDER LISTS', 'Scheduled SMS', 'Scheduled SPECIAL INSERT', 'Scheduled Standard Due Diligence Letter', 'Scheduled Statements', 'Scheduled Stmt+Div', 'Scheduled T3922', 'Scheduled W8', 'Scheduled W8BEN E FORM', 'Scheduled W9', 'Sec_Addr', 'Statements', 'Successful_Grant_Acknowledgement', 'T3922', 'TODC', 'TODF', 'TODI', 'Tax Non-Mtch', 'Tax Non-Mtch TE', 'Tax StndAlone', 'Tax_Ltrs', 'Transfer_Notice', 'UPS_Req51_DirTrans_EFD', 'UPS_Req52_CharDon', 'UPS_Req54_Hypo', 'UPS_Req55_Conv', 'UPS_Req67_Transfer', 'UPS_Req68_NameChg', 'Unresponsive_Payee', 'V2', 'Vol Elec Form', 'W8', 'W8E', 'W9', 'Welcome_letter'] not in index"
-PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> 
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> & C:/Users/BhungarD/python.exe "c:/Users/BhungarD/OneDrive - Computershare/Desktop/finprod/range.py"
+2025-07-17 15:31:17,620 | mail_input | INFO | === MAIL INPUT RANGE FORECAST ===
+2025-07-17 15:31:17,620 | mail_input | INFO | Loading mail-calls data...
+2025-07-17 15:31:32,756 | mail_input | INFO | Daily mail-calls data: (349, 232)
+2025-07-17 15:31:33,022 | mail_input | INFO | Creating mail input features...
+2025-07-17 15:31:34,020 | mail_input | INFO | Mail input features: 348 samples x 19 features
+2025-07-17 15:31:34,021 | mail_input | INFO | Feature columns: ['Reject_Ltrs_volume', 'Cheque 1099_volume', 'Exercise_Converted_volume', 'SOI_Confirms_volume', 'Exch_chks_volume', 'ACH_Debit_Enrollment_volume', 'Transfer_volume', 'COA_volume', 'NOTC_WITHDRAW_volume', 'Repl_Chks_volume', 'total_mail_volume', 'log_total_mail_volume', 'mail_percentile', 'weekday', 'month', 'is_month_end', 'is_holiday_week', 'recent_calls_avg', 'recent_calls_trend']    
+2025-07-17 15:31:34,022 | mail_input | INFO | Training mail input models...
+2025-07-17 15:31:34,022 | mail_input | INFO | Training mail input models...
+2025-07-17 15:31:34,023 | mail_input | INFO |   Training 10% quantile model...
+2025-07-17 15:31:34,096 | mail_input | INFO |     Validation MAE: 5873
+2025-07-17 15:31:34,097 | mail_input | INFO |   Training 25% quantile model...
+2025-07-17 15:31:34,121 | mail_input | INFO |     Validation MAE: 4908
+2025-07-17 15:31:34,122 | mail_input | INFO |   Training 50% quantile model...
+2025-07-17 15:31:34,156 | mail_input | INFO |     Validation MAE: 4498
+2025-07-17 15:31:34,156 | mail_input | INFO |   Training 75% quantile model...
+2025-07-17 15:31:34,188 | mail_input | INFO |     Validation MAE: 5817
+2025-07-17 15:31:34,189 | mail_input | INFO |   Training 90% quantile model...
+2025-07-17 15:31:34,216 | mail_input | INFO |     Validation MAE: 10449
+2025-07-17 15:31:34,217 | mail_input | INFO |   Training bootstrap ensemble...
+2025-07-17 15:31:37,587 | mail_input | INFO | === SCENARIO TESTING ===
+2025-07-17 15:31:37,588 | mail_input | INFO |
+Scenario: test 1
+2025-07-17 15:31:37,589 | mail_input | INFO | Description: Large batch of reject letters sent
+2025-07-17 15:31:37,589 | mail_input | INFO | Mail inputs: {'Reject_Ltrs': 2000, 'Cheque 1099': 500}
+2025-07-17 15:31:37,725 | mail_input | INFO | Predicted call ranges:
+2025-07-17 15:31:37,726 | mail_input | INFO |   Conservative (25-75%): 6183 - 11700 calls
+2025-07-17 15:31:37,726 | mail_input | INFO |   Wide range (10-90%): 1274 - 16463 calls
+2025-07-17 15:31:37,727 | mail_input | INFO |   Most likely: 17866 calls
+2025-07-17 15:31:37,727 | mail_input | INFO |
+Scenario: test 2
+2025-07-17 15:31:37,728 | mail_input | INFO | Description: Typical mixed mail
+2025-07-17 15:31:37,728 | mail_input | INFO | Mail inputs: {'Reject_Ltrs': 800, 'Cheque 1099': 1200, 'Exercise_Converted': 300}
+2025-07-17 15:31:37,864 | mail_input | INFO | Predicted call ranges:
+2025-07-17 15:31:37,864 | mail_input | INFO |   Conservative (25-75%): 8301 - 15836 calls
+2025-07-17 15:31:37,865 | mail_input | INFO |   Wide range (10-90%): 3589 - 21692 calls
+2025-07-17 15:31:37,865 | mail_input | INFO |   Most likely: 15660 calls
+2025-07-17 15:31:37,866 | mail_input | INFO |
+Scenario: test 3
+2025-07-17 15:31:37,867 | mail_input | INFO | Description: Low volume administrative mail
+2025-07-17 15:31:37,867 | mail_input | INFO | Mail inputs: {'Transfer': 200, 'COA': 150}
+2025-07-17 15:31:37,986 | mail_input | INFO | Predicted call ranges:
+2025-07-17 15:31:37,986 | mail_input | INFO |   Conservative (25-75%): 9448 - 18520 calls
+2025-07-17 15:31:37,987 | mail_input | INFO |   Wide range (10-90%): 4893 - 25014 calls
+2025-07-17 15:31:37,987 | mail_input | INFO |   Most likely: 13720 calls
+2025-07-17 15:31:37,988 | mail_input | INFO |
+Scenario: test 4
+2025-07-17 15:31:37,988 | mail_input | INFO | Description:  mail volumes high day
+2025-07-17 15:31:37,988 | mail_input | INFO | Mail inputs: {'Reject_Ltrs': 3000, 'Cheque 1099': 2000, 'Exercise_Converted': 800}
+2025-07-17 15:31:38,146 | mail_input | INFO | Predicted call ranges:
+2025-07-17 15:31:38,147 | mail_input | INFO |   Conservative (25-75%): 4417 - 8271 calls
+2025-07-17 15:31:38,147 | mail_input | INFO |   Wide range (10-90%): 0 - 12080 calls
+2025-07-17 15:31:38,147 | mail_input | INFO |   Most likely: 20208 calls
+2025-07-17 15:31:38,158 | mail_input | INFO |
+=== INTERACTIVE EXAMPLE ===
+2025-07-17 15:31:38,159 | mail_input | INFO | Example: Predicting calls from specific mail campaign
+2025-07-17 15:31:38,160 | mail_input | INFO | Input: {'Reject_Ltrs': 1500, 'Cheque 1099': 800, 'Exercise_Converted': 200}
+2025-07-17 15:31:38,310 | mail_input | INFO | Output ranges:
+2025-07-17 15:31:38,311 | mail_input | INFO |   Most likely: 16982 calls
+2025-07-17 15:31:38,311 | mail_input | INFO |   Business planning (25-75%): 7065 - 13424 calls
+2025-07-17 15:31:38,312 | mail_input | INFO |   Capacity planning (10-90%): 2252 - 18641 calls
+2025-07-17 15:31:38,312 | mail_input | INFO |
+Model ready for stakeholder use!
+2025-07-17 15:31:38,313 | mail_input | INFO | Results saved to: C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\dist_input_ranges
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod>
