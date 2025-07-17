@@ -1,0 +1,162 @@
+ C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> & C:/Users/BhungarD/python.exe "c:/Users/BhungarD/OneDrive - Computershare/Desktop/finprod/yfintest.py"
+2025-07-17 17:22:10,733 | analysis | INFO | === MAIL + ECONOMIC → CALL VOLUME ANALYSIS ===
+2025-07-17 17:22:10,734 | analysis | INFO | === LOADING ALL DATA ===
+2025-07-17 17:22:10,735 | analysis | INFO | Loading mail data...
+2025-07-17 17:22:11,985 | analysis | INFO | Loading call volume data...
+2025-07-17 17:22:14,181 | analysis | INFO | Loading call intent data...
+2025-07-17 17:22:22,759 | analysis | INFO | Scaled call volumes by factor: 25.19
+2025-07-17 17:22:23,775 | analysis | INFO | Loading economic data...
+2025-07-17 17:22:23,792 | analysis | INFO | Economic data columns: ['FinancialSector', 'SP500', 'InterestRate_10Y', 'VIX']
+2025-07-17 17:22:23,802 | analysis | INFO | Successfully loaded economic data
+2025-07-17 17:22:23,802 | analysis | INFO | Final combined dataset shape: (349, 236)
+2025-07-17 17:22:23,809 | analysis | INFO | Date range: 2024-01-02 00:00:00 to 2025-05-30 00:00:00
+2025-07-17 17:22:24,099 | analysis | INFO | === MAIL → CALL CORRELATIONS ===
+2025-07-17 17:22:24,100 | analysis | INFO | Individual mail type correlations with call volume:
+2025-07-17 17:22:24,112 | analysis | INFO |   Reject_Ltrs:
+2025-07-17 17:22:24,112 | analysis | INFO |     Same day: 0.342 (p=0.000)
+2025-07-17 17:22:24,112 | analysis | INFO |     1-day lag: 0.139 (p=0.009)
+2025-07-17 17:22:24,112 | analysis | INFO |     2-day lag: 0.145 (p=0.007)
+2025-07-17 17:22:24,115 | analysis | INFO |   Cheque 1099:
+2025-07-17 17:22:24,115 | analysis | INFO |     Same day: 0.277 (p=0.000)
+2025-07-17 17:22:24,115 | analysis | INFO |     1-day lag: 0.210 (p=0.000)
+2025-07-17 17:22:24,115 | analysis | INFO |     2-day lag: 0.224 (p=0.000)
+2025-07-17 17:22:24,117 | analysis | INFO |   Exercise_Converted:
+2025-07-17 17:22:24,117 | analysis | INFO |     Same day: 0.240 (p=0.000)
+2025-07-17 17:22:24,117 | analysis | INFO |     1-day lag: 0.093 (p=0.082)
+2025-07-17 17:22:24,118 | analysis | INFO |     2-day lag: 0.083 (p=0.122)
+2025-07-17 17:22:24,122 | analysis | INFO |   SOI_Confirms:
+2025-07-17 17:22:24,122 | analysis | INFO |     Same day: 0.234 (p=0.000)
+2025-07-17 17:22:24,122 | analysis | INFO |     1-day lag: 0.196 (p=0.000)
+2025-07-17 17:22:24,123 | analysis | INFO |     2-day lag: 0.112 (p=0.037)
+2025-07-17 17:22:24,125 | analysis | INFO |   Exch_chks:
+2025-07-17 17:22:24,125 | analysis | INFO |     Same day: 0.223 (p=0.000)
+2025-07-17 17:22:24,125 | analysis | INFO |     1-day lag: 0.168 (p=0.002)
+2025-07-17 17:22:24,126 | analysis | INFO |     2-day lag: 0.158 (p=0.003)
+2025-07-17 17:22:24,128 | analysis | INFO |   ACH_Debit_Enrollment:
+2025-07-17 17:22:24,128 | analysis | INFO |     Same day: 0.223 (p=0.000)
+2025-07-17 17:22:24,129 | analysis | INFO |     1-day lag: 0.135 (p=0.012)
+2025-07-17 17:22:24,129 | analysis | INFO |     2-day lag: 0.043 (p=0.420)
+2025-07-17 17:22:24,131 | analysis | INFO |   Transfer:
+2025-07-17 17:22:24,132 | analysis | INFO |     Same day: 0.222 (p=0.000)
+2025-07-17 17:22:24,132 | analysis | INFO |     1-day lag: 0.178 (p=0.001)
+2025-07-17 17:22:24,132 | analysis | INFO |     2-day lag: 0.147 (p=0.006)
+2025-07-17 17:22:24,134 | analysis | INFO |   COA:
+2025-07-17 17:22:24,134 | analysis | INFO |     Same day: 0.221 (p=0.000)
+2025-07-17 17:22:24,135 | analysis | INFO |     1-day lag: 0.177 (p=0.001)
+2025-07-17 17:22:24,135 | analysis | INFO |     2-day lag: 0.146 (p=0.006)
+2025-07-17 17:22:24,138 | analysis | INFO |   NOTC_WITHDRAW:
+2025-07-17 17:22:24,138 | analysis | INFO |     Same day: 0.214 (p=0.000)
+2025-07-17 17:22:24,138 | analysis | INFO |     1-day lag: 0.201 (p=0.000)
+2025-07-17 17:22:24,138 | analysis | INFO |     2-day lag: 0.159 (p=0.003)
+2025-07-17 17:22:24,141 | analysis | INFO |   Repl_Chks:
+2025-07-17 17:22:24,141 | analysis | INFO |     Same day: 0.205 (p=0.000)
+2025-07-17 17:22:24,141 | analysis | INFO |     1-day lag: 0.150 (p=0.005)
+2025-07-17 17:22:24,142 | analysis | INFO |     2-day lag: 0.156 (p=0.004)
+2025-07-17 17:22:24,146 | analysis | INFO |
+Total mail volume correlations:
+2025-07-17 17:22:24,146 | analysis | INFO |   Same day: 0.292 (p=0.000)
+2025-07-17 17:22:24,146 | analysis | INFO |   1-day lag: 0.221 (p=0.000)
+2025-07-17 17:22:24,152 | analysis | INFO |   Log total same day: 0.386
+2025-07-17 17:22:24,154 | analysis | INFO | === ECONOMIC → CALL CORRELATIONS ===
+2025-07-17 17:22:24,154 | analysis | INFO | Economic indicator correlations with call volume:
+2025-07-17 17:22:24,170 | analysis | INFO |   FinancialSector:
+2025-07-17 17:22:24,170 | analysis | INFO |     Same day: 0.277 (p=0.000)
+2025-07-17 17:22:24,171 | analysis | INFO |     1-day lag: 0.284 (p=0.000)
+2025-07-17 17:22:24,171 | analysis | INFO |     5-day rolling: 0.280 (p=0.000)
+2025-07-17 17:22:24,175 | analysis | INFO |   SP500:
+2025-07-17 17:22:24,175 | analysis | INFO |     Same day: 0.403 (p=0.000)
+2025-07-17 17:22:24,175 | analysis | INFO |     1-day lag: 0.410 (p=0.000)
+2025-07-17 17:22:24,175 | analysis | INFO |     5-day rolling: 0.412 (p=0.000)
+2025-07-17 17:22:24,180 | analysis | INFO |   InterestRate_10Y:
+2025-07-17 17:22:24,180 | analysis | INFO |     Same day: 0.180 (p=0.001)
+2025-07-17 17:22:24,180 | analysis | INFO |     1-day lag: 0.170 (p=0.001)
+2025-07-17 17:22:24,181 | analysis | INFO |     5-day rolling: 0.169 (p=0.002)
+2025-07-17 17:22:24,185 | analysis | INFO |   VIX:
+2025-07-17 17:22:24,188 | analysis | INFO |     Same day: -0.046 (p=0.391)
+2025-07-17 17:22:24,189 | analysis | INFO |     1-day lag: -0.086 (p=0.108)
+2025-07-17 17:22:24,189 | analysis | INFO |     5-day rolling: -0.109 (p=0.044)
+2025-07-17 17:22:24,189 | analysis | INFO | === PREDICTIVE MODEL TESTING ===
+2025-07-17 17:22:24,196 | analysis | INFO |
+Testing Mail Only features (24 features)...
+2025-07-17 17:22:24,246 | analysis | INFO |   Linear Regression:
+2025-07-17 17:22:24,246 | analysis | INFO |     R² Score: -0.170
+2025-07-17 17:22:24,246 | analysis | INFO |     RMSE: 13675
+2025-07-17 17:22:24,246 | analysis | INFO |     MAE: 8874
+2025-07-17 17:22:24,670 | analysis | INFO |   Random Forest:
+2025-07-17 17:22:24,671 | analysis | INFO |     R² Score: 0.267
+2025-07-17 17:22:24,671 | analysis | INFO |     RMSE: 10824
+2025-07-17 17:22:24,671 | analysis | INFO |     MAE: 7300
+2025-07-17 17:22:24,680 | analysis | INFO |     Top 5 features:
+2025-07-17 17:22:24,681 | analysis | INFO |       Cheque 1099: 0.209
+2025-07-17 17:22:24,681 | analysis | INFO |       ACH_Debit_Enrollment: 0.133
+2025-07-17 17:22:24,681 | analysis | INFO |       total_mail: 0.068
+2025-07-17 17:22:24,681 | analysis | INFO |       log_total_mail: 0.060
+2025-07-17 17:22:24,681 | analysis | INFO |       ACH_Debit_Enrollment_lag1: 0.056
+2025-07-17 17:22:24,682 | analysis | INFO |
+Testing Economic Only features (8 features)...
+2025-07-17 17:22:24,692 | analysis | INFO |   Linear Regression:
+2025-07-17 17:22:24,692 | analysis | INFO |     R² Score: 0.217
+2025-07-17 17:22:24,692 | analysis | INFO |     RMSE: 11187
+2025-07-17 17:22:24,692 | analysis | INFO |     MAE: 7690
+2025-07-17 17:22:24,983 | analysis | INFO |   Random Forest:
+2025-07-17 17:22:24,983 | analysis | INFO |     R² Score: 0.324
+2025-07-17 17:22:24,983 | analysis | INFO |     RMSE: 10390
+2025-07-17 17:22:24,983 | analysis | INFO |     MAE: 6380
+2025-07-17 17:22:24,997 | analysis | INFO |     Top 5 features:
+2025-07-17 17:22:24,998 | analysis | INFO |       SP500_lag1: 0.189
+2025-07-17 17:22:24,998 | analysis | INFO |       InterestRate_10Y: 0.142
+2025-07-17 17:22:24,998 | analysis | INFO |       InterestRate_10Y_lag1: 0.125
+2025-07-17 17:22:24,998 | analysis | INFO |       SP500: 0.117
+2025-07-17 17:22:24,998 | analysis | INFO |       FinancialSector: 0.117
+2025-07-17 17:22:24,999 | analysis | INFO |
+Testing Mail + Economic features (32 features)...
+2025-07-17 17:22:25,013 | analysis | INFO |   Linear Regression:
+2025-07-17 17:22:25,013 | analysis | INFO |     R² Score: -0.068
+2025-07-17 17:22:25,013 | analysis | INFO |     RMSE: 13060
+2025-07-17 17:22:25,014 | analysis | INFO |     MAE: 8735
+2025-07-17 17:22:25,644 | analysis | INFO |   Random Forest:
+2025-07-17 17:22:25,645 | analysis | INFO |     R² Score: 0.312
+2025-07-17 17:22:25,645 | analysis | INFO |     RMSE: 10485
+2025-07-17 17:22:25,645 | analysis | INFO |     MAE: 7273
+2025-07-17 17:22:25,661 | analysis | INFO |     Top 5 features:
+2025-07-17 17:22:25,661 | analysis | INFO |       Cheque 1099: 0.199
+2025-07-17 17:22:25,662 | analysis | INFO |       ACH_Debit_Enrollment: 0.098
+2025-07-17 17:22:25,662 | analysis | INFO |       InterestRate_10Y: 0.046
+2025-07-17 17:22:25,662 | analysis | INFO |       log_total_mail: 0.046
+2025-07-17 17:22:25,663 | analysis | INFO |       VIX_lag1: 0.044
+2025-07-17 17:22:25,664 | analysis | INFO | === CREATING VISUALIZATIONS ===
+2025-07-17 17:22:26,978 | analysis | INFO | Saved: mail_correlations_heatmap.png
+2025-07-17 17:22:27,548 | analysis | INFO | Saved: economic_correlations_heatmap.png
+2025-07-17 17:22:28,457 | analysis | INFO | Saved: calls_vs_best_mail_timeseries.png
+2025-07-17 17:22:28,965 | analysis | INFO | Saved: mail_correlations_heatmap.png
+2025-07-17 17:22:29,523 | analysis | INFO | Saved: economic_correlations_heatmap.png
+2025-07-17 17:22:30,476 | analysis | INFO | Saved: calls_vs_best_mail_timeseries.png
+2025-07-17 17:22:31,193 | analysis | INFO | Saved: mail_correlations_heatmap.png
+2025-07-17 17:22:31,860 | analysis | INFO | Saved: economic_correlations_heatmap.png
+2025-07-17 17:22:32,783 | analysis | INFO | Saved: calls_vs_best_mail_timeseries.png
+2025-07-17 17:22:33,383 | analysis | INFO | Saved: mail_correlations_heatmap.png
+2025-07-17 17:22:33,878 | analysis | INFO | Saved: economic_correlations_heatmap.png
+2025-07-17 17:22:34,733 | analysis | INFO | Saved: calls_vs_best_mail_timeseries.png
+2025-07-17 17:22:35,305 | analysis | INFO | Saved: mail_correlations_heatmap.png
+2025-07-17 17:22:35,783 | analysis | INFO | Saved: economic_correlations_heatmap.png
+2025-07-17 17:22:36,669 | analysis | INFO | Saved: calls_vs_best_mail_timeseries.png
+2025-07-17 17:22:37,319 | analysis | INFO | Saved: mail_correlations_heatmap.png
+2025-07-17 17:22:37,913 | analysis | INFO | Saved: economic_correlations_heatmap.png
+2025-07-17 17:22:38,427 | analysis | INFO | Saved: calls_vs_best_mail_timeseries.png
+2025-07-17 17:22:38,876 | analysis | INFO | Saved: mail_correlations_heatmap.png
+2025-07-17 17:22:39,314 | analysis | INFO | Saved: economic_correlations_heatmap.png
+2025-07-17 17:22:39,972 | analysis | INFO | Saved: calls_vs_best_mail_timeseries.png
+2025-07-17 17:22:40,380 | analysis | INFO | Saved: mail_correlations_heatmap.png
+2025-07-17 17:22:40,772 | analysis | INFO | Saved: economic_correlations_heatmap.png
+2025-07-17 17:22:41,349 | analysis | INFO | Saved: calls_vs_best_mail_timeseries.png
+2025-07-17 17:22:41,723 | analysis | INFO | Saved: mail_correlations_heatmap.png
+2025-07-17 17:22:42,074 | analysis | INFO | Saved: economic_correlations_heatmap.png
+2025-07-17 17:22:42,814 | analysis | INFO | Saved: calls_vs_best_mail_timeseries.png
+2025-07-17 17:22:43,229 | analysis | INFO | Saved: mail_correlations_heatmap.png
+2025-07-17 17:22:43,617 | analysis | INFO | Saved: economic_correlations_heatmap.png
+2025-07-17 17:22:44,145 | analysis | INFO | Saved: calls_vs_best_mail_timeseries.png
+2025-07-17 17:22:44,535 | analysis | INFO | Saved: mail_correlations_heatmap.png
+2025-07-17 17:22:44,862 | analysis | INFO | Saved: economic_correlations_heatmap.png
+2025-07-17 17:22:45,406 | analysis | INFO | Saved: calls_vs_best_mail_timeseries.png
+2025-07-17 17:22:45,406 | analysis | INFO | === GENERATING SUMMARY REPORT ===
+Traceback (most recent call last):
