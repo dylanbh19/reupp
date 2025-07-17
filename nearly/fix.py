@@ -1,0 +1,927 @@
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> & C:/Users/BhungarD/python.exe "c:/Users/BhungarD/OneDrive - Computershare/Desktop/finprod/min.py"
+2025-07-17 12:22:41,351 | 20250717T112241Z | INFO | [1/4] load + prep data
+2025-07-17 12:22:41,352 | 20250717T112241Z | INFO | Found file: data\mail.csv
+2025-07-17 12:22:42,371 | 20250717T112241Z | INFO | Found file: data\callvolumes.csv
+2025-07-17 12:22:42,371 | 20250717T112241Z | INFO | Found file: data\callintent.csv
+2025-07-17 12:22:48,094 | 20250717T112241Z | INFO | Scaling callvolumes by factor 25.188
+2025-07-17 12:22:48,097 | 20250717T112241Z | INFO | Applied smoothing to 24 low-volume days
+2025-07-17 12:22:48,391 | 20250717T112241Z | INFO | Final daily frame: (349, 232)
+2025-07-17 12:22:48,391 | 20250717T112241Z | INFO | [2/4] feature engineering
+2025-07-17 12:22:48,782 | 20250717T112241Z | INFO | Features created: 1626 columns, 342 rows
+2025-07-17 12:22:48,794 | 20250717T112241Z | INFO | Using log1p target
+2025-07-17 12:22:48,819 | 20250717T112241Z | INFO | Dataset: 328 rows × 15 features
+2025-07-17 12:22:48,820 | 20250717T112241Z | INFO | [3/4] training models
+2025-07-17 12:23:02,575 | 20250717T112241Z | INFO |   Ridge h1: R2=-1.406 RMSE=1
+2025-07-17 12:23:16,506 | 20250717T112241Z | INFO |   RF h1: R2=-0.881 RMSE=1
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+2025-07-17 12:23:36,338 | 20250717T112241Z | INFO |   LGBM h1: R2=-0.812 RMSE=1
+2025-07-17 12:23:45,515 | 20250717T112241Z | INFO |   XGB h1: R2=-0.659 RMSE=1
+2025-07-17 12:23:49,757 | 20250717T112241Z | INFO |   Ridge h3: R2=-2.369 RMSE=2
+2025-07-17 12:24:01,981 | 20250717T112241Z | INFO |   RF h3: R2=-1.607 RMSE=2
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+2025-07-17 12:24:12,864 | 20250717T112241Z | INFO |   LGBM h3: R2=-1.607 RMSE=2
+2025-07-17 12:24:21,711 | 20250717T112241Z | INFO |   XGB h3: R2=-1.107 RMSE=2
+2025-07-17 12:24:25,897 | 20250717T112241Z | INFO |   Ridge h7: R2=-3.287 RMSE=4
+2025-07-17 12:24:39,346 | 20250717T112241Z | INFO |   RF h7: R2=-3.447 RMSE=4
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+2025-07-17 12:24:50,375 | 20250717T112241Z | INFO |   LGBM h7: R2=-3.306 RMSE=4
+2025-07-17 12:25:01,073 | 20250717T112241Z | INFO |   XGB h7: R2=-3.362 RMSE=4
+2025-07-17 12:25:05,690 | 20250717T112241Z | INFO |   Ridge h14: R2=-4.072 RMSE=7
+2025-07-17 12:25:20,053 | 20250717T112241Z | INFO |   RF h14: R2=-6.836 RMSE=8
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMRegressor was fitted with feature names
+  warnings.warn(
+2025-07-17 12:25:34,336 | 20250717T112241Z | INFO |   LGBM h14: R2=-5.582 RMSE=8
+2025-07-17 12:25:42,232 | 20250717T112241Z | INFO |   XGB h14: R2=-7.252 RMSE=8
+2025-07-17 12:25:42,415 | 20250717T112241Z | INFO | [4/4] creating outputs
+2025-07-17 12:25:43,629 | 20250717T112241Z | INFO | 
+===== MODEL PERFORMANCE =====
+2025-07-17 12:25:43,630 | 20250717T112241Z | INFO | 1d → XGB  R2=-0.659  RMSE=1
+2025-07-17 12:25:43,630 | 20250717T112241Z | INFO | 3d → XGB  R2=-1.107  RMSE=2
+2025-07-17 12:25:43,630 | 20250717T112241Z | INFO | 7d → Ridge  R2=-3.287  RMSE=4
+2025-07-17 12:25:43,630 | 20250717T112241Z | INFO | 14d → Ridge  R2=-4.072  RMSE=7
+2025-07-17 12:25:43,631 | 20250717T112241Z | INFO | Outputs saved to: C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\dist
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> 
+
+
+
+
+
+
+
+
+# mail_calls_forecast.py
+# =========================================================
+# Predict daily call-centre volume from incoming mail counts
+# Fixes:
+#   * no future leakage
+#   * joins & scales two call sources
+#   * smooths obvious under-counts
+#   * mail-only feature set
+# Extra:
+#   * optional log-transform target
+#   * adds LightGBM model
+#   * ASCII-only, ready to run
+# =========================================================
+
+from __future__ import annotations
+
+import json
+import logging
+import os
+import sys
+import warnings
+from datetime import datetime, timedelta
+from pathlib import Path
+from typing import Dict, List, Optional
+
+import joblib
+import numpy as np
+import pandas as pd
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+import holidays
+
+from sklearn.model_selection import TimeSeriesSplit
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import (
+    mean_squared_error,
+    mean_absolute_percentage_error,
+    r2_score,
+)
+from sklearn.linear_model import Ridge
+from sklearn.ensemble import RandomForestRegressor
+from lightgbm import LGBMRegressor
+from xgboost import XGBRegressor
+from skopt import BayesSearchCV
+from skopt.space import Real, Integer
+from sklearn.feature_selection import SelectKBest, f_regression
+
+warnings.filterwarnings("ignore")
+
+# ---------------------------------------------------------
+# CONFIG
+# ---------------------------------------------------------
+RUN_ID = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
+CFG: Dict = {
+    "data_files": {
+        "mail": ["mail.csv", "data/mail.csv"],
+        "calls_vol": ["callvolumes.csv", "data/callvolumes.csv"],
+        "calls_int": [
+            "callintent.csv",
+            "data/callintent.csv",
+            "callintetn.csv",
+        ],
+    },
+    "output_dir": "dist",
+    "forecast_horizons": [1, 3, 7, 14],
+    "max_features": 15,
+    "ts_splits": 3,
+    "hyper_iter": 16,
+    "random_state": 42,
+    "log_target": True,  # <-- set False to disable log scale
+}
+
+# ---------------------------------------------------------
+# LOGGING
+# ---------------------------------------------------------
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s | "
+    + RUN_ID
+    + " | %(levelname)s | %(message)s",
+    handlers=[logging.StreamHandler(sys.stdout)],
+)
+LOG = logging.getLogger("mail_calls")
+
+# ---------------------------------------------------------
+# HELPERS
+# ---------------------------------------------------------
+US_HOLIDAYS = holidays.US()
+
+
+def _find_file(candidates: List[str]) -> Optional[Path]:
+    for p in candidates:
+        path = Path(p)
+        if path.exists():
+            LOG.info(f"Found file: {path}")
+            return path
+    return None
+
+
+def _to_date(s: pd.Series) -> pd.Series:
+    s1 = pd.to_datetime(s, errors="coerce", infer_datetime_format=True)
+    if s1.isna().mean() > 0.3:
+        s1 = pd.to_datetime(s.str[:10], errors="coerce")
+    return s1.dt.date
+
+
+def _rmse(y_true: np.ndarray, y_pred: np.ndarray) -> float:
+    return float(np.sqrt(mean_squared_error(y_true, y_pred)))
+
+
+# ---------------------------------------------------------
+# DATA LOAD + AUGMENT
+# ---------------------------------------------------------
+def load_mail() -> pd.DataFrame:
+    path = _find_file(CFG["data_files"]["mail"])
+    if not path:
+        raise FileNotFoundError("mail.csv not found")
+    df = pd.read_csv(path)
+    df.columns = [c.lower().strip() for c in df.columns]
+    req = {"mail_date", "mail_volume", "mail_type"}
+    if not req.issubset(df.columns):
+        raise ValueError("mail file must contain mail_date, mail_volume, mail_type")
+    df["mail_date"] = _to_date(df["mail_date"])
+    df = df.dropna(subset=["mail_date"])
+    return df
+
+
+def load_calls() -> pd.Series:
+    p_vol = _find_file(CFG["data_files"]["calls_vol"])
+    p_int = _find_file(CFG["data_files"]["calls_int"])
+    if not (p_vol and p_int):
+        raise FileNotFoundError("Both call files are required")
+
+    # volumes file (daily summary)
+    df_vol = pd.read_csv(p_vol)
+    df_vol.columns = [c.lower().strip() for c in df_vol.columns]
+    dcol_v = next(c for c in df_vol.columns if "date" in c)
+    df_vol[dcol_v] = _to_date(df_vol[dcol_v])
+    vol_daily = (
+        df_vol.groupby(dcol_v)[df_vol.columns.difference([dcol_v])[0]]
+        .sum()
+        .rename("calls_vol")
+    )
+
+    # intent file (one row per call)
+    df_int = pd.read_csv(p_int)
+    df_int.columns = [c.lower().strip() for c in df_int.columns]
+    dcol_i = next(
+        c for c in df_int.columns if "date" in c or "conversationstart" in c
+    )
+    df_int[dcol_i] = _to_date(df_int[dcol_i])
+    int_daily = df_int.groupby(dcol_i).size().rename("calls_int")
+
+    # scale legacy volume series to intent series
+    overlap = vol_daily.index.intersection(int_daily.index)
+    if len(overlap) >= 5:
+        scale = int_daily.loc[overlap].mean() / vol_daily.loc[overlap].mean()
+        LOG.info(f"Scaling callvolumes by factor {scale:.3f}")
+        vol_daily *= scale
+    total = vol_daily.combine_first(int_daily).sort_index()
+
+    # smooth clear under-counts
+    q_low = total.quantile(0.05)
+    med7 = total.rolling(7, center=True, min_periods=1).median()
+    low_mask = total < q_low
+    total.loc[low_mask] = med7.loc[low_mask]
+    LOG.info(f"Applied smoothing to {low_mask.sum()} low-volume days")
+
+    return total.rename("calls_total")
+
+
+# ---------------------------------------------------------
+# FEATURE ENGINEERING
+# ---------------------------------------------------------
+def make_features(daily: pd.DataFrame) -> pd.DataFrame:
+    df = daily.copy()
+    mail_cols = [c for c in df.columns if c != "calls_total"]
+
+    for col in mail_cols:
+        for lag in (1, 2, 3, 7):
+            df[f"{col}_lag{lag}"] = df[col].shift(lag)
+        for win in (3, 7):
+            df[f"{col}_sum{win}"] = df[col].shift(1).rolling(win).sum()
+
+    df["total_mail"] = df[mail_cols].sum(axis=1)
+    df["total_mail_lag1"] = df["total_mail"].shift(1)
+    df["total_mail_lag7"] = df["total_mail"].shift(7)
+
+    df["weekday"] = df.index.dayofweek
+    df["is_monday"] = (df["weekday"] == 0).astype(int)
+    df["is_friday"] = (df["weekday"] == 4).astype(int)
+    df["month"] = df.index.month
+    df["quarter"] = df.index.quarter
+    df["is_holiday"] = df.index.to_series().isin(US_HOLIDAYS).astype(int)
+
+    df = df.dropna()
+    LOG.info(
+        f"Features created: {df.shape[1] - 1} columns, {df.shape[0]} rows"
+    )
+    return df
+
+
+def select_features(X: pd.DataFrame, y: pd.Series) -> pd.DataFrame:
+    selector = SelectKBest(
+        f_regression, k=min(CFG["max_features"], X.shape[1])
+    )
+    X_sel = selector.fit_transform(X, y)
+    return pd.DataFrame(
+        X_sel, columns=X.columns[selector.get_support()], index=X.index
+    )
+
+
+# ---------------------------------------------------------
+# TARGETS
+# ---------------------------------------------------------
+def make_targets(y: pd.Series) -> pd.DataFrame:
+    t = pd.DataFrame(index=y.index)
+    for h in CFG["forecast_horizons"]:
+        t[f"calls_{h}d"] = y.shift(-1).rolling(h).sum()
+    return t.dropna()
+
+
+# ---------------------------------------------------------
+# MODELS
+# ---------------------------------------------------------
+def model_space(name: str):
+    if name == "Ridge":
+        return {
+            "feature_selector__k": Integer(5, CFG["max_features"]),
+            "regressor__alpha": Real(0.01, 100.0, prior="log-uniform"),
+        }
+
+    # --------------  FIXED DICTIONARIES  -----------------
+    if name == "RF":
+        return {
+            "feature_selector__k": Integer(5, CFG["max_features"]),
+            "regressor__n_estimators": Integer(120, 300),
+            "regressor__max_depth": Integer(3, 12),
+            "regressor__min_samples_leaf": Integer(1, 8),
+        }
+
+    if name == "LGBM":
+        return {
+            "feature_selector__k": Integer(5, CFG["max_features"]),
+            "regressor__n_estimators": Integer(120, 300),
+            "regressor__num_leaves": Integer(20, 80),
+            "regressor__learning_rate": Real(0.03, 0.3, prior="log-uniform"),
+        }
+
+    if name == "XGB":
+        return {
+            "feature_selector__k": Integer(5, CFG["max_features"]),
+            "regressor__n_estimators": Integer(120, 300),
+            "regressor__max_depth": Integer(3, 6),
+            "regressor__learning_rate": Real(0.03, 0.3, prior="log-uniform"),
+        }
+    raise ValueError(name)
+
+
+def build_estimator(name: str):
+    fs = ("feature_selector", SelectKBest(f_regression, k=CFG["max_features"]))
+    if name == "Ridge":
+        return Pipeline(
+            [
+                ("scaler", StandardScaler()),
+                fs,
+                ("regressor", Ridge(random_state=CFG["random_state"])),
+            ]
+        )
+    if name == "RF":
+        return Pipeline(
+            [fs, ("regressor", RandomForestRegressor(random_state=CFG["random_state"], n_jobs=-1))]
+        )
+    if name == "LGBM":
+        return Pipeline(
+            [fs, ("regressor", LGBMRegressor(random_state=CFG["random_state"], verbosity=-1))]
+        )
+    if name == "XGB":
+        return Pipeline(
+            [
+                fs,
+                (
+                    "regressor",
+                    XGBRegressor(
+                        random_state=CFG["random_state"],
+                        n_jobs=-1,
+                        objective="reg:squarederror",
+                        verbosity=0,
+                    ),
+                ),
+            ]
+        )
+    raise ValueError(name)
+
+
+# ---------------------------------------------------------
+# TRAIN ONE HORIZON
+# ---------------------------------------------------------
+def train_horizon(
+    X: pd.DataFrame, y: pd.Series, horizon: int, out: Path
+) -> Dict:
+    if len(X) < 50:
+        LOG.warning("Not enough data for CV (horizon %s)", horizon)
+        return {}
+
+    cv_outer = TimeSeriesSplit(n_splits=CFG["ts_splits"])
+    results: Dict[str, Dict] = {}
+    for name in ("Ridge", "RF", "LGBM", "XGB"):
+        try:
+            est = build_estimator(name)
+            search = BayesSearchCV(
+                est,
+                model_space(name),
+                n_iter=CFG["hyper_iter"],
+                cv=cv_outer,
+                scoring="neg_root_mean_squared_error",
+                random_state=CFG["random_state"],
+                n_jobs=-1,
+                verbose=0,
+            )
+            search.fit(X, y)
+            best = search.best_estimator_
+
+            rmses, mapes, r2s = [], [], []
+            for tr, te in cv_outer.split(X):
+                best.fit(X.iloc[tr], y.iloc[tr])
+                pred = best.predict(X.iloc[te])
+                rmses.append(_rmse(y.iloc[te], pred))
+                mapes.append(mean_absolute_percentage_error(y.iloc[te], pred))
+                r2s.append(r2_score(y.iloc[te], pred))
+
+            res = {
+                "RMSE": float(np.mean(rmses)),
+                "MAPE": float(np.mean(mapes)),
+                "R2": float(np.mean(r2s)),
+                "RMSE_std": float(np.std(rmses)),
+                "params": search.best_params_,
+            }
+            results[name] = res
+
+            best.fit(X, y)
+            joblib.dump(best, out / f"model_{name}_{horizon}d.pkl")
+            LOG.info(
+                "  %s h%d: R2=%.3f RMSE=%.0f", name, horizon, res["R2"], res["RMSE"]
+            )
+        except Exception as e:  # pylint: disable=broad-except
+            LOG.error("  %s h%d failed: %s", name, horizon, e)
+    return results
+
+
+# ---------------------------------------------------------
+# PLOT
+# ---------------------------------------------------------
+def plot_forecast(
+    y_hist: pd.Series, preds: Dict[int, pd.Series], out: Path
+) -> None:
+    fig, axes = plt.subplots(2, 2, figsize=(16, 12))
+    axes = axes.flatten()
+
+    for i, (h, pred_series) in enumerate(preds.items()):
+        if i >= 4:
+            break
+        ax = axes[i]
+        hist = y_hist.iloc[-60:]
+        ax.plot(
+            hist.index,
+            hist.values,
+            "o-",
+            label="Historical",
+            alpha=0.7,
+            markersize=3,
+        )
+        ax.plot(
+            pred_series.index,
+            pred_series.values,
+            "s-",
+            label=f"{h}d forecast",
+            linewidth=2,
+            markersize=4,
+        )
+        ax.set_title(f"{h}-Day Horizon", fontweight="bold")
+        ax.set_ylabel("Calls")
+        ax.grid(True, alpha=0.3)
+        ax.legend()
+        ax.tick_params(axis="x", rotation=45)
+
+    plt.tight_layout()
+    plt.savefig(out / "mail_to_calls_forecast.png", dpi=300, bbox_inches="tight")
+    plt.close()
+
+
+# ---------------------------------------------------------
+# MAIN
+# ---------------------------------------------------------
+def main() -> None:
+    out = Path(CFG["output_dir"])
+    out.mkdir(exist_ok=True)
+
+    # 1. LOAD
+    LOG.info("[1/4] load + prep data")
+    mail = load_mail()
+    calls = load_calls()
+
+    mail_daily = (
+        mail.groupby(["mail_date", "mail_type"], as_index=False)["mail_volume"]
+        .sum()
+        .pivot(index="mail_date", columns="mail_type", values="mail_volume")
+        .fillna(0)
+    )
+    mail_daily.index = pd.to_datetime(mail_daily.index)
+    calls.index = pd.to_datetime(calls.index)
+
+    biz_mask = (
+        ~mail_daily.index.weekday.isin([5, 6])
+        & ~mail_daily.index.isin(US_HOLIDAYS)
+    )
+    mail_daily = mail_daily.loc[biz_mask]
+    calls = calls.loc[calls.index.isin(mail_daily.index)]
+
+    daily = mail_daily.join(calls, how="inner")
+    LOG.info("Final daily frame: %s", daily.shape)
+
+    # 2. FEATURES / TARGETS
+    LOG.info("[2/4] feature engineering")
+    feats = make_features(daily)
+    X_raw = feats.drop(columns=["calls_total"])
+    y_raw = feats["calls_total"]
+
+    # optional log scale
+    if CFG["log_target"]:
+        y_trans = np.log1p(y_raw)
+        LOG.info("Using log1p target")
+    else:
+        y_trans = y_raw
+
+    X = select_features(X_raw, y_trans)
+    targets = make_targets(y_trans)
+    idx_common = X.index.intersection(targets.index)
+    X, targets = X.loc[idx_common], targets.loc[idx_common]
+
+    LOG.info("Dataset: %d rows × %d features", X.shape[0], X.shape[1])
+
+    # 3. TRAIN
+    LOG.info("[3/4] training models")
+    all_metrics, all_preds = {}, {}
+    for h in CFG["forecast_horizons"]:
+        col = f"calls_{h}d"
+        if col not in targets.columns:
+            continue
+        metrics = train_horizon(X, targets[col], h, out)
+        all_metrics[f"{h}d"] = metrics
+
+        if metrics:
+            best_name = max(metrics, key=lambda m: metrics[m]["R2"])
+            model = joblib.load(out / f"model_{best_name}_{h}d.pkl")
+
+            # build 14-day feature block: 7-day rolling mean of last week
+            fut_dates = pd.date_range(
+                start=X.index[-1] + timedelta(days=1), periods=14, freq="D"
+            )
+            last_week = X_raw.iloc[-7:].mean()
+            fut_X = pd.DataFrame(
+                [last_week.values] * 14, columns=X_raw.columns, index=fut_dates
+            )
+            fut_X = fut_X[X.columns]  # keep selected features
+            fut_y = model.predict(fut_X)
+            if CFG["log_target"]:
+                fut_y = np.expm1(fut_y)
+            all_preds[h] = pd.Series(fut_y, index=fut_dates)
+
+    # 4. OUTPUT
+    LOG.info("[4/4] creating outputs")
+    if all_preds:
+        hist_series = y_raw if not CFG["log_target"] else y_raw
+        plot_forecast(hist_series, all_preds, out)
+
+    with open(out / "results.json", "w", encoding="utf-8") as fp:
+        json.dump(all_metrics, fp, indent=2)
+
+    LOG.info("\n===== MODEL PERFORMANCE =====")
+    for horizon, models in all_metrics.items():
+        if models:
+            best = max(models, key=lambda m: models[m]["R2"])
+            LOG.info(
+                "%s → %s  R2=%.3f  RMSE=%.0f",
+                horizon,
+                best,
+                models[best]["R2"],
+                models[best]["RMSE"],
+            )
+    LOG.info("Outputs saved to: %s", out.resolve())
+
+
+if __name__ == "__main__":
+    main()
