@@ -1,10 +1,26 @@
-**The issue is clear now!** The debug script showed correlation but your production models are still failing. Here’s why:
-
-## 🔍 **The Core Problem: Feature Selection Timing**
-
-The debug script tested **same-day correlation** (mail today → calls today), but your production model uses **lagged features** (mail yesterday → calls today).
-
-Let me give you a **super simple baseline** that matches exactly what the debug script found:
+vPS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> & C:/Users/BhungarD/python.exe "c:/Users/BhungarD/OneDrive - Computershare/Desktop/finprod/debug.py"
+2025-07-17 13:43:52,004 | baseline | INFO | === BASELINE TEST ===
+2025-07-17 13:44:00,482 | baseline | INFO | Daily data shape: (349, 232)
+2025-07-17 13:44:00,685 | baseline | INFO | Same-day correlations:
+2025-07-17 13:44:00,685 | baseline | INFO |   Raw: 0.117
+2025-07-17 13:44:00,685 | baseline | INFO |   Log: 0.269
+2025-07-17 13:44:00,686 | baseline | INFO | Top mail type correlations:
+2025-07-17 13:44:00,686 | baseline | INFO |   Reject_Ltrs: 0.342
+2025-07-17 13:44:00,686 | baseline | INFO |   Cheque 1099: 0.277
+2025-07-17 13:44:00,687 | baseline | INFO |   Exercise_Converted: 0.240
+2025-07-17 13:44:00,687 | baseline | INFO |   SOI_Confirms: 0.234
+2025-07-17 13:44:00,687 | baseline | INFO |   Exch_chks: 0.223
+2025-07-17 13:44:00,691 | baseline | INFO | Features: 348 samples x 9 features
+2025-07-17 13:44:00,692 | baseline | INFO |
+Testing simple models...
+2025-07-17 13:44:00,692 | baseline | INFO | Testing RAW target...
+2025-07-17 13:44:00,711 | baseline | INFO |   RAW Ridge R2: -7.058 (scores: ['-20.122', '-0.841', '-0.212'])
+2025-07-17 13:44:00,712 | baseline | INFO | Testing LOG target...
+2025-07-17 13:44:00,723 | baseline | INFO |   LOG Ridge R2: -30.900 (scores: ['-90.442', '-2.216', '-0.042'])
+2025-07-17 13:44:00,724 | baseline | INFO |
+=== SUMMARY ===
+2025-07-17 13:44:00,724 | baseline | INFO | FAILED: Both targets give negative R2
+2025-07-17 13:44:00,724 | baseline | INFO |   -> Mail-calls relationship too weak for ML
 
 ```python
 #!/usr/bin/env python
