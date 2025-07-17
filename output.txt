@@ -1,0 +1,120 @@
+C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 1.533e+04, tolerance: 2.062e+03 
+  model = cd_fast.enet_coordinate_descent(
+C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 1.842e+06, tolerance: 1.623e+06 
+  model = cd_fast.enet_coordinate_descent(
+C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 5.813e+06, tolerance: 3.813e+06 
+  model = cd_fast.enet_coordinate_descent(
+C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 7.228e+06, tolerance: 5.397e+06 
+  model = cd_fast.enet_coordinate_descent(
+C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 1.563e+04, tolerance: 2.062e+03 
+  model = cd_fast.enet_coordinate_descent(
+C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 2.307e+06, tolerance: 1.623e+06 
+  model = cd_fast.enet_coordinate_descent(
+C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 5.513e+06, tolerance: 3.813e+06 
+  model = cd_fast.enet_coordinate_descent(
+C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 7.043e+06, tolerance: 5.397e+06 
+  model = cd_fast.enet_coordinate_descent(
+C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 8.528e+03, tolerance: 2.062e+03 
+  model = cd_fast.enet_coordinate_descent(
+C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 1.735e+06, tolerance: 1.623e+06 
+  model = cd_fast.enet_coordinate_descent(
+C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 5.832e+06, tolerance: 3.813e+06 
+  model = cd_fast.enet_coordinate_descent(
+C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 6.931e+06, tolerance: 5.397e+06 
+  model = cd_fast.enet_coordinate_descent(
+C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 7.104e+06, tolerance: 1.623e+06 
+  model = cd_fast.enet_coordinate_descent(
+C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 1.088e+07, tolerance: 3.813e+06 
+  model = cd_fast.enet_coordinate_descent(
+C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 1.267e+07, tolerance: 5.397e+06 
+  model = cd_fast.enet_coordinate_descent(
+C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 5.368e+03, tolerance: 2.062e+03 
+  model = cd_fast.enet_coordinate_descent(
+C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 8.948e+06, tolerance: 1.623e+06 Linear regression models with null weight for the l1 regularization term are more efficiently fitted using one of the solvers implemented in sklearn.linear_model.Ridge/RidgeCV instead.
+  model = cd_fast.enet_coordinate_descent(
+C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 1.580e+07, tolerance: 3.813e+06 Linear regression models with null weight for the l1 regularization term are more efficiently fitted using one of the solvers implemented in sklearn.linear_model.Ridge/RidgeCV instead.
+  model = cd_fast.enet_coordinate_descent(
+C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 2.037e+07, tolerance: 5.397e+06 Linear regression models with null weight for the l1 regularization term are more efficiently fitted using one of the solvers implemented in sklearn.linear_model.Ridge/RidgeCV instead.
+  model = cd_fast.enet_coordinate_descent(
+C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 2.161e+04, tolerance: 2.062e+03 
+  model = cd_fast.enet_coordinate_descent(
+C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 1.742e+06, tolerance: 1.623e+06 
+  model = cd_fast.enet_coordinate_descent(
+C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 6.486e+06, tolerance: 5.397e+06 
+  model = cd_fast.enet_coordinate_descent(
+C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 1.982e+07, tolerance: 5.397e+06 
+  model = cd_fast.enet_coordinate_descent(
+C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 8.866e+06, tolerance: 1.623e+06 
+  model = cd_fast.enet_coordinate_descent(
+C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 1.564e+07, tolerance: 3.813e+06 
+  model = cd_fast.enet_coordinate_descent(
+C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 2.141e+04, tolerance: 2.062e+03 
+  model = cd_fast.enet_coordinate_descent(
+C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 1.664e+06, tolerance: 1.623e+06 
+  model = cd_fast.enet_coordinate_descent(
+C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 6.355e+06, tolerance: 5.397e+06 
+  model = cd_fast.enet_coordinate_descent(
+C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 1.904e+04, tolerance: 2.062e+03 
+  model = cd_fast.enet_coordinate_descent(
+C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 1.828e+06, tolerance: 1.623e+06 
+  model = cd_fast.enet_coordinate_descent(
+C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 6.365e+06, tolerance: 3.813e+06 
+  model = cd_fast.enet_coordinate_descent(
+C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 7.861e+06, tolerance: 5.397e+06 
+  model = cd_fast.enet_coordinate_descent(
+2025-07-17 10:10:40,262 | 20250717T090940Z | INFO | ✅ ElasticNet → RMSE: 1358276.51±1367647.33, MAPE: 1202.41%, R²: -74100.169
+2025-07-17 10:10:40,263 | 20250717T090940Z | INFO | Training RandomForest...
+2025-07-17 10:12:32,545 | 20250717T090940Z | INFO | ✅ RandomForest → RMSE: 22179.70±11944.24, MAPE: 32.26%, R²: -7.382
+2025-07-17 10:12:33,291 | 20250717T090940Z | INFO | ✅ SHAP analysis completed for RandomForest
+2025-07-17 10:12:33,291 | 20250717T090940Z | INFO | Training LightGBM...
+[LightGBM] [Fatal] Feature (Other_Depositary_Notice_ADR) appears more than one time.
+[LightGBM] [Fatal] Feature (Other_Depositary_Notice_ADR) appears more than one time.
+[LightGBM] [Fatal] Feature (Other_Depositary_Notice_ADR) appears more than one time.
+[LightGBM] [Fatal] Feature (Other_Depositary_Notice_ADR) appears more than one time.
+2025-07-17 10:12:45,085 | 20250717T090940Z | ERROR | Nested CV failed for LightGBM: Feature (Other_Depositary_Notice_ADR) appears more than one time.
+2025-07-17 10:12:45,085 | 20250717T090940Z | WARNING | Skipping LightGBM due to CV failure
+2025-07-17 10:12:45,085 | 20250717T090940Z | INFO | Training XGBoost...
+2025-07-17 10:12:56,605 | 20250717T090940Z | ERROR | Nested CV failed for XGBoost: 'DataFrame' object has no attribute 'dtype'
+2025-07-17 10:12:56,607 | 20250717T090940Z | WARNING | Skipping XGBoost due to CV failure
+2025-07-17 10:12:56,607 | 20250717T090940Z | WARNING | Insufficient models (2) for ensemble creation
+2025-07-17 10:12:56,608 | 20250717T090940Z | INFO | Generating conformal prediction intervals using RandomForest...
+2025-07-17 10:12:57,856 | 20250717T090940Z | INFO | Conformal intervals: 90% target, 100.0% actual coverage
+2025-07-17 10:12:58,947 | 20250717T090940Z | INFO | ✅ Prediction intervals: 100.0% coverage
+2025-07-17 10:12:59,612 | 20250717T090940Z | INFO | ✅ Model comparison plots created
+2025-07-17 10:12:59,652 | 20250717T090940Z | INFO | Metrics written atomically to dist\metrics.json
+2025-07-17 10:12:59,672 | 20250717T090940Z | ERROR | Failed to write Prometheus metrics: [WinError 1314] A required privilege is not held by the client: 'prometheus_metrics_20250717T090940Z.prom' -> 'dist\\prometheus_metrics_latest.prom'
+2025-07-17 10:12:59,673 | 20250717T090940Z | WARNING | ElasticNet RMSE 1358276.51 exceeds 8746.17 (15% of mean)
+2025-07-17 10:12:59,674 | 20250717T090940Z | WARNING | ElasticNet R² -74100.169 below threshold 0.3
+2025-07-17 10:12:59,674 | 20250717T090940Z | WARNING | ElasticNet MAPE 1202.4% exceeds threshold 30.0%
+2025-07-17 10:12:59,675 | 20250717T090940Z | WARNING | RandomForest RMSE 22179.70 exceeds 8746.17 (15% of mean)
+2025-07-17 10:12:59,675 | 20250717T090940Z | WARNING | RandomForest R² -7.382 below threshold 0.3
+2025-07-17 10:12:59,676 | 20250717T090940Z | WARNING | RandomForest MAPE 32.3% exceeds threshold 30.0%
+2025-07-17 10:12:59,676 | 20250717T090940Z | WARNING | ⚠️ 6 performance alerts generated
+2025-07-17 10:12:59,687 | 20250717T090940Z | INFO | ✅ Model training completed successfully
+2025-07-17 10:12:59,689 | 20250717T090940Z | INFO | ✅ Model training completed in 0:03:01.198764
+2025-07-17 10:12:59,689 | 20250717T090940Z | INFO |
+[4/4] Generating executive summary and validation...
+2025-07-17 10:12:59,714 | 20250717T090940Z | WARNING | ElasticNet RMSE 1358276.51 exceeds 8746.17 (15% of mean)
+2025-07-17 10:12:59,715 | 20250717T090940Z | WARNING | ElasticNet R² -74100.169 below threshold 0.3
+2025-07-17 10:12:59,716 | 20250717T090940Z | WARNING | ElasticNet MAPE 1202.4% exceeds threshold 30.0%
+2025-07-17 10:12:59,716 | 20250717T090940Z | WARNING | RandomForest RMSE 22179.70 exceeds 8746.17 (15% of mean)
+2025-07-17 10:12:59,717 | 20250717T090940Z | WARNING | RandomForest R² -7.382 below threshold 0.3
+2025-07-17 10:12:59,718 | 20250717T090940Z | WARNING | RandomForest MAPE 32.3% exceeds threshold 30.0%
+2025-07-17 10:12:59,718 | 20250717T090940Z | WARNING | ⚠️ 6 performance alerts generated
+2025-07-17 10:12:59,727 | 20250717T090940Z | INFO | Summary report generated
+2025-07-17 10:12:59,728 | 20250717T090940Z | INFO | ================================================================================
+2025-07-17 10:12:59,728 | 20250717T090940Z | INFO | ✅ PIPELINE COMPLETED SUCCESSFULLY
+2025-07-17 10:12:59,729 | 20250717T090940Z | INFO | ================================================================================
+2025-07-17 10:12:59,729 | 20250717T090940Z | INFO | Total runtime: 0:03:19.160010
+2025-07-17 10:12:59,730 | 20250717T090940Z | INFO | All outputs saved to: C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\dist
+2025-07-17 10:12:59,731 | 20250717T090940Z | INFO |
+🏆 Best Model: RandomForest
+2025-07-17 10:12:59,732 | 20250717T090940Z | INFO |    RMSE: 22179.70
+2025-07-17 10:12:59,733 | 20250717T090940Z | INFO |    MAPE: 32.26%
+2025-07-17 10:12:59,733 | 20250717T090940Z | INFO |    R²: -7.382
+2025-07-17 10:12:59,734 | 20250717T090940Z | INFO |    Interval Coverage: 100.0%
+2025-07-17 10:12:59,735 | 20250717T090940Z | WARNING |
+⚠️ 6 performance alerts generated - see summary report
+2025-07-17 10:12:59,736 | 20250717T090940Z | INFO |
+📋 View detailed results: dist/summary_report.md
+2025-07-17 10:12:59,737 | 20250717T090940Z | INFO | 🔍 Monitor performance: dist/metrics.json
