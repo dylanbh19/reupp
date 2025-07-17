@@ -1,0 +1,40 @@
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> & C:/Users/BhungarD/python.exe "c:/Users/BhungarD/OneDrive - Computershare/Desktop/finprod/debug.py"
+2025-07-17 13:50:05,281 | range_forecast | INFO | === RANGE FORECAST MODEL ===
+2025-07-17 13:50:05,281 | range_forecast | INFO | Loading and smoothing data...
+2025-07-17 13:50:13,485 | range_forecast | INFO | Applying 3-day smoothing...
+2025-07-17 13:50:13,539 | range_forecast | INFO | Smoothed daily data: (349, 232)
+2025-07-17 13:50:13,690 | range_forecast | INFO | Creating regime-based features...
+2025-07-17 13:50:13,709 | range_forecast | INFO | Range features: 346 samples x 14 features
+2025-07-17 13:50:13,709 | range_forecast | INFO | Training quantile models...
+2025-07-17 13:50:13,710 | range_forecast | INFO |   Training 10% quantile...
+2025-07-17 13:50:13,806 | range_forecast | INFO |     MAE: 78729
+2025-07-17 13:50:13,806 | range_forecast | INFO |   Training 25% quantile...
+2025-07-17 13:50:13,851 | range_forecast | INFO |     MAE: 80182
+2025-07-17 13:50:13,852 | range_forecast | INFO |   Training 50% quantile...
+2025-07-17 13:50:13,901 | range_forecast | INFO |     MAE: 28296
+2025-07-17 13:50:13,901 | range_forecast | INFO |   Training 75% quantile...
+2025-07-17 13:50:13,942 | range_forecast | INFO |     MAE: 66861
+2025-07-17 13:50:13,942 | range_forecast | INFO |   Training 90% quantile...
+2025-07-17 13:50:13,984 | range_forecast | INFO |     MAE: 68157
+2025-07-17 13:50:13,985 | range_forecast | INFO | Training bootstrap ensemble...
+2025-07-17 13:50:16,929 | range_forecast | INFO | Generating range predictions...
+2025-07-17 13:50:19,268 | range_forecast | INFO | === RANGE FORECAST RESULTS ===
+2025-07-17 13:50:19,269 | range_forecast | INFO | Tomorrow's call volume forecast:
+2025-07-17 13:50:19,269 | range_forecast | INFO |   10% chance below: 4438 calls
+2025-07-17 13:50:19,269 | range_forecast | INFO |   25% chance below: 6614 calls
+2025-07-17 13:50:19,269 | range_forecast | INFO |   Most likely (median): 11257 calls
+2025-07-17 13:50:19,270 | range_forecast | INFO |   75% chance below: 17276 calls
+2025-07-17 13:50:19,270 | range_forecast | INFO |   90% chance below: 22304 calls
+2025-07-17 13:50:19,270 | range_forecast | INFO |
+Business planning ranges:
+2025-07-17 13:50:19,270 | range_forecast | INFO |   Conservative (75% confidence): 6614 - 17276 calls
+2025-07-17 13:50:19,270 | range_forecast | INFO |   Wide range (80% confidence): 4438 - 22304 calls
+2025-07-17 13:50:19,270 | range_forecast | INFO |
+Model validation scores (MAE):
+2025-07-17 13:50:19,271 | range_forecast | INFO |   10% quantile: 78729 calls
+2025-07-17 13:50:19,271 | range_forecast | INFO |   25% quantile: 80182 calls
+2025-07-17 13:50:19,271 | range_forecast | INFO |   50% quantile: 28296 calls
+2025-07-17 13:50:19,271 | range_forecast | INFO |   75% quantile: 66861 calls
+2025-07-17 13:50:19,271 | range_forecast | INFO |   90% quantile: 68157 calls
+2025-07-17 13:50:19,272 | range_forecast | INFO |
+Results saved to: C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\dist_ranges
