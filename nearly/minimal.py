@@ -1,139 +1,120 @@
 # simple_mail_forecast_ascii.py
-# =========================================================
-# Ultra-simple mail → call forecast
-# * only strongest mail types (debug findings)
-# * no exotic dependencies
-# * ASCII-only text
-# =========================================================
+# ==========================================================
+# Ultra-simple mail→calls forecast
+# • uses top correlated mail types only
+# • trains Ridge + RF with log-target
+# • avoids numeric blow-ups and JSON errors
+# ==========================================================
 
 from __future__ import annotations
 
 import json
 import logging
-import sys
-from datetime import datetime, timedelta
-from pathlib import Path
-from typing import List, Tuple
-
-import joblib
 import numpy as np
 import pandas as pd
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+
+from pathlib import Path
+from datetime import timedelta
 import holidays
-from sklearn.ensemble import RandomForestRegressor
+import joblib
+
+from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import Ridge
-from sklearn.metrics import (
-    r2_score,
-    mean_squared_error,
-    mean_absolute_percentage_error,
-)
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import r2_score, mean_squared_error
 from sklearn.model_selection import TimeSeriesSplit
 from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import StandardScaler
 
-# ---------------------------------------------------------
+# ----------------------------------------------------------
 # CONFIG
-# ---------------------------------------------------------
+# ----------------------------------------------------------
 CFG = {
     "top_mail_types": [
-        "Reject_Ltrs",
-        "Cheque 1099",
-        "Exercise_Converted",
-        "SOI_Confirms",
-        "Exch_chks",
-        "ACH_Debit_Enrollment",
-        "Transfer",
-        "COA",
-        "NOTC_WITHDRAW",
-        "Repl_Chks",
+        "Reject_Ltrs", "Cheque 1099", "Exercise_Converted",
+        "SOI_Confirms", "Exch_chks", "ACH_Debit_Enrollment",
+        "Transfer", "COA", "NOTC_WITHDRAW", "Repl_Chks"
     ],
     "forecast_horizons": [1, 3, 7, 14],
     "output_dir": "dist_simple",
-    "random_state": 42,
 }
 
+LOG = logging.getLogger("simple_mail")
 logging.basicConfig(
     level=logging.INFO,
-    format="%(asctime)s | simple_mail | %(levelname)s | %(message)s",
-    handlers=[logging.StreamHandler(sys.stdout)],
+    format="%(asctime)s | %(name)s | %(levelname)s | %(message)s",
 )
-LOG = logging.getLogger(__name__)
+
+# ----------------------------------------------------------
+# UTILS
+# ----------------------------------------------------------
 US_HOLIDAYS = holidays.US()
 
 
-# ---------------------------------------------------------
-# HELPERS
-# ---------------------------------------------------------
-def _find_file(candidates: List[str]) -> Path:
-    for p in candidates:
-        path = Path(p)
-        if path.exists():
-            return path
-    raise FileNotFoundError(f"None of {candidates} found")
+def _to_date(s: pd.Series) -> pd.Series:
+    return pd.to_datetime(s, errors="coerce").dt.date
 
 
-def _to_datetime(s: pd.Series) -> pd.Series:
-    """Parse to pandas datetime (UTC naive)."""
-    return pd.to_datetime(s, errors="coerce")
+def _find_file(cands: list[str]) -> Path | None:
+    for p in cands:
+        pth = Path(p)
+        if pth.exists():
+            return pth
+    return None
 
 
-def _load_mail() -> pd.DataFrame:
-    p = _find_file(["mail.csv", "data/mail.csv"])
-    df = pd.read_csv(p)
-    df.columns = [c.lower().strip() for c in df.columns]
-    df["mail_date"] = _to_datetime(df["mail_date"])
-    df = df.dropna(subset=["mail_date"])
-    return df
+# ----------------------------------------------------------
+# DATA LOAD
+# ----------------------------------------------------------
+def load_data() -> tuple[pd.DataFrame, pd.Series]:
+    """return mail dataframe + daily calls series"""
+    mail_p = _find_file(["mail.csv", "data/mail.csv"])
+    if mail_p is None:
+        raise FileNotFoundError("mail csv not found")
 
+    mail = pd.read_csv(mail_p)
+    mail.columns = [c.lower().strip() for c in mail.columns]
+    mail["mail_date"] = _to_date(mail["mail_date"])
+    mail = mail.dropna(subset=["mail_date"])
 
-def _load_calls() -> pd.Series:
-    p_vol = _find_file(["callvolumes.csv", "data/callvolumes.csv"])
-    p_int = _find_file(
+    vol_p = _find_file(["callvolumes.csv", "data/callvolumes.csv"])
+    int_p = _find_file(
         ["callintent.csv", "data/callintent.csv", "callintetn.csv"]
     )
+    if vol_p is None or int_p is None:
+        raise FileNotFoundError("call csv files not found")
 
-    # volumes per day
-    df_vol = pd.read_csv(p_vol)
+    # legacy daily volume
+    df_vol = pd.read_csv(vol_p)
     df_vol.columns = [c.lower().strip() for c in df_vol.columns]
     dcol_v = next(c for c in df_vol.columns if "date" in c)
-    df_vol[dcol_v] = _to_datetime(df_vol[dcol_v])
-    vol_daily = (
-        df_vol.groupby(dcol_v)[df_vol.columns.difference([dcol_v])[0]].sum()
-    )
+    df_vol[dcol_v] = _to_date(df_vol[dcol_v])
+    vol_daily = df_vol.groupby(dcol_v)[df_vol.columns.difference([dcol_v])[0]].sum()
 
-    # intent (one row per call)
-    df_int = pd.read_csv(p_int)
+    # intent – one row per call
+    df_int = pd.read_csv(int_p)
     df_int.columns = [c.lower().strip() for c in df_int.columns]
-    dcol_i = next(
-        c for c in df_int.columns if "date" in c or "conversationstart" in c
-    )
-    df_int[dcol_i] = _to_datetime(df_int[dcol_i])
+    dcol_i = next(c for c in df_int.columns if "date" in c or "conversation" in c)
+    df_int[dcol_i] = _to_date(df_int[dcol_i])
     int_daily = df_int.groupby(dcol_i).size()
 
-    # scale volumes to intent on overlap
+    # scale & merge
     overlap = vol_daily.index.intersection(int_daily.index)
     if len(overlap) >= 5:
         scale = int_daily.loc[overlap].mean() / vol_daily.loc[overlap].mean()
-        LOG.info("Scaling legacy callvolumes by %.3f", scale)
         vol_daily *= scale
-
-    total = vol_daily.combine_first(int_daily).sort_index()
-
-    # smooth obvious under-counts (below 5th pct)
-    q_low = total.quantile(0.05)
-    med7 = total.rolling(7, center=True, min_periods=1).median()
-    total.loc[total < q_low] = med7
-    return total.rename("calls_total")
+    calls = vol_daily.combine_first(int_daily).sort_index()
+    return mail, calls.rename("calls_total")
 
 
-# ---------------------------------------------------------
-# FEATURE ENGINEERING
-# ---------------------------------------------------------
-def build_feature_target(
+# ----------------------------------------------------------
+# FEATURES
+# ----------------------------------------------------------
+def create_simple_features(
     mail: pd.DataFrame, calls: pd.Series
-) -> Tuple[pd.DataFrame, pd.Series, pd.Series]:
+) -> tuple[pd.DataFrame, pd.Series, pd.Series]:
     # aggregate mail
     mail_daily = (
         mail.groupby(["mail_date", "mail_type"], as_index=False)["mail_volume"]
@@ -142,169 +123,145 @@ def build_feature_target(
         .fillna(0)
     )
 
-    # keep only recognised mail types
-    available = [t for t in CFG["top_mail_types"] if t in mail_daily.columns]
-    missing = set(CFG["top_mail_types"]) - set(available)
-    if missing:
-        LOG.warning("Missing mail types skipped: %s", ", ".join(missing))
-    mail_daily = mail_daily[available]
+    top_types = [t for t in CFG["top_mail_types"] if t in mail_daily.columns]
+    mail_daily = mail_daily[top_types]
 
     mail_daily.index = pd.to_datetime(mail_daily.index)
     calls.index = pd.to_datetime(calls.index)
 
-    # business-day intersection
-    biz = ~mail_daily.index.weekday.isin([5, 6]) & ~mail_daily.index.isin(
-        US_HOLIDAYS
+    mask = (
+        ~mail_daily.index.weekday.isin([5, 6])
+        & ~mail_daily.index.isin(US_HOLIDAYS)
     )
-    mail_daily = mail_daily.loc[biz]
+    mail_daily = mail_daily.loc[mask]
     calls = calls.loc[calls.index.isin(mail_daily.index)]
 
     daily = mail_daily.join(calls, how="inner")
 
-    # -------- features --------
-    feat = pd.DataFrame(index=daily.index)
+    feats = pd.DataFrame(index=daily.index)
+    for t in top_types[:5]:
+        feats[f"{t}_lag1"] = daily[t].shift(1)
 
-    for col in available[:5]:
-        feat[f"{col}_lag1"] = daily[col].shift(1)
+    total_mail = daily[top_types].sum(axis=1)
+    feats["total_mail_lag1"] = total_mail.shift(1)
+    feats["total_mail_lag2"] = total_mail.shift(2)
+    feats["log_total_mail_lag1"] = np.log1p(total_mail).shift(1)
 
-    total_mail = daily[available].sum(axis=1)
-    feat["total_mail_lag1"] = total_mail.shift(1)
-    feat["total_mail_lag2"] = total_mail.shift(2)
-    feat["log_total_mail_lag1"] = np.log1p(total_mail).shift(1)
+    feats["weekday"] = daily.index.dayofweek
+    feats["month"] = daily.index.month
+    feats["is_month_end"] = (daily.index.day > 25).astype(int)
 
-    feat["weekday"] = daily.index.dayofweek
-    feat["month"] = daily.index.month
-    feat["is_month_end"] = (daily.index.day > 25).astype(int)
+    target_log = np.log1p(daily["calls_total"])
 
-    # target (log scale)
-    target = np.log1p(daily["calls_total"])
+    feats = feats.dropna()
+    target_log = target_log.loc[feats.index]
 
-    feat = feat.dropna()
-    target = target.loc[feat.index]
-
-    LOG.info(
-        "Features ready: %d rows × %d cols", feat.shape[0], feat.shape[1]
-    )
-    return feat, target, daily["calls_total"].loc[feat.index]
+    LOG.info("Features ready: %d rows × %d cols", *feats.shape)
+    return feats, target_log, daily["calls_total"].loc[feats.index]
 
 
-def make_multi_targets(y: pd.Series) -> pd.DataFrame:
-    out = pd.DataFrame(index=y.index)
+def create_targets(y_log: pd.Series) -> pd.DataFrame:
+    out = pd.DataFrame(index=y_log.index)
     for h in CFG["forecast_horizons"]:
-        out[f"calls_{h}d"] = y.shift(-1).rolling(h).sum()
+        out[f"calls_{h}d"] = y_log.shift(-1).rolling(h).sum()
     return out.dropna()
 
 
-# ---------------------------------------------------------
-# TRAINING
-# ---------------------------------------------------------
+# ----------------------------------------------------------
+# MODEL TRAINING
+# ----------------------------------------------------------
 def train_one_horizon(
-    X: pd.DataFrame, y: pd.Series
-) -> Tuple[Pipeline, dict]:
+    X: pd.DataFrame, y: pd.Series, horizon: int
+) -> tuple[Pipeline, dict]:
+    if len(X) < 30:
+        return None, {}
+
     cv = TimeSeriesSplit(n_splits=3)
-    pipelines = {
+
+    models = {
         "Ridge": Pipeline(
-            [
-                ("scaler", StandardScaler()),
-                ("ridge", Ridge(alpha=10.0, random_state=CFG["random_state"])),
-            ]
+            [("scaler", StandardScaler()), ("reg", Ridge(alpha=10.0))]
         ),
-        "RF": Pipeline(
-            [
-                (
-                    "rf",
-                    RandomForestRegressor(
-                        n_estimators=100,
-                        max_depth=5,
-                        min_samples_leaf=5,
-                        random_state=CFG["random_state"],
-                        n_jobs=-1,
-                    ),
-                )
-            ]
+        "RF": RandomForestRegressor(
+            n_estimators=100,
+            max_depth=5,
+            min_samples_leaf=5,
+            random_state=42,
         ),
     }
 
-    results = {}
-    for name, pipe in pipelines.items():
+    metrics = {}
+    best_name, best_r2 = None, -np.inf
+    for name, model in models.items():
         r2s, rmses = [], []
         for tr, te in cv.split(X):
-            pipe.fit(X.iloc[tr], y.iloc[tr])
-            pred = pipe.predict(X.iloc[te])
+            model.fit(X.iloc[tr], y.iloc[tr])
+            pred = model.predict(X.iloc[te])
+
+            # evaluate **in log space** to avoid overflow
             r2s.append(r2_score(y.iloc[te], pred))
-            rmses.append(
-                mean_squared_error(
-                    np.expm1(y.iloc[te]), np.expm1(pred), squared=False
-                )
-            )
-        results[name] = {
+            rmses.append(np.sqrt(mean_squared_error(y.iloc[te], pred)))
+
+        metrics[name] = {
             "R2": float(np.mean(r2s)),
-            "RMSE": float(np.mean(rmses)),
-            "model": pipe,
+            "R2_std": float(np.std(r2s)),
+            "RMSE_log": float(np.mean(rmses)),
         }
-        LOG.info(
-            "  %s  R2=%.3f  RMSE=%.0f",
-            name,
-            results[name]["R2"],
-            results[name]["RMSE"],
-        )
 
-    best_name = max(results, key=lambda n: results[n]["R2"])
-    best_pipe = results[best_name]["model"]
-    best_pipe.fit(X, y)
-    return best_pipe, results
+        if metrics[name]["R2"] > best_r2:
+            best_name, best_r2 = name, metrics[name]["R2"]
+
+        LOG.info("  %s  R2=%.3f  RMSE=%.0f", name, metrics[name]["R2"], metrics[name]["RMSE_log"])
+
+    best_model = models[best_name]
+    best_model.fit(X, y)
+    return best_model, metrics
 
 
-# ---------------------------------------------------------
+# ----------------------------------------------------------
 # MAIN
-# ---------------------------------------------------------
+# ----------------------------------------------------------
 def main() -> None:
-    out_dir = Path(CFG["output_dir"])
-    out_dir.mkdir(exist_ok=True)
+    out = Path(CFG["output_dir"])
+    out.mkdir(exist_ok=True)
 
-    # 1. load
     LOG.info("Loading data …")
-    mail_df = _load_mail()
-    calls_s = _load_calls()
+    mail_df, calls_ser = load_data()
 
-    # 2. features / targets
-    X, y_log, y_raw = build_feature_target(mail_df, calls_s)
-    targets = make_multi_targets(y_log)
-    common = X.index.intersection(targets.index)
-    X, targets, y_raw = X.loc[common], targets.loc[common], y_raw.loc[common]
+    feats, y_log, y_raw = create_simple_features(mail_df, calls_ser)
+    targets = create_targets(y_log)
 
-    # 3. train
+    common = feats.index.intersection(targets.index)
+    X = feats.loc[common]
+    targets = targets.loc[common]
+
     LOG.info("Training …")
-    metrics_all, models = {}, {}
+    metrics_all = {}
+    models = {}
+
     for h in CFG["forecast_horizons"]:
-        col = f"calls_{h}d"
-        if col not in targets.columns:
-            continue
         LOG.info("Horizon %dd", h)
-        model, res = train_one_horizon(X, targets[col])
-        metrics_all[f"{h}d"] = res
+        col = f"calls_{h}d"
+        model, m = train_one_horizon(X, targets[col], h)
+        if model is None:
+            continue
         models[h] = model
-        joblib.dump(model, out_dir / f"simple_model_{h}d.pkl")
+        metrics_all[f"{h}d"] = m
+        joblib.dump(model, out / f"simple_model_{h}d.pkl")
 
-    # 4. quick forecast (repeat last-week mean features)
-    fut_dates = pd.date_range(
-        start=X.index[-1] + timedelta(days=1), periods=14, freq="D"
-    )
-    last_week_mean = X.iloc[-7:].mean()
-    fut_feat = pd.DataFrame(
-        [last_week_mean.values] * 14, columns=X.columns, index=fut_dates
-    )
+    # forecasts (repeat last row)
+    forecasts = {}
+    for h, mdl in models.items():
+        last_feat = X.iloc[[-1]]
+        pred_log = mdl.predict(last_feat)[0]
+        pred_raw = np.expm1(pred_log)
+        forecasts[h] = float(np.clip(pred_raw, 0, 1e7))  # sanity clip
 
-    forecasts = {
-        h: float(np.expm1(models[h].predict(fut_feat.iloc[[0]])[0]))
-        for h in models
-    }
-
-    # 5. save metrics
-    with open(out_dir / "simple_results.json", "w", encoding="utf-8") as fp:
+    # save metrics WITHOUT model objects
+    with open(out / "simple_results.json", "w", encoding="utf-8") as fp:
         json.dump(metrics_all, fp, indent=2)
 
-    with open(out_dir / "forecast_summary.json", "w", encoding="utf-8") as fp:
+    with open(out / "forecast_summary.json", "w", encoding="utf-8") as fp:
         json.dump(
             {
                 "forecasts": forecasts,
@@ -316,18 +273,7 @@ def main() -> None:
             indent=2,
         )
 
-    # 6. console summary
-    LOG.info("Forecasts: %s", forecasts)
-    for horizon, res in metrics_all.items():
-        best = max(res, key=lambda n: res[n]["R2"])
-        LOG.info(
-            "%s best = %s  R2=%.3f  RMSE=%.0f",
-            horizon,
-            best,
-            res[best]["R2"],
-            res[best]["RMSE"],
-        )
-    LOG.info("Outputs: %s", out_dir.resolve())
+    LOG.info("Done – results in %s", out.resolve())
 
 
 if __name__ == "__main__":
