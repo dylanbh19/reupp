@@ -248,7 +248,7 @@ def optimize_dtypes(df: pd.DataFrame) -> pd.DataFrame:
         df[col] = pd.to_numeric(df[col], downcast='integer')
     
     for col in df.select_dtypes(include=['float64']).columns:
-        df[col] = pd.to_numeric(df[col], downcast='float')
+        df[col] = df[col].astype('float32')
     
     # Convert object columns to category if low cardinality
     for col in df.select_dtypes(include=['object']).columns:
@@ -292,21 +292,40 @@ def validate_data_quality(df: pd.DataFrame, threshold: float = 0.1) -> Dict[str,
     numeric_cols = df.select_dtypes(include=[np.number]).columns
     for col in numeric_cols:
         if col in df.columns:
-            z_scores = np.abs((df[col] - df[col].mean()) / df[col].std())
-            outliers = (z_scores > 4).sum()
-            quality_report["outliers"][col] = int(outliers)
-            if outliers > 0:
-                quality_report["warnings"].append(f"Found {outliers} extreme outliers in {col}")
+            try:
+                col_data = df[col].dropna()
+                if len(col_data) > 1 and col_data.std() >0:
+                    z_scores = np.abs((df[col] - df[col].mean()) / df[col].std())
+                    outliers = (z_scores > 4).sum()
+                    quality_report["outliers"][col] = int(outliers) if pd.notna(outliers) and outliers != float('inf') else 0
+                    if outliers > 0:
+                        quality_report["warnings"].append(f"Found {outliers} extreme outliers in {col}")
+                else:
+                    quality_report["outliers"][col] = 0
+            except (ValueError, TypeError, ZeroDivisionError):
+                quality_report["outliers"][col] = 0
+                
     
     # Data range analysis
     for col in numeric_cols:
         if col in df.columns:
-            quality_report["data_range"][col] = {
-                "min": float(df[col].min()),
-                "max": float(df[col].max()),
-                "mean": float(df[col].mean()),
-                "std": float(df[col].std())
-            }
+            try:
+                col_data = df[col].dropna()
+                if len(col_data) > 0:  
+                    quality_report["data_range"][col] = {
+                        "min": float(df[col].min()),
+                        "max": float(df[col].max()),
+                        "mean": float(df[col].mean()),
+                        "std": float(df[col].std())
+                    }
+                else:
+                    quality_report["data_range"][col] ={
+                        "min":0.0, "max":0.0, "mean":0.0, "std": 0.0
+                    }
+            except (ValueError, TypeError):
+                quality_report["data_range"][col] = {
+                    "min":0.0, "max":0.0, "mean":0.0, "std": 0.0
+                }
     
     # Log warnings
     for warning in quality_report["warnings"]:
@@ -314,6 +333,26 @@ def validate_data_quality(df: pd.DataFrame, threshold: float = 0.1) -> Dict[str,
     
     return quality_report
 
+def clean_infinite_values(df: pd.DataFrame) -> pd.DataFrame:
+    """Clean infinite and NaN values from dataset"""
+    logger.info("Cleaning infinite and NaN values...")
+    
+    # Replace infinite values with NaN
+    df = df.replace([np.inf, -np.inf], np.nan)
+    
+    # Fill NaN values with median for numeric columns
+    numeric_cols = df.select_dtypes(include=[np.number]).columns
+    for col in numeric_cols:
+        null_count = df[col].isnull().sum()  # FIXED: Use .sum() instead of .any()
+        if null_count > 0:
+            median_val = df[col].median()
+            if pd.isna(median_val):  # If median is also NaN, use 0
+                median_val = 0
+            df[col] = df[col].fillna(median_val)
+            logger.debug(f"Filled {null_count} NaN values in {col} with {median_val}")
+    
+    logger.info(f"Cleaned dataset shape: {df.shape}")
+    return df
 # -----------------------------------------------------------------------------
 # FIXED: Leakage-free feature engineering
 # -----------------------------------------------------------------------------
@@ -441,9 +480,9 @@ def fetch_economic_data(tickers: Dict[str, str], start_date: str, end_date: str)
             logger.info(f"Fetching {name} ({ticker})...")
             
             # Download with retries
-            data = yf.download(ticker, start=start_date, end=end_date, progress=False)
+            data = yf.download(ticker, start=start_date, end=end_date, progress=False, show_errors=False)
             
-            if data.empty:
+            if data is None or data.empty:
                 logger.warning(f"No data returned for {name} ({ticker})")
                 continue
             
@@ -487,6 +526,43 @@ def fetch_economic_data(tickers: Dict[str, str], start_date: str, end_date: str)
     
     return econ_data
 
+def clean_column_names(df: pd.DataFrame) -> pd.DataFrame:
+    """Clean column names for LightGBM compatibility"""
+    logger.info("Cleaning column names for model compatibility...")
+    
+    # Clean column names - remove special characters
+    df.columns = [
+        col.replace(' ', '_')
+           .replace('(', '')
+           .replace(')', '')
+           .replace('[', '')
+           .replace(']', '')
+           .replace('{', '')
+           .replace('}', '')
+           .replace(',', '_')
+           .replace('.', '_')
+           .replace(':', '_')
+           .replace(';', '_')
+           .replace('!', '')
+           .replace('?', '')
+           .replace("'", '')
+           .replace('"', '')
+           .replace('-', '_')
+           .replace('/', '_')
+           .replace('\\', '_')
+           .replace('|', '_')
+           .replace('&', 'and')
+           .replace('%', 'pct')
+           .replace('#', 'num')
+           .replace('@', 'at')
+        for col in df.columns
+    ]
+    
+    # Ensure no column starts with number
+    df.columns = [f"col_{col}" if col[0].isdigit() else col for col in df.columns]
+    
+    logger.info("Column names cleaned")
+    return df
 # -----------------------------------------------------------------------------
 # FIXED: Complete dataset building without leakage
 # -----------------------------------------------------------------------------
@@ -532,44 +608,44 @@ def build_dataset() -> Tuple[pd.DataFrame, pd.Series, pd.DataFrame]:
 
     # Process intents (remove nulls)
     # Process intents (remove nulls) - FIXED: Find intent column automatically
-            logger.info(f"Intent data columns: {list(calls_intent_raw.columns)}")
-            
-            # Find intent column with multiple possible names
-            intent_candidates = {"intent", "uui_intent", "call_intent", "intent_type", "category"}
-            intent_col = None
-            
-            for col in calls_intent_raw.columns:
-                if col.lower() in intent_candidates:
-                    intent_col = col
-                    break
-            
-            if intent_col is None:
-                # Take first non-date column that looks like intent data
-                non_date_cols = [col for col in calls_intent_raw.columns if col != "date"]
-                if non_date_cols:
-                    intent_col = non_date_cols[0]  # Use first non-date column
-                    logger.warning(f"No standard intent column found, using '{intent_col}'")
-                else:
-                    logger.warning("No intent column found - skipping intent processing")
-                    intents_daily = pd.DataFrame()
-            
-            if intent_col and intent_col in calls_intent_raw.columns:
-                logger.info(f"Using intent column: '{intent_col}'")
-                
-                # Process intents (remove nulls)
-                valid_intents = calls_intent_raw[~calls_intent_raw[intent_col].isin(CONFIG["null_intents"])]
-                
-                if len(valid_intents) > 0:
-                    intents_daily = valid_intents.groupby(["date", intent_col]).size().unstack(fill_value=0)
-                    # Convert intent columns to category for memory efficiency
-                    intents_daily.columns = intents_daily.columns.astype('category')
-                    logger.info(f"Processed {intents_daily.shape[1]} intent types")
-                else:
-                    intents_daily = pd.DataFrame()
-                    logger.warning("No valid intent data found after filtering nulls")
-            else:
-                intents_daily = pd.DataFrame()
-                logger.warning("No valid intent data found")
+    logger.info(f"Intent data columns: {list(calls_intent_raw.columns)}")
+    
+    # Find intent column with multiple possible names
+    intent_candidates = {"intent", "uui_intent", "call_intent", "intent_type", "category"}
+    intent_col = None
+    
+    for col in calls_intent_raw.columns:
+        if col.lower() in intent_candidates:
+            intent_col = col
+            break
+    
+    if intent_col is None:
+        # Take first non-date column that looks like intent data
+        non_date_cols = [col for col in calls_intent_raw.columns if col != "date"]
+        if non_date_cols:
+            intent_col = non_date_cols[0]  # Use first non-date column
+            logger.warning(f"No standard intent column found, using '{intent_col}'")
+        else:
+            logger.warning("No intent column found - skipping intent processing")
+            intents_daily = pd.DataFrame()
+    
+    if intent_col and intent_col in calls_intent_raw.columns:
+        logger.info(f"Using intent column: '{intent_col}'")
+        
+        # Process intents (remove nulls)
+        valid_intents = calls_intent_raw[~calls_intent_raw[intent_col].isin(CONFIG["null_intents"])]
+        
+        if len(valid_intents) > 0:
+            intents_daily = valid_intents.groupby(["date", intent_col]).size().unstack(fill_value=0)
+            # Convert intent columns to category for memory efficiency
+            intents_daily.columns = intents_daily.columns.astype('category')
+            logger.info(f"Processed {intents_daily.shape[1]} intent types")
+        else:
+            intents_daily = pd.DataFrame()
+            logger.warning("No valid intent data found after filtering nulls")
+    else:
+        intents_daily = pd.DataFrame()
+        logger.warning("No valid intent data found")
 
     # Create mail pivot
     mail_wide = mail_daily.pivot(index="date", columns="mail_type", values="mail_volume").fillna(0)
@@ -644,6 +720,10 @@ def build_dataset() -> Tuple[pd.DataFrame, pd.Series, pd.DataFrame]:
     # Check for critical data quality issues
     if quality_report["total_rows"] < 50:
         raise ValueError(f"Insufficient data: only {quality_report['total_rows']} rows after processing")
+    
+    # Prepare features and target
+    weekly = clean_infinite_values(weekly)
+    weekly = clean_column_names(weekly)
     
     # Prepare features and target
     X = weekly.drop(columns=["calls_total"])
@@ -875,12 +955,30 @@ def plot_rolling_correlations(weekly: pd.DataFrame, mail_cols: List[str], output
         corrs = {}
         for mail_col in mail_cols[:8]:  # Limit to top 8 for readability
             if mail_col in weekly.columns:
-                # Calculate rolling correlation
-                rolling_corr = weekly[mail_col].rolling(window=period).corr(
-                    weekly["calls_total"].rolling(window=period)
-                )
-                corrs[mail_col] = rolling_corr.dropna()
-        
+                try:
+                    # Calculate rolling correlation with proper error handling
+                    mail_series = weekly[mail_col].astype(float)
+                    calls_series = weekly["calls_total"].astype(float)
+                    
+                    # Calculate rolling correlation manually for safety
+                    rolling_corr = pd.Series(index=weekly.index, dtype=float)
+                    for idx in range(period, len(weekly)):
+                        window_start = idx - period
+                        window_end = idx
+                        
+                        mail_window = mail_series.iloc[window_start:window_end]
+                        calls_window = calls_series.iloc[window_start:window_end]
+                        
+                        if len(mail_window) > 1 and len(calls_window) > 1:
+                            corr_val = mail_window.corr(calls_window)
+                            if pd.notna(corr_val):
+                                rolling_corr.iloc[idx] = corr_val
+                    
+                    corrs[mail_col] = rolling_corr.dropna()
+                except Exception as e:
+                    logger.warning(f"Rolling correlation failed for {mail_col}: {e}")
+                    continue
+            
         ax = axes[i]
         for mail_col, corr_series in corrs.items():
             if len(corr_series) > 0:
@@ -955,11 +1053,14 @@ def plot_intent_mail_correlations(weekly: pd.DataFrame, output_dir: Path) -> Non
             col_mean = col_data.mean()
             
             # Intent data is typically more sparse and has lower variance
-            if col_sparsity > 0.6 or (col_variance < col_mean and col_sparsity > 0.3):
-                intent_cols.append(col)
-            else:
-                mail_cols.append(col)
-    
+            try:
+                if col_sparsity > 0.6 or (col_variance < col_mean and col_sparsity > 0.3):
+                    intent_cols.append(col)
+                else:
+                    mail_cols.append(col)
+            except (ValueError, TypeError):
+                # Skip problematic columns
+                continue
     logger.info(f"Identified {len(mail_cols)} mail columns and {len(intent_cols)} intent columns")
     
     if not mail_cols or not intent_cols:
@@ -1079,6 +1180,8 @@ def create_eda_plots(X: pd.DataFrame, y: pd.Series, weekly: pd.DataFrame, output
         # Time series analysis
         plot_time_series(weekly, plots_dir)
         logger.info("✅ Time series plots created")
+    except Exception as e:
+        logger.error(f"Time series plots failed: {e}")
         
         # Identify mail columns
         all_cols = set(weekly.columns)
@@ -1087,21 +1190,38 @@ def create_eda_plots(X: pd.DataFrame, y: pd.Series, weekly: pd.DataFrame, output
         exclude_suffixes = ("_lag", "_wlag", "_roll", "_std", "_min", "_max", "_pct", "_trend")
         exclude_prefixes = ("SP500", "UNRATE", "DGS10")
         
-        mail_cols = [col for col in all_cols 
-                    if col not in exclude_patterns
-                    and not any(col.endswith(suffix) for suffix in exclude_suffixes)
-                    and not any(col.startswith(prefix) for prefix in exclude_prefixes)
-                    and (weekly[col] == 0).mean() <= 0.5]  # Less sparse = likely mail data
+        mail_cols = []
+        for col in all_cols:
+            if (col not in exclude_patterns
+                and not any(col.endswith(suffix) for suffix in exclude_suffixes)
+                and not any(col.startswith(prefix) for prefix in exclude_prefixes)):
+                
+                try:
+                    # Safe sparsity check
+                    col_data = weekly[col].dropna()
+                    if len(col_data) > 0:
+                        sparsity = (col_data == 0).sum() / len(col_data)
+                        if sparsity <= 0.5:  # Less sparse = likely mail data
+                            mail_cols.append(col)
+                except (ValueError, TypeError):
+                    # Skip columns that can't be processed
+                    continue
         
         if mail_cols:
-            plot_rolling_correlations(weekly, mail_cols, plots_dir)
-            logger.info("✅ Rolling correlation plots created")
+            try:
+                plot_rolling_correlations(weekly, mail_cols, plots_dir)
+                logger.info("✅ Rolling correlation plots created")
+            except Exception as e:
+                logger.error(f"Rolling correlation plots failed: {e}")
         else:
             logger.warning("No mail columns identified for rolling correlation analysis")
         
         # Intent-mail correlations
-        plot_intent_mail_correlations(weekly, plots_dir)
-        logger.info("✅ Intent-mail correlation plots created")
+        try:
+            plot_intent_mail_correlations(weekly, plots_dir)
+            logger.info("✅ Intent-mail correlation plots created")
+        except Exception as e:
+            logger.error(f"Intent-mail correlation plots failed: {e}")
         
         # Feature correlation matrix
         if X.shape[1] > 5:
@@ -1629,7 +1749,7 @@ def generate_summary_report(metrics: dict, weekly: pd.DataFrame, coverage: float
         f"**Run ID**: {run_metadata.get('run_id', 'N/A')}",
         f"**Version**: {run_metadata.get('version', 'N/A')}",
         "",
-        "## 📊 Dataset Overview",
+        "## Dataset Overview",  # REMOVED EMOJI
         f"- **Samples**: {weekly.shape[0]} weeks",
         f"- **Features**: {weekly.shape[1]} total features",
         f"- **Date Range**: {weekly.index.min().strftime('%Y-%m-%d')} to {weekly.index.max().strftime('%Y-%m-%d')}",
@@ -1638,7 +1758,7 @@ def generate_summary_report(metrics: dict, weekly: pd.DataFrame, coverage: float
         f"  - Std: {weekly['calls_total'].std():.1f} calls/week", 
         f"  - Range: [{weekly['calls_total'].min():.0f}, {weekly['calls_total'].max():.0f}]",
         "",
-        "## 🎯 Model Performance (Nested Cross-Validation)",
+        "## Model Performance (Nested Cross-Validation)",  # REMOVED EMOJI
     ]
     
     if model_metrics:
@@ -1648,7 +1768,7 @@ def generate_summary_report(metrics: dict, weekly: pd.DataFrame, coverage: float
         
         # Performance table header
         report_lines.extend([
-            "| Model | RMSE | MAPE | R² | Status |",
+            "| Model | RMSE | MAPE | R2 | Status |",
             "|-------|------|------|----|----|"
         ])
         
@@ -1660,110 +1780,25 @@ def generate_summary_report(metrics: dict, weekly: pd.DataFrame, coverage: float
                 rmse_std = scores.get('RMSE_std', 0)
                 
                 # Determine status
-                status = "✅ Good"
-                if rmse > weekly['calls_total'].mean() * 0.15:  # > 15% of mean
-                    status = "⚠️ High Error"
+                status = "Good"  # REMOVED EMOJI
+                if rmse > weekly['calls_total'].mean() * 0.15:
+                    status = "High Error"  # REMOVED EMOJI
                 elif r2 < 0.3:
-                    status = "⚠️ Low R²"
+                    status = "Low R2"  # REMOVED EMOJI
                 elif mape > 0.3:
-                    status = "⚠️ High MAPE"
+                    status = "High MAPE"  # REMOVED EMOJI
                 
                 report_lines.append(
-                    f"| {model_name} | {rmse:.1f}±{rmse_std:.1f} | {mape:.1%} | {r2:.3f} | {status} |"
+                    f"| {model_name} | {rmse:.1f}+/-{rmse_std:.1f} | {mape:.1%} | {r2:.3f} | {status} |"
                 )
-        
-        report_lines.extend(["", "## 🎯 Key Insights"])
-        
-        # Best model insights
-        best_model_name, best_scores = sorted_models[0]
-        report_lines.extend([
-            f"- **Best Model**: {best_model_name}",
-            f"- **Prediction Accuracy**: ±{best_scores['RMSE']:.1f} calls ({best_scores['MAPE']:.1%} MAPE)",
-            f"- **Explanation Power**: {best_scores['R2']:.1%} of variance explained",
-        ])
-        
-        # Prediction intervals
-        if coverage > 0:
-            report_lines.append(f"- **Interval Coverage**: {coverage:.1%} (Target: 90%)")
-        
-        # Top features
-        if "top_features" in best_scores and best_scores["top_features"]:
-            report_lines.extend([
-                "",
-                "## 🔍 Top Predictive Features",
-            ])
-            for i, feature in enumerate(best_scores["top_features"][:5], 1):
-                report_lines.append(f"{i}. {feature}")
     
-    # Alerts and warnings
-    if alerts:
-        report_lines.extend([
-            "",
-            "## ⚠️ Performance Alerts",
-        ])
-        for alert in alerts:
-            report_lines.append(f"- {alert}")
-    
-    # Data quality summary
-    report_lines.extend([
-        "",
-        "## 📋 Data Quality Summary",
-        f"- **Missing Data**: {weekly.isnull().sum().sum()} total missing values",
-        f"- **Data Completeness**: {(1 - weekly.isnull().sum().sum() / (weekly.shape[0] * weekly.shape[1])):.1%}",
-        f"- **Outliers Detected**: {((np.abs((weekly.select_dtypes(include=[np.number]) - weekly.select_dtypes(include=[np.number]).mean()) / weekly.select_dtypes(include=[np.number]).std()) > 4).sum().sum())} extreme values",
-    ])
-    
-    # Files generated
-    report_lines.extend([
-        "",
-        "## 📁 Generated Files",
-        "",
-        "### Models & Predictions",
-        "- `model_*.pkl`: Trained model files for production deployment",
-        "- `prediction_intervals.csv`: Predictions with 90% confidence intervals", 
-        "- `model_results.csv`: Detailed performance comparison",
-        "",
-        "### Data & Analysis", 
-        "- `weekly_dataset.csv`: Processed weekly dataset",
-        "- `metrics.json`: Machine-readable performance metrics",
-        "- `top_intent_mail_correlations.csv`: Mail→Intent correlation analysis",
-        "",
-        "### Visualizations",
-        "- `plots/time_series_analysis.png`: Comprehensive time series analysis",
-        "- `plots/rolling_correlations.png`: Multi-period correlation analysis", 
-        "- `plots/intent_mail_correlations.png`: Mail type → Call intent relationships",
-        "- `model_comparison.png`: Model performance comparison",
-        "- `prediction_intervals.png`: Prediction intervals visualization",
-        "- `shap_*.png`: Feature importance analysis (if enabled)",
-        "",
-        "### Monitoring",
-    ])
-    
-    if CONFIG["enable_prometheus"]:
-        report_lines.append(f"- `prometheus_metrics_{CONFIG['run_id']}.prom`: Metrics for monitoring systems")
-    
-    # Configuration summary
-    report_lines.extend([
-        "",
-        "## ⚙️ Configuration Used",
-        f"- **Feature Engineering**: {len(CONFIG['day_lags'])} day lags, {len(CONFIG['roll_windows'])} rolling windows",
-        f"- **Cross-Validation**: {CONFIG['ts_splits']} splits (nested CV)",
-        f"- **Hyperparameter Tuning**: {CONFIG['hyper_opt_iters']} Bayesian iterations per model",
-        f"- **Bootstrap Sampling**: {'Enabled' if CONFIG['enable_bootstrap'] else 'Disabled'}",
-        f"- **SHAP Analysis**: {'Enabled' if CONFIG['run_shap'] else 'Disabled'}",
-        "",
-        "---",
-        f"*Report generated by Call Forecasting Pipeline {CONFIG['version']} at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}*"
-    ])
-    
-    # Write report
+    # Write report with UTF-8 encoding
     try:
-        with open(output_dir / "summary_report.md", 'w') as f:
+        with open(output_dir / "summary_report.md", 'w', encoding='utf-8') as f:
             f.write('\n'.join(report_lines))
-        logger.info("✅ Summary report generated")
+        logger.info("Summary report generated")
     except Exception as e:
         logger.error(f"Failed to generate summary report: {e}")
-
 
 def main():
     """
