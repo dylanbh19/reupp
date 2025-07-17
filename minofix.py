@@ -1,71 +1,73 @@
-Below are the only two places you have to touch.
-Search for each BEFORE block in your file and replace it with the corresponding AFTER block (copy-paste).
-Nothing else in the script changes, so you won’t break anything.
+Why those “Invalid parameter … for estimator Pipeline(…)” errors appear
+
+BayesSearchCV passes every hyper-parameter name verbatim to the
+under-lying estimator.
+When the estimator is wrapped in a sklearn.pipeline.Pipeline you must prefix
+every parameter with <step_name>__ (double underscore).
+In our pipeline the final model always sits in the step called
+regressor, so the search-space keys have to look like:
+
+regressor__n_estimators
+regressor__max_depth
+regressor__learning_rate
+…
+
+I accidentally left the prefixes off for the tree models – Ridge was fine,
+the others blew up.
 
 ⸻
 
-1 ▪ Add a tiny helper (one-liner)
+Quick patch – change only the search-space dictionaries
 
-(Put this right after the other utility functions – anywhere above build_dataset() is fine).
+Open the file you are running (min.py in your log; if you copied my
+rewrite it will be mail_calls_forecast.py).
+Locate the def model_space(name: str): function and replace only the
+three model dictionaries as shown below.
 
-# ───────────────────────────────────────────────────────────────
-# NEW: one-liner that gives a business-day mask for any index
-# ───────────────────────────────────────────────────────────────
-def _biz_mask(idx: pd.Index) -> pd.Series:
-    us_holidays = holidays.US()
-    return (~idx.weekday.isin([5, 6])) & (~idx.isin(us_holidays))
+def model_space(name: str):
+    if name == "Ridge":
+        return {
+            "feature_selector__k": Integer(5, CFG["max_features"]),
+            "regressor__alpha": Real(0.01, 100.0, prior="log-uniform"),
+        }
 
-No existing code has to be deleted for this step.
+    # --------------  FIXED DICTIONARIES  -----------------
+    if name == "RF":
+        return {
+            "feature_selector__k": Integer(5, CFG["max_features"]),
+            "regressor__n_estimators": Integer(120, 300),
+            "regressor__max_depth": Integer(3, 12),
+            "regressor__min_samples_leaf": Integer(1, 8),
+        }
 
-⸻
+    if name == "LGBM":
+        return {
+            "feature_selector__k": Integer(5, CFG["max_features"]),
+            "regressor__n_estimators": Integer(120, 300),
+            "regressor__num_leaves": Integer(20, 80),
+            "regressor__learning_rate": Real(0.03, 0.3, prior="log-uniform"),
+        }
 
-2 ▪ Fix the place where the mask is applied
+    if name == "XGB":
+        return {
+            "feature_selector__k": Integer(5, CFG["max_features"]),
+            "regressor__n_estimators": Integer(120, 300),
+            "regressor__max_depth": Integer(3, 6),
+            "regressor__learning_rate": Real(0.03, 0.3, prior="log-uniform"),
+        }
+    # ------------------------------------------------------
 
-Find this BEFORE block inside build_dataset()
+    raise ValueError(name)
 
-(it’s a few lines after you create mail_wide and calls_total):
-
-# -----------------------------------------------------------------
-# Combine all daily data
-daily_components = [calls_total.rename("calls_total"), mail_wide]
-if not intents_daily.empty:
-    daily_components.append(intents_daily)
-
-daily = pd.concat(daily_components, axis=1).fillna(0)
-daily.index = pd.to_datetime(daily.index)
-
-# Remove weekends and holidays   ← this mask causes the length-mismatch crash
-us_holidays = holidays.US()
-business_days_mask = ~daily.index.weekday.isin([5, 6]) & ~daily.index.isin(us_holidays)
-daily = daily[business_days_mask]
-
-Replace it with this AFTER block
-
-# -----------------------------------------------------------------
-# FIRST: apply the same business-day filter to every component
-calls_total = calls_total.loc[_biz_mask(calls_total.index)]
-mail_wide   = mail_wide.loc[_biz_mask(mail_wide.index)]
-if not intents_daily.empty:
-    intents_daily = intents_daily.loc[_biz_mask(intents_daily.index)]
-
-# NOW the indexes are perfectly aligned, so concatenation is safe
-daily_components = [calls_total.rename("calls_total"), mail_wide]
-if not intents_daily.empty:
-    daily_components.append(intents_daily)
-
-daily = pd.concat(daily_components, axis=1).fillna(0)
-daily.index = pd.to_datetime(daily.index)
-
-# (No extra mask needed here – everything is already business-days only)
-
+Nothing else must change – all the pipeline step names (feature_selector,
+regressor) already match.
 
 ⸻
 
-Why this fixes the crash
-	•	The original code built business_days_mask from the concatenated daily frame but then also tried to
-reuse that mask on the original calls series elsewhere, giving a shape mismatch (Boolean index has wrong length …).
-	•	By filtering each daily component before they are joined, every frame – and thus the final daily
-DataFrame – shares the exact same index, so no further re-masking (and no mismatch) can occur.
+After you save the file
 
-That’s it!
-Make only the two edits above, save, and re-run your pipeline – it will progress past the error without touching any other behaviour.
+python mail_calls_forecast.py      # or python min.py if that is the file name
+
+You should now see each horizon train all four models without the
+parameter-name errors.
+If anything else pops up, send me the fresh log and we’ll squash it!
