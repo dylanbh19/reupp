@@ -1,0 +1,62 @@
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> & C:/Users/BhungarD/python.exe "c:/Users/BhungarD/OneDrive - Computershare/Desktop/finprod/debug.py"
+============================================================
+DEBUGGING MAIL→CALLS RELATIONSHIP
+============================================================
+
+1. Loading data…
+Found: data\mail.csv
+c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\debug.py:63: UserWarning: The argument 'infer_datetime_format' is deprecated and will be removed in a future version. A strict version of it is now the default, see https://pandas.pydata.org/pdeps/0004-consistent-to-datetime-parsing.html. You can safely remove this argument.
+  s1 = pd.to_datetime(s, errors="coerce", infer_datetime_format=True)
+Found: data\callvolumes.csv
+Found: data\callintent.csv
+c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\debug.py:63: UserWarning: The argument 'infer_datetime_format' is deprecated and will be removed in a future version. A strict version of it is now the default, see https://pandas.pydata.org/pdeps/0004-consistent-to-datetime-parsing.html. You can safely remove this argument.
+  s1 = pd.to_datetime(s, errors="coerce", infer_datetime_format=True)
+c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\debug.py:63: UserWarning: The argument 'infer_datetime_format' is deprecated and will be removed in a future version. A strict version of it is now the default, see https://pandas.pydata.org/pdeps/0004-consistent-to-datetime-parsing.html. You can safely remove this argument.
+  s1 = pd.to_datetime(s, errors="coerce", infer_datetime_format=True)
+Scaling factor: 25.188
+Mail records : 1,409,780
+Call days    : 550
+
+2. Preparing daily frame…
+Combined daily shape : (349, 232)
+
+3. Basic statistics…
+Calls   – mean 15800  | sd 12334
+Mail    – mean 259179 | sd 600836
+Mail types count    : 231
+
+4. Correlations…
+Same-day corr        : 0.117 (raw)  |  0.402 (log1p)
+Lag  1 corr          : 0.136
+Lag  2 corr          : 0.089
+Lag  3 corr          : 0.133
+Lag  7 corr          : -0.023
+Lag 14 corr          : 0.035
+
+5. Top 10 mail types by abs(corr)…
+   1. Reject_Ltrs                         +0.342
+   2. Cheque 1099                         +0.277
+   3. Exercise_Converted                  +0.240
+   4. SOI_Confirms                        +0.234
+   5. Exch_chks                           +0.223
+   6. ACH_Debit_Enrollment                +0.223
+   7. Transfer                            +0.222
+   8. COA                                 +0.221
+   9. NOTC_WITHDRAW                       +0.214
+  10. Repl_Chks                           +0.205
+
+6. Tiny Ridge benchmark…
+CV R² scores          : [-1.8299592951086048, -0.5645252769597391, -0.01131272441417841]
+Average R²            : -0.802
+
+LightGBM sanity check…
+LightGBM R²           : -0.254
+
+7. Generating plots…
+
+============================================================
+DIAGNOSIS SUMMARY
+============================================================
+⚠️   Relationship is weak – simplify features, try key lags only.
+Best lag by abs(corr): 1 days (+0.136)
+Top-3 mail types      : ['Reject_Ltrs', 'Cheque 1099', 'Exercise_Converted']
