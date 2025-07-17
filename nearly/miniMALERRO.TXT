@@ -1,0 +1,40 @@
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> & C:/Users/BhungarD/python.exe "c:/Users/BhungarD/OneDrive - Computershare/Desktop/finprod/debug.py"
+2025-07-17 13:11:31,012 | simple_mail | INFO | Loading data …
+2025-07-17 13:11:45,564 | simple_mail | INFO | Features ready: 255 rows × 11 cols
+2025-07-17 13:11:45,574 | simple_mail | INFO | Training …
+2025-07-17 13:11:45,575 | simple_mail | INFO | Horizon 1d
+2025-07-17 13:11:45,646 | simple_mail | INFO |   Ridge  R2=-1.166  RMSE=628
+2025-07-17 13:11:46,841 | simple_mail | INFO |   RF  R2=-0.417  RMSE=507
+2025-07-17 13:11:47,101 | simple_mail | INFO | Horizon 3d
+2025-07-17 13:11:47,133 | simple_mail | INFO |   Ridge  R2=-1.914  RMSE=1517195813
+2025-07-17 13:11:48,141 | simple_mail | INFO |   RF  R2=-1.130  RMSE=1458691340
+2025-07-17 13:11:48,469 | simple_mail | INFO | Horizon 7d
+2025-07-17 13:11:48,497 | simple_mail | INFO |   Ridge  R2=-4.388  RMSE=970402691422861918208
+2025-07-17 13:11:49,564 | simple_mail | INFO |   RF  R2=-1.626  RMSE=957982526747678736384
+2025-07-17 13:11:49,947 | simple_mail | INFO | Horizon 14d
+2025-07-17 13:11:49,996 | simple_mail | INFO |   Ridge  R2=-10.531  RMSE=1231988768737960376369600084317892002185216
+2025-07-17 13:11:51,202 | simple_mail | INFO |   RF  R2=-4.439  RMSE=1396359537405785990235421936519135379849216
+Traceback (most recent call last):
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\debug.py", line 336, in <module>
+    main()
+    ~~~~^^
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\debug.py", line 307, in main
+    json.dump(metrics_all, fp, indent=2)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BhungarD\Lib\json\__init__.py", line 179, in dump
+    for chunk in iterable:
+                 ^^^^^^^^
+  File "C:\Users\BhungarD\Lib\json\encoder.py", line 433, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "C:\Users\BhungarD\Lib\json\encoder.py", line 407, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\BhungarD\Lib\json\encoder.py", line 407, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\BhungarD\Lib\json\encoder.py", line 407, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\BhungarD\Lib\json\encoder.py", line 440, in _iterencode
+    o = _default(o)
+  File "C:\Users\BhungarD\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+                    f'is not JSON serializable')
+TypeError: Object of type Pipeline is not JSON serializable
