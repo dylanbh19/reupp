@@ -1,0 +1,76 @@
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> ^C
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> & C:/Users/BhungarD/python.exe "c:/Users/BhungarD/OneDrive - Computershare/Desktop/finprod/mailonly.py"
+c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\mailonly.py:69: SyntaxWarning: invalid escape sequence '\c'
+  vol_path = _find_file(["data\callvolumes.csv"])
+c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\mailonly.py:70: SyntaxWarning: invalid escape sequence '\c'
+  intent_path = _find_file(["data\callintent.csv"])
+2025-07-18 14:06:24,680 | mail_opt | INFO | === MAIL TYPE SELECTION OPTIMIZATION ===
+2025-07-18 14:06:52,852 | mail_opt | INFO | Daily mail-calls data: (349, 232)
+2025-07-18 14:06:53,230 | mail_opt | INFO | === ANALYZING ALL MAIL TYPES ===
+2025-07-18 14:06:54,442 | mail_opt | INFO | 
+Top 15 mail types by CORRELATION:
+2025-07-18 14:06:54,443 | mail_opt | INFO |  1. Cheque 1099: 0.277 (vol: 4042276, freq: 17.5%)
+2025-07-18 14:06:54,444 | mail_opt | INFO |  2. Exercise_Converted: 0.240 (vol: 1, freq: 0.3%)
+2025-07-18 14:06:54,445 | mail_opt | INFO |  3. Exch_chks: 0.223 (vol: 32892, freq: 67.0%)
+2025-07-18 14:06:54,445 | mail_opt | INFO |  4. ACH_Debit_Enrollment: 0.223 (vol: 10310, freq: 77.7%)
+2025-07-18 14:06:54,446 | mail_opt | INFO |  5. COA: 0.221 (vol: 540152, freq: 71.9%)
+2025-07-18 14:06:54,446 | mail_opt | INFO |  6. NOTC_WITHDRAW: 0.214 (vol: 12392, freq: 50.4%)
+2025-07-18 14:06:54,447 | mail_opt | INFO |  7. DRP_Enrollment: 0.202 (vol: 77300, freq: 80.5%)
+2025-07-18 14:06:54,448 | mail_opt | INFO |  8. CIP_Insert: 0.201 (vol: 62564, freq: 73.9%)
+2025-07-18 14:06:54,449 | mail_opt | INFO |  9. DRS: 0.201 (vol: 514949, freq: 71.3%)
+2025-07-18 14:06:54,449 | mail_opt | INFO | 10. DRS_Advices: 0.198 (vol: 1139902, freq: 69.1%)
+2025-07-18 14:06:54,450 | mail_opt | INFO | 11. Consol_Confirm: 0.196 (vol: 3843, freq: 32.1%)
+2025-07-18 14:06:54,450 | mail_opt | INFO | 12. ESPP_Statements: 0.194 (vol: 6480, freq: 67.6%)
+2025-07-18 14:06:54,451 | mail_opt | INFO | 13. Dir_Cred_Confirm_Ltr: 0.190 (vol: 652551, freq: 72.2%)
+2025-07-18 14:06:54,452 | mail_opt | INFO | 14. DRP 1099: 0.188 (vol: 3613476, freq: 14.3%)
+2025-07-18 14:06:54,452 | mail_opt | INFO | 15. Cert_Transcript: 0.181 (vol: 36815, freq: 67.3%)
+2025-07-18 14:06:54,453 | mail_opt | INFO | 16. Elig_Enr_DedChg_Ltr: 0.171 (vol: 10567, freq: 57.3%)
+2025-07-18 14:06:54,453 | mail_opt | INFO | 17. Class Action: 0.126 (vol: 458162, freq: 15.2%)
+2025-07-18 14:06:54,454 | mail_opt | INFO | 18. Funds Not: 0.123 (vol: 3945, freq: 0.6%)
+2025-07-18 14:06:54,455 | mail_opt | INFO | 19. Due_Dill: 0.115 (vol: 1043822, freq: 35.2%)
+2025-07-18 14:06:54,455 | mail_opt | INFO | 20. Elig_Enr_CancRef_Ltr: 0.114 (vol: 6210, freq: 44.7%)
+2025-07-18 14:06:54,456 | mail_opt | INFO | 21. MultiClientLaser: 0.104 (vol: 176132, freq: 22.1%)
+2025-07-18 14:06:54,456 | mail_opt | INFO | 22. MultiClientLodgeCourier: 0.104 (vol: 176132, freq: 22.1%)
+2025-07-18 14:06:54,457 | mail_opt | INFO | 23. Leveraged_Plan_Trans_Advice: 0.099 (vol: 450, freq: 2.3%)
+2025-07-18 14:06:54,457 | mail_opt | INFO | 24. Ach_Deb: 0.098 (vol: 2821, freq: 50.4%)
+2025-07-18 14:06:54,458 | mail_opt | INFO | 25. Exch_Adv: 0.095 (vol: 4208, freq: 61.9%)
+2025-07-18 14:06:54,458 | mail_opt | INFO |
+Top 15 mail types by VOLUME:
+2025-07-18 14:06:54,459 | mail_opt | INFO |  1. Cheque: 13496961 (corr: 0.012, freq: 71.3%)
+2025-07-18 14:06:54,460 | mail_opt | INFO |  2. DRP Stmt.: 12171725 (corr: 0.046, freq: 70.8%)
+2025-07-18 14:06:54,460 | mail_opt | INFO |  3. Scheduled PAYMENT CHECKS: 9894910 (corr: 0.024, freq: 2.3%)
+2025-07-18 14:06:54,461 | mail_opt | INFO |  4. Envision: 5830165 (corr: 0.029, freq: 28.1%)
+2025-07-18 14:06:54,461 | mail_opt | INFO |  5. Proxy (US): 5703664 (corr: 0.077, freq: 56.4%)
+2025-07-18 14:06:54,462 | mail_opt | INFO |  6. Notice: 4924059 (corr: 0.025, freq: 34.1%)
+2025-07-18 14:06:54,462 | mail_opt | INFO |  7. Cheque 1099: 4042276 (corr: 0.277, freq: 17.5%)
+2025-07-18 14:06:54,463 | mail_opt | INFO |  8. DRP 1099: 3613476 (corr: 0.188, freq: 14.3%)
+2025-07-18 14:06:54,463 | mail_opt | INFO |  9. Scheduled Check +1099 Duplex: 2799842 (corr: 0.021, freq: 1.1%)
+2025-07-18 14:06:54,464 | mail_opt | INFO | 10. ACH 1099: 2280277 (corr: 0.061, freq: 15.8%)
+2025-07-18 14:06:54,465 | mail_opt | INFO | 11. Scheduled 1099 DIV: 1526522 (corr: 0.016, freq: 1.4%)
+2025-07-18 14:06:54,465 | mail_opt | INFO | 12. Tax StndAlone: 1506352 (corr: 0.042, freq: 39.0%)
+2025-07-18 14:06:54,466 | mail_opt | INFO | 13. Once Off PRINT JOB ONLY: 1247026 (corr: 0.005, freq: 2.3%)
+2025-07-18 14:06:54,466 | mail_opt | INFO | 14. Scheduled ACH 1099D: 1195323 (corr: 0.036, freq: 1.1%)
+2025-07-18 14:06:54,467 | mail_opt | INFO | 15. DRS_Advices: 1139902 (corr: 0.198, freq: 69.1%)
+2025-07-18 14:06:54,468 | mail_opt | INFO | 16. Due_Dill: 1043822 (corr: 0.115, freq: 35.2%)
+2025-07-18 14:06:54,468 | mail_opt | INFO | 17. Scheduled GenComm General Restricted Statement: 1029284 (corr: 0.101, freq: 0.6%)
+2025-07-18 14:06:54,469 | mail_opt | INFO | 18. ACH Conf.: 890015 (corr: 0.056, freq: 71.1%)
+2025-07-18 14:06:54,469 | mail_opt | INFO | 19. Purch_Adv: 845173 (corr: 0.042, freq: 68.2%)
+2025-07-18 14:06:54,470 | mail_opt | INFO | 20. Once Off PERSONALIZED MAILING: 759995 (corr: 0.018, freq: 2.3%)
+2025-07-18 14:06:54,470 | mail_opt | INFO | 21. NCOA: 739685 (corr: 0.067, freq: 63.0%)
+2025-07-18 14:06:54,471 | mail_opt | INFO | 22. G_Statements: 688509 (corr: 0.057, freq: 61.6%)
+2025-07-18 14:06:54,471 | mail_opt | INFO | 23. Dir_Cred_Confirm_Ltr: 652551 (corr: 0.190, freq: 72.2%)
+2025-07-18 14:06:54,472 | mail_opt | INFO | 24. Scheduled EFTS: 608914 (corr: 0.032, freq: 2.3%)
+2025-07-18 14:06:54,472 | mail_opt | INFO | 25. Scheduled 1099B TAX INFO STATEMENT: 553690 (corr: 0.000, freq: 0.9%)
+2025-07-18 14:06:54,473 | mail_opt | INFO |
+=== TESTING MAIL TYPE SELECTION STRATEGIES ===
+2025-07-18 14:06:54,473 | mail_opt | INFO |
+Testing: Top N by CORRELATION
+2025-07-18 14:07:40,562 | mail_opt | INFO | Top 3 by Correlation: 3 types, MAE=8449, R²=-0.124, Coverage=4.5%
+2025-07-18 14:08:43,904 | mail_opt | INFO | Top 5 by Correlation: 5 types, MAE=8281, R²=-0.096, Coverage=5.1%
+2025-07-18 14:11:03,153 | mail_opt | INFO | Top 8 by Correlation: 8 types, MAE=8337, R²=-0.106, Coverage=5.3%
+2025-07-18 14:13:30,756 | mail_opt | INFO | Top 10 by Correlation: 10 types, MAE=8392, R²=-0.110, Coverage=7.1%
+2025-07-18 14:17:47,834 | mail_opt | INFO | Top 15 by Correlation: 15 types, MAE=8488, R²=-0.152, Coverage=11.9%
+2025-07-18 14:23:27,683 | mail_opt | INFO | Top 20 by Correlation: 20 types, MAE=8486, R²=-0.147, Coverage=13.6%
+2025-07-18 14:40:24,911 | mail_opt | INFO | Top 25 by Correlation: 25 types, MAE=8585, R²=-0.179, Coverage=14.0%
+2025-07-18 14:40:25,108 | mail_opt | INFO | 
+Testing: Top N by VOLUME
