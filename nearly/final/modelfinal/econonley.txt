@@ -1,0 +1,80 @@
+2025-07-18 12:23:01,636 | economics_only | INFO | === ECONOMICS-ONLY CALL PREDICTION TEST ===
+2025-07-18 12:23:01,636 | economics_only | INFO | Testing if economic indicators alone can predict call volumes
+2025-07-18 12:23:01,636 | economics_only | INFO | Loading call volume data...
+2025-07-18 12:23:07,412 | economics_only | INFO | Scaled call volumes by factor: 25.19
+2025-07-18 12:23:07,656 | economics_only | INFO | Call data shape: 394 business days
+2025-07-18 12:23:07,656 | economics_only | INFO | Call volume stats: mean=15101, std=12063, min=0, max=73120
+2025-07-18 12:23:07,777 | economics_only | INFO | Loading economic indicators...
+2025-07-18 12:23:07,778 | economics_only | WARNING | No economic data files found - creating dummy data for testing
+2025-07-18 12:23:07,782 | economics_only | INFO | Created dummy economic data with realistic patterns
+2025-07-18 12:23:07,782 | economics_only | INFO | Creating economic features for call prediction...
+2025-07-18 12:23:07,783 | economics_only | INFO | Overlapping dates: 262
+2025-07-18 12:23:08,597 | economics_only | INFO | Economics features: 261 samples x 90 features
+2025-07-18 12:23:08,598 | economics_only | INFO | Available economic indicators: ['Russell2000', 'Dollar_Index', 'NASDAQ', 'SP500', 'Technology', 'Banking', 'DowJones', 'Regional_Banks', 'Dividend_ETF', 'VIX', 'Oil', 'Gold', 'REITs', 'Utilities']
+2025-07-18 12:23:08,598 | economics_only | INFO |
+=== BASELINE COMPARISON ===
+2025-07-18 12:23:08,601 | economics_only | INFO | Baseline model performance:
+2025-07-18 12:23:08,601 | economics_only | INFO |   Mean: MAE = 8326, R² = 0.000
+2025-07-18 12:23:08,602 | economics_only | INFO |   Naive (first value): MAE = 10538, R² = -0.695
+2025-07-18 12:23:08,602 | economics_only | INFO |   Random Walk: MAE = 6633, R² = 0.063
+2025-07-18 12:23:08,602 | economics_only | INFO |
+=== ECONOMIC CORRELATION ANALYSIS ===
+2025-07-18 12:23:08,608 | economics_only | INFO | Economic indicators ranked by correlation with calls:
+2025-07-18 12:23:08,609 | economics_only | INFO |    1. Russell2000: +0.595 (via Russell2000_today)
+2025-07-18 12:23:08,609 | economics_only | INFO |    2. Dividend_ETF: +0.512 (via Dividend_ETF_ma5)
+2025-07-18 12:23:08,609 | economics_only | INFO |    3. VIX: -0.494 (via VIX_ma5)
+2025-07-18 12:23:08,609 | economics_only | INFO |    4. Oil: +0.411 (via Oil_lag1)
+2025-07-18 12:23:08,609 | economics_only | INFO |    5. NASDAQ: -0.406 (via NASDAQ_lag1)
+2025-07-18 12:23:08,609 | economics_only | INFO |    6. Technology: -0.406 (via Technology_ma5)
+2025-07-18 12:23:08,610 | economics_only | INFO |    7. DowJones: +0.369 (via DowJones_today)
+2025-07-18 12:23:08,610 | economics_only | INFO |    8. SP500: +0.355 (via SP500_lag1)
+2025-07-18 12:23:08,610 | economics_only | INFO |    9. Regional_Banks: +0.354 (via Regional_Banks_ma5)
+2025-07-18 12:23:08,610 | economics_only | INFO |   10. Utilities: +0.319 (via Utilities_ma5)
+2025-07-18 12:23:08,610 | economics_only | INFO |   11. REITs: +0.318 (via REITs_today)
+2025-07-18 12:23:08,611 | economics_only | INFO |   12. Gold: +0.175 (via Gold_vol5)
+2025-07-18 12:23:08,611 | economics_only | INFO |   13. Banking: +0.076 (via Banking_today)
+2025-07-18 12:23:08,611 | economics_only | INFO |   14. Dollar_Index: +0.070 (via Dollar_Index_change)
+2025-07-18 12:23:08,611 | economics_only | INFO | === TESTING ECONOMIC-ONLY MODELS ===
+2025-07-18 12:23:08,612 | economics_only | INFO |
+Testing Linear Regression...
+2025-07-18 12:23:08,634 | economics_only | INFO |   R² Score: -637.508 ± 819.148
+2025-07-18 12:23:08,634 | economics_only | INFO |   MAE: 53478 ± 34146
+2025-07-18 12:23:08,635 | economics_only | INFO |
+Testing Ridge Regression...
+2025-07-18 12:23:08,644 | economics_only | INFO |   R² Score: -49.505 ± 44.941
+2025-07-18 12:23:08,644 | economics_only | INFO |   MAE: 31513 ± 17132
+2025-07-18 12:23:08,644 | economics_only | INFO |
+Testing Random Forest...
+2025-07-18 12:23:09,498 | economics_only | INFO |   R² Score: -0.835 ± 1.199
+2025-07-18 12:23:09,499 | economics_only | INFO |   MAE: 9573 ± 1806
+2025-07-18 12:23:09,499 | economics_only | INFO |   Top 10 features for Random Forest:
+2025-07-18 12:23:09,499 | economics_only | INFO |      1. month: 0.346
+2025-07-18 12:23:09,499 | economics_only | INFO |      2. Russell2000_ma5: 0.050
+2025-07-18 12:23:09,499 | economics_only | INFO |      3. Dividend_ETF_ma5: 0.044
+2025-07-18 12:23:09,500 | economics_only | INFO |      4. weekday: 0.035
+2025-07-18 12:23:09,500 | economics_only | INFO |      5. Russell2000_today: 0.035
+2025-07-18 12:23:09,500 | economics_only | INFO |      6. Technology_vol5: 0.033
+2025-07-18 12:23:09,500 | economics_only | INFO |      7. Utilities_vol5: 0.023
+2025-07-18 12:23:09,500 | economics_only | INFO |      8. NASDAQ_vol5: 0.017
+2025-07-18 12:23:09,500 | economics_only | INFO |      9. Oil_vol5: 0.017
+2025-07-18 12:23:09,501 | economics_only | INFO |     10. Dividend_ETF_today: 0.016
+2025-07-18 12:23:09,501 | economics_only | INFO |
+=== ECONOMICS-ONLY MODEL CONCLUSIONS ===
+2025-07-18 12:23:09,501 | economics_only | INFO | Best Economic Model: Random Forest
+2025-07-18 12:23:09,501 | economics_only | INFO |   MAE: 9573
+2025-07-18 12:23:09,501 | economics_only | INFO |   R²: -0.835
+2025-07-18 12:23:09,501 | economics_only | INFO |
+Best Baseline: Random Walk
+2025-07-18 12:23:09,502 | economics_only | INFO |   MAE: 6633
+2025-07-18 12:23:09,502 | economics_only | INFO |   R²: 0.063
+2025-07-18 12:23:09,502 | economics_only | INFO |
+=== COMPARISON TO MAIL MODEL ===
+2025-07-18 12:23:09,502 | economics_only | INFO | Original Mail Model MAE: 4440
+2025-07-18 12:23:09,502 | economics_only | INFO | Best Economics Model MAE: 9573
+2025-07-18 12:23:09,502 | economics_only | INFO | Economics vs Mail: 2.2x worse
+2025-07-18 12:23:09,502 | economics_only | INFO | ❌ Economic indicators alone perform WORSE than mail data
+2025-07-18 12:23:09,502 | economics_only | INFO |    This confirms mail data is the primary signal
+2025-07-18 12:23:09,502 | economics_only | INFO | ❌ Economic model performs worse than simple baselines
+2025-07-18 12:23:09,503 | economics_only | INFO |    Economic indicators have no predictive power for calls
+2025-07-18 12:23:09,508 | economics_only | INFO |
+Results saved to: C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\economics_only_results
