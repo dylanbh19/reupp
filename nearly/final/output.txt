@@ -1,121 +1,163 @@
-2025-07-17 17:36:44,738 | test_mail_count | INFO | === TESTING TOP 10 vs 15 vs 20 MAIL TYPES + ECONOMIC ===
-2025-07-17 17:36:44,738 | test_mail_count | INFO | Loading data...
-2025-07-17 17:37:07,180 | test_mail_count | INFO | Data loaded: (349, 235)
-2025-07-17 17:37:07,457 | test_mail_count | INFO | 
-=== TESTING TOP 10 MAIL TYPES ===
-2025-07-17 17:37:07,581 | test_mail_count | INFO | Top 10 mail types:
-2025-07-17 17:37:07,582 | test_mail_count | INFO |    1. Reject_Ltrs: 0.342
-2025-07-17 17:37:07,583 | test_mail_count | INFO |    2. Cheque 1099: 0.277
-2025-07-17 17:37:07,583 | test_mail_count | INFO |    3. Exercise_Converted: 0.240
-2025-07-17 17:37:07,583 | test_mail_count | INFO |    4. SOI_Confirms: 0.234
-2025-07-17 17:37:07,584 | test_mail_count | INFO |    5. Exch_chks: 0.223
-2025-07-17 17:37:07,584 | test_mail_count | INFO |    6. ACH_Debit_Enrollment: 0.223
-2025-07-17 17:37:07,585 | test_mail_count | INFO |    7. Transfer: 0.222
-2025-07-17 17:37:07,585 | test_mail_count | INFO |    8. COA: 0.221
-2025-07-17 17:37:07,585 | test_mail_count | INFO |    9. NOTC_WITHDRAW: 0.214
-2025-07-17 17:37:07,586 | test_mail_count | INFO |   10. Repl_Chks: 0.205
-2025-07-17 17:37:07,733 | test_mail_count | INFO | Features created: 347 samples x 19 features
-2025-07-17 17:37:08,245 | test_mail_count | INFO | Model Performance (Top 10 Mail Types):
-2025-07-17 17:37:08,245 | test_mail_count | INFO |   Linear Regression:
-2025-07-17 17:37:08,246 | test_mail_count | INFO |     R² Score: 0.216
-2025-07-17 17:37:08,247 | test_mail_count | INFO |     MAE: 7421
-2025-07-17 17:37:08,247 | test_mail_count | INFO |     RMSE: 9384
-2025-07-17 17:37:08,248 | test_mail_count | INFO |   Random Forest:
-2025-07-17 17:37:08,248 | test_mail_count | INFO |     R² Score: 0.497
-2025-07-17 17:37:08,248 | test_mail_count | INFO |     MAE: 5263
-2025-07-17 17:37:08,249 | test_mail_count | INFO |     RMSE: 7520
-2025-07-17 17:37:08,249 | test_mail_count | INFO |     Top 5 features:
-2025-07-17 17:37:08,249 | test_mail_count | INFO |       Cheque 1099_today: 0.145
-2025-07-17 17:37:08,250 | test_mail_count | INFO |       InterestRate_10Y_lag1: 0.113
-2025-07-17 17:37:08,250 | test_mail_count | INFO |       SP500_lag1: 0.101
-2025-07-17 17:37:08,250 | test_mail_count | INFO |       weekday: 0.094
-2025-07-17 17:37:08,250 | test_mail_count | INFO |       sp500_x_total_mail: 0.085
-2025-07-17 17:37:08,251 | test_mail_count | INFO |
-=== TESTING TOP 15 MAIL TYPES ===
-2025-07-17 17:37:08,361 | test_mail_count | INFO | Top 15 mail types:
-2025-07-17 17:37:08,362 | test_mail_count | INFO |    1. Reject_Ltrs: 0.342
-2025-07-17 17:37:08,362 | test_mail_count | INFO |    2. Cheque 1099: 0.277
-2025-07-17 17:37:08,362 | test_mail_count | INFO |    3. Exercise_Converted: 0.240
-2025-07-17 17:37:08,363 | test_mail_count | INFO |    4. SOI_Confirms: 0.234
-2025-07-17 17:37:08,363 | test_mail_count | INFO |    5. Exch_chks: 0.223
-2025-07-17 17:37:08,363 | test_mail_count | INFO |    6. ACH_Debit_Enrollment: 0.223
-2025-07-17 17:37:08,363 | test_mail_count | INFO |    7. Transfer: 0.222
-2025-07-17 17:37:08,363 | test_mail_count | INFO |    8. COA: 0.221
-2025-07-17 17:37:08,364 | test_mail_count | INFO |    9. NOTC_WITHDRAW: 0.214
-2025-07-17 17:37:08,364 | test_mail_count | INFO |   10. Repl_Chks: 0.205
-2025-07-17 17:37:08,364 | test_mail_count | INFO |   11. DRP_Enrollment: 0.202
-2025-07-17 17:37:08,365 | test_mail_count | INFO |   12. CIP_Insert: 0.201
-2025-07-17 17:37:08,365 | test_mail_count | INFO |   13. Plan_Enr_Confirm_Ltr: 0.201
-2025-07-17 17:37:08,365 | test_mail_count | INFO |   14. DRS: 0.201
-2025-07-17 17:37:08,366 | test_mail_count | INFO |   15. TODI: 0.198
-2025-07-17 17:37:08,518 | test_mail_count | INFO | Features created: 347 samples x 24 features
-2025-07-17 17:37:08,937 | test_mail_count | INFO | Model Performance (Top 15 Mail Types):
-2025-07-17 17:37:08,937 | test_mail_count | INFO |   Linear Regression:
-2025-07-17 17:37:08,937 | test_mail_count | INFO |     R² Score: 0.208
-2025-07-17 17:37:08,938 | test_mail_count | INFO |     MAE: 7438
-2025-07-17 17:37:08,938 | test_mail_count | INFO |     RMSE: 9432
-2025-07-17 17:37:08,938 | test_mail_count | INFO |   Random Forest:
-2025-07-17 17:37:08,938 | test_mail_count | INFO |     R² Score: 0.483
-2025-07-17 17:37:08,939 | test_mail_count | INFO |     MAE: 5449
-2025-07-17 17:37:08,939 | test_mail_count | INFO |     RMSE: 7617
-2025-07-17 17:37:08,939 | test_mail_count | INFO |     Top 5 features:
-2025-07-17 17:37:08,939 | test_mail_count | INFO |       Cheque 1099_today: 0.155
-2025-07-17 17:37:08,939 | test_mail_count | INFO |       InterestRate_10Y_lag1: 0.110
-2025-07-17 17:37:08,940 | test_mail_count | INFO |       SP500_lag1: 0.096
-2025-07-17 17:37:08,940 | test_mail_count | INFO |       weekday: 0.091
-2025-07-17 17:37:08,940 | test_mail_count | INFO |       FinancialSector_lag1: 0.074
-2025-07-17 17:37:08,940 | test_mail_count | INFO |
-=== TESTING TOP 20 MAIL TYPES ===
-2025-07-17 17:37:09,061 | test_mail_count | INFO | Top 20 mail types:
-2025-07-17 17:37:09,062 | test_mail_count | INFO |    1. Reject_Ltrs: 0.342
-2025-07-17 17:37:09,062 | test_mail_count | INFO |    2. Cheque 1099: 0.277
-2025-07-17 17:37:09,063 | test_mail_count | INFO |    3. Exercise_Converted: 0.240
-2025-07-17 17:37:09,064 | test_mail_count | INFO |    4. SOI_Confirms: 0.234
-2025-07-17 17:37:09,064 | test_mail_count | INFO |    5. Exch_chks: 0.223
-2025-07-17 17:37:09,065 | test_mail_count | INFO |    6. ACH_Debit_Enrollment: 0.223
-2025-07-17 17:37:09,065 | test_mail_count | INFO |    7. Transfer: 0.222
-2025-07-17 17:37:09,066 | test_mail_count | INFO |    8. COA: 0.221
-2025-07-17 17:37:09,066 | test_mail_count | INFO |    9. NOTC_WITHDRAW: 0.214
-2025-07-17 17:37:09,067 | test_mail_count | INFO |   10. Repl_Chks: 0.205
-2025-07-17 17:37:09,067 | test_mail_count | INFO |   11. DRP_Enrollment: 0.202
-2025-07-17 17:37:09,068 | test_mail_count | INFO |   12. CIP_Insert: 0.201
-2025-07-17 17:37:09,068 | test_mail_count | INFO |   13. Plan_Enr_Confirm_Ltr: 0.201
-2025-07-17 17:37:09,069 | test_mail_count | INFO |   14. DRS: 0.201
-2025-07-17 17:37:09,069 | test_mail_count | INFO |   15. TODI: 0.198
-2025-07-17 17:37:09,070 | test_mail_count | INFO |   16. DRS_Advices: 0.198
-2025-07-17 17:37:09,070 | test_mail_count | INFO |   17. Statements: 0.196
-2025-07-17 17:37:09,071 | test_mail_count | INFO |   18. Consol_Confirm: 0.196
-2025-07-17 17:37:09,071 | test_mail_count | INFO |   19. ESPP_Statements: 0.194
-2025-07-17 17:37:09,072 | test_mail_count | INFO |   20. TODC: 0.191
-2025-07-17 17:37:09,226 | test_mail_count | INFO | Features created: 347 samples x 29 features
-2025-07-17 17:37:09,721 | test_mail_count | INFO | Model Performance (Top 20 Mail Types):
-2025-07-17 17:37:09,721 | test_mail_count | INFO |   Linear Regression:
-2025-07-17 17:37:09,721 | test_mail_count | INFO |     R² Score: -0.812
-2025-07-17 17:37:09,722 | test_mail_count | INFO |     MAE: 8877
-2025-07-17 17:37:09,722 | test_mail_count | INFO |     RMSE: 14266
-2025-07-17 17:37:09,722 | test_mail_count | INFO |   Random Forest:
-2025-07-17 17:37:09,722 | test_mail_count | INFO |     R² Score: 0.467
-2025-07-17 17:37:09,723 | test_mail_count | INFO |     MAE: 5448
-2025-07-17 17:37:09,723 | test_mail_count | INFO |     RMSE: 7739
-2025-07-17 17:37:09,723 | test_mail_count | INFO |     Top 5 features:
-2025-07-17 17:37:09,723 | test_mail_count | INFO |       Cheque 1099_today: 0.157
-2025-07-17 17:37:09,724 | test_mail_count | INFO |       InterestRate_10Y_lag1: 0.105
-2025-07-17 17:37:09,724 | test_mail_count | INFO |       weekday: 0.093
-2025-07-17 17:37:09,724 | test_mail_count | INFO |       SP500_lag1: 0.091
-2025-07-17 17:37:09,724 | test_mail_count | INFO |       sp500_x_total_mail: 0.079
-2025-07-17 17:37:09,724 | test_mail_count | INFO |
-=== SUMMARY COMPARISON ===
-2025-07-17 17:37:09,725 | test_mail_count | INFO | Random Forest Performance Comparison:
-2025-07-17 17:37:09,726 | test_mail_count | INFO | Mail Types | Features | R² Score | MAE   | RMSE
-2025-07-17 17:37:09,726 | test_mail_count | INFO | --------------------------------------------------
-2025-07-17 17:37:09,726 | test_mail_count | INFO |         10 |       19 |    0.497 |  5263 |  7520
-2025-07-17 17:37:09,726 | test_mail_count | INFO |         15 |       24 |    0.483 |  5449 |  7617
-2025-07-17 17:37:09,726 | test_mail_count | INFO |         20 |       29 |    0.467 |  5448 |  7739
-2025-07-17 17:37:09,726 | test_mail_count | INFO |
-=== RECOMMENDATIONS ===
-2025-07-17 17:37:09,726 | test_mail_count | INFO | Best R² Score: Top 10 mail types (R² = 0.497)
-2025-07-17 17:37:09,727 | test_mail_count | INFO | Best MAE: Top 10 mail types (MAE = 5263)
-2025-07-17 17:37:09,727 | test_mail_count | INFO | RECOMMENDATION: Top 10 mail types (best on both metrics)
-2025-07-17 17:37:09,727 | test_mail_count | INFO |
+2025-07-18 09:42:44,342 | comprehensive | INFO | === COMPREHENSIVE ANALYSIS ===
+2025-07-18 09:42:44,342 | comprehensive | INFO | Testing all economic indicators + mail type combinations
+2025-07-18 09:42:44,342 | comprehensive | INFO | === LOADING ALL DATA ===
+2025-07-18 09:42:44,343 | comprehensive | INFO | Loading mail data...
+2025-07-18 09:42:45,535 | comprehensive | INFO | Loading call data...
+2025-07-18 09:42:53,414 | comprehensive | INFO | Scaled call volumes by factor: 25.19
+2025-07-18 09:42:54,135 | comprehensive | INFO | Loading original economic data...
+2025-07-18 09:42:54,172 | comprehensive | INFO | Original economic indicators: ['FinancialSector', 'SP500', 'InterestRate_10Y', 'VIX']
+2025-07-18 09:42:54,172 | comprehensive | INFO | Loading expanded economic data...
+2025-07-18 09:42:54,181 | comprehensive | INFO | Expanded economic indicators: ['Oil', 'Dividend_ETF', 'Dollar_Index', 'Gold', 'High_Dividend', 'Banking', 'Regional_Banks', 'Corporate_Bond_ETF', 'Dividend_Aristocrats', 'REITs', 'Technology', 'Utilities', 'DowJones', '2Y_Treasury', 'NASDAQ', 'Russell2000', '10Y_Treasury', '30Y_Treasury', 'VIX', 'VIX9D', 'VXN']
+2025-07-18 09:42:54,196 | comprehensive | INFO | Combined economic data: 24 indicators
+2025-07-18 09:42:54,196 | comprehensive | INFO | All economic indicators: ['FinancialSector', 'SP500', 'InterestRate_10Y', 'VIX', 'Oil', 'Dividend_ETF', 'Dollar_Index', 'Gold', 'High_Dividend', 'Banking', 'Regional_Banks', 'Corporate_Bond_ETF', 'Dividend_Aristocrats', 'REITs', 'Technology', 'Utilities', 'DowJones', '2Y_Treasury', 'NASDAQ', 'Russell2000', '10Y_Treasury', '30Y_Treasury', 'VIX9D', 'VXN']
+2025-07-18 09:42:54,212 | comprehensive | INFO | Final combined data shape: (349, 256)
+2025-07-18 09:42:54,400 | comprehensive | INFO | === RANKING ALL MAIL TYPES ===
+2025-07-18 09:42:54,697 | comprehensive | INFO | Analyzed 252 mail types
+2025-07-18 09:42:54,697 | comprehensive | INFO | Top 25 mail types by correlation:
+2025-07-18 09:42:54,698 | comprehensive | INFO |    1. Russell2000: 0.437 (vol: 742,373, freq: 100.0%)
+2025-07-18 09:42:54,698 | comprehensive | INFO |    2. Dollar_Index: 0.427 (vol: 36,380, freq: 100.0%)
+2025-07-18 09:42:54,698 | comprehensive | INFO |    3. NASDAQ: 0.419 (vol: 6,176,891, freq: 100.0%)
+2025-07-18 09:42:54,698 | comprehensive | INFO |    4. SP500: 0.403 (vol: 1,939,221, freq: 100.0%)
+2025-07-18 09:42:54,699 | comprehensive | INFO |    5. Technology: 0.391 (vol: 75,887, freq: 100.0%)
+2025-07-18 09:42:54,699 | comprehensive | INFO |    6. Banking: 0.379 (vol: 17,512, freq: 100.0%)
+2025-07-18 09:42:54,699 | comprehensive | INFO |    7. DowJones: 0.375 (vol: 14,315,543, freq: 100.0%)
+2025-07-18 09:42:54,699 | comprehensive | INFO |    8. Regional_Banks: 0.365 (vol: 18,873, freq: 100.0%)
+2025-07-18 09:42:54,699 | comprehensive | INFO |    9. Dividend_ETF: 0.354 (vol: 43,417, freq: 100.0%)
+2025-07-18 09:42:54,700 | comprehensive | INFO |   10. Reject_Ltrs: 0.342 (vol: 19,354, freq: 59.3%)
+2025-07-18 09:42:54,700 | comprehensive | INFO |   11. Dividend_Aristocrats: 0.327 (vol: 34,426, freq: 100.0%)
+2025-07-18 09:42:54,700 | comprehensive | INFO |   12. Utilities: 0.287 (vol: 25,153, freq: 100.0%)
+2025-07-18 09:42:54,700 | comprehensive | INFO |   13. FinancialSector: 0.277 (vol: 15,633, freq: 100.0%)
+2025-07-18 09:42:54,700 | comprehensive | INFO |   14. Cheque 1099: 0.277 (vol: 4,042,276, freq: 17.5%)
+2025-07-18 09:42:54,700 | comprehensive | INFO |   15. High_Dividend: 0.269 (vol: 38,403, freq: 100.0%)
+2025-07-18 09:42:54,700 | comprehensive | INFO |   16. REITs: 0.245 (vol: 30,054, freq: 100.0%)
+2025-07-18 09:42:54,701 | comprehensive | INFO |   17. Exercise_Converted: 0.240 (vol: 1, freq: 0.3%)
+2025-07-18 09:42:54,701 | comprehensive | INFO |   18. 2Y_Treasury: -0.235 (vol: 1,644, freq: 100.0%)
+2025-07-18 09:42:54,701 | comprehensive | INFO |   19. SOI_Confirms: 0.234 (vol: 112,640, freq: 48.1%)
+2025-07-18 09:42:54,701 | comprehensive | INFO |   20. Exch_chks: 0.223 (vol: 32,892, freq: 67.0%)
+2025-07-18 09:42:54,701 | comprehensive | INFO |   21. ACH_Debit_Enrollment: 0.223 (vol: 10,310, freq: 77.7%)
+2025-07-18 09:42:54,701 | comprehensive | INFO |   22. Transfer: 0.222 (vol: 317,764, freq: 69.9%)
+2025-07-18 09:42:54,701 | comprehensive | INFO |   23. COA: 0.221 (vol: 540,152, freq: 71.9%)
+2025-07-18 09:42:54,702 | comprehensive | INFO |   24. NOTC_WITHDRAW: 0.214 (vol: 12,392, freq: 50.4%)
+2025-07-18 09:42:54,702 | comprehensive | INFO |   25. Repl_Chks: 0.205 (vol: 484,764, freq: 73.1%)
+2025-07-18 09:42:54,702 | comprehensive | INFO | === TESTING ALL ECONOMIC INDICATORS ===
+2025-07-18 09:42:54,795 | comprehensive | INFO | Tested 24 economic indicators
+2025-07-18 09:42:54,796 | comprehensive | INFO | Top 15 economic indicators by correlation:
+2025-07-18 09:42:54,796 | comprehensive | INFO |    1. Russell2000: same=0.437, lag1=0.451, rolling=0.454
+2025-07-18 09:42:54,796 | comprehensive | INFO |    2. Dollar_Index: same=0.427, lag1=0.422, rolling=0.415
+2025-07-18 09:42:54,796 | comprehensive | INFO |    3. NASDAQ: same=0.419, lag1=0.424, rolling=0.426
+2025-07-18 09:42:54,797 | comprehensive | INFO |    4. SP500: same=0.403, lag1=0.410, rolling=0.412
+2025-07-18 09:42:54,797 | comprehensive | INFO |    5. Technology: same=0.391, lag1=0.401, rolling=0.409
+2025-07-18 09:42:54,797 | comprehensive | INFO |    6. Banking: same=0.379, lag1=0.386, rolling=0.383
+2025-07-18 09:42:54,797 | comprehensive | INFO |    7. DowJones: same=0.375, lag1=0.383, rolling=0.383
+2025-07-18 09:42:54,798 | comprehensive | INFO |    8. Regional_Banks: same=0.365, lag1=0.372, rolling=0.370
+2025-07-18 09:42:54,798 | comprehensive | INFO |    9. Dividend_ETF: same=0.354, lag1=0.362, rolling=0.360
+2025-07-18 09:42:54,798 | comprehensive | INFO |   10. Dividend_Aristocrats: same=0.327, lag1=0.341, rolling=0.344
+2025-07-18 09:42:54,798 | comprehensive | INFO |   11. Utilities: same=0.287, lag1=0.291, rolling=0.285
+2025-07-18 09:42:54,798 | comprehensive | INFO |   12. FinancialSector: same=0.277, lag1=0.284, rolling=0.280
+2025-07-18 09:42:54,798 | comprehensive | INFO |   13. High_Dividend: same=0.269, lag1=0.277, rolling=0.274
+2025-07-18 09:42:54,799 | comprehensive | INFO |   14. REITs: same=0.245, lag1=0.253, rolling=0.255
+2025-07-18 09:42:54,799 | comprehensive | INFO |   15. 2Y_Treasury: same=-0.235, lag1=-0.231, rolling=-0.222
+2025-07-18 09:42:54,799 | comprehensive | INFO | === TESTING MODEL COMBINATIONS ===
+2025-07-18 09:42:54,799 | comprehensive | INFO |
+Testing with Top 10 mail types...
+2025-07-18 09:42:54,937 | comprehensive | INFO | Features: 347 samples x 22 features
+2025-07-18 09:42:54,937 | comprehensive | INFO | Top mail types: ['Russell2000', 'Dollar_Index', 'NASDAQ', 'SP500', 'Technology']...
+2025-07-18 09:42:54,937 | comprehensive | INFO | Top economic indicators: ['Russell2000', 'Dollar_Index', 'NASDAQ', 'SP500', 'Technology']
+2025-07-18 09:42:54,965 | comprehensive | INFO |   Linear Regression:
+2025-07-18 09:42:54,965 | comprehensive | INFO |     R² Score: 0.345
+2025-07-18 09:42:54,965 | comprehensive | INFO |     MAE: 6437
+2025-07-18 09:42:54,965 | comprehensive | INFO |     RMSE: 8577
+2025-07-18 09:42:55,326 | comprehensive | INFO |   Random Forest:
+2025-07-18 09:42:55,326 | comprehensive | INFO |     R² Score: 0.551
+2025-07-18 09:42:55,326 | comprehensive | INFO |     MAE: 4440
+2025-07-18 09:42:55,327 | comprehensive | INFO |     RMSE: 7102
+2025-07-18 09:42:55,342 | comprehensive | INFO |     Top 5 features:
+2025-07-18 09:42:55,342 | comprehensive | INFO |       recent_calls_avg: 0.244
+2025-07-18 09:42:55,343 | comprehensive | INFO |       Dollar_Index_today: 0.141
+2025-07-18 09:42:55,343 | comprehensive | INFO |       weekday: 0.102
+2025-07-18 09:42:55,343 | comprehensive | INFO |       Dollar_Index_lag1: 0.099
+2025-07-18 09:42:55,343 | comprehensive | INFO |       Dividend_ETF_today: 0.081
+2025-07-18 09:42:55,343 | comprehensive | INFO |
+Testing with Top 15 mail types...
+2025-07-18 09:42:55,458 | comprehensive | INFO | Features: 347 samples x 27 features
+2025-07-18 09:42:55,459 | comprehensive | INFO | Top mail types: ['Russell2000', 'Dollar_Index', 'NASDAQ', 'SP500', 'Technology']...
+2025-07-18 09:42:55,459 | comprehensive | INFO | Top economic indicators: ['Russell2000', 'Dollar_Index', 'NASDAQ', 'SP500', 'Technology']
+2025-07-18 09:42:55,464 | comprehensive | INFO |   Linear Regression:
+2025-07-18 09:42:55,464 | comprehensive | INFO |     R² Score: -0.036
+2025-07-18 09:42:55,464 | comprehensive | INFO |     MAE: 7009
+2025-07-18 09:42:55,464 | comprehensive | INFO |     RMSE: 10788
+2025-07-18 09:42:55,805 | comprehensive | INFO |   Random Forest:
+2025-07-18 09:42:55,805 | comprehensive | INFO |     R² Score: 0.541
+2025-07-18 09:42:55,805 | comprehensive | INFO |     MAE: 4614
+2025-07-18 09:42:55,805 | comprehensive | INFO |     RMSE: 7182
+2025-07-18 09:42:55,811 | comprehensive | INFO |     Top 5 features:
+2025-07-18 09:42:55,812 | comprehensive | INFO |       recent_calls_avg: 0.219
+2025-07-18 09:42:55,812 | comprehensive | INFO |       Dollar_Index_today: 0.110
+2025-07-18 09:42:55,812 | comprehensive | INFO |       weekday: 0.092
+2025-07-18 09:42:55,812 | comprehensive | INFO |       Dollar_Index_lag1: 0.075
+2025-07-18 09:42:55,812 | comprehensive | INFO |       Cheque 1099_today: 0.070
+2025-07-18 09:42:55,812 | comprehensive | INFO |
+Testing with Top 20 mail types...
+2025-07-18 09:42:55,927 | comprehensive | INFO | Features: 347 samples x 32 features
+2025-07-18 09:42:55,927 | comprehensive | INFO | Top mail types: ['Russell2000', 'Dollar_Index', 'NASDAQ', 'SP500', 'Technology']...
+2025-07-18 09:42:55,928 | comprehensive | INFO | Top economic indicators: ['Russell2000', 'Dollar_Index', 'NASDAQ', 'SP500', 'Technology']
+2025-07-18 09:42:55,938 | comprehensive | INFO |   Linear Regression:
+2025-07-18 09:42:55,939 | comprehensive | INFO |     R² Score: 0.014
+2025-07-18 09:42:55,939 | comprehensive | INFO |     MAE: 7063
+2025-07-18 09:42:55,939 | comprehensive | INFO |     RMSE: 10522
+2025-07-18 09:42:56,285 | comprehensive | INFO |   Random Forest:
+2025-07-18 09:42:56,285 | comprehensive | INFO |     R² Score: 0.550
+2025-07-18 09:42:56,285 | comprehensive | INFO |     MAE: 4580
+2025-07-18 09:42:56,285 | comprehensive | INFO |     RMSE: 7110
+2025-07-18 09:42:56,291 | comprehensive | INFO |     Top 5 features:
+2025-07-18 09:42:56,291 | comprehensive | INFO |       recent_calls_avg: 0.216
+2025-07-18 09:42:56,292 | comprehensive | INFO |       Dollar_Index_today: 0.111
+2025-07-18 09:42:56,292 | comprehensive | INFO |       weekday: 0.088
+2025-07-18 09:42:56,292 | comprehensive | INFO |       Cheque 1099_today: 0.069
+2025-07-18 09:42:56,293 | comprehensive | INFO |       Dollar_Index_lag1: 0.066
+2025-07-18 09:42:56,293 | comprehensive | INFO | === ANALYSIS AND RECOMMENDATIONS ===
+2025-07-18 09:42:56,293 | comprehensive | INFO |
+Performance Comparison (Random Forest):
+2025-07-18 09:42:56,294 | comprehensive | INFO | Mail Count | R² Score | MAE   | RMSE  | Features
+2025-07-18 09:42:56,294 | comprehensive | INFO | --------------------------------------------------
+2025-07-18 09:42:56,294 | comprehensive | INFO |         10 |    0.551 |  4440 |  7102 |       22
+2025-07-18 09:42:56,294 | comprehensive | INFO |         15 |    0.541 |  4614 |  7182 |       27
+2025-07-18 09:42:56,294 | comprehensive | INFO |         20 |    0.550 |  4580 |  7110 |       32
+2025-07-18 09:42:56,295 | comprehensive | INFO |
+Best R² Score: 10 mail types (R² = 0.551)
+2025-07-18 09:42:56,295 | comprehensive | INFO | Best MAE: 10 mail types (MAE = 4440)
+2025-07-18 09:42:56,295 | comprehensive | INFO | 
+RECOMMENDATION: Use 10 mail types (best on both metrics)
+2025-07-18 09:42:56,295 | comprehensive | INFO |
+Best Economic Indicators (Top 10):
+2025-07-18 09:42:56,295 | comprehensive | INFO |    1. Russell2000: 0.454
+2025-07-18 09:42:56,295 | comprehensive | INFO |    2. Dollar_Index: 0.427
+2025-07-18 09:42:56,295 | comprehensive | INFO |    3. NASDAQ: 0.426
+2025-07-18 09:42:56,296 | comprehensive | INFO |    4. SP500: 0.412
+2025-07-18 09:42:56,296 | comprehensive | INFO |    5. Technology: 0.409
+2025-07-18 09:42:56,296 | comprehensive | INFO |    6. Banking: 0.386
+2025-07-18 09:42:56,296 | comprehensive | INFO |    7. DowJones: 0.383
+2025-07-18 09:42:56,296 | comprehensive | INFO |    8. Regional_Banks: 0.372
+2025-07-18 09:42:56,296 | comprehensive | INFO |    9. Dividend_ETF: 0.362
+2025-07-18 09:42:56,297 | comprehensive | INFO |   10. Dividend_Aristocrats: 0.344
+2025-07-18 09:42:56,297 | comprehensive | INFO |
+Best Mail Types (Top 15):
+2025-07-18 09:42:56,297 | comprehensive | INFO |    1. Russell2000: 0.437
+2025-07-18 09:42:56,297 | comprehensive | INFO |    2. Dollar_Index: 0.427
+2025-07-18 09:42:56,297 | comprehensive | INFO |    3. NASDAQ: 0.419
+2025-07-18 09:42:56,298 | comprehensive | INFO |    4. SP500: 0.403
+2025-07-18 09:42:56,298 | comprehensive | INFO |    5. Technology: 0.391
+2025-07-18 09:42:56,298 | comprehensive | INFO |    6. Banking: 0.379
+2025-07-18 09:42:56,298 | comprehensive | INFO |    7. DowJones: 0.375
+2025-07-18 09:42:56,298 | comprehensive | INFO |    8. Regional_Banks: 0.365
+2025-07-18 09:42:56,298 | comprehensive | INFO |    9. Dividend_ETF: 0.354
+2025-07-18 09:42:56,299 | comprehensive | INFO |   10. Reject_Ltrs: 0.342
+2025-07-18 09:42:56,299 | comprehensive | INFO |   11. Dividend_Aristocrats: 0.327
+2025-07-18 09:42:56,299 | comprehensive | INFO |   12. Utilities: 0.287
+2025-07-18 09:42:56,299 | comprehensive | INFO |   13. FinancialSector: 0.277
+2025-07-18 09:42:56,299 | comprehensive | INFO |   14. Cheque 1099: 0.277
+2025-07-18 09:42:56,299 | comprehensive | INFO |   15. High_Dividend: 0.269
+2025-07-18 09:42:56,310 | comprehensive | INFO |
 === ANALYSIS COMPLETE ===
+2025-07-18 09:42:56,312 | comprehensive | INFO | Results saved to: C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\comprehensive_analysis_results
 PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> 
