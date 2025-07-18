@@ -1,0 +1,64 @@
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> & C:/Users/BhungarD/python.exe "c:/Users/BhungarD/OneDrive - Computershare/Desktop/finprod/range.py"
+2025-07-18 12:14:04,160 | mail_input | INFO | === MAIL INPUT RANGE FORECAST ===
+2025-07-18 12:14:04,160 | mail_input | INFO | Loading mail-calls data...
+2025-07-18 12:14:11,812 | mail_input | INFO | Daily mail-calls data: (349, 232)
+2025-07-18 12:14:11,947 | mail_input | INFO | Creating mail input features...
+2025-07-18 12:14:12,354 | mail_input | INFO | Mail input features: 348 samples x 19 features
+2025-07-18 12:14:12,355 | mail_input | INFO | Feature columns: ['Reject_Ltrs_volume', 'Cheque 1099_volume', 'Exercise_Converted_volume', 'SOI_Confirms_volume', 'Exch_chks_volume', 'ACH_Debit_Enrollment_volume', 'Transfer_volume', 'COA_volume', 'NOTC_WITHDRAW_volume', 'Repl_Chks_volume', 'total_mail_volume', 'log_total_mail_volume', 'mail_percentile', 'weekday', 'month', 'is_month_end', 'is_holiday_week', 'recent_calls_avg', 'recent_calls_trend']    
+2025-07-18 12:14:12,355 | mail_input | INFO | Training mail input models...
+2025-07-18 12:14:12,355 | mail_input | INFO | Training mail input models...
+2025-07-18 12:14:12,356 | mail_input | INFO |   Training 10% quantile model...
+2025-07-18 12:14:12,421 | mail_input | INFO |     Validation MAE: 5873
+2025-07-18 12:14:12,422 | mail_input | INFO |   Training 25% quantile model...
+2025-07-18 12:14:12,436 | mail_input | INFO |     Validation MAE: 4908
+2025-07-18 12:14:12,436 | mail_input | INFO |   Training 50% quantile model...
+2025-07-18 12:14:12,450 | mail_input | INFO |     Validation MAE: 4498
+2025-07-18 12:14:12,451 | mail_input | INFO |   Training 75% quantile model...
+2025-07-18 12:14:12,464 | mail_input | INFO |     Validation MAE: 5817
+2025-07-18 12:14:12,465 | mail_input | INFO |   Training 90% quantile model...
+2025-07-18 12:14:12,478 | mail_input | INFO |     Validation MAE: 10449
+2025-07-18 12:14:12,478 | mail_input | INFO |   Training bootstrap ensemble...
+2025-07-18 12:14:14,619 | mail_input | INFO | === SCENARIO TESTING ===
+2025-07-18 12:14:14,619 | mail_input | INFO |
+Scenario: test 1
+2025-07-18 12:14:14,619 | mail_input | INFO | Description: Large batch of reject letters sent
+2025-07-18 12:14:14,620 | mail_input | INFO | Mail inputs: {'Reject_Ltrs': 2000, 'Cheque 1099': 500}
+2025-07-18 12:14:14,697 | mail_input | INFO | Predicted call ranges:
+2025-07-18 12:14:14,697 | mail_input | INFO |   Conservative (25-75%): 6183 - 12056 calls
+2025-07-18 12:14:14,697 | mail_input | INFO |   Wide range (10-90%): 1274 - 16463 calls
+2025-07-18 12:14:14,698 | mail_input | INFO |   Most likely: 18238 calls
+2025-07-18 12:14:14,698 | mail_input | INFO |
+Scenario: test 2
+2025-07-18 12:14:14,699 | mail_input | INFO | Description: Typical mixed mail
+2025-07-18 12:14:14,699 | mail_input | INFO | Mail inputs: {'Reject_Ltrs': 800, 'Cheque 1099': 1200, 'Exercise_Converted': 300}
+2025-07-18 12:14:14,778 | mail_input | INFO | Predicted call ranges:
+2025-07-18 12:14:14,779 | mail_input | INFO |   Conservative (25-75%): 8301 - 16192 calls
+2025-07-18 12:14:14,779 | mail_input | INFO |   Wide range (10-90%): 3589 - 21692 calls
+2025-07-18 12:14:14,779 | mail_input | INFO |   Most likely: 16032 calls
+2025-07-18 12:14:14,780 | mail_input | INFO |
+Scenario: test 3
+2025-07-18 12:14:14,780 | mail_input | INFO | Description: Low volume administrative mail
+2025-07-18 12:14:14,780 | mail_input | INFO | Mail inputs: {'Transfer': 200, 'COA': 150}
+2025-07-18 12:14:14,858 | mail_input | INFO | Predicted call ranges:
+2025-07-18 12:14:14,858 | mail_input | INFO |   Conservative (25-75%): 9448 - 18875 calls
+2025-07-18 12:14:14,859 | mail_input | INFO |   Wide range (10-90%): 4893 - 25014 calls
+2025-07-18 12:14:14,859 | mail_input | INFO |   Most likely: 14093 calls
+2025-07-18 12:14:14,859 | mail_input | INFO |
+Scenario: test 4
+2025-07-18 12:14:14,859 | mail_input | INFO | Description:  mail volumes high day
+2025-07-18 12:14:14,859 | mail_input | INFO | Mail inputs: {'Reject_Ltrs': 3000, 'Cheque 1099': 2000, 'Exercise_Converted': 800}
+2025-07-18 12:14:14,945 | mail_input | INFO | Predicted call ranges:
+2025-07-18 12:14:14,945 | mail_input | INFO |   Conservative (25-75%): 4417 - 8626 calls
+2025-07-18 12:14:14,945 | mail_input | INFO |   Wide range (10-90%): 0 - 12080 calls
+2025-07-18 12:14:14,946 | mail_input | INFO |   Most likely: 20581 calls
+2025-07-18 12:14:14,948 | mail_input | INFO |
+=== INTERACTIVE EXAMPLE ===
+2025-07-18 12:14:14,948 | mail_input | INFO | Example: Predicting calls from specific mail campaign
+2025-07-18 12:14:14,948 | mail_input | INFO | Input: {'Reject_Ltrs': 1500, 'Cheque 1099': 800, 'Exercise_Converted': 200}
+2025-07-18 12:14:15,026 | mail_input | INFO | Output ranges:
+2025-07-18 12:14:15,026 | mail_input | INFO |   Most likely: 17355 calls
+2025-07-18 12:14:15,026 | mail_input | INFO |   Business planning (25-75%): 7065 - 13780 calls
+2025-07-18 12:14:15,026 | mail_input | INFO |   Capacity planning (10-90%): 2252 - 18641 calls
+2025-07-18 12:14:15,027 | mail_input | INFO |
+Model ready for stakeholder use!
+2025-07-18 12:14:15,027 | mail_input | INFO | Results saved to: C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\dist_input_ranges
