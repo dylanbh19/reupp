@@ -1,0 +1,174 @@
+od/range.py"
+2025-07-18 12:11:39,034 | enhanced_mail | INFO | === ENHANCED MAIL INPUT RANGE FORECAST ===
+2025-07-18 12:11:39,035 | enhanced_mail | INFO | Loading mail-calls data...
+2025-07-18 12:11:46,703 | enhanced_mail | INFO | Daily mail-calls data: (349, 232)
+2025-07-18 12:11:46,841 | enhanced_mail | INFO | Loading economic data...
+2025-07-18 12:11:46,841 | enhanced_mail | INFO | Loading economic indicators...
+2025-07-18 12:11:46,842 | enhanced_mail | WARNING | No economic data files found - creating dummy data for testing
+2025-07-18 12:11:46,850 | enhanced_mail | INFO | === SYSTEMATIC ECONOMIC INDICATOR TESTING ===
+2025-07-18 12:11:46,850 | enhanced_mail | INFO |
+Testing BASELINE (no economic indicators)...
+2025-07-18 12:11:46,850 | enhanced_mail | INFO | Using economic indicators: []
+2025-07-18 12:11:47,253 | enhanced_mail | INFO | Enhanced features: 348 samples x 19 features
+2025-07-18 12:11:47,570 | enhanced_mail | INFO | Baseline Performance: R² = -0.057, MAE = 8141
+2025-07-18 12:11:47,570 | enhanced_mail | INFO |
+=== TESTING INDIVIDUAL INDICATORS ===
+2025-07-18 12:11:47,570 | enhanced_mail | INFO |
+Testing: Russell2000
+2025-07-18 12:11:47,570 | enhanced_mail | INFO | Using economic indicators: ['Russell2000']
+2025-07-18 12:11:48,045 | enhanced_mail | INFO | Enhanced features: 348 samples x 22 features
+2025-07-18 12:11:48,388 | enhanced_mail | INFO |   R² = -0.161 (Δ-0.104), MAE = 8707 (Δ+565)
+2025-07-18 12:11:48,391 | enhanced_mail | INFO |
+Testing: Dollar_Index
+2025-07-18 12:11:48,391 | enhanced_mail | INFO | Using economic indicators: ['Dollar_Index']
+2025-07-18 12:11:48,969 | enhanced_mail | INFO | Enhanced features: 348 samples x 22 features
+2025-07-18 12:11:49,376 | enhanced_mail | INFO |   R² = -0.054 (Δ+0.003), MAE = 8117 (Δ-24)
+2025-07-18 12:11:49,376 | enhanced_mail | INFO |
+Testing: NASDAQ
+2025-07-18 12:11:49,376 | enhanced_mail | INFO | Using economic indicators: ['NASDAQ']
+2025-07-18 12:11:49,876 | enhanced_mail | INFO | Enhanced features: 348 samples x 22 features
+2025-07-18 12:11:50,303 | enhanced_mail | INFO |   R² = -1.204 (Δ-1.147), MAE = 12025 (Δ+3884)
+2025-07-18 12:11:50,303 | enhanced_mail | INFO |
+Testing: SP500
+2025-07-18 12:11:50,304 | enhanced_mail | INFO | Using economic indicators: ['SP500']
+2025-07-18 12:11:50,884 | enhanced_mail | INFO | Enhanced features: 348 samples x 22 features
+2025-07-18 12:11:51,429 | enhanced_mail | INFO |   R² = -0.388 (Δ-0.331), MAE = 9718 (Δ+1576)
+2025-07-18 12:11:51,429 | enhanced_mail | INFO |
+Testing: Technology
+2025-07-18 12:11:51,429 | enhanced_mail | INFO | Using economic indicators: ['Technology']
+2025-07-18 12:11:51,944 | enhanced_mail | INFO | Enhanced features: 348 samples x 22 features
+2025-07-18 12:11:52,352 | enhanced_mail | INFO |   R² = -0.067 (Δ-0.010), MAE = 8262 (Δ+120)
+2025-07-18 12:11:52,352 | enhanced_mail | INFO |
+=== INDIVIDUAL INDICATOR RANKINGS ===
+2025-07-18 12:11:52,352 | enhanced_mail | INFO |  1. Dollar_Index: R² = -0.054, MAE = 8117
+2025-07-18 12:11:52,353 | enhanced_mail | INFO |  2. Technology: R² = -0.067, MAE = 8262
+2025-07-18 12:11:52,353 | enhanced_mail | INFO |  3. Russell2000: R² = -0.161, MAE = 8707
+2025-07-18 12:11:52,353 | enhanced_mail | INFO |  4. SP500: R² = -0.388, MAE = 9718
+2025-07-18 12:11:52,353 | enhanced_mail | INFO |  5. NASDAQ: R² = -1.204, MAE = 12025
+2025-07-18 12:11:52,354 | enhanced_mail | INFO |
+=== TESTING INDICATOR COMBINATIONS ===
+2025-07-18 12:11:52,354 | enhanced_mail | INFO |
+Testing combination: Dollar_Index + Technology
+2025-07-18 12:11:52,354 | enhanced_mail | INFO | Using economic indicators: ['Dollar_Index', 'Technology']
+2025-07-18 12:11:52,923 | enhanced_mail | INFO | Enhanced features: 348 samples x 25 features
+2025-07-18 12:11:53,355 | enhanced_mail | INFO |   R² = -0.054 (Δ+0.003), MAE = 8185 (Δ+44)
+2025-07-18 12:11:53,355 | enhanced_mail | INFO |
+Testing combination: Dollar_Index + Russell2000
+2025-07-18 12:11:53,355 | enhanced_mail | INFO | Using economic indicators: ['Dollar_Index', 'Russell2000']
+2025-07-18 12:11:53,900 | enhanced_mail | INFO | Enhanced features: 348 samples x 25 features
+2025-07-18 12:11:54,307 | enhanced_mail | INFO |   R² = -0.130 (Δ-0.073), MAE = 8580 (Δ+438)
+2025-07-18 12:11:54,308 | enhanced_mail | INFO |
+Testing combination: Technology + Russell2000
+2025-07-18 12:11:54,308 | enhanced_mail | INFO | Using economic indicators: ['Technology', 'Russell2000']
+2025-07-18 12:11:54,763 | enhanced_mail | INFO | Enhanced features: 348 samples x 25 features
+2025-07-18 12:11:55,163 | enhanced_mail | INFO |   R² = -0.142 (Δ-0.086), MAE = 8734 (Δ+593)
+2025-07-18 12:11:55,164 | enhanced_mail | INFO |
+Testing combination: Dollar_Index + Technology + Russell2000
+2025-07-18 12:11:55,164 | enhanced_mail | INFO | Using economic indicators: ['Dollar_Index', 'Technology', 'Russell2000']
+2025-07-18 12:11:55,636 | enhanced_mail | INFO | Enhanced features: 348 samples x 28 features
+2025-07-18 12:11:56,075 | enhanced_mail | INFO |   R² = -0.125 (Δ-0.069), MAE = 8628 (Δ+487)
+2025-07-18 12:11:56,076 | enhanced_mail | INFO |
+Testing ALL 5 indicators...
+2025-07-18 12:11:56,076 | enhanced_mail | INFO | Using economic indicators: ['Russell2000', 'Dollar_Index', 'NASDAQ', 'SP500', 'Technology']
+2025-07-18 12:11:56,535 | enhanced_mail | INFO | Enhanced features: 348 samples x 34 features
+2025-07-18 12:11:57,040 | enhanced_mail | INFO |   R² = -1.132 (Δ-1.076), MAE = 11896 (Δ+3754)
+2025-07-18 12:11:57,040 | enhanced_mail | INFO |
+=== FINDING BEST CONFIGURATION ===
+2025-07-18 12:11:57,040 | enhanced_mail | INFO |
+=== TOP 5 CONFIGURATIONS BY R² SCORE ===
+2025-07-18 12:11:57,040 | enhanced_mail | INFO | 1. Individual: Dollar_Index
+2025-07-18 12:11:57,041 | enhanced_mail | INFO |    R² = -0.054, MAE = 8117
+2025-07-18 12:11:57,041 | enhanced_mail | INFO | 2. Combination: Dollar_Index + Technology
+2025-07-18 12:11:57,041 | enhanced_mail | INFO |    R² = -0.054, MAE = 8185
+2025-07-18 12:11:57,041 | enhanced_mail | INFO | 3. Baseline (no economics)
+2025-07-18 12:11:57,041 | enhanced_mail | INFO |    R² = -0.057, MAE = 8141
+2025-07-18 12:11:57,042 | enhanced_mail | INFO | 4. Individual: Technology
+2025-07-18 12:11:57,042 | enhanced_mail | INFO |    R² = -0.067, MAE = 8262
+2025-07-18 12:11:57,042 | enhanced_mail | INFO | 5. Combination: Dollar_Index + Technology + Russell2000
+2025-07-18 12:11:57,042 | enhanced_mail | INFO |    R² = -0.125, MAE = 8628
+2025-07-18 12:11:57,042 | enhanced_mail | INFO |
+=== TOP 5 CONFIGURATIONS BY MAE ===
+2025-07-18 12:11:57,042 | enhanced_mail | INFO | 1. Individual: Dollar_Index
+2025-07-18 12:11:57,043 | enhanced_mail | INFO |    R² = -0.054, MAE = 8117
+2025-07-18 12:11:57,043 | enhanced_mail | INFO | 2. Baseline (no economics)
+2025-07-18 12:11:57,043 | enhanced_mail | INFO |    R² = -0.057, MAE = 8141
+2025-07-18 12:11:57,043 | enhanced_mail | INFO | 3. Combination: Dollar_Index + Technology
+2025-07-18 12:11:57,043 | enhanced_mail | INFO |    R² = -0.054, MAE = 8185
+2025-07-18 12:11:57,043 | enhanced_mail | INFO | 4. Individual: Technology
+2025-07-18 12:11:57,043 | enhanced_mail | INFO |    R² = -0.067, MAE = 8262
+2025-07-18 12:11:57,043 | enhanced_mail | INFO | 5. Combination: Dollar_Index + Russell2000
+2025-07-18 12:11:57,043 | enhanced_mail | INFO |    R² = -0.130, MAE = 8580
+2025-07-18 12:11:57,044 | enhanced_mail | INFO |
+*** RECOMMENDATION: Best R² model ***
+2025-07-18 12:11:57,044 | enhanced_mail | INFO | BEST CONFIG: Individual: Dollar_Index
+2025-07-18 12:11:57,044 | enhanced_mail | INFO | R² Score: -0.054
+2025-07-18 12:11:57,044 | enhanced_mail | INFO | MAE: 8117
+2025-07-18 12:11:57,044 | enhanced_mail | INFO |
+=== TRAINING FINAL MODEL ===
+2025-07-18 12:11:57,045 | enhanced_mail | INFO | Using configuration: Individual: Dollar_Index
+2025-07-18 12:11:57,045 | enhanced_mail | INFO | Selected economic indicators: ['Dollar_Index']
+2025-07-18 12:11:57,045 | enhanced_mail | INFO | Using economic indicators: ['Dollar_Index']
+2025-07-18 12:11:57,508 | enhanced_mail | INFO | Enhanced features: 348 samples x 22 features
+2025-07-18 12:11:57,509 | enhanced_mail | INFO |   Training 10% quantile model...
+2025-07-18 12:11:57,558 | enhanced_mail | INFO |     Validation MAE: 5749
+2025-07-18 12:11:57,558 | enhanced_mail | INFO |   Training 25% quantile model...
+2025-07-18 12:11:57,574 | enhanced_mail | INFO |     Validation MAE: 4908
+2025-07-18 12:11:57,574 | enhanced_mail | INFO |   Training 50% quantile model...
+2025-07-18 12:11:57,591 | enhanced_mail | INFO |     Validation MAE: 4498
+2025-07-18 12:11:57,591 | enhanced_mail | INFO |   Training 75% quantile model...
+2025-07-18 12:11:57,607 | enhanced_mail | INFO |     Validation MAE: 5843
+2025-07-18 12:11:57,607 | enhanced_mail | INFO |   Training 90% quantile model...
+2025-07-18 12:11:57,621 | enhanced_mail | INFO |     Validation MAE: 10449
+2025-07-18 12:11:57,622 | enhanced_mail | INFO |   Training bootstrap ensemble...
+2025-07-18 12:12:00,080 | enhanced_mail | INFO | Final model trained with 22 features
+2025-07-18 12:12:00,390 | enhanced_mail | INFO | 
+=== ENHANCED SCENARIO TESTING ===
+2025-07-18 12:12:00,391 | enhanced_mail | INFO |
+--- Scenario: High Reject Letters + Strong Market ---
+2025-07-18 12:12:00,391 | enhanced_mail | INFO | Description: Large reject letter batch during market upturn
+2025-07-18 12:12:00,391 | enhanced_mail | INFO | Mail inputs: {'Reject_Ltrs': 2500, 'Cheque 1099': 600}
+2025-07-18 12:12:00,391 | enhanced_mail | INFO | Economic conditions: Market UP
+2025-07-18 12:12:00,507 | enhanced_mail | INFO | Predicted call ranges:
+2025-07-18 12:12:00,507 | enhanced_mail | INFO |   Conservative (25-75%): 5300 - 10410 calls
+2025-07-18 12:12:00,507 | enhanced_mail | INFO |   Wide range (10-90%): 0 - 14280 calls
+2025-07-18 12:12:00,508 | enhanced_mail | INFO |   Most likely: 19218 calls
+2025-07-18 12:12:00,508 | enhanced_mail | INFO |   Bootstrap mean: 24940 ± 4095 calls
+2025-07-18 12:12:00,508 | enhanced_mail | INFO |
+--- Scenario: Mixed Mail + Market Volatility ---
+2025-07-18 12:12:00,508 | enhanced_mail | INFO | Description: Typical mail during market uncertainty
+2025-07-18 12:12:00,508 | enhanced_mail | INFO | Mail inputs: {'Reject_Ltrs': 1200, 'Cheque 1099': 800, 'Transfer': 300}
+2025-07-18 12:12:00,508 | enhanced_mail | INFO | Economic conditions: Market DOWN
+2025-07-18 12:12:00,637 | enhanced_mail | INFO | Predicted call ranges:
+2025-07-18 12:12:00,638 | enhanced_mail | INFO |   Conservative (25-75%): 7243 - 14430 calls
+2025-07-18 12:12:00,638 | enhanced_mail | INFO |   Wide range (10-90%): 2369 - 19233 calls
+2025-07-18 12:12:00,638 | enhanced_mail | INFO |   Most likely: 16222 calls
+2025-07-18 12:12:00,638 | enhanced_mail | INFO |   Bootstrap mean: 24774 ± 4227 calls
+2025-07-18 12:12:00,638 | enhanced_mail | INFO |
+--- Scenario: Low Mail + Stable Markets ---
+2025-07-18 12:12:00,639 | enhanced_mail | INFO | Description: Light administrative mail, stable economic conditions
+2025-07-18 12:12:00,639 | enhanced_mail | INFO | Mail inputs: {'Transfer': 200, 'COA': 150, 'Repl_Chks': 100}
+2025-07-18 12:12:00,639 | enhanced_mail | INFO | Economic conditions: Market UP
+2025-07-18 12:12:00,761 | enhanced_mail | INFO | Predicted call ranges:
+2025-07-18 12:12:00,762 | enhanced_mail | INFO |   Conservative (25-75%): 9411 - 18692 calls
+2025-07-18 12:12:00,762 | enhanced_mail | INFO |   Wide range (10-90%): 4896 - 25039 calls
+2025-07-18 12:12:00,762 | enhanced_mail | INFO |   Most likely: 14026 calls
+2025-07-18 12:12:00,762 | enhanced_mail | INFO |   Bootstrap mean: 24272 ± 4414 calls
+2025-07-18 12:12:00,763 | enhanced_mail | INFO |
+--- Scenario: Heavy Mail Day + Market Stress ---
+2025-07-18 12:12:00,763 | enhanced_mail | INFO | Description: Peak mail volumes during market downturn (worst case)
+2025-07-18 12:12:00,763 | enhanced_mail | INFO | Mail inputs: {'Reject_Ltrs': 3500, 'Cheque 1099': 2200, 'Exercise_Converted': 800, 'SOI_Confirms': 400}
+2025-07-18 12:12:00,763 | enhanced_mail | INFO | Economic conditions: Market DOWN
+2025-07-18 12:12:00,930 | enhanced_mail | INFO | Predicted call ranges:
+2025-07-18 12:12:00,931 | enhanced_mail | INFO |   Conservative (25-75%): 4075 - 6520 calls
+2025-07-18 12:12:00,931 | enhanced_mail | INFO |   Wide range (10-90%): 0 - 8585 calls
+2025-07-18 12:12:00,931 | enhanced_mail | INFO |   Most likely: 21386 calls
+2025-07-18 12:12:00,931 | enhanced_mail | INFO |   Bootstrap mean: 24139 ± 3719 calls
+2025-07-18 12:12:00,934 | enhanced_mail | INFO |
+=== ANALYSIS COMPLETE ===
+2025-07-18 12:12:00,935 | enhanced_mail | INFO | Results saved to: C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\enhanced_mail_ranges     
+2025-07-18 12:12:00,935 | enhanced_mail | INFO |
+=== SUMMARY FOR STAKEHOLDERS ===
+2025-07-18 12:12:00,936 | enhanced_mail | INFO | ✓ Tested economic indicators systematically
+2025-07-18 12:12:00,936 | enhanced_mail | INFO | ✓ Best configuration: Individual: Dollar_Index
+2025-07-18 12:12:00,936 | enhanced_mail | INFO | ✓ Final model MAE: 8117 calls (avg prediction error)
+2025-07-18 12:12:00,936 | enhanced_mail | INFO | ✓ Final model R²: -0.054 (explains -5.4% of variance)
