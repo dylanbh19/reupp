@@ -1,0 +1,554 @@
+Using baseline script: range.py
+Output directory: friday_improvement_results
+
+
+================================================================================
+    ______ _____  _____ _____       __     __  _____  _____   ____  _      ______ __  __
+   |  ____|  __ \|_   _|  __ \   /\ \ \   / / |  __ \|  __ \ / __ \| |    |  ____|  \/  |
+   | |__  | |__) | | | | |  | | /  \ \ \_/ /  | |__) | |__) | |  | | |    | |__  | \  / |
+   |  __| |  _  /  | | | |  | |/ /\ \ \   /   |  ___/|  _  /| |  | | |    |  __| | |\/| |
+   | |    | | \ \ _| |_| |__| / ____ \ | |    | |    | | \ \| |__| | |____| |____| |  | |
+   |_|    |_|  \_\_____|_____/_/    \_\|_|    |_|    |_|  \_\\____/|______|______|_|  |_|
+
+                        FRIDAY PROBLEM COMPREHENSIVE SOLVER
+                    Tests 50+ Approaches to Crack Friday Predictions
+================================================================================
+
+11:47:02 |     INFO | Starting comprehensive Friday improvement testing...
+11:47:02 |     INFO | PHASE 1: Loading baseline model and establishing performance metrics
+11:47:02 |     INFO | Loading baseline model and data...
+2025-07-22 11:47:10,305 | mail_input | INFO | Daily mail-calls data: (349, 232)
+2025-07-22 11:47:10,984 | mail_input | INFO | Mail input features: 348 samples x 19 features
+2025-07-22 11:47:10,984 | mail_input | INFO | Feature columns: ['Reject_Ltrs_volume', 'Cheque 1099_volume', 'Exercise_Converted_volume', 'SOI_Confirms_volume', 'Exch_chks_volume', 'ACH_Debit_Enrollment_volume', 'Transfer_volume', 'COA_volume', 'NOTC_WITHDRAW_volume', 'Repl_Chks_volume', 'total_mail_volume', 'log_total_mail_volume', 'mail_percentile', 'weekday', 'month', 'is_month_end', 'is_holiday_week', 'recent_calls_avg', 'recent_calls_trend']
+2025-07-22 11:47:10,984 | mail_input | INFO | Training mail input models...
+2025-07-22 11:47:10,985 | mail_input | INFO |   Training 10% quantile model...
+2025-07-22 11:47:11,003 | mail_input | INFO |     Validation MAE: 5873
+2025-07-22 11:47:11,003 | mail_input | INFO |   Training 25% quantile model...
+2025-07-22 11:47:11,019 | mail_input | INFO |     Validation MAE: 4908
+2025-07-22 11:47:11,019 | mail_input | INFO |   Training 50% quantile model...
+2025-07-22 11:47:11,035 | mail_input | INFO |     Validation MAE: 4498
+2025-07-22 11:47:11,036 | mail_input | INFO |   Training 75% quantile model...
+2025-07-22 11:47:11,051 | mail_input | INFO |     Validation MAE: 5817
+2025-07-22 11:47:11,051 | mail_input | INFO |   Training 90% quantile model...
+2025-07-22 11:47:11,066 | mail_input | INFO |     Validation MAE: 10449
+2025-07-22 11:47:11,066 | mail_input | INFO |   Training bootstrap ensemble...
+11:47:13 |     INFO | Loaded 348 samples with 19 features
+2025-07-22 11:47:13,129 | mail_input | INFO | Loaded 348 samples with 19 features
+11:47:13 |     INFO | Calculating baseline performance metrics...
+2025-07-22 11:47:13,129 | mail_input | INFO | Calculating baseline performance metrics...
+11:47:13 |     INFO | BASELINE PERFORMANCE:
+2025-07-22 11:47:13,134 | mail_input | INFO | BASELINE PERFORMANCE:
+11:47:13 |     INFO |   Overall MAE: 4498
+2025-07-22 11:47:13,146 | mail_input | INFO |   Overall MAE: 4498
+11:47:13 |     INFO |   Overall Accuracy: 60.7%
+2025-07-22 11:47:13,147 | mail_input | INFO |   Overall Accuracy: 60.7%
+11:47:13 |     INFO |   Friday MAE: 9788
+2025-07-22 11:47:13,147 | mail_input | INFO |   Friday MAE: 9788
+11:47:13 |     INFO |   Non-Friday MAE: 3176
+2025-07-22 11:47:13,148 | mail_input | INFO |   Non-Friday MAE: 3176
+11:47:13 |     INFO |   Friday Challenge: 6612 extra MAE
+2025-07-22 11:47:13,148 | mail_input | INFO |   Friday Challenge: 6612 extra MAE
+11:47:13 |     INFO | PHASE 2: Advanced feature engineering for Friday patterns
+2025-07-22 11:47:13,149 | mail_input | INFO | PHASE 2: Advanced feature engineering for Friday patterns
+11:47:13 |     INFO | PHASE 3: Testing 50+ approaches to improve Friday predictions
+2025-07-22 11:47:13,149 | mail_input | INFO | PHASE 3: Testing 50+ approaches to improve Friday predictions
+11:47:13 |     INFO | ================================================================================
+2025-07-22 11:47:13,149 | mail_input | INFO | ================================================================================
+11:47:13 |     INFO | STARTING COMPREHENSIVE FRIDAY MODEL TESTING
+2025-07-22 11:47:13,150 | mail_input | INFO | STARTING COMPREHENSIVE FRIDAY MODEL TESTING
+11:47:13 |     INFO | ================================================================================
+2025-07-22 11:47:13,150 | mail_input | INFO | ================================================================================
+11:47:13 |     INFO | Testing Category 1: Advanced Feature Engineering...
+2025-07-22 11:47:13,150 | mail_input | INFO | Testing Category 1: Advanced Feature Engineering...
+11:47:13 |     INFO | Creating advanced Friday features...
+2025-07-22 11:47:13,151 | mail_input | INFO | Creating advanced Friday features...
+11:47:13 |     INFO | Enhanced features: 19 -> 49
+2025-07-22 11:47:13,163 | mail_input | INFO | Enhanced features: 19 -> 49
+11:47:13 |     INFO | New features added: 30
+2025-07-22 11:47:13,163 | mail_input | INFO | New features added: 30
+11:47:13 |     INFO |   [00] Testing FE01_Enhanced Features - All...
+2025-07-22 11:47:13,179 | mail_input | INFO |   [00] Testing FE01_Enhanced Features - All...
+11:47:13 |     INFO |     MAE: 3686 | Friday MAE: 7795.444988663222 | Improvement: 18.1%
+2025-07-22 11:47:13,199 | mail_input | INFO |     MAE: 3686 | Friday MAE: 7795.444988663222 | Improvement: 18.1%
+11:47:13 |     INFO |   [01] Testing FE02_Enhanced Features - Friday Only...
+2025-07-22 11:47:13,199 | mail_input | INFO |   [01] Testing FE02_Enhanced Features - Friday Only...
+11:47:13 |     INFO |     MAE: 3842 | Friday MAE: 7933.547879912541 | Improvement: 14.6%
+2025-07-22 11:47:13,215 | mail_input | INFO |     MAE: 3842 | Friday MAE: 7933.547879912541 | Improvement: 14.6%
+11:47:13 |     INFO |   [02] Testing FE03_Polynomial Friday Features...
+2025-07-22 11:47:13,216 | mail_input | INFO |   [02] Testing FE03_Polynomial Friday Features...
+11:47:13 |     INFO |     MAE: 3662 | Friday MAE: 7652.047370199179 | Improvement: 18.6%
+2025-07-22 11:47:13,235 | mail_input | INFO |     MAE: 3662 | Friday MAE: 7652.047370199179 | Improvement: 18.6%
+11:47:13 |     INFO |   [03] Testing FE04_Friday Mail Ratios...
+2025-07-22 11:47:13,236 | mail_input | INFO |   [03] Testing FE04_Friday Mail Ratios...
+11:47:13 |     INFO |     MAE: 4498 | Friday MAE: 9788.162303931484 | Improvement: 0.0%
+2025-07-22 11:47:13,253 | mail_input | INFO |     MAE: 4498 | Friday MAE: 9788.162303931484 | Improvement: 0.0%
+11:47:13 |     INFO |   [04] Testing FE05_Friday Lag Features...
+2025-07-22 11:47:13,254 | mail_input | INFO |   [04] Testing FE05_Friday Lag Features...
+11:47:13 |     INFO |     MAE: 3792 | Friday MAE: 7907.889681072069 | Improvement: 15.7%
+2025-07-22 11:47:13,272 | mail_input | INFO |     MAE: 3792 | Friday MAE: 7907.889681072069 | Improvement: 15.7%
+11:47:13 |     INFO |   [05] Testing FE06_Friday Moving Averages...
+2025-07-22 11:47:13,273 | mail_input | INFO |   [05] Testing FE06_Friday Moving Averages...
+11:47:13 |     INFO |     MAE: 4289 | Friday MAE: 9128.014190205115 | Improvement: 4.7%
+2025-07-22 11:47:13,294 | mail_input | INFO |     MAE: 4289 | Friday MAE: 9128.014190205115 | Improvement: 4.7%
+11:47:13 |     INFO |   [06] Testing FE07_Friday Volatility Features...
+2025-07-22 11:47:13,294 | mail_input | INFO |   [06] Testing FE07_Friday Volatility Features...
+11:47:13 |     INFO |     MAE: 4491 | Friday MAE: 9802.889726993599 | Improvement: 0.2%
+2025-07-22 11:47:13,311 | mail_input | INFO |     MAE: 4491 | Friday MAE: 9802.889726993599 | Improvement: 0.2%
+11:47:13 |     INFO |   [07] Testing FE08_Friday Seasonality Decomp...
+2025-07-22 11:47:13,312 | mail_input | INFO |   [07] Testing FE08_Friday Seasonality Decomp...
+11:47:13 |     INFO |     MAE: 4498 | Friday MAE: 9788.162303931484 | Improvement: 0.0%
+2025-07-22 11:47:13,329 | mail_input | INFO |     MAE: 4498 | Friday MAE: 9788.162303931484 | Improvement: 0.0%
+11:47:13 |     INFO |   [08] Testing FE09_Friday Clustering Features...
+2025-07-22 11:47:13,329 | mail_input | INFO |   [08] Testing FE09_Friday Clustering Features...
+11:47:13 |     INFO |     MAE: 4498 | Friday MAE: 9788.162303931484 | Improvement: 0.0%
+2025-07-22 11:47:13,347 | mail_input | INFO |     MAE: 4498 | Friday MAE: 9788.162303931484 | Improvement: 0.0%
+11:47:13 |     INFO |   [09] Testing FE10_Friday PCA Features...
+2025-07-22 11:47:13,347 | mail_input | INFO |   [09] Testing FE10_Friday PCA Features...
+11:47:13 |     INFO |     MAE: 3686 | Friday MAE: 7795.444988663222 | Improvement: 18.1%
+2025-07-22 11:47:13,367 | mail_input | INFO |     MAE: 3686 | Friday MAE: 7795.444988663222 | Improvement: 18.1%
+11:47:13 |     INFO |   [10] Testing FE11_Friday Interaction Matrix...
+2025-07-22 11:47:13,367 | mail_input | INFO |   [10] Testing FE11_Friday Interaction Matrix...
+11:47:13 |     INFO |     MAE: 4944 | Friday MAE: 13107.438785971182 | Improvement: -9.9%
+2025-07-22 11:47:13,385 | mail_input | INFO |     MAE: 4944 | Friday MAE: 13107.438785971182 | Improvement: -9.9%
+11:47:13 |     INFO |   [11] Testing FE12_Friday Binary Indicators...
+2025-07-22 11:47:13,386 | mail_input | INFO |   [11] Testing FE12_Friday Binary Indicators...
+11:47:13 |     INFO |     MAE: 4498 | Friday MAE: 9788.162303931484 | Improvement: 0.0%
+2025-07-22 11:47:13,404 | mail_input | INFO |     MAE: 4498 | Friday MAE: 9788.162303931484 | Improvement: 0.0%
+11:47:13 |     INFO |   [12] Testing FE13_Friday Percentile Features...
+2025-07-22 11:47:13,404 | mail_input | INFO |   [12] Testing FE13_Friday Percentile Features...
+11:47:13 |     INFO |     MAE: 4498 | Friday MAE: 9788.162303931484 | Improvement: 0.0%
+2025-07-22 11:47:13,422 | mail_input | INFO |     MAE: 4498 | Friday MAE: 9788.162303931484 | Improvement: 0.0%
+11:47:13 |     INFO |   [13] Testing FE14_Friday Composite Scores...
+2025-07-22 11:47:13,422 | mail_input | INFO |   [13] Testing FE14_Friday Composite Scores...
+11:47:13 |     INFO |     MAE: 3686 | Friday MAE: 7795.444988663222 | Improvement: 18.1%
+2025-07-22 11:47:13,441 | mail_input | INFO |     MAE: 3686 | Friday MAE: 7795.444988663222 | Improvement: 18.1%
+11:47:13 |     INFO |   [14] Testing FE15_Friday Domain Features...
+2025-07-22 11:47:13,441 | mail_input | INFO |   [14] Testing FE15_Friday Domain Features...
+11:47:13 |     INFO |     MAE: 4498 | Friday MAE: 9788.162303931484 | Improvement: 0.0%
+2025-07-22 11:47:13,459 | mail_input | INFO |     MAE: 4498 | Friday MAE: 9788.162303931484 | Improvement: 0.0%
+11:47:13 |     INFO | Testing Category 2: Ensemble Methods...
+2025-07-22 11:47:13,460 | mail_input | INFO | Testing Category 2: Ensemble Methods...
+11:47:13 |     INFO | Creating advanced Friday features...
+2025-07-22 11:47:13,461 | mail_input | INFO | Creating advanced Friday features...
+11:47:13 |     INFO | Enhanced features: 19 -> 49
+2025-07-22 11:47:13,469 | mail_input | INFO | Enhanced features: 19 -> 49
+11:47:13 |     INFO | New features added: 30
+2025-07-22 11:47:13,469 | mail_input | INFO | New features added: 30
+11:47:13 |     INFO |   [15] Testing EN01_Friday Voting Ensemble...
+2025-07-22 11:47:13,470 | mail_input | INFO |   [15] Testing EN01_Friday Voting Ensemble...
+11:47:13 |     INFO |     MAE: 4550 | Friday MAE: 7673.750315050094 | Improvement: -1.1%
+2025-07-22 11:47:13,738 | mail_input | INFO |     MAE: 4550 | Friday MAE: 7673.750315050094 | Improvement: -1.1%
+11:47:13 |     INFO |   [16] Testing EN02_Friday Stacking Ensemble...
+2025-07-22 11:47:13,738 | mail_input | INFO |   [16] Testing EN02_Friday Stacking Ensemble...
+11:47:13 |     INFO |     MAE: 4550 | Friday MAE: 7673.750315050094 | Improvement: -1.1%
+2025-07-22 11:47:13,954 | mail_input | INFO |     MAE: 4550 | Friday MAE: 7673.750315050094 | Improvement: -1.1%
+11:47:13 |     INFO |   [17] Testing EN03_Friday Bagging Ensemble...
+2025-07-22 11:47:13,954 | mail_input | INFO |   [17] Testing EN03_Friday Bagging Ensemble...
+11:47:13 |     INFO |   [18] Testing EN04_Friday Boosting Ensemble...
+2025-07-22 11:47:13,955 | mail_input | INFO |   [18] Testing EN04_Friday Boosting Ensemble...
+11:47:14 |     INFO |     MAE: 8567 | Friday MAE: 8503.127475833824 | Improvement: -90.5%
+2025-07-22 11:47:14,068 | mail_input | INFO |     MAE: 8567 | Friday MAE: 8503.127475833824 | Improvement: -90.5%
+11:47:14 |     INFO |   [19] Testing EN05_Friday Weighted Ensemble...
+2025-07-22 11:47:14,068 | mail_input | INFO |   [19] Testing EN05_Friday Weighted Ensemble...
+11:47:14 |     INFO |     MAE: 5370 | Friday MAE: 8107.002362676105 | Improvement: -19.4%
+2025-07-22 11:47:14,204 | mail_input | INFO |     MAE: 5370 | Friday MAE: 8107.002362676105 | Improvement: -19.4%
+11:47:14 |     INFO |   [20] Testing EN06_Friday Day-Specific Ensemble...
+2025-07-22 11:47:14,204 | mail_input | INFO |   [20] Testing EN06_Friday Day-Specific Ensemble...
+11:47:14 |     INFO |     MAE: 4550 | Friday MAE: 7673.750315050094 | Improvement: -1.1%
+2025-07-22 11:47:14,421 | mail_input | INFO |     MAE: 4550 | Friday MAE: 7673.750315050094 | Improvement: -1.1%
+11:47:14 |     INFO |   [21] Testing EN07_Friday Meta-Learning...
+2025-07-22 11:47:14,421 | mail_input | INFO |   [21] Testing EN07_Friday Meta-Learning...
+11:47:14 |     INFO |     MAE: 4550 | Friday MAE: 7673.750315050094 | Improvement: -1.1%
+2025-07-22 11:47:14,634 | mail_input | INFO |     MAE: 4550 | Friday MAE: 7673.750315050094 | Improvement: -1.1%
+11:47:14 |     INFO |   [22] Testing EN08_Friday Cascaded Models...
+2025-07-22 11:47:14,634 | mail_input | INFO |   [22] Testing EN08_Friday Cascaded Models...
+11:47:14 |     INFO |     MAE: 4550 | Friday MAE: 7673.750315050094 | Improvement: -1.1%
+2025-07-22 11:47:14,853 | mail_input | INFO |     MAE: 4550 | Friday MAE: 7673.750315050094 | Improvement: -1.1%
+11:47:14 |     INFO |   [23] Testing EN09_Friday Multi-Target...
+2025-07-22 11:47:14,853 | mail_input | INFO |   [23] Testing EN09_Friday Multi-Target...
+11:47:15 |     INFO |     MAE: 4550 | Friday MAE: 7673.750315050094 | Improvement: -1.1%
+2025-07-22 11:47:15,070 | mail_input | INFO |     MAE: 4550 | Friday MAE: 7673.750315050094 | Improvement: -1.1%
+11:47:15 |     INFO |   [24] Testing EN10_Friday Hierarchical...
+2025-07-22 11:47:15,071 | mail_input | INFO |   [24] Testing EN10_Friday Hierarchical...
+11:47:15 |     INFO |     MAE: 4550 | Friday MAE: 7673.750315050094 | Improvement: -1.1%
+2025-07-22 11:47:15,285 | mail_input | INFO |     MAE: 4550 | Friday MAE: 7673.750315050094 | Improvement: -1.1%
+11:47:15 |     INFO | Testing Category 3: Friday-Specific Models...
+2025-07-22 11:47:15,286 | mail_input | INFO | Testing Category 3: Friday-Specific Models...
+11:47:15 |     INFO |   [25] Testing FS01_Two-Stage Model...
+2025-07-22 11:47:15,286 | mail_input | INFO |   [25] Testing FS01_Two-Stage Model...
+11:47:15 |     INFO |     MAE: 4101 | Friday MAE: 7803.5951394130225 | Improvement: 8.8%
+2025-07-22 11:47:15,295 | mail_input | INFO |     MAE: 4101 | Friday MAE: 7803.5951394130225 | Improvement: 8.8%
+11:47:15 |     INFO |   [26] Testing FS02_Friday Switch Model...
+2025-07-22 11:47:15,296 | mail_input | INFO |   [26] Testing FS02_Friday Switch Model...
+11:47:15 |     INFO |     MAE: 4184 | Friday MAE: 8217.025511313394 | Improvement: 7.0%
+2025-07-22 11:47:15,300 | mail_input | INFO |     MAE: 4184 | Friday MAE: 8217.025511313394 | Improvement: 7.0%
+11:47:15 |     INFO |   [27] Testing FS03_Friday Correction Model...
+2025-07-22 11:47:15,301 | mail_input | INFO |   [27] Testing FS03_Friday Correction Model...
+11:47:15 |     INFO |     MAE: 4073 | Friday MAE: 7662.916401774114 | Improvement: 9.4%
+2025-07-22 11:47:15,306 | mail_input | INFO |     MAE: 4073 | Friday MAE: 7662.916401774114 | Improvement: 9.4%
+11:47:15 |     INFO |   [28] Testing FS04_Friday Multiplier Model...
+2025-07-22 11:47:15,307 | mail_input | INFO |   [28] Testing FS04_Friday Multiplier Model...
+11:47:15 |     INFO |     MAE: 4184 | Friday MAE: 8217.025511313394 | Improvement: 7.0%
+2025-07-22 11:47:15,311 | mail_input | INFO |     MAE: 4184 | Friday MAE: 8217.025511313394 | Improvement: 7.0%
+11:47:15 |     INFO |   [29] Testing FS05_Friday Residual Model...
+2025-07-22 11:47:15,312 | mail_input | INFO |   [29] Testing FS05_Friday Residual Model...
+11:47:15 |     INFO |     MAE: 4073 | Friday MAE: 7662.916401774114 | Improvement: 9.4%
+2025-07-22 11:47:15,316 | mail_input | INFO |     MAE: 4073 | Friday MAE: 7662.916401774114 | Improvement: 9.4%
+11:47:15 |     INFO |   [30] Testing FS06_Friday Quantile Model...
+2025-07-22 11:47:15,317 | mail_input | INFO |   [30] Testing FS06_Friday Quantile Model...
+11:47:15 |     INFO |     MAE: 4101 | Friday MAE: 7803.5951394130225 | Improvement: 8.8%
+2025-07-22 11:47:15,326 | mail_input | INFO |     MAE: 4101 | Friday MAE: 7803.5951394130225 | Improvement: 8.8%
+11:47:15 |     INFO |   [31] Testing FS07_Friday Conditional Model...
+2025-07-22 11:47:15,327 | mail_input | INFO |   [31] Testing FS07_Friday Conditional Model...
+11:47:15 |     INFO |     MAE: 4184 | Friday MAE: 8217.025511313394 | Improvement: 7.0%
+2025-07-22 11:47:15,330 | mail_input | INFO |     MAE: 4184 | Friday MAE: 8217.025511313394 | Improvement: 7.0%
+11:47:15 |     INFO |   [32] Testing FS08_Friday Transfer Learning...
+2025-07-22 11:47:15,331 | mail_input | INFO |   [32] Testing FS08_Friday Transfer Learning...
+11:47:15 |     INFO |     MAE: 4101 | Friday MAE: 7803.5951394130225 | Improvement: 8.8%
+2025-07-22 11:47:15,340 | mail_input | INFO |     MAE: 4101 | Friday MAE: 7803.5951394130225 | Improvement: 8.8%
+11:47:15 |     INFO |   [33] Testing FS09_Friday Domain Adaptation...
+2025-07-22 11:47:15,340 | mail_input | INFO |   [33] Testing FS09_Friday Domain Adaptation...
+11:47:15 |     INFO |     MAE: 4073 | Friday MAE: 7662.916401774114 | Improvement: 9.4%
+2025-07-22 11:47:15,346 | mail_input | INFO |     MAE: 4073 | Friday MAE: 7662.916401774114 | Improvement: 9.4%
+11:47:15 |     INFO |   [34] Testing FS10_Friday Specialized Pipeline...
+2025-07-22 11:47:15,346 | mail_input | INFO |   [34] Testing FS10_Friday Specialized Pipeline...
+11:47:15 |     INFO |     MAE: 4101 | Friday MAE: 7803.5951394130225 | Improvement: 8.8%
+2025-07-22 11:47:15,355 | mail_input | INFO |     MAE: 4101 | Friday MAE: 7803.5951394130225 | Improvement: 8.8%
+11:47:15 |     INFO | Testing Category 4: Advanced Algorithms...
+2025-07-22 11:47:15,356 | mail_input | INFO | Testing Category 4: Advanced Algorithms...
+11:47:15 |     INFO | Creating advanced Friday features...
+2025-07-22 11:47:15,356 | mail_input | INFO | Creating advanced Friday features...
+11:47:15 |     INFO | Enhanced features: 19 -> 49
+2025-07-22 11:47:15,367 | mail_input | INFO | Enhanced features: 19 -> 49
+11:47:15 |     INFO | New features added: 30
+2025-07-22 11:47:15,368 | mail_input | INFO | New features added: 30
+11:47:15 |     INFO |   [35] Testing AL01_Gradient Boosting...
+2025-07-22 11:47:15,368 | mail_input | INFO |   [35] Testing AL01_Gradient Boosting...
+11:47:15 |     INFO |     MAE: 5370 | Friday MAE: 8107.002362676105 | Improvement: -19.4%
+2025-07-22 11:47:15,518 | mail_input | INFO |     MAE: 5370 | Friday MAE: 8107.002362676105 | Improvement: -19.4%
+11:47:15 |     INFO |   [36] Testing AL02_Random Forest Tuned...
+2025-07-22 11:47:15,519 | mail_input | INFO |   [36] Testing AL02_Random Forest Tuned...
+11:47:16 |     INFO |     MAE: 4608 | Friday MAE: 7664.722111771948 | Improvement: -2.4%
+2025-07-22 11:47:16,057 | mail_input | INFO |     MAE: 4608 | Friday MAE: 7664.722111771948 | Improvement: -2.4%
+11:47:16 |     INFO |   [37] Testing AL03_AdaBoost...
+2025-07-22 11:47:16,058 | mail_input | INFO |   [37] Testing AL03_AdaBoost...
+11:47:16 |     INFO |     MAE: 9416 | Friday MAE: 8864.564623933447 | Improvement: -109.3%
+2025-07-22 11:47:16,200 | mail_input | INFO |     MAE: 9416 | Friday MAE: 8864.564623933447 | Improvement: -109.3%
+11:47:16 |     INFO |   [38] Testing AL04_SVR RBF...
+2025-07-22 11:47:16,200 | mail_input | INFO |   [38] Testing AL04_SVR RBF...
+11:47:16 |     INFO |     MAE: 7102 | Friday MAE: 10223.386465661184 | Improvement: -57.9%
+2025-07-22 11:47:16,214 | mail_input | INFO |     MAE: 7102 | Friday MAE: 10223.386465661184 | Improvement: -57.9%
+11:47:16 |     INFO |   [39] Testing AL05_SVR Poly...
+2025-07-22 11:47:16,215 | mail_input | INFO |   [39] Testing AL05_SVR Poly...
+11:47:16 |     INFO |     MAE: 7103 | Friday MAE: 10224.386985778048 | Improvement: -57.9%
+2025-07-22 11:47:16,222 | mail_input | INFO |     MAE: 7103 | Friday MAE: 10224.386985778048 | Improvement: -57.9%
+11:47:16 |     INFO |   [40] Testing AL06_KNN Weighted...
+2025-07-22 11:47:16,222 | mail_input | INFO |   [40] Testing AL06_KNN Weighted...
+11:47:19 |     INFO |     MAE: 4466 | Friday MAE: 5898.520998570443 | Improvement: 0.7%
+2025-07-22 11:47:19,331 | mail_input | INFO |     MAE: 4466 | Friday MAE: 5898.520998570443 | Improvement: 0.7%
+11:47:19 |     INFO |   [41] Testing AL07_ElasticNet...
+2025-07-22 11:47:19,332 | mail_input | INFO |   [41] Testing AL07_ElasticNet...
+11:47:19 |     INFO |     MAE: 4279 | Friday MAE: 8603.704125590224 | Improvement: 4.9%
+2025-07-22 11:47:19,354 | mail_input | INFO |     MAE: 4279 | Friday MAE: 8603.704125590224 | Improvement: 4.9%
+11:47:19 |     INFO |   [42] Testing AL08_Ridge Regression...
+2025-07-22 11:47:19,355 | mail_input | INFO |   [42] Testing AL08_Ridge Regression...
+11:47:19 |     INFO |     MAE: 4766 | Friday MAE: 8803.765589908073 | Improvement: -5.9%
+2025-07-22 11:47:19,365 | mail_input | INFO |     MAE: 4766 | Friday MAE: 8803.765589908073 | Improvement: -5.9%
+11:47:19 |     INFO |   [43] Testing AL09_Decision Tree...
+2025-07-22 11:47:19,367 | mail_input | INFO |   [43] Testing AL09_Decision Tree...
+11:47:19 |     INFO |     MAE: 5173 | Friday MAE: 10646.16758356223 | Improvement: -15.0%
+2025-07-22 11:47:19,392 | mail_input | INFO |     MAE: 5173 | Friday MAE: 10646.16758356223 | Improvement: -15.0%
+11:47:19 |     INFO |   [44] Testing AL10_Lasso Regression...
+2025-07-22 11:47:19,393 | mail_input | INFO |   [44] Testing AL10_Lasso Regression...
+11:47:19 |     INFO |     MAE: 4932 | Friday MAE: 8854.74556165119 | Improvement: -9.6%
+2025-07-22 11:47:19,419 | mail_input | INFO |     MAE: 4932 | Friday MAE: 8854.74556165119 | Improvement: -9.6%
+11:47:19 |     INFO | Testing Category 5: Operational Adjustments...
+2025-07-22 11:47:19,423 | mail_input | INFO | Testing Category 5: Operational Adjustments...
+11:47:19 |     INFO |   [45] Testing OP01_Friday 1.15x Multiplier...
+2025-07-22 11:47:19,424 | mail_input | INFO |   [45] Testing OP01_Friday 1.15x Multiplier...
+11:47:19 |     INFO |     MAE: 4290 | Friday MAE: 8744.636255900621 | Improvement: 4.6%
+2025-07-22 11:47:19,430 | mail_input | INFO |     MAE: 4290 | Friday MAE: 8744.636255900621 | Improvement: 4.6%
+11:47:19 |     INFO |   [46] Testing OP02_Friday 1.25x Multiplier...
+2025-07-22 11:47:19,431 | mail_input | INFO |   [46] Testing OP02_Friday 1.25x Multiplier...
+11:47:19 |     INFO |     MAE: 4184 | Friday MAE: 8217.025511313394 | Improvement: 7.0%
+2025-07-22 11:47:19,436 | mail_input | INFO |     MAE: 4184 | Friday MAE: 8217.025511313394 | Improvement: 7.0%
+11:47:19 |     INFO |   [47] Testing OP03_Friday 1.40x Multiplier...
+2025-07-22 11:47:19,437 | mail_input | INFO |   [47] Testing OP03_Friday 1.40x Multiplier...
+11:47:19 |     INFO |     MAE: 4070 | Friday MAE: 7648.029045469462 | Improvement: 9.5%
+2025-07-22 11:47:19,444 | mail_input | INFO |     MAE: 4070 | Friday MAE: 7648.029045469462 | Improvement: 9.5%
+11:47:19 |     INFO |   [48] Testing OP04_Mail-Based Friday Boost...
+2025-07-22 11:47:19,445 | mail_input | INFO |   [48] Testing OP04_Mail-Based Friday Boost...
+11:47:19 |     INFO |     MAE: 4296 | Friday MAE: 8777.274278291663 | Improvement: 4.5%
+2025-07-22 11:47:19,450 | mail_input | INFO |     MAE: 4296 | Friday MAE: 8777.274278291663 | Improvement: 4.5%
+11:47:19 |     INFO |   [49] Testing OP05_Adaptive Friday Boost...
+2025-07-22 11:47:19,450 | mail_input | INFO |   [49] Testing OP05_Adaptive Friday Boost...
+11:47:19 |     INFO |     MAE: 4218 | Friday MAE: 8388.691142637432 | Improvement: 6.2%
+2025-07-22 11:47:19,460 | mail_input | INFO |     MAE: 4218 | Friday MAE: 8388.691142637432 | Improvement: 6.2%
+11:47:19 |     INFO |   [50] Testing OP06_Friday Percentile Boost...
+2025-07-22 11:47:19,460 | mail_input | INFO |   [50] Testing OP06_Friday Percentile Boost...
+11:47:19 |     INFO |     MAE: 4296 | Friday MAE: 8777.274278291663 | Improvement: 4.5%
+2025-07-22 11:47:19,465 | mail_input | INFO |     MAE: 4296 | Friday MAE: 8777.274278291663 | Improvement: 4.5%
+11:47:19 |     INFO |   [51] Testing OP07_Friday Seasonal Boost...
+2025-07-22 11:47:19,466 | mail_input | INFO |   [51] Testing OP07_Friday Seasonal Boost...
+11:47:19 |     INFO |     MAE: 4323 | Friday MAE: 8913.590430283159 | Improvement: 3.9%
+2025-07-22 11:47:19,472 | mail_input | INFO |     MAE: 4323 | Friday MAE: 8913.590430283159 | Improvement: 3.9%
+11:47:19 |     INFO |   [52] Testing OP08_Friday Historical Boost...
+2025-07-22 11:47:19,473 | mail_input | INFO |   [52] Testing OP08_Friday Historical Boost...
+11:47:19 |     INFO |     MAE: 4218 | Friday MAE: 8388.691142637432 | Improvement: 6.2%
+2025-07-22 11:47:19,481 | mail_input | INFO |     MAE: 4218 | Friday MAE: 8388.691142637432 | Improvement: 6.2%
+11:47:19 |     INFO |   [53] Testing OP09_Friday Composite Boost...
+2025-07-22 11:47:19,481 | mail_input | INFO |   [53] Testing OP09_Friday Composite Boost...
+11:47:19 |     INFO |     MAE: 4254 | Friday MAE: 8564.901687965326 | Improvement: 5.4%
+2025-07-22 11:47:19,488 | mail_input | INFO |     MAE: 4254 | Friday MAE: 8564.901687965326 | Improvement: 5.4%
+11:47:19 |     INFO |   [54] Testing OP10_Friday Confidence Boost...
+2025-07-22 11:47:19,489 | mail_input | INFO |   [54] Testing OP10_Friday Confidence Boost...
+11:47:19 |     INFO |     MAE: 4132 | Friday MAE: 7958.0092531588425 | Improvement: 8.1%
+2025-07-22 11:47:19,494 | mail_input | INFO |     MAE: 4132 | Friday MAE: 7958.0092531588425 | Improvement: 8.1%
+11:47:19 |     INFO |   [55] Testing OP11_Friday Trend Adjustment...
+2025-07-22 11:47:19,495 | mail_input | INFO |   [55] Testing OP11_Friday Trend Adjustment...
+11:47:19 |     INFO |     MAE: 4218 | Friday MAE: 8388.691142637432 | Improvement: 6.2%
+2025-07-22 11:47:19,500 | mail_input | INFO |     MAE: 4218 | Friday MAE: 8388.691142637432 | Improvement: 6.2%
+11:47:19 |     INFO |   [56] Testing OP12_Friday Volume Scaling...
+2025-07-22 11:47:19,501 | mail_input | INFO |   [56] Testing OP12_Friday Volume Scaling...
+11:47:19 |     INFO |     MAE: 4296 | Friday MAE: 8777.274278291663 | Improvement: 4.5%
+2025-07-22 11:47:19,509 | mail_input | INFO |     MAE: 4296 | Friday MAE: 8777.274278291663 | Improvement: 4.5%
+11:47:19 |     INFO |   [57] Testing OP13_Friday Range Expansion...
+2025-07-22 11:47:19,510 | mail_input | INFO |   [57] Testing OP13_Friday Range Expansion...
+11:47:19 |     INFO |     MAE: 4094 | Friday MAE: 7764.635045451983 | Improvement: 9.0%
+2025-07-22 11:47:19,515 | mail_input | INFO |     MAE: 4094 | Friday MAE: 7764.635045451983 | Improvement: 9.0%
+11:47:19 |     INFO |   [58] Testing OP14_Friday Risk Adjustment...
+2025-07-22 11:47:19,515 | mail_input | INFO |   [58] Testing OP14_Friday Risk Adjustment...
+11:47:19 |     INFO |     MAE: 4184 | Friday MAE: 8217.025511313394 | Improvement: 7.0%
+2025-07-22 11:47:19,521 | mail_input | INFO |     MAE: 4184 | Friday MAE: 8217.025511313394 | Improvement: 7.0%
+11:47:19 |     INFO |   [59] Testing OP15_Friday Smart Multiplier...
+2025-07-22 11:47:19,522 | mail_input | INFO |   [59] Testing OP15_Friday Smart Multiplier...
+11:47:19 |     INFO |     MAE: 4254 | Friday MAE: 8564.901687965326 | Improvement: 5.4%
+2025-07-22 11:47:19,530 | mail_input | INFO |     MAE: 4254 | Friday MAE: 8564.901687965326 | Improvement: 5.4%
+11:47:19 |     INFO | Total approaches tested: 60
+2025-07-22 11:47:19,530 | mail_input | INFO | Total approaches tested: 60
+11:47:19 |     INFO | ================================================================================
+2025-07-22 11:47:19,531 | mail_input | INFO | ================================================================================
+11:47:19 |     INFO | ANALYZING COMPREHENSIVE TEST RESULTS
+2025-07-22 11:47:19,531 | mail_input | INFO | ANALYZING COMPREHENSIVE TEST RESULTS
+11:47:19 |     INFO | ================================================================================
+2025-07-22 11:47:19,531 | mail_input | INFO | ================================================================================
+11:47:19 |     INFO | Total approaches tested: 60
+2025-07-22 11:47:19,532 | mail_input | INFO | Total approaches tested: 60
+11:47:19 |     INFO | Successful: 59
+2025-07-22 11:47:19,532 | mail_input | INFO | Successful: 59
+11:47:19 |     INFO | Failed: 1
+2025-07-22 11:47:19,532 | mail_input | INFO | Failed: 1
+11:47:19 |     INFO |
+TOP 10 IMPROVEMENTS:
+2025-07-22 11:47:19,533 | mail_input | INFO |
+TOP 10 IMPROVEMENTS:
+11:47:19 |     INFO | ------------------------------------------------------------
+2025-07-22 11:47:19,533 | mail_input | INFO | ------------------------------------------------------------
+11:47:19 |     INFO |  1. FE03_Polynomial Friday Features
+2025-07-22 11:47:19,533 | mail_input | INFO |  1. FE03_Polynomial Friday Features
+11:47:19 |     INFO |     Improvement: +18.6%
+2025-07-22 11:47:19,534 | mail_input | INFO |     Improvement: +18.6%
+11:47:19 |     INFO |     MAE: 3662
+2025-07-22 11:47:19,534 | mail_input | INFO |     MAE: 3662
+11:47:19 |     INFO |     Friday MAE: 7652
+2025-07-22 11:47:19,535 | mail_input | INFO |     Friday MAE: 7652
+11:47:19 |     INFO |     Type: feature_engineering
+2025-07-22 11:47:19,535 | mail_input | INFO |     Type: feature_engineering
+11:47:19 |     INFO | 
+2025-07-22 11:47:19,535 | mail_input | INFO |
+11:47:19 |     INFO |  2. FE01_Enhanced Features - All
+2025-07-22 11:47:19,536 | mail_input | INFO |  2. FE01_Enhanced Features - All
+11:47:19 |     INFO |     Improvement: +18.1%
+2025-07-22 11:47:19,536 | mail_input | INFO |     Improvement: +18.1%
+11:47:19 |     INFO |     MAE: 3686
+2025-07-22 11:47:19,536 | mail_input | INFO |     MAE: 3686
+11:47:19 |     INFO |     Friday MAE: 7795
+2025-07-22 11:47:19,537 | mail_input | INFO |     Friday MAE: 7795
+11:47:19 |     INFO |     Type: feature_engineering
+2025-07-22 11:47:19,537 | mail_input | INFO |     Type: feature_engineering
+11:47:19 |     INFO |
+2025-07-22 11:47:19,538 | mail_input | INFO |
+11:47:19 |     INFO |  3. FE10_Friday PCA Features
+2025-07-22 11:47:19,538 | mail_input | INFO |  3. FE10_Friday PCA Features
+11:47:19 |     INFO |     Improvement: +18.1%
+2025-07-22 11:47:19,538 | mail_input | INFO |     Improvement: +18.1%
+11:47:19 |     INFO |     MAE: 3686
+2025-07-22 11:47:19,539 | mail_input | INFO |     MAE: 3686
+11:47:19 |     INFO |     Friday MAE: 7795
+2025-07-22 11:47:19,539 | mail_input | INFO |     Friday MAE: 7795
+11:47:19 |     INFO |     Type: feature_engineering
+2025-07-22 11:47:19,539 | mail_input | INFO |     Type: feature_engineering
+11:47:19 |     INFO |
+2025-07-22 11:47:19,540 | mail_input | INFO |
+11:47:19 |     INFO |  4. FE14_Friday Composite Scores
+2025-07-22 11:47:19,541 | mail_input | INFO |  4. FE14_Friday Composite Scores
+11:47:19 |     INFO |     Improvement: +18.1%
+2025-07-22 11:47:19,541 | mail_input | INFO |     Improvement: +18.1%
+11:47:19 |     INFO |     MAE: 3686
+2025-07-22 11:47:19,542 | mail_input | INFO |     MAE: 3686
+11:47:19 |     INFO |     Friday MAE: 7795
+2025-07-22 11:47:19,542 | mail_input | INFO |     Friday MAE: 7795
+11:47:19 |     INFO |     Type: feature_engineering
+2025-07-22 11:47:19,543 | mail_input | INFO |     Type: feature_engineering
+11:47:19 |     INFO |
+2025-07-22 11:47:19,543 | mail_input | INFO |
+11:47:19 |     INFO |  5. FE05_Friday Lag Features
+2025-07-22 11:47:19,544 | mail_input | INFO |  5. FE05_Friday Lag Features
+11:47:19 |     INFO |     Improvement: +15.7%
+2025-07-22 11:47:19,544 | mail_input | INFO |     Improvement: +15.7%
+11:47:19 |     INFO |     MAE: 3792
+2025-07-22 11:47:19,544 | mail_input | INFO |     MAE: 3792
+11:47:19 |     INFO |     Friday MAE: 7908
+2025-07-22 11:47:19,545 | mail_input | INFO |     Friday MAE: 7908
+11:47:19 |     INFO |     Type: feature_engineering
+2025-07-22 11:47:19,545 | mail_input | INFO |     Type: feature_engineering
+11:47:19 |     INFO | 
+2025-07-22 11:47:19,545 | mail_input | INFO |
+11:47:19 |     INFO |  6. FE02_Enhanced Features - Friday Only
+2025-07-22 11:47:19,546 | mail_input | INFO |  6. FE02_Enhanced Features - Friday Only
+11:47:19 |     INFO |     Improvement: +14.6%
+2025-07-22 11:47:19,546 | mail_input | INFO |     Improvement: +14.6%
+11:47:19 |     INFO |     MAE: 3842
+2025-07-22 11:47:19,547 | mail_input | INFO |     MAE: 3842
+11:47:19 |     INFO |     Friday MAE: 7934
+2025-07-22 11:47:19,547 | mail_input | INFO |     Friday MAE: 7934
+11:47:19 |     INFO |     Type: feature_engineering
+2025-07-22 11:47:19,547 | mail_input | INFO |     Type: feature_engineering
+11:47:19 |     INFO |
+2025-07-22 11:47:19,548 | mail_input | INFO |
+11:47:19 |     INFO |  7. OP03_Friday 1.40x Multiplier
+2025-07-22 11:47:19,548 | mail_input | INFO |  7. OP03_Friday 1.40x Multiplier
+11:47:19 |     INFO |     Improvement: +9.5%
+2025-07-22 11:47:19,549 | mail_input | INFO |     Improvement: +9.5%
+11:47:19 |     INFO |     MAE: 4070
+2025-07-22 11:47:19,549 | mail_input | INFO |     MAE: 4070
+11:47:19 |     INFO |     Friday MAE: 7648
+2025-07-22 11:47:19,549 | mail_input | INFO |     Friday MAE: 7648
+11:47:19 |     INFO |     Type: operational
+2025-07-22 11:47:19,550 | mail_input | INFO |     Type: operational
+11:47:19 |     INFO |
+2025-07-22 11:47:19,550 | mail_input | INFO |
+11:47:19 |     INFO |  8. FS03_Friday Correction Model
+2025-07-22 11:47:19,551 | mail_input | INFO |  8. FS03_Friday Correction Model
+11:47:19 |     INFO |     Improvement: +9.4%
+2025-07-22 11:47:19,551 | mail_input | INFO |     Improvement: +9.4%
+11:47:19 |     INFO |     MAE: 4073
+2025-07-22 11:47:19,551 | mail_input | INFO |     MAE: 4073
+11:47:19 |     INFO |     Friday MAE: 7663
+2025-07-22 11:47:19,552 | mail_input | INFO |     Friday MAE: 7663
+11:47:19 |     INFO |     Type: friday_specific
+2025-07-22 11:47:19,552 | mail_input | INFO |     Type: friday_specific
+11:47:19 |     INFO |
+2025-07-22 11:47:19,552 | mail_input | INFO |
+11:47:19 |     INFO |  9. FS05_Friday Residual Model
+2025-07-22 11:47:19,553 | mail_input | INFO |  9. FS05_Friday Residual Model
+11:47:19 |     INFO |     Improvement: +9.4%
+2025-07-22 11:47:19,553 | mail_input | INFO |     Improvement: +9.4%
+11:47:19 |     INFO |     MAE: 4073
+2025-07-22 11:47:19,553 | mail_input | INFO |     MAE: 4073
+11:47:19 |     INFO |     Friday MAE: 7663
+2025-07-22 11:47:19,554 | mail_input | INFO |     Friday MAE: 7663
+11:47:19 |     INFO |     Type: friday_specific
+2025-07-22 11:47:19,554 | mail_input | INFO |     Type: friday_specific
+11:47:19 |     INFO |
+2025-07-22 11:47:19,554 | mail_input | INFO |
+11:47:19 |     INFO | 10. FS09_Friday Domain Adaptation
+2025-07-22 11:47:19,555 | mail_input | INFO | 10. FS09_Friday Domain Adaptation
+11:47:19 |     INFO |     Improvement: +9.4%
+2025-07-22 11:47:19,555 | mail_input | INFO |     Improvement: +9.4%
+11:47:19 |     INFO |     MAE: 4073
+2025-07-22 11:47:19,556 | mail_input | INFO |     MAE: 4073
+11:47:19 |     INFO |     Friday MAE: 7663
+2025-07-22 11:47:19,556 | mail_input | INFO |     Friday MAE: 7663
+11:47:19 |     INFO |     Type: friday_specific
+2025-07-22 11:47:19,557 | mail_input | INFO |     Type: friday_specific
+11:47:19 |     INFO |
+2025-07-22 11:47:19,558 | mail_input | INFO |
+11:47:19 |     INFO | PERFORMANCE BY CATEGORY:
+2025-07-22 11:47:19,558 | mail_input | INFO | PERFORMANCE BY CATEGORY:
+11:47:19 |     INFO | ----------------------------------------
+2025-07-22 11:47:19,559 | mail_input | INFO | ----------------------------------------
+11:47:19 |     INFO | FEATURE_ENGINEERING:
+2025-07-22 11:47:19,559 | mail_input | INFO | FEATURE_ENGINEERING:
+11:47:19 |     INFO |   Count: 15
+2025-07-22 11:47:19,559 | mail_input | INFO |   Count: 15
+11:47:19 |     INFO |   Avg Improvement: +6.5%
+2025-07-22 11:47:19,560 | mail_input | INFO |   Avg Improvement: +6.5%
+11:47:19 |     INFO |   Best Improvement: +18.6%
+2025-07-22 11:47:19,560 | mail_input | INFO |   Best Improvement: +18.6%
+11:47:19 |     INFO |
+2025-07-22 11:47:19,561 | mail_input | INFO |
+11:47:19 |     INFO | ENSEMBLE:
+2025-07-22 11:47:19,561 | mail_input | INFO | ENSEMBLE:
+11:47:19 |     INFO |   Count: 9
+2025-07-22 11:47:19,562 | mail_input | INFO |   Count: 9
+11:47:19 |     INFO |   Avg Improvement: -13.1%
+2025-07-22 11:47:19,562 | mail_input | INFO |   Avg Improvement: -13.1%
+11:47:19 |     INFO |   Best Improvement: -1.1%
+2025-07-22 11:47:19,562 | mail_input | INFO |   Best Improvement: -1.1%
+11:47:19 |     INFO |
+2025-07-22 11:47:19,563 | mail_input | INFO |
+11:47:19 |     INFO | FRIDAY_SPECIFIC:
+2025-07-22 11:47:19,563 | mail_input | INFO | FRIDAY_SPECIFIC:
+11:47:19 |     INFO |   Count: 10
+2025-07-22 11:47:19,564 | mail_input | INFO |   Count: 10
+11:47:19 |     INFO |   Avg Improvement: +8.5%
+2025-07-22 11:47:19,564 | mail_input | INFO |   Avg Improvement: +8.5%
+11:47:19 |     INFO |   Best Improvement: +9.4%
+2025-07-22 11:47:19,564 | mail_input | INFO |   Best Improvement: +9.4%
+11:47:19 |     INFO |
+2025-07-22 11:47:19,565 | mail_input | INFO |
+11:47:19 |     INFO | ALGORITHM:
+2025-07-22 11:47:19,565 | mail_input | INFO | ALGORITHM:
+11:47:19 |     INFO |   Count: 10
+2025-07-22 11:47:19,566 | mail_input | INFO |   Count: 10
+11:47:19 |     INFO |   Avg Improvement: -27.2%
+2025-07-22 11:47:19,566 | mail_input | INFO |   Avg Improvement: -27.2%
+11:47:19 |     INFO |   Best Improvement: +4.9%
+2025-07-22 11:47:19,566 | mail_input | INFO |   Best Improvement: +4.9%
+11:47:19 |     INFO |
+2025-07-22 11:47:19,567 | mail_input | INFO |
+11:47:19 |     INFO | OPERATIONAL:
+2025-07-22 11:47:19,567 | mail_input | INFO | OPERATIONAL:
+11:47:19 |     INFO |   Count: 15
+2025-07-22 11:47:19,568 | mail_input | INFO |   Count: 15
+11:47:19 |     INFO |   Avg Improvement: +6.1%
+2025-07-22 11:47:19,568 | mail_input | INFO |   Avg Improvement: +6.1%
+11:47:19 |     INFO |   Best Improvement: +9.5%
+2025-07-22 11:47:19,568 | mail_input | INFO |   Best Improvement: +9.5%
+11:47:19 |     INFO |
+2025-07-22 11:47:19,569 | mail_input | INFO |
+11:47:19 |     INFO | PHASE 4: Creating comprehensive results visualizations
+2025-07-22 11:47:19,569 | mail_input | INFO | PHASE 4: Creating comprehensive results visualizations
+11:47:19 |     INFO | Creating comprehensive results dashboard...
+2025-07-22 11:47:19,570 | mail_input | INFO | Creating comprehensive results dashboard...
+11:47:19 |    ERROR | Critical failure in Friday improvement testing: 'primary'
+2025-07-22 11:47:19,896 | mail_input | ERROR | Critical failure in Friday improvement testing: 'primary'
+11:47:19 |    ERROR | Traceback (most recent call last):
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\froday.py", line 1894, in run_comprehensive_friday_improvement
+    self.results_visualizer.create_comprehensive_results_dashboard()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\froday.py", line 1318, in create_comprehensive_results_dashboard
+    self._create_main_results_plot()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\froday.py", line 1374, in _create_main_results_plot
+    bars = ax2.bar(cat_names, success_rates, color=CFG["colors"]["primary"])
+                                                   ~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'primary'
+
+2025-07-22 11:47:19,898 | mail_input | ERROR | Traceback (most recent call last):
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\froday.py", line 1894, in run_comprehensive_friday_improvement
+    self.results_visualizer.create_comprehensive_results_dashboard()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\froday.py", line 1318, in create_comprehensive_results_dashboard
+    self._create_main_results_plot()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\froday.py", line 1374, in _create_main_results_plot
+    bars = ax2.bar(cat_names, success_rates, color=CFG["colors"]["primary"])
+                                                   ~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'primary'
+
+
+❌ FRIDAY IMPROVEMENT TESTING FAILED!
+Check the log files for detailed error information.
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> 
