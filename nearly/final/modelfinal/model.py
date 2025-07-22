@@ -1,3 +1,132 @@
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> & C:/Users/BhungarD/python.exe "c:/Users/BhungarD/OneDrive - Computershare/Desktop/finprod/model.py"
+🚀 PRODUCTION-GRADE CALL PREDICTION PIPELINE
+============================================================
+📧 Mail-lag aware call volume prediction
+🔄 Progressive complexity modeling
+📊 Comprehensive EDA and evaluation
+🚀 Production deployment ready
+============================================================
+
+2025-07-22 17:04:59,231 |     INFO | 🚀 STARTING PRODUCTION-GRADE CALL PREDICTION PIPELINE
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\BhungarD\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BhungarD\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f680' in position 37: character maps to <undefined>
+Call stack:
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 2612, in <module>
+    exit_code = main()
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 2578, in main
+    results = orchestrator.run_complete_pipeline()
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 2453, in run_complete_pipeline
+    LOG.info("🚀 STARTING PRODUCTION-GRADE CALL PREDICTION PIPELINE")
+Message: '🚀 STARTING PRODUCTION-GRADE CALL PREDICTION PIPELINE'
+Arguments: ()
+2025-07-22 17:04:59,285 |     INFO | ================================================================================
+2025-07-22 17:04:59,286 |     INFO | 📊 PHASE 1: DATA LOADING
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\BhungarD\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BhungarD\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f4ca' in position 37: character maps to <undefined>
+Call stack:
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 2612, in <module>
+    exit_code = main()
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 2578, in main
+    results = orchestrator.run_complete_pipeline()
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 2458, in run_complete_pipeline
+    LOG.info("📊 PHASE 1: DATA LOADING")
+Message: '📊 PHASE 1: DATA LOADING'
+Arguments: ()
+2025-07-22 17:04:59,290 |     INFO | === STARTING DATA LOADING ===
+2025-07-22 17:04:59,290 |     INFO | Loading call volume data...
+2025-07-22 17:04:59,291 |     INFO | Found file: data\callvolumes.csv
+2025-07-22 17:05:00,918 |     INFO | Loaded data\callvolumes.csv with encoding=utf-8, sep=','
+2025-07-22 17:05:00,978 |     INFO | Using date column: date
+2025-07-22 17:05:01,035 |     INFO | Using call volume column: rowid
+2025-07-22 17:05:01,052 |     INFO | Call data loaded: 550 days, 10939577-949528173700995712 calls
+2025-07-22 17:05:01,077 |     INFO | Loading mail volume data...
+2025-07-22 17:05:01,078 |     INFO | Found file: data\mail.csv
+2025-07-22 17:05:01,684 |     INFO | Loaded data\mail.csv with encoding=utf-8, sep=','
+2025-07-22 17:05:01,789 |     INFO | Using date column: mail_date
+2025-07-22 17:05:01,898 |     INFO | Using mail type column: mail_date, volume column: mail_volume
+2025-07-22 17:05:02,376 |     INFO | Mail data loaded: 2175 business days, 2390 mail types
+2025-07-22 17:05:02,384 |     INFO | Loading economic data...
+2025-07-22 17:05:02,384 |     INFO | Economic data not found - skipping
+
+================================================================================
+📊 DATA LOADING SUMMARY
+================================================================================
+
+CALL_DATA:
+  file: data\callvolumes.csv
+  date_column: date
+  call_column: rowid
+  date_range: 2024-01-01 to 2025-07-03
+  total_days: 550
+  call_range: 10939577 to 949528173700995712
+  mean_calls: 281014595862313056
+
+MAIL_DATA:
+  file: data\mail.csv
+  date_range: 2023-08-01 to 2025-05-30
+  total_days: 2175
+  mail_types: 2390
+  top_mail_types: [Timestamp('2025-01-21 00:00:00'), Timestamp('2024-09-30 00:00:00'), Timestamp('2025-01-31 00:00:00'), Timestamp('2025-02-28 00:00:00'), Timestamp('2024-12-31 00:00:00')]
+================================================================================
+2025-07-22 17:05:02,387 |     INFO |
+🔍 PHASE 2: EXPLORATORY DATA ANALYSIS
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\BhungarD\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BhungarD\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f50d' in position 39: character maps to <undefined>
+Call stack:
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 2612, in <module>
+    exit_code = main()
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 2578, in main
+    results = orchestrator.run_complete_pipeline()
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 2463, in run_complete_pipeline
+    LOG.info("\n🔍 PHASE 2: EXPLORATORY DATA ANALYSIS")
+Message: '\n🔍 PHASE 2: EXPLORATORY DATA ANALYSIS'
+Arguments: ()
+2025-07-22 17:05:02,394 |     INFO | === STARTING COMPREHENSIVE EDA ===
+2025-07-22 17:05:02,395 |     INFO | Creating data overview plots...
+2025-07-22 17:05:04,183 |     INFO | Creating correlation analysis with lag effects...
+2025-07-22 17:05:04,315 |    ERROR | Pipeline failed: 'Timestamp' object is not subscriptable
+2025-07-22 17:05:04,316 |    ERROR | Traceback (most recent call last):
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 2465, in run_complete_pipeline
+    eda_results = eda_engine.run_comprehensive_eda(data_dict)
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 869, in run_comprehensive_eda
+    results['correlations'] = self.create_correlation_analysis(call_data, mail_data)
+                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 509, in create_correlation_analysis
+    ax1.set_yticklabels([t[:15] for t in mail_types_subset])  # Truncate long names
+                         ~^^^^^
+TypeError: 'Timestamp' object is not subscriptable
+
+
+❌ PIPELINE FAILED
+Error: 'Timestamp' object is not subscriptable
+💡 Check the logs above for detailed error information
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> 
+
+
+
+
+
 #!/usr/bin/env python
 """
 PRODUCTION-GRADE MAIL-LAG CALL PREDICTION PIPELINE
