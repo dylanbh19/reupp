@@ -1,229 +1,3 @@
-
-Make sure your CSV files are available:
-   • mail.csv
-   • callvolumes.csv
-   • callintent.csv
-
-2025-07-22 12:48:19,456 |     INFO | Starting Friday-Enhanced Model Training Pipeline
-2025-07-22 12:48:19,456 |     INFO | ================================================================================
-2025-07-22 12:48:19,457 |     INFO | STEP 1: Loading data...
-2025-07-22 12:48:19,457 |     INFO | Loading mail and call data...
-2025-07-22 12:48:19,458 |     INFO | Loading mail data...
-2025-07-22 12:48:19,459 |     INFO | Found file: data\mail.csv
-2025-07-22 12:48:21,091 |     INFO | Mail data loaded: (1409780, 4)
-2025-07-22 12:48:21,092 |     INFO | Loading call volume data...
-2025-07-22 12:48:21,093 |     INFO | Found file: data\callvolumes.csv
-2025-07-22 12:48:25,491 |     INFO | Call volumes processed: 550 days
-2025-07-22 12:48:25,492 |     INFO | Loading call intent data...
-2025-07-22 12:48:25,494 |     INFO | Found file: data\callintent.csv
-2025-07-22 12:49:43,954 |     INFO | Call intent processed: 0 days
-2025-07-22 12:49:43,958 |     INFO | Processing mail data...
-2025-07-22 12:49:44,242 |     INFO | Filtering to business days...
-2025-07-22 12:49:44,614 |     INFO | Final combined data: (349, 232)
-2025-07-22 12:49:44,615 |     INFO | Date range: 2024-01-02 00:00:00 to 2025-05-30 00:00:00
-2025-07-22 12:49:44,845 |     INFO | STEP 2: Training baseline model...
-2025-07-22 12:49:44,846 |     INFO | Creating baseline features...
-2025-07-22 12:49:45,602 |     INFO | Baseline features created: 348 samples x 19 features
-2025-07-22 12:49:45,603 |     INFO | Target range: 692838087 to 949528173700995712
-2025-07-22 12:49:45,604 |     INFO | Training baseline models...
-2025-07-22 12:49:45,604 |     INFO |   Training 10% quantile model...
-2025-07-22 12:49:45,605 |  WARNING |   Quantile regression failed for 0.1, using Linear Regression fallback
-2025-07-22 12:49:45,605 |  WARNING |   Last error: QuantileRegressor.__init__() got an unexpected keyword argument 'max_iter'
-2025-07-22 12:49:45,632 |     INFO |     Fallback Linear Regression MAE: 21763988439828496
-2025-07-22 12:49:45,632 |     INFO |   Training 25% quantile model...
-2025-07-22 12:49:45,633 |  WARNING |   Quantile regression failed for 0.25, using Linear Regression fallback
-2025-07-22 12:49:45,633 |  WARNING |   Last error: QuantileRegressor.__init__() got an unexpected keyword argument 'max_iter'
-2025-07-22 12:49:45,636 |     INFO |     Fallback Linear Regression MAE: 21763988439828496
-2025-07-22 12:49:45,637 |     INFO |   Training 50% quantile model...
-2025-07-22 12:49:45,637 |  WARNING |   Quantile regression failed for 0.5, using Linear Regression fallback
-2025-07-22 12:49:45,637 |  WARNING |   Last error: QuantileRegressor.__init__() got an unexpected keyword argument 'max_iter'
-2025-07-22 12:49:45,643 |     INFO |     Fallback Linear Regression MAE: 21763988439828496
-2025-07-22 12:49:45,644 |     INFO |   Training 75% quantile model...
-2025-07-22 12:49:45,644 |  WARNING |   Quantile regression failed for 0.75, using Linear Regression fallback
-2025-07-22 12:49:45,645 |  WARNING |   Last error: QuantileRegressor.__init__() got an unexpected keyword argument 'max_iter'
-2025-07-22 12:49:45,649 |     INFO |     Fallback Linear Regression MAE: 21763988439828496
-2025-07-22 12:49:45,650 |     INFO |   Training 90% quantile model...
-2025-07-22 12:49:45,650 |  WARNING |   Quantile regression failed for 0.9, using Linear Regression fallback
-2025-07-22 12:49:45,651 |  WARNING |   Last error: QuantileRegressor.__init__() got an unexpected keyword argument 'max_iter'
-2025-07-22 12:49:45,654 |     INFO |     Fallback Linear Regression MAE: 21763988439828496
-2025-07-22 12:49:45,654 |     INFO |   Training bootstrap ensemble...
-2025-07-22 12:49:46,085 |     INFO |   Bootstrap ensemble created with 10 models
-2025-07-22 12:49:46,086 |     INFO | Baseline models trained successfully!
-2025-07-22 12:49:46,230 |     INFO | Baseline models saved successfully
-2025-07-22 12:49:46,231 |     INFO | STEP 3: Testing baseline model...
-2025-07-22 12:49:46,231 |     INFO | Testing baseline models comprehensively...
-2025-07-22 12:49:46,236 |     INFO | Overall baseline performance:
-2025-07-22 12:49:46,237 |     INFO |   MAE: 21763988439828496
-2025-07-22 12:49:46,238 |     INFO |   RMSE: 21764139493477548
-2025-07-22 12:49:46,239 |     INFO |   R2: -76048873462301.250
-2025-07-22 12:49:46,240 |     INFO |   Accuracy: 0.0%
-2025-07-22 12:49:46,240 |     INFO |
-baseline performance by weekday:
-2025-07-22 12:49:46,244 |     INFO |   Monday    : MAE=21779761374929996, Bias=+21779761374929996, Samples= 13
-2025-07-22 12:49:46,248 |     INFO |   Tuesday   : MAE=21741881710824100, Bias=+21741881710824100, Samples= 14
-2025-07-22 12:49:46,250 |     INFO |   Wednesday : MAE=21744755648748348, Bias=+21744755648748348, Samples= 14
-2025-07-22 12:49:46,252 |     INFO |   Thursday  : MAE=21797666189511424, Bias=+21797666189511424, Samples= 15
-2025-07-22 12:49:46,255 |     INFO |   Friday    : MAE=21754598359801372, Bias=+21754598359801372, Samples= 14
-2025-07-22 12:49:46,256 |     INFO |
-FRIDAY baseline Challenge: MAE = 21754598359801372
-2025-07-22 12:49:46,257 |     INFO | STEP 4: Training Friday-enhanced model...
-2025-07-22 12:49:46,257 |     INFO | Creating Friday-enhanced features...
-2025-07-22 12:49:47,002 |     INFO | Friday-enhanced features created: 348 samples x 43 features
-2025-07-22 12:49:47,003 |     INFO | Original: 19, New Friday features: 24
-2025-07-22 12:49:47,003 |     INFO | Training enhanced models...
-2025-07-22 12:49:47,004 |     INFO |   Training 10% quantile model...
-2025-07-22 12:49:47,004 |  WARNING |   Quantile regression failed for 0.1, using Linear Regression fallback
-2025-07-22 12:49:47,004 |  WARNING |   Last error: QuantileRegressor.__init__() got an unexpected keyword argument 'max_iter'
-2025-07-22 12:49:47,016 |     INFO |     Fallback Linear Regression MAE: 22282404051896020
-2025-07-22 12:49:47,017 |     INFO |   Training 25% quantile model...
-2025-07-22 12:49:47,017 |  WARNING |   Quantile regression failed for 0.25, using Linear Regression fallback
-2025-07-22 12:49:47,017 |  WARNING |   Last error: QuantileRegressor.__init__() got an unexpected keyword argument 'max_iter'
-2025-07-22 12:49:47,028 |     INFO |     Fallback Linear Regression MAE: 22282404051896020
-2025-07-22 12:49:47,029 |     INFO |   Training 50% quantile model...
-2025-07-22 12:49:47,029 |  WARNING |   Quantile regression failed for 0.5, using Linear Regression fallback
-2025-07-22 12:49:47,029 |  WARNING |   Last error: QuantileRegressor.__init__() got an unexpected keyword argument 'max_iter'
-2025-07-22 12:49:47,035 |     INFO |     Fallback Linear Regression MAE: 22282404051896020
-2025-07-22 12:49:47,036 |     INFO |   Training 75% quantile model...
-2025-07-22 12:49:47,036 |  WARNING |   Quantile regression failed for 0.75, using Linear Regression fallback
-2025-07-22 12:49:47,037 |  WARNING |   Last error: QuantileRegressor.__init__() got an unexpected keyword argument 'max_iter'
-2025-07-22 12:49:47,046 |     INFO |     Fallback Linear Regression MAE: 22282404051896020
-2025-07-22 12:49:47,047 |     INFO |   Training 90% quantile model...
-2025-07-22 12:49:47,048 |  WARNING |   Quantile regression failed for 0.9, using Linear Regression fallback
-2025-07-22 12:49:47,050 |  WARNING |   Last error: QuantileRegressor.__init__() got an unexpected keyword argument 'max_iter'
-2025-07-22 12:49:47,063 |     INFO |     Fallback Linear Regression MAE: 22282404051896020
-2025-07-22 12:49:47,065 |     INFO |   Training bootstrap ensemble...
-2025-07-22 12:49:47,662 |     INFO |   Bootstrap ensemble created with 10 models
-2025-07-22 12:49:47,663 |     INFO | Enhanced models trained successfully!
-2025-07-22 12:49:47,727 |     INFO | Enhanced models saved successfully
-2025-07-22 12:49:47,728 |     INFO | STEP 5: Testing Friday-enhanced model...
-2025-07-22 12:49:47,729 |     INFO | Testing enhanced models comprehensively...
-2025-07-22 12:49:47,734 |     INFO | Overall enhanced performance:
-2025-07-22 12:49:47,735 |     INFO |   MAE: 22282404051896020
-2025-07-22 12:49:47,736 |     INFO |   RMSE: 22282638568107808
-2025-07-22 12:49:47,736 |     INFO |   R2: -79715544222202.516
-2025-07-22 12:49:47,737 |     INFO |   Accuracy: 0.0%
-2025-07-22 12:49:47,738 |     INFO |
-enhanced performance by weekday:
-2025-07-22 12:49:47,739 |     INFO |   Monday    : MAE=22301227131846756, Bias=+22301227131846756, Samples= 13
-2025-07-22 12:49:47,742 |     INFO |   Tuesday   : MAE=22253714962749212, Bias=+22253714962749212, Samples= 14
-2025-07-22 12:49:47,745 |     INFO |   Wednesday : MAE=22257319591845480, Bias=+22257319591845480, Samples= 14
-2025-07-22 12:49:47,748 |     INFO |   Thursday  : MAE=22323686032305468, Bias=+22323686032305468, Samples= 15
-2025-07-22 12:49:47,751 |     INFO |   Friday    : MAE=22274468333557560, Bias=+22274468333557560, Samples= 14
-2025-07-22 12:49:47,752 |     INFO |
-FRIDAY enhanced Challenge: MAE = 22274468333557560
-2025-07-22 12:49:47,753 |     INFO | STEP 6: Comparing models...
-2025-07-22 12:49:47,754 |     INFO | ================================================================================
-2025-07-22 12:49:47,754 |     INFO | BEFORE/AFTER COMPARISON
-2025-07-22 12:49:47,755 |     INFO | ================================================================================
-2025-07-22 12:49:47,755 |     INFO | OVERALL MODEL IMPROVEMENT:
-2025-07-22 12:49:47,756 |     INFO |   MAE: 21763988439828496 -> 22282404051896020 (-518415612067524, -2.4%)
-2025-07-22 12:49:47,757 |     INFO |   Accuracy: 0.0% -> 0.0%
-2025-07-22 12:49:47,757 |     INFO |   R2: -76048873462301.250 -> -79715544222202.516
-2025-07-22 12:49:47,758 |     INFO |
-WEEKDAY-SPECIFIC IMPROVEMENTS:
-2025-07-22 12:49:47,759 |     INFO |   Monday    : 21779761374929996 -> 22301227131846756 (-521465756916760,  -2.4%)
-2025-07-22 12:49:47,760 |     INFO |   Tuesday   : 21741881710824100 -> 22253714962749212 (-511833251925112,  -2.4%)
-2025-07-22 12:49:47,760 |     INFO |   Wednesday : 21744755648748348 -> 22257319591845480 (-512563943097132,  -2.4%)
-2025-07-22 12:49:47,761 |     INFO |   Thursday  : 21797666189511424 -> 22323686032305468 (-526019842794044,  -2.4%)
-2025-07-22 12:49:47,761 |     INFO |   Friday    : 21754598359801372 -> 22274468333557560 (-519869973756188,  -2.4%)
-2025-07-22 12:49:47,762 |     INFO |
-FRIDAY CHALLENGE RESULTS:
-2025-07-22 12:49:47,763 |     INFO |   Friday MAE: 21754598359801372 -> 22274468333557560
-2025-07-22 12:49:47,764 |     INFO |   Friday Improvement: -519869973756188 calls (-2.4%)
-2025-07-22 12:49:47,766 |     INFO |   WARNING: Friday predictions unchanged or slightly worse
-2025-07-22 12:49:47,767 |     INFO | STEP 7: Creating comparison visualizations...
-2025-07-22 12:49:47,768 |     INFO | Creating before/after comparison visualizations...
-2025-07-22 12:49:49,445 |     INFO | Comparison visualization saved: before_after_comparison\before_after_comparison.png
-2025-07-22 12:49:49,445 |     INFO | STEP 8: Saving results...
-2025-07-22 12:49:49,470 |     INFO | All results saved to JSON files
-2025-07-22 12:49:49,471 |     INFO | STEP 9: Generating final report...
-
-================================================================================
-                FRIDAY-ENHANCED MODEL TRAINING RESULTS
-                      2025-07-22 12:49:49
-================================================================================
-
-EXECUTIVE SUMMARY:
---------------------------------------------------
-The Friday-enhanced model has been trained and tested against the baseline.
-MINIMAL: Limited improvements detected
-
-OVERALL PERFORMANCE:
---------------------------------------------------
-• Overall MAE Improvement: -2.4%
-• Baseline MAE: 21763988439828496
-• Enhanced MAE: 22282404051896020
-• Accuracy: 0.0% -> 0.0%
-
-FRIDAY CHALLENGE RESULTS:
---------------------------------------------------
-• Friday MAE Improvement: -2.4%
-• Baseline Friday MAE: 21754598359801372
-• Enhanced Friday MAE: 22274468333557560
-• Error Reduction: -519869973756188 calls per Friday
-
-WEEKDAY BREAKDOWN:
---------------------------------------------------
-• Monday    : -521465756916760 calls ( -2.4%)
-• Tuesday   : -511833251925112 calls ( -2.4%)
-• Wednesday : -512563943097132 calls ( -2.4%)
-• Thursday  : -526019842794044 calls ( -2.4%)
-• Friday    : -519869973756188 calls ( -2.4%)
-
-BUSINESS IMPACT:
---------------------------------------------------
-• Annual Friday Error Reduction: -27033238635321776 calls
-• Staffing Impact: -10397399475123.8 agents per Friday
-• Cost Impact: ~$108,132,954,541,287,104/year
-
-RECOMMENDATIONS:
---------------------------------------------------
-KEEP BASELINE: Minimal improvements don't justify complexity
-
-NEXT STEPS:
---------------------------------------------------
-1. Continue with baseline model
-2. Focus on operational improvements
-3. Run testing suite with the baseline model
-4. Document findings
-
-FILES GENERATED:
---------------------------------------------------
-• before_after_comparison.png - Main comparison dashboard
-• model_comparison.json - Detailed metrics
-• baseline_models.pkl - Trained baseline models
-• friday_enhanced_models.pkl - Trained enhanced models
-
-================================================================================
-              BASELINE CONFIRMED OPTIMAL
-================================================================================
-
-2025-07-22 12:49:49,486 |     INFO | Final report saved: before_after_comparison\FRIDAY_ENHANCEMENT_REPORT.txt
-2025-07-22 12:49:49,487 |     INFO | ================================================================================
-2025-07-22 12:49:49,488 |     INFO | PIPELINE COMPLETE!
-2025-07-22 12:49:49,489 |     INFO | Total time: 90.0 seconds
-2025-07-22 12:49:49,490 |     INFO | Results saved in: before_after_comparison
-
-FRIDAY MODEL TRAINING COMPLETE!
-============================================================
-Both models trained and tested
-Comprehensive comparison generated
-Visualizations created
-Reports saved
-
-NEXT STEPS:
-1. Review the comparison visualizations
-2. Read the final report
-3. Run your testing suite on the best model
-4. Deploy to production if improvements are significant
-
-All results in: before_after_comparison
-
-
-
-
-
-
 #!/usr/bin/env python
 # friday_enhanced_model_trainer.py
 # =========================================================
@@ -406,38 +180,32 @@ def load_mail_call_data():
         dcol_v = date_cols[0]
         df_vol[dcol_v] = _to_date(df_vol[dcol_v])
         
-        # Find volume column
-        vol_cols = [c for c in df_vol.columns if c != dcol_v and df_vol[c].dtype in ['int64', 'float64']]
-        if not vol_cols:
-            raise ValueError("No volume column found in call volumes")
-        
-        vol_daily = df_vol.groupby(dcol_v)[vol_cols[0]].sum()
+        # Use your original proven logic - get first numeric column after date
+        vol_daily = df_vol.groupby(dcol_v)[df_vol.columns.difference([dcol_v])[0]].sum()
         LOG.info(f"Call volumes processed: {len(vol_daily)} days")
+        LOG.info(f"Call volume range: {vol_daily.min():.0f} to {vol_daily.max():.0f}")
 
-        # Load call intent data
+        # Load call intent data - exactly like your original
         LOG.info("Loading call intent data...")
         intent_path = _find_file(["callintent.csv", "data/callintent.csv", "../data/callintent.csv", "callintetn.csv"])
         df_int = pd.read_csv(intent_path)
         df_int.columns = [c.lower().strip() for c in df_int.columns]
-        
-        # Find date column
-        date_cols = [c for c in df_int.columns if "date" in c.lower() or "conversation" in c.lower()]
-        if not date_cols:
-            raise ValueError("No date column found in call intent")
-        
-        dcol_i = date_cols[0]
+        dcol_i = next(c for c in df_int.columns if "date" in c or "conversationstart" in c)
         df_int[dcol_i] = _to_date(df_int[dcol_i])
         int_daily = df_int.groupby(dcol_i).size()
         LOG.info(f"Call intent processed: {len(int_daily)} days")
+        if len(int_daily) > 0:
+            LOG.info(f"Call intent range: {int_daily.min():.0f} to {int_daily.max():.0f}")
 
-        # Scale and combine call data
+        # Scale and combine - exactly like your original
         overlap = vol_daily.index.intersection(int_daily.index)
         if len(overlap) >= 5:
             scale = int_daily.loc[overlap].mean() / vol_daily.loc[overlap].mean()
             vol_daily *= scale
-            LOG.info(f"Scaled call volumes using {len(overlap)} overlapping days")
+            LOG.info(f"Scaled call volumes using {len(overlap)} overlapping days, scale factor: {scale:.2f}")
         
         calls_total = vol_daily.combine_first(int_daily).sort_index()
+        LOG.info(f"Combined calls total: {len(calls_total)} days")
 
         # Process mail data
         LOG.info("Processing mail data...")
@@ -455,19 +223,25 @@ def load_mail_call_data():
         mail_daily = mail_daily.loc[biz_mask]
         calls_total = calls_total.loc[calls_total.index.isin(mail_daily.index)]
 
-        # Combine data
+        # Combine data - using your original approach
         daily = mail_daily.join(calls_total.rename("calls_total"), how="inner")
         
         LOG.info(f"Final combined data: {daily.shape}")
         LOG.info(f"Date range: {daily.index.min()} to {daily.index.max()}")
+        LOG.info(f"Call volume stats: min={daily['calls_total'].min():.0f}, max={daily['calls_total'].max():.0f}, mean={daily['calls_total'].mean():.0f}")
         
-        # Validate data
+        # Basic validation - your original doesn't do complex scaling
         if daily.empty:
             raise ValueError("No data after combining mail and calls")
         if daily['calls_total'].isna().all():
             raise ValueError("No valid call data")
         if daily.select_dtypes(include=[np.number]).sum().sum() == 0:
             raise ValueError("No numerical data found")
+        
+        # Only warn if values seem unrealistic, don't automatically "fix" them
+        if daily['calls_total'].max() > 1000000:
+            LOG.warning(f"Call volumes seem very large (max: {daily['calls_total'].max():.0f})")
+            LOG.warning("If this is incorrect, check your call data source")
         
         return daily
         
@@ -825,11 +599,11 @@ def train_models(X, y, model_type="baseline"):
             for solver in solvers_to_try:
                 for alpha in alpha_values:
                     try:
+                        # Remove max_iter for older sklearn versions
                         model = QuantileRegressor(
                             quantile=quantile, 
                             alpha=alpha, 
-                            solver=solver,
-                            max_iter=CFG['max_iter']
+                            solver=solver
                         )
                         model.fit(X_train, y_train)
                         
