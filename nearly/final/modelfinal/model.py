@@ -1,379 +1,3 @@
-PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> & C:/Users/BhungarD/python.exe "c:/Users/BhungarD/OneDrive - Computershare/Desktop/finprod/model.py"
-PRODUCTION-GRADE CALL PREDICTION PIPELINE
-============================================================
-Mail-lag aware call volume prediction
-Progressive complexity modeling
-Comprehensive EDA and evaluation
-Production deployment ready
-============================================================
-
-2025-07-22 17:26:42 |     INFO | STARTING PRODUCTION-GRADE CALL PREDICTION PIPELINE
-2025-07-22 17:26:42 |     INFO | ================================================================================
-2025-07-22 17:26:42 |     INFO | PHASE 1: DATA LOADING
-2025-07-22 17:26:42 |     INFO | === STARTING DATA LOADING ===
-2025-07-22 17:26:42 |     INFO | Loading call volume data...
-2025-07-22 17:26:42 |     INFO | Found file: data\callvolumes.csv
-2025-07-22 17:26:44 |     INFO | Loaded data\callvolumes.csv with encoding=utf-8, sep=','
-2025-07-22 17:26:44 |     INFO | Using date column: date (1043025/1043025 valid dates)
-2025-07-22 17:26:44 |     INFO | Using call volume column: alerttime (best match score: 5)
-2025-07-22 17:26:45 |     INFO | Call data loaded: 550 days, 33-19185687 calls
-2025-07-22 17:26:45 |     INFO | Loading mail volume data...
-2025-07-22 17:26:45 |     INFO | Found file: data\mail.csv
-2025-07-22 17:26:46 |     INFO | Loaded data\mail.csv with encoding=utf-8, sep=','
-2025-07-22 17:26:46 |     INFO | Using date column: mail_date (1409780/1409780 valid dates)
-2025-07-22 17:26:46 |  WARNING | Could not identify mail columns. Type: mail_volume, Volume: None
-2025-07-22 17:26:46 |     INFO | Using 1 numeric columns as mail types
-2025-07-22 17:26:47 |     INFO | Mail data loaded: 401 business days, 1 mail types
-2025-07-22 17:26:47 |     INFO | Loading economic data...
-2025-07-22 17:26:47 |     INFO | Economic data not found - skipping
-
-================================================================================
-DATA LOADING SUMMARY
-================================================================================
-
-CALL_DATA:
-  file: data\callvolumes.csv
-  date_column: date
-  call_column: alerttime
-  date_range: 2024-01-01 to 2025-07-03
-  total_days: 550
-  call_range: 33 to 19185687
-  mean_calls: 3247877
-
-MAIL_DATA:
-  file: data\mail.csv
-  date_range: 2023-08-01 to 2025-05-30
-  total_days: 401
-  mail_types: 1
-  top_mail_types: ['mail_volume']
-================================================================================
-2025-07-22 17:26:47 |     INFO |
-PHASE 2: EXPLORATORY DATA ANALYSIS
-2025-07-22 17:26:47 |     INFO | === STARTING COMPREHENSIVE EDA ===
-2025-07-22 17:26:47 |     INFO | Creating data overview plots...
-2025-07-22 17:26:48 |     INFO | Saved plot: 01_data_overview.png
-2025-07-22 17:26:48 |     INFO | Creating correlation analysis with lag effects...
-2025-07-22 17:26:48 |     INFO | Saved plot: 02_correlation_analysis.png
-2025-07-22 17:26:48 |     INFO | Creating temporal pattern analysis...
-2025-07-22 17:26:49 |     INFO | Saved plot: 03_temporal_patterns.png
-2025-07-22 17:26:49 |     INFO | Creating outlier analysis...
-2025-07-22 17:26:50 |     INFO | Saved plot: 04_outlier_analysis.png
-2025-07-22 17:26:50 |     INFO | EDA complete! Plots saved to: production_pipeline\eda_plots
-2025-07-22 17:26:50 |     INFO |
-PHASE 3: PROGRESSIVE MODEL TRAINING
-2025-07-22 17:26:50 |     INFO | === STARTING PROGRESSIVE MODEL TRAINING ===
-2025-07-22 17:26:50 |     INFO |
---- COMPLEXITY LEVEL: SIMPLE ---
-2025-07-22 17:26:50 |     INFO | === CREATING SIMPLE FEATURES ===
-2025-07-22 17:26:50 |     INFO | Creating lag features for simple complexity...
-2025-07-22 17:26:50 |     INFO | Created 1 lag features
-2025-07-22 17:26:50 |     INFO | Creating temporal features...
-2025-07-22 17:26:50 |     INFO | Created 2 temporal features
-2025-07-22 17:26:50 |     INFO | Creating call history features...
-2025-07-22 17:26:50 |    ERROR | Call history feature creation failed: Invalid fill method. Expecting pad (ffill) or backfill (bfill). Got forward
-2025-07-22 17:26:50 |     INFO | Selecting top 10 features...
-2025-07-22 17:26:50 |     INFO | Final feature set: 4 features for 549 samples
-2025-07-22 17:26:50 |     INFO | Training simple models...
-2025-07-22 17:26:50 |     INFO |   Training linear...
-2025-07-22 17:26:50 |     INFO |     CV MAE: 3356582.51 +/- 4101440.55
-2025-07-22 17:26:50 |     INFO |     CV R2:  -0.677 +/- 0.544
-2025-07-22 17:26:50 |     INFO |     Overfitting: -3005360.79
-2025-07-22 17:26:50 |     INFO |   Training ridge...
-2025-07-22 17:26:50 |     INFO |     CV MAE: 3356592.54 +/- 4101454.16
-2025-07-22 17:26:50 |     INFO |     CV R2:  -0.675 +/- 0.543
-2025-07-22 17:26:50 |     INFO |     Overfitting: -3005386.15
-2025-07-22 17:26:50 |     INFO | New best model: simple/linear (MAE: 3356582.51)
-2025-07-22 17:26:50 |     INFO |
---- COMPLEXITY LEVEL: INTERMEDIATE ---
-2025-07-22 17:26:50 |     INFO | === CREATING INTERMEDIATE FEATURES ===
-2025-07-22 17:26:50 |     INFO | Creating lag features for intermediate complexity...
-2025-07-22 17:26:50 |     INFO | Created 4 lag features
-2025-07-22 17:26:50 |     INFO | Creating temporal features...
-2025-07-22 17:26:50 |     INFO | Created 6 temporal features
-2025-07-22 17:26:50 |     INFO | Creating call history features...
-2025-07-22 17:26:50 |    ERROR | Call history feature creation failed: Invalid fill method. Expecting pad (ffill) or backfill (bfill). Got forward
-2025-07-22 17:26:50 |     INFO | Creating interaction features...
-2025-07-22 17:26:50 |     INFO | Created 1 interaction features
-2025-07-22 17:26:50 |     INFO | Selecting top 25 features...
-2025-07-22 17:26:50 |     INFO | Removing 1 constant features
-2025-07-22 17:26:50 |     INFO | Final feature set: 11 features for 549 samples
-2025-07-22 17:26:50 |     INFO | Training intermediate models...
-2025-07-22 17:26:50 |     INFO |   Training linear...
-2025-07-22 17:26:50 |     INFO |     CV MAE: 3380364.50 +/- 4120202.88
-2025-07-22 17:26:50 |     INFO |     CV R2:  -18.578 +/- 35.638
-2025-07-22 17:26:50 |     INFO |     Overfitting: -3009760.26
-2025-07-22 17:26:50 |     INFO |   Training ridge...
-2025-07-22 17:26:50 |     INFO |     CV MAE: 3374802.87 +/- 4124213.15
-2025-07-22 17:26:50 |     INFO |     CV R2:  -0.714 +/- 0.445
-2025-07-22 17:26:50 |     INFO |     Overfitting: -3005650.22
-2025-07-22 17:26:50 |     INFO |   Training lasso...
-2025-07-22 17:26:50 |     INFO |     CV MAE: 3374883.13 +/- 4124614.70
-2025-07-22 17:26:50 |     INFO |     CV R2:  -0.658 +/- 0.440
-2025-07-22 17:26:50 |     INFO |     Overfitting: -3004273.45
-2025-07-22 17:26:50 |     INFO |   Training elastic...
-2025-07-22 17:26:50 |     INFO |     CV MAE: 3372058.31 +/- 4121278.24
-2025-07-22 17:26:50 |     INFO |     CV R2:  -0.699 +/- 0.504
-2025-07-22 17:26:50 |     INFO |     Overfitting: -3022907.20
-2025-07-22 17:26:50 |     INFO |
---- COMPLEXITY LEVEL: ADVANCED ---
-2025-07-22 17:26:50 |     INFO | === CREATING ADVANCED FEATURES ===
-2025-07-22 17:26:50 |     INFO | Creating lag features for advanced complexity...
-2025-07-22 17:26:50 |     INFO | Created 4 lag features
-2025-07-22 17:26:50 |     INFO | Creating temporal features...
-2025-07-22 17:26:50 |     INFO | Created 12 temporal features
-2025-07-22 17:26:50 |     INFO | Creating call history features...
-2025-07-22 17:26:50 |    ERROR | Call history feature creation failed: Invalid fill method. Expecting pad (ffill) or backfill (bfill). Got forward
-2025-07-22 17:26:50 |     INFO | Creating interaction features...
-2025-07-22 17:26:50 |     INFO | Created 16 interaction features
-2025-07-22 17:26:50 |     INFO | Selecting top 50 features...
-2025-07-22 17:26:50 |     INFO | Removing 1 constant features
-2025-07-22 17:26:50 |     INFO | Final feature set: 32 features for 549 samples
-2025-07-22 17:26:50 |     INFO | Training advanced models...
-2025-07-22 17:26:50 |     INFO |   Training linear...
-2025-07-22 17:26:50 |     INFO |     CV MAE: 3242785.49 +/- 3933896.20
-2025-07-22 17:26:50 |     INFO |     CV R2:  -83.356 +/- 158.047
-2025-07-22 17:26:50 |     INFO |     Overfitting: -2873706.94
-2025-07-22 17:26:50 |     INFO |   Training ridge...
-2025-07-22 17:26:50 |     INFO |     CV MAE: 3240400.77 +/- 3937846.78
-2025-07-22 17:26:50 |     INFO |     CV R2:  -77.720 +/- 153.763
-2025-07-22 17:26:50 |     INFO |     Overfitting: -2872346.29
-2025-07-22 17:26:50 |     INFO |   Training lasso...
-2025-07-22 17:26:51 |     INFO |     CV MAE: 3240513.39 +/- 3935711.22
-2025-07-22 17:26:51 |     INFO |     CV R2:  -83.846 +/- 165.699
-2025-07-22 17:26:51 |     INFO |     Overfitting: -2871434.31
-2025-07-22 17:26:51 |     INFO |   Training elastic...
-2025-07-22 17:26:51 |     INFO |     CV MAE: 3298859.77 +/- 4018312.30
-2025-07-22 17:26:51 |     INFO |     CV R2:  -18.303 +/- 35.148
-2025-07-22 17:26:51 |     INFO |     Overfitting: -2972141.83
-2025-07-22 17:26:51 |     INFO |   Training random_forest...
-2025-07-22 17:26:51 |     INFO |     CV MAE: 2121388.34 +/- 3079291.86
-2025-07-22 17:26:51 |     INFO |     CV R2:  -0.062 +/- 0.557
-2025-07-22 17:26:51 |     INFO |     Overfitting: -2062419.02
-2025-07-22 17:26:51 |     INFO |   Training gradient_boost...
-2025-07-22 17:26:52 |     INFO |     CV MAE: 2159440.44 +/- 3088780.67
-2025-07-22 17:26:52 |     INFO |     CV R2:  -0.014 +/- 0.618
-2025-07-22 17:26:52 |     INFO |     Overfitting: -2150596.96
-2025-07-22 17:26:52 |     INFO | New best model: advanced/linear (MAE: 3242785.49)
-2025-07-22 17:26:52 |     INFO | New best model: advanced/ridge (MAE: 3240400.77)
-2025-07-22 17:26:52 |     INFO | New best model: advanced/random_forest (MAE: 2121388.34)
-2025-07-22 17:26:52 |     INFO |
-BEST MODEL: advanced level with MAE: 2121388.34
-2025-07-22 17:26:52 |     INFO |
-PHASE 4: MODEL EVALUATION
-2025-07-22 17:26:52 |     INFO | === STARTING COMPREHENSIVE MODEL EVALUATION ===
-2025-07-22 17:26:52 |     INFO | Creating model comparison plots...
-2025-07-22 17:26:53 |     INFO | Saved plot: 05_model_comparison.png
-2025-07-22 17:26:53 |     INFO | Creating feature importance analysis...
-2025-07-22 17:26:53 |     INFO | Saved plot: 06_feature_importance.png
-2025-07-22 17:26:53 |     INFO | Creating prediction analysis...
-2025-07-22 17:26:53 |     INFO | === CREATING ADVANCED FEATURES ===
-2025-07-22 17:26:53 |     INFO | Creating lag features for advanced complexity...
-2025-07-22 17:26:53 |     INFO | Created 4 lag features
-2025-07-22 17:26:53 |     INFO | Creating temporal features...
-2025-07-22 17:26:53 |     INFO | Created 12 temporal features
-2025-07-22 17:26:53 |     INFO | Creating call history features...
-2025-07-22 17:26:53 |    ERROR | Call history feature creation failed: Invalid fill method. Expecting pad (ffill) or backfill (bfill). Got forward
-2025-07-22 17:26:53 |     INFO | Creating interaction features...
-2025-07-22 17:26:53 |     INFO | Created 16 interaction features
-2025-07-22 17:26:53 |     INFO | Selecting top 50 features...
-2025-07-22 17:26:53 |     INFO | Removing 1 constant features
-2025-07-22 17:26:53 |     INFO | Final feature set: 32 features for 549 samples
-2025-07-22 17:26:53 |    ERROR | Error recreating predictions: The feature names should match those that were passed during fit.
-Feature names unseen at fit time:
-- mail_volume_lag_1
-- mail_volume_lag_1_x_weekday_0
-- mail_volume_lag_1_x_weekday_1
-- mail_volume_lag_1_x_weekday_2
-- mail_volume_lag_1_x_weekday_3
-- ...
-Feature names seen at fit time, yet now missing:
-- mail_volume_lag_6
-- mail_volume_lag_6_x_weekday_0
-- mail_volume_lag_6_x_weekday_1
-- mail_volume_lag_6_x_weekday_2
-- mail_volume_lag_6_x_weekday_3
-- ...
-
-2025-07-22 17:26:53 |     INFO | Saved plot: 07_prediction_analysis.png
-2025-07-22 17:26:53 |     INFO | Model evaluation complete! Plots saved to: production_pipeline\eda_plots
-2025-07-22 17:26:53 |     INFO |
-PHASE 5: PREDICTION INTERFACE SETUP
-2025-07-22 17:26:53 |     INFO | === CREATING ADVANCED FEATURES ===
-2025-07-22 17:26:53 |     INFO | Creating lag features for advanced complexity...
-2025-07-22 17:26:53 |     INFO | Created 4 lag features
-2025-07-22 17:26:53 |     INFO | Creating temporal features...
-2025-07-22 17:26:53 |     INFO | Created 12 temporal features
-2025-07-22 17:26:53 |     INFO | Creating call history features...
-2025-07-22 17:26:53 |    ERROR | Call history feature creation failed: Invalid fill method. Expecting pad (ffill) or backfill (bfill). Got forward
-2025-07-22 17:26:53 |     INFO | Creating interaction features...
-2025-07-22 17:26:53 |     INFO | Created 16 interaction features
-2025-07-22 17:26:53 |     INFO | Selecting top 50 features...
-2025-07-22 17:26:53 |     INFO | Removing 1 constant features
-2025-07-22 17:26:53 |     INFO | Final feature set: 32 features for 549 samples
-2025-07-22 17:26:53 |     INFO | Creating prediction scenarios...
-2025-07-22 17:26:54 |     INFO | Generated 2 prediction scenarios
-2025-07-22 17:26:54 |     INFO | Example predictions:
-2025-07-22 17:26:54 |     INFO |   single_high_volume: 1 predictions
-2025-07-22 17:26:54 |     INFO |     Average predicted calls: 15152443
-2025-07-22 17:26:54 |     INFO |   normal_weekly_plan: 5 predictions
-2025-07-22 17:26:54 |     INFO |     Average predicted calls: 14064795
-2025-07-22 17:26:54 |     INFO |
-PHASE 6: PRODUCTION DEPLOYMENT
-2025-07-22 17:26:54 |     INFO | Saving production model and metadata...
-2025-07-22 17:26:54 |     INFO | Production assets saved to: production_pipeline
-2025-07-22 17:26:54 |     INFO | Production model saved: 5 files
-2025-07-22 17:26:54 |     INFO | Generating production deployment report...
-
-PRODUCTION CALL VOLUME PREDICTION REPORT
-========================================
-
-MAIL-LAG AWARE PREDICTION PIPELINE
-==================================
-
-EXECUTION SUMMARY:
------------------
-Pipeline Execution Time: 0.2 minutes
-Data Processing: Complete
-Model Training: Complete
-Model Evaluation: Complete
-Production Deployment: Ready
-
-BEST MODEL PERFORMANCE:
-----------------------
-Best Model: random_forest (advanced complexity)
-Cross-Validation MAE: 2121388.34 +/- 3079291.86 calls
-Cross-Validation R2: -0.062 +/- 0.557
-Training MAE: 444303.87 calls
-Training R2: 0.942
-Overfitting Score: -2062419.02
-
-DATA SUMMARY:
-------------
-CALL DATA:
-  Total Days: 550
-  Date Range: 2024-01-01 to 2025-07-03
-  Call Range: 33 to 19185687
-  Average Calls: 3247877
-
-MAIL DATA:
-  Mail Types: 1
-  Business Days: 401
-  Top Mail Types: mail_volume
-
-FEATURE ENGINEERING:
--------------------
-Total Features: 32
-Training Samples: 549
-Mail Lag Effects: 1-3 day lags modeled
-Temporal Features: Weekday, seasonal patterns
-Call History: Recent patterns and trends
-
-MAIL LAG MODELING:
------------------
-Primary Lag: 2 days (mail delivery time)
-Lag Weights: 1-day: 0.3, 2-day: 0.5, 3-day: 0.2
-Model Handles: Single day mail input
-Model Handles: Weekly mail plans
-Cumulative Effects: Multi-day mail campaigns
-
-PRODUCTION CAPABILITIES:
------------------------
-Single Day Predictions: Ready
-Weekly Plan Predictions: Ready
-Mail Lag Handling: 2-3 day delivery lag
-Confidence Intervals: 95% confidence bounds
-API Template: Flask REST API ready
-
-DEPLOYMENT ASSETS:
------------------
-Trained Model: Saved (.pkl format)
-Model Metadata: Complete specifications
-Deployment Script: Production ready
-API Template: REST endpoints
-Documentation: Usage examples
-
-PRODUCTION READINESS ASSESSMENT:
--------------------------------
-Model Quality: Poor
-Overfitting Risk: Low
-Data Quality: Good
-Mail Lag Modeling: Validated
-
-BUSINESS IMPACT:
----------------
-Prediction Accuracy: +/-2121388 calls typical error
-Planning Horizon: Up to 1 week ahead
-Mail Campaign Support: Multi-day campaigns
-Operational Value: Low
-
-DELIVERABLES SUMMARY:
---------------------
-ANALYSIS PLOTS:
-- 01_data_overview.png - Raw data visualization
-- 02_correlation_analysis.png - Mail-call lag correlations
-- 03_temporal_patterns.png - Seasonal and weekday patterns
-- 04_outlier_analysis.png - Data quality assessment
-- 05_model_comparison.png - Progressive model results
-- 06_feature_importance.png - Key predictive features
-- 07_prediction_analysis.png - Model accuracy evaluation
-
-PRODUCTION ASSETS:
-- best_call_prediction_model.pkl - Trained model
-- production_model_metadata.json - Complete specifications
-- training_results.json - Full training results
-- deploy_model.py - Deployment script
-- prediction_api.py - Flask API template
-
-FINAL RECOMMENDATION:
---------------------
-IMPROVE MODEL BEFORE DEPLOYMENT
-
-The Mail-Lag Aware Call Prediction Pipeline demonstrates:
-- Proper handling of 2-3 day mail delivery lag effects
-- Progressive complexity to prevent overfitting
-- Production-ready prediction interface for daily/weekly planning
-- Comprehensive validation and monitoring capabilities
-- Full deployment assets for immediate production use
-
-Model needs improvement - consider more data or feature engineering.
-
-===============================================================================
-Pipeline completed on 2025-07-22 at 17:26:54
-Total execution time: 0.2 minutes
-Production readiness: PENDING IMPROVEMENTS
-===============================================================================
-
-2025-07-22 17:26:54 |     INFO | Production report saved to: production_pipeline\results\PRODUCTION_DEPLOYMENT_REPORT.txt
-2025-07-22 17:26:54 |     INFO |
-================================================================================
-2025-07-22 17:26:54 |     INFO | PIPELINE COMPLETED SUCCESSFULLY!
-2025-07-22 17:26:54 |     INFO | ================================================================================
-2025-07-22 17:26:54 |     INFO | Total execution time: 0.2 minutes
-2025-07-22 17:26:54 |     INFO | All outputs saved to: production_pipeline
-2025-07-22 17:26:54 |     INFO | EDA plots created: 7
-2025-07-22 17:26:54 |     INFO | Best model: advanced RandomForestRegressor
-2025-07-22 17:26:54 |     INFO | Model ready for production deployment
-2025-07-22 17:26:54 |     INFO | Supports single-day and weekly mail plan predictions
-
-============================================================
-PRODUCTION PIPELINE COMPLETED SUCCESSFULLY!
-============================================================
-
-Your call prediction model is ready for production!
-Handles 2-3 day mail delivery lag effects
-Supports single-day and weekly mail planning
-Complete EDA analysis and model evaluation
-Production deployment assets created
-
-Find all outputs in: production_pipeline
-Read the full report: production_pipeline\results\PRODUCTION_DEPLOYMENT_REPORT.txt
-
-Ready for production deployment!
-PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> 
-
-
-
-
 #!/usr/bin/env python
 """
 PRODUCTION-GRADE MAIL-LAG CALL PREDICTION PIPELINE
@@ -607,90 +231,58 @@ class DataLoader:
         LOG.info(f"Using date column: {best_candidate} ({max_parsed}/{len(df)} valid dates)")
         return best_candidate
     
-    def find_call_volume_column(self, df: pd.DataFrame, date_col: str) -> str:
-        """Find the call volume column with smart detection"""
+    def calculate_call_volume(self, df: pd.DataFrame, date_col: str) -> pd.Series:
+        """Calculate call volume by counting records per day"""
         
-        # Get numeric columns (excluding date column)
-        numeric_cols = df.select_dtypes(include=[np.number]).columns.tolist()
-        if date_col in numeric_cols:
-            numeric_cols.remove(date_col)
+        LOG.info("Calculating call volume by counting records per day...")
         
-        if not numeric_cols:
-            raise ValueError("No numeric columns found for call volume")
-        
-        # Look for obvious call volume column names
-        call_candidates = []
-        for col in numeric_cols:
-            col_lower = str(col).lower()
-            if any(keyword in col_lower for keyword in ['call', 'volume', 'count', 'total']):
-                call_candidates.append(col)
-        
-        # If found call-related columns, use the first one
-        if call_candidates:
-            call_col = call_candidates[0]
-            LOG.info(f"Using call volume column: {call_col} (keyword match)")
-            return call_col
-        
-        # Otherwise, find the column with reasonable call volume range
-        best_col = None
-        best_score = -1
-        
-        for col in numeric_cols:
-            try:
-                values = df[col].dropna()
-                if len(values) == 0:
+        try:
+            # Method 1: Count rows per day (most common approach)
+            daily_call_counts = df.groupby(df[date_col].dt.date).size()
+            daily_call_counts.index = pd.to_datetime(daily_call_counts.index)
+            daily_call_counts = daily_call_counts.sort_index()
+            
+            LOG.info(f"Calculated call volume: {len(daily_call_counts)} days, {daily_call_counts.min()}-{daily_call_counts.max()} calls/day")
+            LOG.info(f"Average daily calls: {daily_call_counts.mean():.0f}")
+            
+            # Validate the calculated volumes are reasonable
+            if daily_call_counts.mean() > 50000:
+                LOG.warning("Very high call volumes detected - this might indicate multiple records per call")
+            elif daily_call_counts.mean() < 10:
+                LOG.warning("Very low call volumes detected - this might indicate data quality issues")
+            
+            return daily_call_counts
+            
+        except Exception as e:
+            LOG.error(f"Call volume calculation failed: {e}")
+            
+            # Fallback: Try to find a reasonable numeric column
+            LOG.info("Falling back to column-based detection...")
+            numeric_cols = df.select_dtypes(include=[np.number]).columns.tolist()
+            if date_col in numeric_cols:
+                numeric_cols.remove(date_col)
+            
+            if not numeric_cols:
+                raise ValueError("Cannot calculate call volume - no numeric columns found")
+            
+            # Look for reasonable call volume column
+            for col in numeric_cols:
+                try:
+                    values = df[col].dropna()
+                    if len(values) > 0:
+                        mean_val = values.mean()
+                        if 10 <= mean_val <= 10000:  # Reasonable daily call range
+                            LOG.info(f"Using fallback column for call volume: {col}")
+                            daily_calls = df.groupby(df[date_col].dt.date)[col].sum()
+                            daily_calls.index = pd.to_datetime(daily_calls.index)
+                            return daily_calls.sort_index()
+                except:
                     continue
-                
-                # Check if values are in reasonable call volume range (10-10000 typically)
-                mean_val = values.mean()
-                std_val = values.std()
-                min_val = values.min()
-                max_val = values.max()
-                
-                # Score based on reasonableness for call volumes
-                score = 0
-                
-                # Reasonable mean (100-5000)
-                if 50 <= mean_val <= 10000:
-                    score += 3
-                elif 10 <= mean_val <= 20000:
-                    score += 2
-                elif mean_val > 0:
-                    score += 1
-                
-                # Reasonable range
-                if 10 <= max_val <= 50000:
-                    score += 2
-                elif max_val > 0:
-                    score += 1
-                
-                # Not too volatile
-                if std_val < mean_val * 2:
-                    score += 1
-                
-                # Positive values
-                if min_val >= 0:
-                    score += 1
-                
-                if score > best_score:
-                    best_score = score
-                    best_col = col
-                    
-            except Exception as e:
-                LOG.warning(f"Error evaluating column {col}: {e}")
-                continue
-        
-        if best_col is None:
-            # Fallback: use first numeric column
-            best_col = numeric_cols[0]
-            LOG.warning(f"Using fallback call column: {best_col}")
-        else:
-            LOG.info(f"Using call volume column: {best_col} (best match score: {best_score})")
-        
-        return best_col
+            
+            raise ValueError("Cannot calculate reasonable call volume from available data")
     
     def load_call_data(self) -> pd.DataFrame:
-        """Load and process call volume data with robust detection"""
+        """Load and process call volume data by calculating calls per day"""
         
         LOG.info("Loading call volume data...")
         
@@ -713,47 +305,41 @@ class DataLoader:
             if len(df) == 0:
                 raise ValueError("No valid dates found in call data")
             
-            # Find call volume column
-            call_col = self.find_call_volume_column(df, date_col)
+            LOG.info(f"Found {len(df)} call records across {df[date_col].dt.date.nunique()} unique days")
             
-            # Clean call volume data
-            df[call_col] = pd.to_numeric(df[call_col], errors='coerce')
-            df = df.dropna(subset=[call_col])
-            
-            # Remove obviously wrong values (negative or extremely large)
-            df = df[df[call_col] >= 0]
-            
-            # Remove extreme outliers (> 10 standard deviations)
-            if len(df) > 10:
-                mean_calls = df[call_col].mean()
-                std_calls = df[call_col].std()
-                if std_calls > 0:
-                    outlier_threshold = mean_calls + 10 * std_calls
-                    df = df[df[call_col] <= outlier_threshold]
-            
-            # Create daily aggregated data
-            df = df.set_index(date_col).sort_index()
-            daily_calls = df.groupby(df.index.date)[call_col].sum()
-            daily_calls.index = pd.to_datetime(daily_calls.index)
+            # Calculate call volume by counting records per day
+            daily_calls = self.calculate_call_volume(df, date_col)
             
             # Final data validation
             if len(daily_calls) < 30:
                 raise ValueError(f"Insufficient call data: only {len(daily_calls)} days")
             
             if daily_calls.max() < 1:
-                raise ValueError("Call volumes appear to be zero or negative")
+                raise ValueError("Call volumes appear to be zero")
+            
+            # Remove extreme outliers (>99.9th percentile)
+            outlier_threshold = daily_calls.quantile(0.999)
+            if outlier_threshold > 0:
+                original_length = len(daily_calls)
+                daily_calls = daily_calls[daily_calls <= outlier_threshold]
+                removed = original_length - len(daily_calls)
+                if removed > 0:
+                    LOG.info(f"Removed {removed} extreme outlier days (>{outlier_threshold:.0f} calls)")
             
             self.data_info['call_data'] = {
                 'file': str(file_path),
                 'date_column': date_col,
-                'call_column': call_col,
+                'calculation_method': 'count_records_per_day',
+                'total_records': len(df),
                 'date_range': f"{daily_calls.index.min().date()} to {daily_calls.index.max().date()}",
                 'total_days': len(daily_calls),
                 'call_range': f"{daily_calls.min():.0f} to {daily_calls.max():.0f}",
-                'mean_calls': f"{daily_calls.mean():.0f}"
+                'mean_calls': f"{daily_calls.mean():.0f}",
+                'median_calls': f"{daily_calls.median():.0f}"
             }
             
-            LOG.info(f"Call data loaded: {len(daily_calls)} days, {daily_calls.min():.0f}-{daily_calls.max():.0f} calls")
+            LOG.info(f"Call data processed: {len(daily_calls)} days, {daily_calls.min():.0f}-{daily_calls.max():.0f} calls/day")
+            LOG.info(f"Average: {daily_calls.mean():.0f} calls/day, Median: {daily_calls.median():.0f} calls/day")
             
             self.call_data = daily_calls
             return daily_calls
@@ -763,33 +349,57 @@ class DataLoader:
             raise
     
     def find_mail_columns(self, df: pd.DataFrame, date_col: str) -> Tuple[Optional[str], Optional[str]]:
-        """Find mail type and volume columns"""
+        """Find mail type and volume columns with improved detection"""
         
         remaining_cols = [col for col in df.columns if col != date_col]
         
         # Look for mail type column
         mail_type_col = None
+        type_candidates = []
+        
         for col in remaining_cols:
             col_lower = str(col).lower()
-            if any(keyword in col_lower for keyword in ['type', 'category', 'mail', 'class', 'description']):
-                # Check if it's actually categorical (not numeric)
-                if df[col].dtype == 'object' or df[col].nunique() < len(df) * 0.8:
-                    mail_type_col = col
-                    break
+            # Look for obvious mail type indicators
+            if any(keyword in col_lower for keyword in ['type', 'category', 'mail_type', 'class', 'description', 'product']):
+                # Check if it's actually categorical (not numeric and has reasonable cardinality)
+                unique_count = df[col].nunique()
+                total_rows = len(df)
+                
+                # Good mail type column should have: 5-200 unique types, not all unique
+                if 5 <= unique_count <= 200 and unique_count < total_rows * 0.8:
+                    type_candidates.append((col, unique_count))
+        
+        # Sort by number of unique values (prefer moderate cardinality)
+        if type_candidates:
+            type_candidates.sort(key=lambda x: abs(x[1] - 50))  # Prefer ~50 mail types
+            mail_type_col = type_candidates[0][0]
         
         # Look for volume column
         volume_col = None
+        volume_candidates = []
+        
         numeric_cols = [col for col in remaining_cols if col != mail_type_col and df[col].dtype in [np.number, 'int64', 'float64']]
         
         for col in numeric_cols:
             col_lower = str(col).lower()
-            if any(keyword in col_lower for keyword in ['volume', 'count', 'amount', 'qty', 'quantity', 'total']):
-                volume_col = col
-                break
+            if any(keyword in col_lower for keyword in ['volume', 'count', 'amount', 'qty', 'quantity', 'total', 'pieces']):
+                volume_candidates.append(col)
         
+        # If found volume candidates, use first one
+        if volume_candidates:
+            volume_col = volume_candidates[0]
         # If no obvious volume column, use first numeric column
-        if volume_col is None and numeric_cols:
+        elif numeric_cols:
             volume_col = numeric_cols[0]
+        
+        # Special case: if we have many date-like mail_types, it might be pivoted data
+        if mail_type_col:
+            sample_types = df[mail_type_col].dropna().head(10).astype(str)
+            date_like_count = sum(1 for val in sample_types if any(char.isdigit() for char in val) and len(val) > 8)
+            
+            if date_like_count > 5:  # Most values look like dates
+                LOG.warning(f"Mail type column '{mail_type_col}' contains date-like values - data might be incorrectly structured")
+                # Try to use the data anyway but flag the issue
         
         return mail_type_col, volume_col
     
@@ -1672,7 +1282,7 @@ class FeatureEngineer:
                     call_features['calls_volatility_7d'] = 0
             
             # Fill NaN values
-            call_features = call_features.fillna(method='forward').fillna(0)
+            call_features = call_features.fillna(method='ffill').fillna(0)
             
             LOG.info(f"Created {len(call_features.columns)} call history features")
             return call_features
