@@ -1,0 +1,142 @@
+
+10:36:11 |     INFO | Starting comprehensive model testing and analysis...
+10:36:11 |     INFO | ================================================================================
+10:36:11 |     INFO | LOADING MODEL AND DATA
+10:36:11 |     INFO | ================================================================================
+10:36:11 |     INFO | Loading baseline model and data...
+2025-07-22 10:36:19,354 | mail_input | INFO | Daily mail-calls data: (349, 232)
+2025-07-22 10:36:19,887 | mail_input | INFO | Mail input features: 348 samples x 19 features
+2025-07-22 10:36:19,887 | mail_input | INFO | Feature columns: ['Reject_Ltrs_volume', 'Cheque 1099_volume', 'Exercise_Converted_volume', 'SOI_Confirms_volume', 'Exch_chks_volume', 'ACH_Debit_Enrollment_volume', 'Transfer_volume', 'COA_volume', 'NOTC_WITHDRAW_volume', 'Repl_Chks_volume', 'total_mail_volume', 'log_total_mail_volume', 'mail_percentile', 'weekday', 'month', 'is_month_end', 'is_holiday_week', 'recent_calls_avg', 'recent_calls_trend']
+2025-07-22 10:36:19,888 | mail_input | INFO | Training mail input models...
+2025-07-22 10:36:19,888 | mail_input | INFO |   Training 10% quantile model...
+2025-07-22 10:36:19,948 | mail_input | INFO |     Validation MAE: 5873
+2025-07-22 10:36:19,948 | mail_input | INFO |   Training 25% quantile model...
+2025-07-22 10:36:19,963 | mail_input | INFO |     Validation MAE: 4908
+2025-07-22 10:36:19,963 | mail_input | INFO |   Training 50% quantile model...
+2025-07-22 10:36:19,981 | mail_input | INFO |     Validation MAE: 4498
+2025-07-22 10:36:19,982 | mail_input | INFO |   Training 75% quantile model...
+2025-07-22 10:36:19,997 | mail_input | INFO |     Validation MAE: 5817
+2025-07-22 10:36:19,998 | mail_input | INFO |   Training 90% quantile model...
+2025-07-22 10:36:20,010 | mail_input | INFO |     Validation MAE: 10449
+2025-07-22 10:36:20,011 | mail_input | INFO |   Training bootstrap ensemble...
+10:36:21 |     INFO | Calculating daily totals from individual call records...
+2025-07-22 10:36:21,947 | mail_input | INFO | Calculating daily totals from individual call records...
+10:36:21 |     INFO | Calculated daily totals for 349 days
+2025-07-22 10:36:21,948 | mail_input | INFO | Calculated daily totals for 349 days
+10:36:21 |     INFO | Average daily calls: 1
+2025-07-22 10:36:21,949 | mail_input | INFO | Average daily calls: 1
+10:36:21 |     INFO | Min daily calls: 1
+2025-07-22 10:36:21,950 | mail_input | INFO | Min daily calls: 1
+10:36:21 |     INFO | Max daily calls: 1
+2025-07-22 10:36:21,950 | mail_input | INFO | Max daily calls: 1
+10:36:21 |     INFO | Data loaded successfully: 348 samples, 19 features
+2025-07-22 10:36:21,956 | mail_input | INFO | Data loaded successfully: 348 samples, 19 features
+10:36:21 |     INFO | Individual call records: 349
+2025-07-22 10:36:21,956 | mail_input | INFO | Individual call records: 349
+10:36:21 |     INFO | Daily totals calculated: 349 days
+2025-07-22 10:36:21,957 | mail_input | INFO | Daily totals calculated: 349 days
+10:36:21 |     INFO | Date range: 2024-01-02 to 2025-05-30
+2025-07-22 10:36:21,957 | mail_input | INFO | Date range: 2024-01-02 to 2025-05-30
+10:36:21 |     INFO | Mail feature types: 11
+2025-07-22 10:36:21,958 | mail_input | INFO | Mail feature types: 11
+10:36:21 |     INFO | Baseline performance: MAE=4498, R-squared=0.189
+2025-07-22 10:36:21,961 | mail_input | INFO | Baseline performance: MAE=4498, R-squared=0.189
+10:36:21 |     INFO | ================================================================================
+2025-07-22 10:36:21,961 | mail_input | INFO | ================================================================================
+10:36:21 |     INFO | FRIDAY PATTERN ANALYSIS
+2025-07-22 10:36:21,962 | mail_input | INFO | FRIDAY PATTERN ANALYSIS
+10:36:21 |     INFO | ================================================================================
+2025-07-22 10:36:21,962 | mail_input | INFO | ================================================================================
+10:36:21 |     INFO | ANALYZING FRIDAY PATTERNS FROM RAW DATA
+2025-07-22 10:36:21,963 | mail_input | INFO | ANALYZING FRIDAY PATTERNS FROM RAW DATA
+10:36:21 |     INFO | ============================================================
+2025-07-22 10:36:21,963 | mail_input | INFO | ============================================================
+10:36:21 |     INFO | Friday average calls: 1
+2025-07-22 10:36:21,964 | mail_input | INFO | Friday average calls: 1
+10:36:21 |     INFO | Mon-Thu average calls: 1
+2025-07-22 10:36:21,965 | mail_input | INFO | Mon-Thu average calls: 1
+10:36:21 |     INFO | Friday increase: 0.0%
+2025-07-22 10:36:21,965 | mail_input | INFO | Friday increase: 0.0%
+10:36:21 |     INFO | Friday median: 1
+2025-07-22 10:36:21,966 | mail_input | INFO | Friday median: 1
+10:36:21 |     INFO | Days with >20k calls: Friday=0, Mon-Thu=0
+2025-07-22 10:36:21,967 | mail_input | INFO | Days with >20k calls: Friday=0, Mon-Thu=0
+10:36:21 |     INFO | Creating Friday pattern visualizations...
+2025-07-22 10:36:21,967 | mail_input | INFO | Creating Friday pattern visualizations...
+2025-07-22 10:36:23,488 | mail_input | INFO | Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-07-22 10:36:23,489 | mail_input | INFO | Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+10:37:31 |     INFO | Friday analysis saved: comprehensive_analysis_results\01_friday_pattern_analysis.png
+2025-07-22 10:37:31,831 | mail_input | INFO | Friday analysis saved: comprehensive_analysis_results\01_friday_pattern_analysis.png
+10:37:31 |     INFO | ================================================================================
+2025-07-22 10:37:31,934 | mail_input | INFO | ================================================================================
+10:37:31 |     INFO | COMPOUND EFFECT ANALYSIS
+2025-07-22 10:37:31,935 | mail_input | INFO | COMPOUND EFFECT ANALYSIS
+10:37:31 |     INFO | ================================================================================
+2025-07-22 10:37:31,935 | mail_input | INFO | ================================================================================
+10:37:31 |     INFO | ANALYZING COMPOUND EFFECTS
+2025-07-22 10:37:31,938 | mail_input | INFO | ANALYZING COMPOUND EFFECTS
+10:37:31 |     INFO | ========================================
+2025-07-22 10:37:31,938 | mail_input | INFO | ========================================
+10:37:31 |     INFO | Analyzing Reject_Ltrs_volume
+2025-07-22 10:37:31,939 | mail_input | INFO | Analyzing Reject_Ltrs_volume
+10:37:32 |     INFO |   single_high: 40 occurrences, avg error: -761
+2025-07-22 10:37:32,294 | mail_input | INFO |   single_high: 40 occurrences, avg error: -761
+10:37:32 |     INFO |   two_consecutive: 20 occurrences, avg error: +832
+2025-07-22 10:37:32,297 | mail_input | INFO |   two_consecutive: 20 occurrences, avg error: +832
+10:37:32 |     INFO |   three_consecutive: 8 occurrences, avg error: +782
+2025-07-22 10:37:32,298 | mail_input | INFO |   three_consecutive: 8 occurrences, avg error: +782
+10:37:32 |     INFO | Analyzing Cheque 1099_volume
+2025-07-22 10:37:32,299 | mail_input | INFO | Analyzing Cheque 1099_volume
+10:37:32 |     INFO |   single_high: 3 occurrences, avg error: +3472
+2025-07-22 10:37:32,303 | mail_input | INFO |   single_high: 3 occurrences, avg error: +3472
+10:37:32 |     INFO |   two_consecutive: 9 occurrences, avg error: +10049
+2025-07-22 10:37:32,307 | mail_input | INFO |   two_consecutive: 9 occurrences, avg error: +10049
+10:37:32 |     INFO |   three_consecutive: 43 occurrences, avg error: -556
+2025-07-22 10:37:32,310 | mail_input | INFO |   three_consecutive: 43 occurrences, avg error: -556
+10:37:32 |     INFO | Analyzing Exercise_Converted_volume
+2025-07-22 10:37:32,310 | mail_input | INFO | Analyzing Exercise_Converted_volume
+10:37:32 |     INFO |   single_high: 1 occurrences, avg error: +0
+2025-07-22 10:37:32,314 | mail_input | INFO |   single_high: 1 occurrences, avg error: +0
+10:37:32 |     INFO | Creating compound effect visualizations...
+2025-07-22 10:37:32,316 | mail_input | INFO | Creating compound effect visualizations...
+10:37:38 |     INFO | Compound effect analysis saved: comprehensive_analysis_results\02_compound_effect_analysis.png
+2025-07-22 10:37:38,785 | mail_input | INFO | Compound effect analysis saved: comprehensive_analysis_results\02_compound_effect_analysis.png
+10:37:38 |     INFO | ================================================================================
+2025-07-22 10:37:38,786 | mail_input | INFO | ================================================================================
+10:37:38 |     INFO | WEEKLY PLANNING PREDICTIONS
+2025-07-22 10:37:38,786 | mail_input | INFO | WEEKLY PLANNING PREDICTIONS
+10:37:38 |     INFO | ================================================================================
+2025-07-22 10:37:38,787 | mail_input | INFO | ================================================================================
+10:37:39 |     INFO | CREATING 2-WEEK PREDICTIONS
+2025-07-22 10:37:39,174 | mail_input | INFO | CREATING 2-WEEK PREDICTIONS
+10:37:39 |     INFO | ========================================
+2025-07-22 10:37:39,175 | mail_input | INFO | ========================================
+10:37:39 |     INFO | Generating normal scenario...
+2025-07-22 10:37:39,175 | mail_input | INFO | Generating normal scenario...
+10:37:39 |    ERROR | Critical error in comprehensive analysis: 'list' object has no attribute 'predict'
+2025-07-22 10:37:39,288 | mail_input | ERROR | Critical error in comprehensive analysis: 'list' object has no attribute 'predict'
+10:37:39 |    ERROR | Traceback (most recent call last):
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\testing.py", line 1415, in run_complete_analysis
+    all_predictions = planning_predictor.create_weekly_predictions(weeks=2)
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\testing.py", line 849, in create_weekly_predictions
+    predictions_df = self._generate_scenario_predictions(weeks, scenario)
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\testing.py", line 886, in _generate_scenario_predictions
+    pred = model.predict([features])[0]
+           ^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'predict'
+
+2025-07-22 10:37:39,320 | mail_input | ERROR | Traceback (most recent call last):
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\testing.py", line 1415, in run_complete_analysis
+    all_predictions = planning_predictor.create_weekly_predictions(weeks=2)
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\testing.py", line 849, in create_weekly_predictions
+    predictions_df = self._generate_scenario_predictions(weeks, scenario)
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\testing.py", line 886, in _generate_scenario_predictions
+    pred = model.predict([features])[0]
+           ^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'predict'
+
+
+================================================================================
+ANALYSIS FAILED
+================================================================================
+Check the log file for error details
