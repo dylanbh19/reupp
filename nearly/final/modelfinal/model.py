@@ -1,3 +1,563 @@
+                                                               & C:/Users/BhungarD/python.exe "c:/Users/BhungarD/OneDrive - Computershare/Desktop/finprod/model.py"
+============================================================
+ 2025+ CALL VOLUME & INTENT PREDICTION PIPELINE
+============================================================
+ Fresh data analysis with overlapping dates
+ Call volume prediction with mail lag modeling
+ Intent classification (scope extension)
+ 5-day business outlook generation
+============================================================
+
+2025-07-22 20:30:05,529 | INFO | 🚀 STARTING 2025+ CALL VOLUME & INTENT PREDICTION PIPELINE
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\BhungarD\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BhungarD\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f680' in position 33: character maps to <undefined>
+Call stack:
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1239, in <module>
+    exit_code = main()
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1207, in main
+    results = orchestrator.run_complete_pipeline()
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 972, in run_complete_pipeline
+    LOG.info("🚀 STARTING 2025+ CALL VOLUME & INTENT PREDICTION PIPELINE")
+Message: '🚀 STARTING 2025+ CALL VOLUME & INTENT PREDICTION PIPELINE'
+Arguments: ()
+2025-07-22 20:30:05,536 | INFO | ======================================================================
+2025-07-22 20:30:05,537 | INFO | 📊 PHASE 1: LOADING 2025+ DATA
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\BhungarD\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BhungarD\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f4ca' in position 33: character maps to <undefined>
+Call stack:
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1239, in <module>
+    exit_code = main()
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1207, in main
+    results = orchestrator.run_complete_pipeline()
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 977, in run_complete_pipeline
+    LOG.info("📊 PHASE 1: LOADING 2025+ DATA")
+Message: '📊 PHASE 1: LOADING 2025+ DATA'
+Arguments: ()
+2025-07-22 20:30:05,539 | INFO | === LOADING FRESH 2025+ DATA ===
+2025-07-22 20:30:05,540 | INFO | Loading call intent data...
+2025-07-22 20:30:05,541 | INFO | Loading: data\callintent.csv
+2025-07-22 20:30:17,996 | INFO | Loaded data\callintent.csv: 1053601 rows, 42 columns
+2025-07-22 20:30:18,204 | INFO | Selected date column: conversationstart
+2025-07-22 20:30:19,827 | INFO | Found 1053601 call records from 2025+
+2025-07-22 20:30:20,537 | INFO | Found 116 unique intents: ['Access account information for Consolidated Edison Inc.', 'Address Change', 'Assistance related to shareholder account concerns', 'Assistance with the account of a deceased shareholder.', 'Assistance with transferring stock for Bank of America Corporation shares.', 'Assistance with transferring stock for Consolidated Edison Inc.', 'Associate', 'Balance', 'Balance, Stock Quote', 'Balance/Value', 'Banking Details', 'Beneficiary', 'Beneficiary Information', 'Blank', 'Buy Stock', 'Buy stocks', 'Certificate Issuance', 'Certified W-9 Form', 'Change Registration', 'Change address on account', 'Check Replacement', 'Company Information', 'Complaint Call', 'Connect with a representative', 'Consolidating multiple accounts into one.', 'Consolidation', 'Contact Information', 'Corporate Action', 'Cost Basis', 'Customer requested electric service restoration, unrelated to shareholder services.', 'Customer requested general customer service assistance', 'Data Protection', 'Deceased Estate', 'Deceased Shareholder', 'Direct Registration', 'Dividend Payment', 'Dividend Reinvestment', 'End Call', 'Enrolment', 'Escheatment', 'Existing IC User Login Problem', 'Financial management for elderly care', 'Follow-up on a transaction', 'Fraud Assistance', 'Fulfilment', 'General Inquiry', 'Get balance on account', 'Help', 'Help with medallion signature', 'Inquiry about account balance', 'Investor Center Login', 'James is requesting a summary of his tax information related to his shareholder account.', 'Legal Department', 'Lost Certificate', 'Make a payment to account', 'Name Change', 'New IC User Login Problem', 'Not Collected', 'Pay bill on behalf of client', 'Power of Attorney', 'Press and Media', 'Privacy Breach', 'Proxy Inquiry', 'Receive Letter', 'Recent Activity', 'Refund', 'Repeat Caller', 'Representative', 'Request to speak with a representative', 'Restricted Shares', 'Sell', 'Sell shares', 'Start New Service', 'Statement', 'Stock Quote', "Stockholder's report", 'Tax Forms', 'Tax Information', 'The shareholder wants to add a beneficiary to his account.', 'The user requested a copy of her account statement for Consolidated Edison Inc shares.', 'Transfer', 'Transfer Call', 'Transfer Funds', 'Transfer Status', 'Transfer Stock', 'Transfer call to senior support representative', 'Transfer shares', 'Transfer to representative', 'Unknown', 'Update Account', 'Update address', 'Update address details', 'User is inquiring about pension payment.', 'User is requesting assistance with transferring stock.', 'User is requesting information about the recent share price of Consolidated Edison Inc.', 'User is seeking a stock quote for Consolidated Edison Inc.', 'User is seeking assistance to transfer shares.', 'User is seeking assistance to transfer stock of Consolidated Edison Inc.', 'User is seeking assistance to transfer stock.', 'User is seeking assistance to transfer their stock in Bank of America Corporation.', 'User needs help managing physical stock shares.', 'User requested assistance regarding their Consolidated Edison Inc stock, but the specific request was unclear or not mentioned.', 'User requested to know the balance in their Consolidated Edison Inc account.', 'User requested to speak with a senior support representative for further assistance.', 'User seeks assistance to add a beneficiary to the account.', 'User seeks assistance to update his address on his shareholder account for Alphabet Inc.', 'User sought specific assistance regarding Consolidated Edison Inc. shares, but the request was unclear.', 'User wants to add a beneficiary to their shareholder account.', 'User wants to sell some shares in Consolidated Edison Inc.', 'User wants to transfer stock in Consolidated Edison Inc.', 'Value', "Verify if spouse's name is on the account", 'new service', 'speak to a representative', 'start service', 'verify account']   
+2025-07-22 20:30:20,668 | INFO | Loading mail data...
+2025-07-22 20:30:20,675 | INFO | Loading: data\mail.csv
+2025-07-22 20:30:21,698 | INFO | Loaded data\mail.csv: 1409780 rows, 4 columns
+2025-07-22 20:30:21,761 | INFO | Selected date column: mail_date
+2025-07-22 20:30:22,013 | WARNING | Could not identify mail structure. Type: None, Volume: mail_volume
+2025-07-22 20:30:22,019 | INFO | Aligning data to overlapping dates...
+2025-07-22 20:30:22,021 | INFO | Using 123 call-only dates (no mail data)
+2025-07-22 20:30:22,032 | INFO | Data aligned: 123 overlapping days
+
+======================================================================
+2025+ DATA LOADING SUMMARY
+======================================================================
+
+CALL DATA:
+  total_calls: 1053601
+  daily_records: 123
+  date_range: 2025-02-05 to 2025-06-08
+  avg_daily_calls: 8565.861788617885
+  intent_types: ['Access account information for Consolidated Edison Inc.', 'Address Change', 'Assistance related to shareholder account concerns'] ... (116 total)
+
+ALIGNED DATA:
+  overlapping_days: 123
+  date_range: 2025-02-05 00:00:00 to 2025-06-08 00:00:00
+  has_mail: False
+  has_intents: True
+======================================================================
+2025-07-22 20:30:22,036 | INFO |
+🔧 PHASE 2: FEATURE ENGINEERING
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\BhungarD\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BhungarD\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f527' in position 35: character maps to <undefined>
+Call stack:
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1239, in <module>
+    exit_code = main()
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1207, in main
+    results = orchestrator.run_complete_pipeline()
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 985, in run_complete_pipeline
+    LOG.info("\n🔧 PHASE 2: FEATURE ENGINEERING")
+Message: '\n🔧 PHASE 2: FEATURE ENGINEERING'
+Arguments: ()
+2025-07-22 20:30:22,049 | INFO | Creating volume prediction features...
+2025-07-22 20:30:22,052 | INFO | Creating temporal features...
+2025-07-22 20:30:22,763 | INFO | Created 11 temporal features
+2025-07-22 20:30:22,764 | INFO | Creating call history features...
+2025-07-22 20:30:22,791 | INFO | Created 10 call history features
+2025-07-22 20:30:22,794 | INFO | Volume features: 21 features, 122 samples
+2025-07-22 20:30:22,795 | INFO | Creating intent prediction features...
+2025-07-22 20:30:22,796 | INFO | Creating temporal features...
+2025-07-22 20:30:22,801 | INFO | Created 11 temporal features
+2025-07-22 20:30:22,802 | INFO | Creating call history features...
+2025-07-22 20:30:22,806 | INFO | Created 10 call history features
+2025-07-22 20:30:22,807 | INFO | Intent features: 137 features, 122 samples
+2025-07-22 20:30:22,808 | INFO |
+🤖 PHASE 3: MODEL TRAINING
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\BhungarD\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BhungarD\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f916' in position 35: character maps to <undefined>
+Call stack:
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1239, in <module>
+    exit_code = main()
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1207, in main
+    results = orchestrator.run_complete_pipeline()
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 995, in run_complete_pipeline
+    LOG.info("\n🤖 PHASE 3: MODEL TRAINING")
+Message: '\n🤖 PHASE 3: MODEL TRAINING'
+Arguments: ()
+2025-07-22 20:30:22,812 | INFO | === TRAINING VOLUME & INTENT MODELS ===
+2025-07-22 20:30:22,812 | INFO | Training call volume prediction model...
+2025-07-22 20:30:22,873 | INFO |   ridge: CV R² = 0.488, Test R² = 0.643
+2025-07-22 20:30:24,198 | INFO |   random_forest: CV R² = 0.615, Test R² = 0.737
+2025-07-22 20:30:24,924 | INFO |   gradient_boost: CV R² = 0.713, Test R² = 0.693
+2025-07-22 20:30:25,131 | INFO | Best volume model: GradientBoostingRegressor (R² = 0.713)
+2025-07-22 20:30:25,132 | INFO | Training intent prediction models...
+2025-07-22 20:30:25,132 | INFO |   Training model for intent: Access account information for Consolidated Edison Inc.
+2025-07-22 20:30:25,635 | INFO |     Access account information for Consolidated Edison Inc.: CV Accuracy = 0.989
+2025-07-22 20:30:25,636 | INFO |   Training model for intent: Address Change
+2025-07-22 20:30:26,101 | INFO |     Address Change: CV Accuracy = 0.600
+2025-07-22 20:30:26,101 | INFO |   Training model for intent: Assistance related to shareholder account concerns
+2025-07-22 20:30:26,529 | INFO |     Assistance related to shareholder account concerns: CV Accuracy = 0.989
+2025-07-22 20:30:26,529 | INFO |   Training model for intent: Assistance with the account of a deceased shareholder.
+2025-07-22 20:30:26,959 | INFO |     Assistance with the account of a deceased shareholder.: CV Accuracy = 0.989
+2025-07-22 20:30:26,960 | INFO |   Training model for intent: Assistance with transferring stock for Bank of America Corporation shares.
+2025-07-22 20:30:27,436 | INFO |     Assistance with transferring stock for Bank of America Corporation shares.: CV Accuracy = 0.989
+2025-07-22 20:30:27,437 | INFO |   Training model for intent: Assistance with transferring stock for Consolidated Edison Inc.
+2025-07-22 20:30:27,879 | INFO |     Assistance with transferring stock for Consolidated Edison Inc.: CV Accuracy = 0.989
+2025-07-22 20:30:27,880 | INFO |   Training model for intent: Associate
+2025-07-22 20:30:28,503 | INFO |     Associate: CV Accuracy = 0.767
+2025-07-22 20:30:28,503 | INFO |   Training model for intent: Balance
+2025-07-22 20:30:28,971 | INFO |     Balance: CV Accuracy = 0.989
+2025-07-22 20:30:28,971 | INFO |   Training model for intent: Balance, Stock Quote
+2025-07-22 20:30:29,423 | INFO |     Balance, Stock Quote: CV Accuracy = 0.989
+2025-07-22 20:30:29,424 | INFO |   Training model for intent: Balance/Value
+2025-07-22 20:30:29,955 | INFO |     Balance/Value: CV Accuracy = 0.978
+2025-07-22 20:30:29,955 | INFO |   Training model for intent: Banking Details
+2025-07-22 20:30:30,548 | INFO |     Banking Details: CV Accuracy = 0.733
+2025-07-22 20:30:30,548 | INFO |   Training model for intent: Beneficiary
+2025-07-22 20:30:30,988 | INFO |     Beneficiary: CV Accuracy = 0.978
+2025-07-22 20:30:30,989 | INFO |   Training model for intent: Beneficiary Information
+2025-07-22 20:30:31,418 | INFO |     Beneficiary Information: CV Accuracy = 0.400
+2025-07-22 20:30:31,418 | INFO |   Training model for intent: Blank
+2025-07-22 20:30:31,992 | INFO |     Blank: CV Accuracy = 1.000
+2025-07-22 20:30:31,993 | INFO |   Training model for intent: Buy Stock
+2025-07-22 20:30:32,523 | INFO |     Buy Stock: CV Accuracy = 0.556
+2025-07-22 20:30:32,523 | INFO |   Training model for intent: Buy stocks
+2025-07-22 20:30:32,965 | INFO |     Buy stocks: CV Accuracy = 0.989
+2025-07-22 20:30:32,966 | INFO |   Training model for intent: Certificate Issuance
+2025-07-22 20:30:33,462 | INFO |     Certificate Issuance: CV Accuracy = 0.589
+2025-07-22 20:30:33,462 | INFO |   Training model for intent: Certified W-9 Form
+2025-07-22 20:30:33,898 | INFO |     Certified W-9 Form: CV Accuracy = 0.989
+2025-07-22 20:30:33,899 | INFO |   Training model for intent: Change Registration
+2025-07-22 20:30:34,360 | INFO |     Change Registration: CV Accuracy = 0.967
+2025-07-22 20:30:34,360 | INFO |   Training model for intent: Change address on account
+2025-07-22 20:30:34,803 | INFO |     Change address on account: CV Accuracy = 0.989
+2025-07-22 20:30:34,803 | INFO |   Training model for intent: Check Replacement
+2025-07-22 20:30:35,271 | INFO |     Check Replacement: CV Accuracy = 0.389
+2025-07-22 20:30:35,272 | INFO |   Training model for intent: Company Information
+2025-07-22 20:30:35,701 | INFO |     Company Information: CV Accuracy = 0.989
+2025-07-22 20:30:35,701 | INFO |   Training model for intent: Complaint Call
+2025-07-22 20:30:36,137 | INFO |     Complaint Call: CV Accuracy = 0.967
+2025-07-22 20:30:36,138 | INFO |   Training model for intent: Connect with a representative
+2025-07-22 20:30:36,588 | INFO |     Connect with a representative: CV Accuracy = 0.989
+2025-07-22 20:30:36,589 | INFO |   Training model for intent: Consolidating multiple accounts into one.
+2025-07-22 20:30:37,003 | INFO |     Consolidating multiple accounts into one.: CV Accuracy = 0.989
+2025-07-22 20:30:37,003 | INFO |   Training model for intent: Consolidation
+2025-07-22 20:30:37,430 | INFO |     Consolidation: CV Accuracy = 0.967
+2025-07-22 20:30:37,431 | INFO |   Training model for intent: Contact Information
+2025-07-22 20:30:37,860 | INFO |     Contact Information: CV Accuracy = 0.967
+2025-07-22 20:30:37,860 | INFO |   Training model for intent: Corporate Action
+2025-07-22 20:30:38,276 | INFO |     Corporate Action: CV Accuracy = 0.867
+2025-07-22 20:30:38,276 | INFO |   Training model for intent: Cost Basis
+2025-07-22 20:30:38,697 | INFO |     Cost Basis: CV Accuracy = 0.967
+2025-07-22 20:30:38,698 | INFO |   Training model for intent: Customer requested electric service restoration, unrelated to shareholder services.
+2025-07-22 20:30:39,101 | INFO |     Customer requested electric service restoration, unrelated to shareholder services.: CV Accuracy = 0.989
+2025-07-22 20:30:39,102 | INFO |   Training model for intent: Customer requested general customer service assistance
+2025-07-22 20:30:39,510 | INFO |     Customer requested general customer service assistance: CV Accuracy = 0.989
+2025-07-22 20:30:39,511 | INFO |   Training model for intent: Data Protection
+2025-07-22 20:30:40,122 | INFO |     Data Protection: CV Accuracy = 0.889
+2025-07-22 20:30:40,123 | INFO |   Training model for intent: Deceased Estate
+2025-07-22 20:30:40,773 | INFO |     Deceased Estate: CV Accuracy = 0.967
+2025-07-22 20:30:40,774 | INFO |   Training model for intent: Deceased Shareholder
+2025-07-22 20:30:41,690 | INFO |     Deceased Shareholder: CV Accuracy = 0.978
+2025-07-22 20:30:41,691 | INFO |   Training model for intent: Direct Registration
+2025-07-22 20:30:42,447 | INFO |     Direct Registration: CV Accuracy = 0.978
+2025-07-22 20:30:42,447 | INFO |   Training model for intent: Dividend Payment
+2025-07-22 20:30:43,138 | INFO |     Dividend Payment: CV Accuracy = 0.644
+2025-07-22 20:30:43,138 | INFO |   Training model for intent: Dividend Reinvestment
+2025-07-22 20:30:43,721 | INFO |     Dividend Reinvestment: CV Accuracy = 0.922
+2025-07-22 20:30:43,721 | INFO |   Training model for intent: End Call
+2025-07-22 20:30:44,512 | INFO |     End Call: CV Accuracy = 0.944
+2025-07-22 20:30:44,513 | INFO |   Training model for intent: Enrolment
+2025-07-22 20:30:45,231 | INFO |     Enrolment: CV Accuracy = 0.933
+2025-07-22 20:30:45,232 | INFO |   Training model for intent: Escheatment
+2025-07-22 20:30:45,898 | INFO |     Escheatment: CV Accuracy = 0.711
+2025-07-22 20:30:45,899 | INFO |   Training model for intent: Existing IC User Login Problem
+2025-07-22 20:30:46,507 | INFO |     Existing IC User Login Problem: CV Accuracy = 0.989
+2025-07-22 20:30:46,508 | INFO |   Training model for intent: Financial management for elderly care
+2025-07-22 20:30:47,079 | INFO |     Financial management for elderly care: CV Accuracy = 0.989
+2025-07-22 20:30:47,079 | INFO |   Training model for intent: Follow-up on a transaction
+2025-07-22 20:30:47,638 | INFO |     Follow-up on a transaction: CV Accuracy = 0.989
+2025-07-22 20:30:47,638 | INFO |   Training model for intent: Fraud Assistance
+2025-07-22 20:30:48,250 | INFO |     Fraud Assistance: CV Accuracy = 0.856
+2025-07-22 20:30:48,251 | INFO |   Training model for intent: Fulfilment
+2025-07-22 20:30:48,908 | INFO |     Fulfilment: CV Accuracy = 0.911
+2025-07-22 20:30:48,909 | INFO |   Training model for intent: General Inquiry
+2025-07-22 20:30:49,487 | INFO |     General Inquiry: CV Accuracy = 0.667
+2025-07-22 20:30:49,487 | INFO |   Training model for intent: Get balance on account
+2025-07-22 20:30:50,051 | INFO |     Get balance on account: CV Accuracy = 0.989
+2025-07-22 20:30:50,052 | INFO |   Training model for intent: Help
+2025-07-22 20:30:50,629 | INFO |     Help: CV Accuracy = 0.944
+2025-07-22 20:30:50,629 | INFO |   Training model for intent: Help with medallion signature
+2025-07-22 20:30:51,239 | INFO |     Help with medallion signature: CV Accuracy = 0.989
+2025-07-22 20:30:51,239 | INFO |   Training model for intent: Inquiry about account balance
+2025-07-22 20:30:51,783 | INFO |     Inquiry about account balance: CV Accuracy = 0.989
+2025-07-22 20:30:51,784 | INFO |   Training model for intent: Investor Center Login
+2025-07-22 20:30:52,382 | INFO |     Investor Center Login: CV Accuracy = 0.956
+2025-07-22 20:30:52,382 | INFO |   Training model for intent: James is requesting a summary of his tax information related to his shareholder account.       
+2025-07-22 20:30:52,958 | INFO |     James is requesting a summary of his tax information related to his shareholder account.: CV Accuracy = 0.989
+2025-07-22 20:30:52,958 | INFO |   Training model for intent: Legal Department
+2025-07-22 20:30:53,513 | INFO |     Legal Department: CV Accuracy = 0.989
+2025-07-22 20:30:53,513 | INFO |   Training model for intent: Lost Certificate
+2025-07-22 20:30:54,078 | INFO |     Lost Certificate: CV Accuracy = 0.578
+2025-07-22 20:30:54,079 | INFO |   Training model for intent: Make a payment to account
+2025-07-22 20:30:54,655 | INFO |     Make a payment to account: CV Accuracy = 0.989
+2025-07-22 20:30:54,655 | INFO |   Training model for intent: Name Change
+2025-07-22 20:30:55,259 | INFO |     Name Change: CV Accuracy = 0.756
+2025-07-22 20:30:55,259 | INFO |   Training model for intent: New IC User Login Problem
+2025-07-22 20:30:55,831 | INFO |     New IC User Login Problem: CV Accuracy = 0.533
+2025-07-22 20:30:55,832 | INFO |   Training model for intent: Not Collected
+2025-07-22 20:30:56,416 | INFO |     Not Collected: CV Accuracy = 0.978
+2025-07-22 20:30:56,416 | INFO |   Training model for intent: Pay bill on behalf of client
+2025-07-22 20:30:57,013 | INFO |     Pay bill on behalf of client: CV Accuracy = 0.989
+2025-07-22 20:30:57,013 | INFO |   Training model for intent: Power of Attorney
+2025-07-22 20:30:57,607 | INFO |     Power of Attorney: CV Accuracy = 0.978
+2025-07-22 20:30:57,607 | INFO |   Training model for intent: Press and Media
+2025-07-22 20:30:58,199 | INFO |     Press and Media: CV Accuracy = 0.922
+2025-07-22 20:30:58,200 | INFO |   Training model for intent: Privacy Breach
+2025-07-22 20:30:58,762 | INFO |     Privacy Breach: CV Accuracy = 0.989
+2025-07-22 20:30:58,763 | INFO |   Training model for intent: Proxy Inquiry
+2025-07-22 20:30:59,369 | INFO |     Proxy Inquiry: CV Accuracy = 0.944
+2025-07-22 20:30:59,370 | INFO |   Training model for intent: Receive Letter
+2025-07-22 20:30:59,978 | INFO |     Receive Letter: CV Accuracy = 0.967
+2025-07-22 20:30:59,978 | INFO |   Training model for intent: Recent Activity
+2025-07-22 20:31:00,715 | INFO |     Recent Activity: CV Accuracy = 0.411
+2025-07-22 20:31:00,715 | INFO |   Training model for intent: Refund
+2025-07-22 20:31:01,467 | INFO |     Refund: CV Accuracy = 0.989
+2025-07-22 20:31:01,468 | INFO |   Training model for intent: Repeat Caller
+2025-07-22 20:31:02,252 | INFO |     Repeat Caller: CV Accuracy = 0.711
+2025-07-22 20:31:02,252 | INFO |   Training model for intent: Representative
+2025-07-22 20:31:02,995 | INFO |     Representative: CV Accuracy = 0.978
+2025-07-22 20:31:02,995 | INFO |   Training model for intent: Request to speak with a representative
+2025-07-22 20:31:03,849 | INFO |     Request to speak with a representative: CV Accuracy = 0.989
+2025-07-22 20:31:03,850 | INFO |   Training model for intent: Restricted Shares
+2025-07-22 20:31:04,637 | INFO |     Restricted Shares: CV Accuracy = 0.989
+2025-07-22 20:31:04,637 | INFO |   Training model for intent: Sell
+2025-07-22 20:31:05,282 | INFO |     Sell: CV Accuracy = 0.978
+2025-07-22 20:31:05,282 | INFO |   Training model for intent: Sell shares
+2025-07-22 20:31:05,951 | INFO |     Sell shares: CV Accuracy = 0.989
+2025-07-22 20:31:05,952 | INFO |   Training model for intent: Start New Service
+2025-07-22 20:31:06,788 | INFO |     Start New Service: CV Accuracy = 0.989
+2025-07-22 20:31:06,789 | INFO |   Training model for intent: Statement
+2025-07-22 20:31:07,577 | INFO |     Statement: CV Accuracy = 0.744
+2025-07-22 20:31:07,578 | INFO |   Training model for intent: Stock Quote
+2025-07-22 20:31:08,301 | INFO |     Stock Quote: CV Accuracy = 0.567
+2025-07-22 20:31:08,302 | INFO |   Training model for intent: Stockholder's report
+2025-07-22 20:31:08,901 | INFO |     Stockholder's report: CV Accuracy = 0.989
+2025-07-22 20:31:08,902 | INFO |   Training model for intent: Tax Forms
+2025-07-22 20:31:09,465 | INFO |     Tax Forms: CV Accuracy = 0.978
+2025-07-22 20:31:09,466 | INFO |   Training model for intent: Tax Information
+2025-07-22 20:31:10,149 | INFO |     Tax Information: CV Accuracy = 0.578
+2025-07-22 20:31:10,150 | INFO |   Training model for intent: The shareholder wants to add a beneficiary to his account.
+2025-07-22 20:31:10,723 | INFO |     The shareholder wants to add a beneficiary to his account.: CV Accuracy = 0.989
+2025-07-22 20:31:10,723 | INFO |   Training model for intent: The user requested a copy of her account statement for Consolidated Edison Inc shares.
+2025-07-22 20:31:11,336 | INFO |     The user requested a copy of her account statement for Consolidated Edison Inc shares.: CV Accuracy = 0.989
+2025-07-22 20:31:11,336 | INFO |   Training model for intent: Transfer
+2025-07-22 20:31:11,972 | INFO |     Transfer: CV Accuracy = 0.567
+2025-07-22 20:31:11,972 | INFO |   Training model for intent: Transfer Call
+2025-07-22 20:31:12,591 | INFO |     Transfer Call: CV Accuracy = 0.978
+2025-07-22 20:31:12,592 | INFO |   Training model for intent: Transfer Funds
+2025-07-22 20:31:13,167 | INFO |     Transfer Funds: CV Accuracy = 0.989
+2025-07-22 20:31:13,167 | INFO |   Training model for intent: Transfer Status
+2025-07-22 20:31:13,607 | INFO |     Transfer Status: CV Accuracy = 0.989
+2025-07-22 20:31:13,608 | INFO |   Training model for intent: Transfer Stock
+2025-07-22 20:31:13,992 | INFO |     Transfer Stock: CV Accuracy = 0.967
+2025-07-22 20:31:13,993 | INFO |   Training model for intent: Transfer call to senior support representative
+2025-07-22 20:31:14,393 | INFO |     Transfer call to senior support representative: CV Accuracy = 0.989
+2025-07-22 20:31:14,394 | INFO |   Training model for intent: Transfer shares
+2025-07-22 20:31:14,810 | INFO |     Transfer shares: CV Accuracy = 0.989
+2025-07-22 20:31:14,810 | INFO |   Training model for intent: Transfer to representative
+2025-07-22 20:31:15,219 | INFO |     Transfer to representative: CV Accuracy = 0.989
+2025-07-22 20:31:15,219 | INFO |   Training model for intent: Unknown
+2025-07-22 20:31:15,654 | INFO |     Unknown: CV Accuracy = 0.744
+2025-07-22 20:31:15,654 | INFO |   Training model for intent: Update Account
+2025-07-22 20:31:16,159 | INFO |     Update Account: CV Accuracy = 0.978
+2025-07-22 20:31:16,160 | INFO |   Training model for intent: Update address
+2025-07-22 20:31:16,735 | INFO |     Update address: CV Accuracy = 0.989
+2025-07-22 20:31:16,735 | INFO |   Training model for intent: Update address details
+2025-07-22 20:31:17,136 | INFO |     Update address details: CV Accuracy = 0.989
+2025-07-22 20:31:17,137 | INFO |   Training model for intent: User is inquiring about pension payment.
+2025-07-22 20:31:17,529 | INFO |     User is inquiring about pension payment.: CV Accuracy = 0.989
+2025-07-22 20:31:17,529 | INFO |   Training model for intent: User is requesting assistance with transferring stock.
+2025-07-22 20:31:17,925 | INFO |     User is requesting assistance with transferring stock.: CV Accuracy = 0.989
+2025-07-22 20:31:17,926 | INFO |   Training model for intent: User is requesting information about the recent share price of Consolidated Edison Inc.        
+2025-07-22 20:31:18,318 | INFO |     User is requesting information about the recent share price of Consolidated Edison Inc.: CV Accuracy = 0.989
+2025-07-22 20:31:18,318 | INFO |   Training model for intent: User is seeking a stock quote for Consolidated Edison Inc.
+2025-07-22 20:31:18,712 | INFO |     User is seeking a stock quote for Consolidated Edison Inc.: CV Accuracy = 0.989
+2025-07-22 20:31:18,713 | INFO |   Training model for intent: User is seeking assistance to transfer shares.
+2025-07-22 20:31:19,139 | INFO |     User is seeking assistance to transfer shares.: CV Accuracy = 0.978
+2025-07-22 20:31:19,140 | INFO |   Training model for intent: User is seeking assistance to transfer stock of Consolidated Edison Inc.
+2025-07-22 20:31:19,521 | INFO |     User is seeking assistance to transfer stock of Consolidated Edison Inc.: CV Accuracy = 0.978
+2025-07-22 20:31:19,522 | INFO |   Training model for intent: User is seeking assistance to transfer stock.
+2025-07-22 20:31:19,939 | INFO |     User is seeking assistance to transfer stock.: CV Accuracy = 0.967
+2025-07-22 20:31:19,940 | INFO |   Training model for intent: User is seeking assistance to transfer their stock in Bank of America Corporation.
+2025-07-22 20:31:20,399 | INFO |     User is seeking assistance to transfer their stock in Bank of America Corporation.: CV Accuracy = 0.989
+2025-07-22 20:31:20,399 | INFO |   Training model for intent: User needs help managing physical stock shares.
+2025-07-22 20:31:20,853 | INFO |     User needs help managing physical stock shares.: CV Accuracy = 0.989
+2025-07-22 20:31:20,853 | INFO |   Training model for intent: User requested assistance regarding their Consolidated Edison Inc stock, but the specific request was unclear or not mentioned.
+2025-07-22 20:31:21,256 | INFO |     User requested assistance regarding their Consolidated Edison Inc stock, but the specific request was unclear or not mentioned.: CV Accuracy = 0.978
+2025-07-22 20:31:21,256 | INFO |   Training model for intent: User requested to know the balance in their Consolidated Edison Inc account.
+2025-07-22 20:31:21,647 | INFO |     User requested to know the balance in their Consolidated Edison Inc account.: CV Accuracy = 0.989
+2025-07-22 20:31:21,648 | INFO |   Training model for intent: User requested to speak with a senior support representative for further assistance.
+2025-07-22 20:31:22,057 | INFO |     User requested to speak with a senior support representative for further assistance.: CV Accuracy = 0.989
+2025-07-22 20:31:22,057 | INFO |   Training model for intent: User seeks assistance to add a beneficiary to the account.
+2025-07-22 20:31:22,439 | INFO |     User seeks assistance to add a beneficiary to the account.: CV Accuracy = 0.989
+2025-07-22 20:31:22,439 | INFO |   Training model for intent: User seeks assistance to update his address on his shareholder account for Alphabet Inc.       
+2025-07-22 20:31:22,815 | INFO |     User seeks assistance to update his address on his shareholder account for Alphabet Inc.: CV Accuracy = 0.989
+2025-07-22 20:31:22,816 | INFO |   Training model for intent: User sought specific assistance regarding Consolidated Edison Inc. shares, but the request was unclear.
+2025-07-22 20:31:23,204 | INFO |     User sought specific assistance regarding Consolidated Edison Inc. shares, but the request was unclear.: CV Accuracy = 0.989
+2025-07-22 20:31:23,204 | INFO |   Training model for intent: User wants to add a beneficiary to their shareholder account.
+2025-07-22 20:31:23,599 | INFO |     User wants to add a beneficiary to their shareholder account.: CV Accuracy = 0.989
+2025-07-22 20:31:23,600 | INFO |   Training model for intent: User wants to sell some shares in Consolidated Edison Inc.
+2025-07-22 20:31:23,990 | INFO |     User wants to sell some shares in Consolidated Edison Inc.: CV Accuracy = 0.989
+2025-07-22 20:31:23,991 | INFO |   Training model for intent: User wants to transfer stock in Consolidated Edison Inc.
+2025-07-22 20:31:24,400 | INFO |     User wants to transfer stock in Consolidated Edison Inc.: CV Accuracy = 0.978
+2025-07-22 20:31:24,400 | INFO |   Training model for intent: Value
+2025-07-22 20:31:24,888 | INFO |     Value: CV Accuracy = 0.978
+2025-07-22 20:31:24,888 | INFO |   Training model for intent: Verify if spouse's name is on the account
+2025-07-22 20:31:25,322 | INFO |     Verify if spouse's name is on the account: CV Accuracy = 0.989
+2025-07-22 20:31:25,322 | INFO |   Training model for intent: new service
+2025-07-22 20:31:25,732 | INFO |     new service: CV Accuracy = 0.989
+2025-07-22 20:31:25,733 | INFO |   Training model for intent: speak to a representative
+2025-07-22 20:31:26,230 | INFO |     speak to a representative: CV Accuracy = 0.989
+2025-07-22 20:31:26,230 | INFO |   Training model for intent: start service
+2025-07-22 20:31:26,748 | INFO |     start service: CV Accuracy = 0.989
+2025-07-22 20:31:26,749 | INFO |   Training model for intent: verify account
+2025-07-22 20:31:27,168 | INFO |     verify account: CV Accuracy = 0.989
+2025-07-22 20:31:27,168 | INFO |
+🔮 PHASE 4: GENERATING PREDICTIONS
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\BhungarD\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BhungarD\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f52e' in position 35: character maps to <undefined>
+Call stack:
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1239, in <module>
+    exit_code = main()
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1207, in main
+    results = orchestrator.run_complete_pipeline()
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1000, in run_complete_pipeline
+    LOG.info("\n🔮 PHASE 4: GENERATING PREDICTIONS")
+Message: '\n🔮 PHASE 4: GENERATING PREDICTIONS'
+Arguments: ()
+2025-07-22 20:31:27,171 | INFO | Generating 5-day outlook...
+2025-07-22 20:31:27,294 | INFO | 
+💾 PHASE 5: SAVING RESULTS
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\BhungarD\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BhungarD\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f4be' in position 35: character maps to <undefined>
+Call stack:
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1239, in <module>
+    exit_code = main()
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1207, in main
+    results = orchestrator.run_complete_pipeline()
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1013, in run_complete_pipeline
+    LOG.info("\n💾 PHASE 5: SAVING RESULTS")
+Message: '\n💾 PHASE 5: SAVING RESULTS'
+Arguments: ()
+2025-07-22 20:31:30,496 | INFO | All results saved successfully
+2025-07-22 20:31:30,496 | INFO |
+📋 PHASE 6: GENERATING REPORT
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\BhungarD\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BhungarD\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f4cb' in position 35: character maps to <undefined>
+Call stack:
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1239, in <module>
+    exit_code = main()
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1207, in main
+    results = orchestrator.run_complete_pipeline()
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1017, in run_complete_pipeline
+    LOG.info("\n📋 PHASE 6: GENERATING REPORT")
+Message: '\n📋 PHASE 6: GENERATING REPORT'
+Arguments: ()
+
+
+
+    # ====================================================================
+    2025+ CALL VOLUME & INTENT PREDICTION PIPELINE REPORT
+
+    EXECUTION SUMMARY:
+     Pipeline Status: SUCCESS
+     Execution Time: 1.4 minutes
+     Output Directory: call_prediction_pipeline
+
+    DATA SUMMARY:
+     Total Call Records: 1053601
+     Overlapping Days: 123
+     Date Range: 2025-02-05 00:00:00 to 2025-06-08 00:00:00
+     Has Mail Data: False
+     Has Intent Data: True
+
+    MODEL PERFORMANCE:
+     Call Volume Model R: 0.713
+     Intent Classification Accuracy: 0.914
+
+    PREDICTIONS GENERATED:
+     5-Day Call Volume Outlook: Available
+     Intent Distribution Predictions: Available
+
+    BUSINESS APPLICATIONS:
+     Daily staffing optimization
+     Mail campaign impact analysis
+     Intent-based resource allocation
+     5-day capacity planning
+
+    FILES GENERATED:
+     data_summary.json - Data loading summary
+     training_results.json - Model performance metrics
+     outlook_predictions.json - 5-day predictions
+     volume_model.pkl - Trained volume prediction model
+     intent_model_*.pkl - Trained intent classification models
+
+    NEXT STEPS:
+
+    1. Review prediction accuracy in outlook_predictions.json
+    1. Use volume_model.pkl for daily predictions
+    1. Monitor model performance with new data
+    1. Retrain models monthly with fresh data
+
+    # ====================================================================
+    Generated: 2025-07-22 20:31:30
+
+
+2025-07-22 20:31:30,506 | INFO |
+======================================================================
+2025-07-22 20:31:30,506 | INFO | 🎉 PIPELINE COMPLETED SUCCESSFULLY!
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\BhungarD\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BhungarD\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f389' in position 33: character maps to <undefined>
+Call stack:
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1239, in <module>
+    exit_code = main()
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1207, in main
+    results = orchestrator.run_complete_pipeline()
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1023, in run_complete_pipeline
+    LOG.info("🎉 PIPELINE COMPLETED SUCCESSFULLY!")
+Message: '🎉 PIPELINE COMPLETED SUCCESSFULLY!'
+Arguments: ()
+2025-07-22 20:31:30,511 | INFO | ⏱️  Total execution time: 1.4 minutes
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\BhungarD\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BhungarD\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 33-34: character maps to <undefined>
+Call stack:
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1239, in <module>
+    exit_code = main()
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1207, in main
+    results = orchestrator.run_complete_pipeline()
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1024, in run_complete_pipeline
+    LOG.info(f"⏱️  Total execution time: {execution_time:.1f} minutes")
+Message: '⏱️  Total execution time: 1.4 minutes'
+Arguments: ()
+2025-07-22 20:31:30,517 | INFO | 📁 Results saved to: call_prediction_pipeline
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\BhungarD\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BhungarD\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f4c1' in position 33: character maps to <undefined>
+Call stack:
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1239, in <module>
+    exit_code = main()
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1207, in main
+    results = orchestrator.run_complete_pipeline()
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1025, in run_complete_pipeline
+    LOG.info(f"📁 Results saved to: {self.output_dir}")
+Message: '📁 Results saved to: call_prediction_pipeline'
+Arguments: ()
+
+ PIPELINE COMPLETED SUCCESSFULLY!
+
+ 2025+ data processed and analyzed
+ Call volume prediction model trained
+ Intent classification models trained
+ 5-day outlook generated
+ Production-ready models saved
+
+ Find all results in: call_prediction_pipeline
+
+ Ready for daily predictions!
+
+
+
+
 # #!/usr/bin/env python
 “””
 BULLETPROOF CALL VOLUME & INTENT PREDICTION PIPELINE
