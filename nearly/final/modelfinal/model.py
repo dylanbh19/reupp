@@ -1,3 +1,157 @@
+================================================================
+Generated: 2025-07-22 21:03:19
+System Version: Production Grade v1.0
+================================================================
+
+2025-07-22 21:03:19,629 |     INFO | Production report saved to: production_mail_calls_system\reports\PRODUCTION_DEPLOYMENT_REPORT.txt
+2025-07-22 21:03:19,630 |     INFO |
+======================================================================
+2025-07-22 21:03:19,632 |     INFO | PRODUCTION PIPELINE COMPLETED SUCCESSFULLY!
+2025-07-22 21:03:19,633 |     INFO | Execution time: 0.4 minutes
+2025-07-22 21:03:19,634 |     INFO | Best approach: standard
+2025-07-22 21:03:19,635 |     INFO | Output directory: production_mail_calls_system
+2025-07-22 21:03:19,637 |     INFO | ======================================================================
+
+==================================================
+PRODUCTION SYSTEM DEPLOYED SUCCESSFULLY!
+==================================================
+
+READY FOR PRODUCTION USE:
+ Best Model: standard
+ Mail Types: 15 processed
+ Execution Time: 0.4 minutes
+
+YOUR MAIL TYPES INTEGRATED:
+   Cheque
+   Scheduled PAYMENT CHECKS
+   Proxy (US)
+   DRP Stmt.
+   Envision
+  ... and 10 more
+
+CAPABILITIES:
+ Single day predictions from your mail data
+ Multi-day campaign impact analysis
+ 5-day business forecasting
+ Confidence intervals and business insights
+
+ All files saved to: production_mail_calls_system
+ See USAGE_GUIDE.txt for integration instructions
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> & C:/Users/BhungarD/python.exe "c:/Users/BhungarD/OneDrive - Computershare/Desktop/finprod/model.py"
+================================================================================
+OPTIMIZED MAIL-TO-CALLS PREDICTION SYSTEM
+================================================================================
+SYSTEMATIC OPTIMIZATION APPROACH:
+  1. Analyze mail types by VOLUME and CORRELATION
+  2. Find optimal tradeoff between volume and correlation
+  3. Test comprehensive feature combinations
+  4. Systematic model testing and selection
+  5. Output the HIGHEST ACCURACY configuration
+
+GOAL: Maximum prediction accuracy through systematic optimization
+================================================================================
+
+2025-07-22 21:13:25,077 | INFO | ================================================================================
+2025-07-22 21:13:25,078 | INFO | OPTIMIZED MAIL-TO-CALLS PREDICTION SYSTEM
+2025-07-22 21:13:25,078 | INFO | ================================================================================
+2025-07-22 21:13:25,079 | INFO | STRATEGY: Systematic optimization of:
+2025-07-22 21:13:25,080 | INFO |   1. Mail types (Volume vs Correlation tradeoff)
+2025-07-22 21:13:25,081 | INFO |   2. Feature engineering combinations
+2025-07-22 21:13:25,081 | INFO |   3. Model selection and tuning
+2025-07-22 21:13:25,095 | INFO |   4. Find highest accuracy configuration
+2025-07-22 21:13:25,096 | INFO | ================================================================================
+2025-07-22 21:13:25,097 | INFO |
+PHASE 1: DATA LOADING AND MAIL TYPE ANALYSIS
+2025-07-22 21:13:25,098 | INFO | Loading call intent data...
+2025-07-22 21:13:25,099 | INFO | Loading callintent.csv...
+2025-07-22 21:13:34,791 | INFO | Loaded data/callintent.csv: 1053601 rows, 42 columns
+2025-07-22 21:13:36,476 | INFO | Found 1053601 call records from 2025+
+2025-07-22 21:13:37,431 | INFO | Created intent data for 40 intents
+2025-07-22 21:13:37,634 | INFO | Loading mail data...
+2025-07-22 21:13:37,635 | INFO | Loading mail.csv...
+2025-07-22 21:13:38,769 | INFO | Loaded data/mail.csv: 1409780 rows, 4 columns
+2025-07-22 21:13:39,147 | INFO | Processed 582365 mail records from 2025+
+2025-07-22 21:13:39,377 | INFO | Created daily mail data: 138 days, 197 types
+2025-07-22 21:13:39,386 | INFO | Starting comprehensive mail type analysis...
+2025-07-22 21:13:39,434 | INFO | Analyzing 106 overlapping days with 197 mail types
+2025-07-22 21:13:39,435 | INFO | Analyzing mail types by volume...
+2025-07-22 21:13:39,486 | INFO | Top 5 by volume: ['Cheque', 'DRP Stmt.', 'Notice', 'Envision', 'Proxy (US)']
+2025-07-22 21:13:39,486 | INFO | Analyzing mail types by correlation...
+2025-07-22 21:13:40,424 | INFO | Top 5 by correlation: ['Repl_Chks', 'ACH_Debit_Enrollment', 'ESPP_Statements', 'ESPP_Terminations', 'General Comm']
+2025-07-22 21:13:40,425 | INFO | Best correlations: [('Repl_Chks', np.float64(0.551)), ('ACH_Debit_Enrollment', np.float64(0.522)), ('ESPP_Statements', np.float64(0.507)), ('ESPP_Terminations', np.float64(-0.505)), ('General Comm', np.float64(0.491))]
+2025-07-22 21:13:40,425 | INFO | Finding optimal tradeoff between volume and correlation...
+2025-07-22 21:13:40,429 | INFO | volume_heavy top 5: ['DRS_Advices', 'ACH Conf.', 'DRP Stmt.', 'Cheque', 'DRS']
+2025-07-22 21:13:40,429 | INFO | balanced top 5: ['Repl_Chks', 'DRS_Advices', 'ACH Conf.', 'Transfer', 'Rep_1099Div']
+2025-07-22 21:13:40,430 | INFO | correlation_heavy top 5: ['Repl_Chks', 'Transfer', 'Rep_1099Div', 'ACH Conf.', 'DRS_Advices']
+2025-07-22 21:13:40,431 | INFO | correlation_only top 5: ['Repl_Chks', 'ACH_Debit_Enrollment', 'ESPP_Statements', 'ESPP_Terminations', 'General Comm']       
+2025-07-22 21:13:40,431 | INFO | volume_only top 5: ['Cheque', 'DRP Stmt.', 'Notice', 'Envision', 'Proxy (US)']
+2025-07-22 21:13:40,432 | INFO |
+PHASE 2: SYSTEMATIC MODEL OPTIMIZATION
+2025-07-22 21:13:40,433 | INFO | === STARTING SYSTEMATIC OPTIMIZATION ===
+2025-07-22 21:13:40,441 | INFO | Optimization dataset: 82 samples
+2025-07-22 21:13:40,443 | INFO | Testing 480 configurations...
+2025-07-22 21:13:40,444 | INFO | Limiting to 200 configurations for efficiency
+2025-07-22 21:13:40,595 | INFO | New best configuration: volume_only_minimal_extended_lags_elastic
+2025-07-22 21:13:40,596 | INFO |   Score (cv_r2): -1678705.664
+2025-07-22 21:13:40,596 | INFO |   Mail strategy: volume_only
+2025-07-22 21:13:40,597 | INFO |   Features: 83
+2025-07-22 21:13:40,597 | INFO |   Mail types: ['Cheque', 'DRP Stmt.', 'Notice']...
+2025-07-22 21:13:40,652 | ERROR | Configuration volume_heavy_standard_focused_lags_gradient_boost failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:40,753 | ERROR | Configuration volume_only_comprehensive_extended_lags_linear failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:41,006 | ERROR | Configuration volume_heavy_advanced_extended_lags_lasso failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:41,256 | ERROR | Configuration volume_heavy_advanced_comprehensive_lags_ridge failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:41,328 | ERROR | Configuration correlation_only_comprehensive_basic_lags_random_forest failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:41,433 | ERROR | Configuration correlation_heavy_comprehensive_extended_lags_random_forest failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:41,511 | ERROR | Configuration balanced_comprehensive_comprehensive_lags_lasso failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:44,041 | INFO | New best configuration: volume_only_minimal_extended_lags_random_forest
+2025-07-22 21:13:44,042 | INFO |   Score (cv_r2): -1.380
+2025-07-22 21:13:44,043 | INFO |   Mail strategy: volume_only
+2025-07-22 21:13:44,044 | INFO |   Features: 83
+2025-07-22 21:13:44,045 | INFO |   Mail types: ['Cheque', 'DRP Stmt.', 'Notice']...
+2025-07-22 21:13:44,234 | ERROR | Configuration balanced_comprehensive_comprehensive_lags_elastic failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:47,681 | ERROR | Configuration volume_only_standard_extended_lags_elastic failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:50,234 | ERROR | Configuration balanced_standard_extended_lags_lasso failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:52,641 | INFO | New best configuration: correlation_heavy_minimal_extended_lags_random_forest
+2025-07-22 21:13:52,642 | INFO |   Score (cv_r2): -0.954
+2025-07-22 21:13:52,642 | INFO |   Mail strategy: correlation_heavy
+2025-07-22 21:13:52,642 | INFO |   Features: 83
+2025-07-22 21:13:52,643 | INFO |   Mail types: ['Repl_Chks', 'Transfer', 'Rep_1099Div']...
+2025-07-22 21:13:52,707 | ERROR | Configuration volume_heavy_comprehensive_basic_lags_ridge failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:52,850 | ERROR | Configuration volume_heavy_advanced_extended_lags_random_forest failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:52,910 | ERROR | Configuration correlation_only_comprehensive_extended_lags_gradient_boost failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:52,911 | INFO | Progress: 20/200 configurations tested
+2025-07-22 21:13:52,942 | ERROR | Configuration correlation_only_standard_focused_lags_lasso failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:52,981 | ERROR | Configuration correlation_heavy_standard_focused_lags_gradient_boost failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:53,094 | ERROR | Configuration volume_only_advanced_focused_lags_elastic failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:56,420 | ERROR | Configuration correlation_only_comprehensive_basic_lags_linear failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:56,575 | ERROR | Configuration correlation_only_advanced_comprehensive_lags_elastic failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:56,633 | ERROR | Configuration correlation_only_standard_comprehensive_lags_ridge failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:56,763 | ERROR | Configuration correlation_only_advanced_focused_lags_gradient_boost failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:56,920 | ERROR | Configuration volume_heavy_standard_comprehensive_lags_elastic failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:57,121 | ERROR | Configuration volume_only_advanced_focused_lags_gradient_boost failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:57,179 | ERROR | Configuration volume_heavy_standard_comprehensive_lags_ridge failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:57,327 | ERROR | Configuration volume_heavy_advanced_extended_lags_gradient_boost failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:57,387 | ERROR | Configuration balanced_standard_comprehensive_lags_linear failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:57,425 | ERROR | Configuration volume_only_standard_basic_lags_random_forest failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:57,598 | ERROR | Configuration volume_heavy_advanced_basic_lags_random_forest failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:57,849 | ERROR | Configuration correlation_heavy_advanced_extended_lags_lasso failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:57,959 | ERROR | Configuration correlation_heavy_comprehensive_extended_lags_gradient_boost failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:58,026 | ERROR | Configuration correlation_heavy_standard_basic_lags_gradient_boost failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:58,115 | ERROR | Configuration balanced_comprehensive_basic_lags_gradient_boost failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:58,116 | INFO | Progress: 40/200 configurations tested
+2025-07-22 21:13:58,214 | ERROR | Configuration correlation_heavy_standard_extended_lags_ridge failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:58,280 | ERROR | Configuration correlation_only_standard_comprehensive_lags_random_forest failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:58,492 | ERROR | Configuration volume_heavy_advanced_extended_lags_ridge failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:58,550 | ERROR | Configuration correlation_only_standard_basic_lags_lasso failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:58,774 | ERROR | Configuration balanced_advanced_basic_lags_ridge failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:58,998 | ERROR | Configuration volume_heavy_comprehensive_basic_lags_lasso failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:59,049 | ERROR | Configuration balanced_standard_comprehensive_lags_ridge failed: 'DatetimeIndex' object has no attribute 'week'
+2025-07-22 21:13:59,244 | ERROR | Configuration correlation_heavy_standard_extended_lags_lasso failed: 'DatetimeIndex' object has no attribute 'week'
+
+Optimization interrupted by user
+
+
+
 #!/usr/bin/env python
 """
 OPTIMIZED MAIL-TO-CALLS PREDICTION SYSTEM
