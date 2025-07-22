@@ -1,3 +1,88 @@
+2025-07-22 12:41:30,952 |     INFO | ================================================================================
+2025-07-22 12:41:30,954 |     INFO | STEP 1: Loading data...
+2025-07-22 12:41:30,955 |     INFO | Loading mail and call data...
+2025-07-22 12:41:45,077 |     INFO | Daily mail-calls data loaded: (349, 232)
+2025-07-22 12:41:45,268 |     INFO | STEP 2: Training baseline model...
+2025-07-22 12:41:45,268 |     INFO | Creating baseline features...
+2025-07-22 12:41:46,037 |     INFO | Baseline features created: 348 samples x 19 features
+2025-07-22 12:41:46,038 |     INFO | Training baseline models...
+2025-07-22 12:41:46,041 |     INFO |   Training 10% quantile model...
+2025-07-22 12:41:46,078 |     INFO |     Validation MAE: 5873
+2025-07-22 12:41:46,079 |     INFO |   Training 25% quantile model...
+2025-07-22 12:41:46,110 |     INFO |     Validation MAE: 4908
+2025-07-22 12:41:46,110 |     INFO |   Training 50% quantile model...
+2025-07-22 12:41:46,148 |     INFO |     Validation MAE: 4498
+2025-07-22 12:41:46,148 |     INFO |   Training 75% quantile model...
+2025-07-22 12:41:46,183 |     INFO |     Validation MAE: 5817
+2025-07-22 12:41:46,184 |     INFO |   Training 90% quantile model...
+2025-07-22 12:41:46,226 |     INFO |     Validation MAE: 10449
+2025-07-22 12:41:46,227 |     INFO |   Training bootstrap ensemble...
+2025-07-22 12:41:49,941 |     INFO | Baseline models trained successfully!
+2025-07-22 12:41:50,513 |     INFO | STEP 3: Testing baseline model...
+2025-07-22 12:41:50,514 |     INFO | Testing baseline models comprehensively...
+2025-07-22 12:41:50,523 |     INFO | Overall baseline performance:
+2025-07-22 12:41:50,524 |     INFO |   MAE: 4498
+2025-07-22 12:41:50,524 |     INFO |   RMSE: 8090
+2025-07-22 12:41:50,525 |     INFO |   R²: 0.189
+2025-07-22 12:41:50,526 |     INFO |   Accuracy: 60.7%
+2025-07-22 12:41:50,526 |     INFO |
+baseline performance by weekday:
+2025-07-22 12:41:50,532 |     INFO |   Monday    : MAE=  4586, Bias=  -543, Samples= 13
+2025-07-22 12:41:50,535 |     INFO |   Tuesday   : MAE=  2178, Bias=  +832, Samples= 14
+2025-07-22 12:41:50,539 |     INFO |   Wednesday : MAE=  3342, Bias= +1628, Samples= 14
+2025-07-22 12:41:50,543 |     INFO |   Thursday  : MAE=  2730, Bias= +2071, Samples= 15
+2025-07-22 12:41:50,548 |     INFO |   Friday    : MAE=  9788, Bias= -9679, Samples= 14
+2025-07-22 12:41:50,550 |     INFO |
+🔥 baseline Friday Challenge: MAE = 9788
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\BhungarD\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BhungarD\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f525' in position 39: character maps to <undefined>
+Call stack:
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\firdaycompare.py", line 1084, in <module>
+    sys.exit(main())
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\firdaycompare.py", line 1059, in main
+    success = pipeline.run_complete_pipeline()
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\firdaycompare.py", line 885, in run_complete_pipeline
+    baseline_results = test_models_comprehensive(X_baseline, y_baseline, models_baseline, "baseline")
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\firdaycompare.py", line 521, in test_models_comprehensive
+    LOG.info(f"\n🔥 {model_type} Friday Challenge: MAE = {friday_mae:.0f}")
+Message: '\n🔥 baseline Friday Challenge: MAE = 9788'
+Arguments: ()
+2025-07-22 12:41:50,561 |     INFO | STEP 4: Training Friday-enhanced model...
+2025-07-22 12:41:50,562 |     INFO | Creating Friday-enhanced features...
+2025-07-22 12:41:51,927 |     INFO | Friday-enhanced features created: 348 samples x 43 features
+2025-07-22 12:41:51,929 |     INFO | Original: 19, New Friday features: 24
+2025-07-22 12:41:51,930 |     INFO | Training enhanced models...
+2025-07-22 12:41:51,931 |     INFO |   Training 10% quantile model...
+2025-07-22 12:41:51,951 |    ERROR | Pipeline failed: 'NoneType' object is not subscriptable
+2025-07-22 12:41:52,040 |    ERROR | Traceback (most recent call last):
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\firdaycompare.py", line 890, in run_complete_pipeline
+    models_enhanced = train_models(X_enhanced, y_enhanced, "enhanced")
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\firdaycompare.py", line 425, in train_models
+    model.fit(X_train, y_train)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\base.py", line 1389, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_quantile.py", line 286, in fit
+    params = solution[:n_params] - solution[n_params : 2 * n_params]
+             ~~~~~~~~^^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+
+❌ PIPELINE FAILED!
+Check the log file for error details
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> 
+
+
+
+
+
 #!/usr/bin/env python
 # friday_enhanced_model_trainer.py
 # =========================================================
