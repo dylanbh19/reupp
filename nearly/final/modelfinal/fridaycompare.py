@@ -1,3 +1,209 @@
+
+2025-07-22 13:03:55,098 |     INFO | Starting Friday-Enhanced Model Training Pipeline
+2025-07-22 13:03:55,099 |     INFO | ================================================================================
+2025-07-22 13:03:55,100 |     INFO | STEP 1: Loading data...
+2025-07-22 13:03:55,100 |     INFO | Loading mail and call data...
+2025-07-22 13:03:55,101 |     INFO | Loading mail data...
+2025-07-22 13:03:55,102 |     INFO | Found file: data\mail.csv
+2025-07-22 13:03:56,979 |     INFO | Mail data loaded: (1409780, 4)
+2025-07-22 13:03:56,980 |     INFO | Loading call volume data...
+2025-07-22 13:03:56,981 |     INFO | Found file: data\callvolumes.csv
+2025-07-22 13:04:00,592 |     INFO | Call volumes processed: 550 days
+2025-07-22 13:04:00,593 |     INFO | Call volume range: 0 to 2903
+2025-07-22 13:04:00,593 |     INFO | Loading call intent data...
+2025-07-22 13:04:00,594 |     INFO | Found file: data\callintent.csv
+2025-07-22 13:04:08,407 |     INFO | Call intent processed: 123 days
+2025-07-22 13:04:08,408 |     INFO | Call intent range: 5 to 18209
+2025-07-22 13:04:08,410 |     INFO | Scaled call volumes using 123 overlapping days, scale factor: 25.19
+2025-07-22 13:04:08,412 |     INFO | Combined calls total: 550 days
+2025-07-22 13:04:08,412 |     INFO | Processing mail data...
+2025-07-22 13:04:08,692 |     INFO | Filtering to business days...
+2025-07-22 13:04:09,074 |     INFO | Final combined data: (349, 232)
+2025-07-22 13:04:09,075 |     INFO | Date range: 2024-01-02 00:00:00 to 2025-05-30 00:00:00
+2025-07-22 13:04:09,076 |     INFO | Call volume stats: min=76, max=73120, mean=15800
+2025-07-22 13:04:09,285 |     INFO | STEP 2: Training baseline model...
+2025-07-22 13:04:09,286 |     INFO | Creating baseline features...
+2025-07-22 13:04:10,132 |     INFO | Baseline features created: 348 samples x 19 features
+2025-07-22 13:04:10,134 |     INFO | Target range: 76 to 73120
+2025-07-22 13:04:10,135 |     INFO | Training baseline models...
+2025-07-22 13:04:10,135 |     INFO |   Training 10% quantile model...
+2025-07-22 13:04:10,188 |     INFO |     Success with highs-ds, alpha=0.01, MAE: 6506
+2025-07-22 13:04:10,189 |     INFO |   Training 25% quantile model...
+2025-07-22 13:04:10,240 |     INFO |     Success with highs-ds, alpha=0.01, MAE: 4925
+2025-07-22 13:04:10,241 |     INFO |   Training 50% quantile model...
+2025-07-22 13:04:10,276 |     INFO |     Success with highs-ds, alpha=0.01, MAE: 4416
+2025-07-22 13:04:10,277 |     INFO |   Training 75% quantile model...
+2025-07-22 13:04:10,322 |     INFO |     Success with highs-ds, alpha=0.01, MAE: 5163
+2025-07-22 13:04:10,323 |     INFO |   Training 90% quantile model...
+2025-07-22 13:04:10,361 |     INFO |     Success with highs-ds, alpha=0.01, MAE: 13938
+2025-07-22 13:04:10,362 |     INFO |   Training bootstrap ensemble...
+2025-07-22 13:04:10,835 |     INFO |   Bootstrap ensemble created with 10 models
+2025-07-22 13:04:10,836 |     INFO | Baseline models trained successfully!
+2025-07-22 13:04:10,922 |     INFO | Baseline models saved successfully
+2025-07-22 13:04:10,923 |     INFO | STEP 3: Testing baseline model...
+2025-07-22 13:04:10,924 |     INFO | Testing baseline models comprehensively...
+2025-07-22 13:04:10,931 |     INFO | Overall baseline performance:
+2025-07-22 13:04:10,932 |     INFO |   MAE: 4416
+2025-07-22 13:04:10,933 |     INFO |   RMSE: 7888
+2025-07-22 13:04:10,933 |     INFO |   R2: 0.229
+2025-07-22 13:04:10,934 |     INFO |   Accuracy: 61.4%
+2025-07-22 13:04:10,935 |     INFO |
+baseline performance by weekday:
+2025-07-22 13:04:10,938 |     INFO |   Monday    : MAE=  4760, Bias= -1237, Samples= 13
+2025-07-22 13:04:10,943 |     INFO |   Tuesday   : MAE=  1920, Bias=  +505, Samples= 14
+2025-07-22 13:04:10,946 |     INFO |   Wednesday : MAE=  3422, Bias= +1978, Samples= 14
+2025-07-22 13:04:10,948 |     INFO |   Thursday  : MAE=  3290, Bias= +3109, Samples= 15
+2025-07-22 13:04:10,950 |     INFO |   Friday    : MAE=  8791, Bias= -8235, Samples= 14
+2025-07-22 13:04:10,952 |     INFO | 
+FRIDAY baseline Challenge: MAE = 8791
+2025-07-22 13:04:10,953 |     INFO | STEP 4: Training Friday-enhanced model...
+2025-07-22 13:04:10,954 |     INFO | Creating Friday-enhanced features...
+2025-07-22 13:04:11,665 |     INFO | Friday-enhanced features created: 348 samples x 43 features
+2025-07-22 13:04:11,665 |     INFO | Original: 19, New Friday features: 24
+2025-07-22 13:04:11,667 |     INFO | Training enhanced models...
+2025-07-22 13:04:11,667 |     INFO |   Training 10% quantile model...
+2025-07-22 13:04:11,703 |     INFO |     Success with highs-ds, alpha=0.01, MAE: 6132
+2025-07-22 13:04:11,704 |     INFO |   Training 25% quantile model...
+2025-07-22 13:04:11,733 |     INFO |     Success with highs-ds, alpha=0.01, MAE: 4956
+2025-07-22 13:04:11,735 |     INFO |   Training 50% quantile model...
+2025-07-22 13:04:11,766 |     INFO |     Success with highs-ds, alpha=0.01, MAE: 4247
+2025-07-22 13:04:11,767 |     INFO |   Training 75% quantile model...
+2025-07-22 13:04:11,803 |     INFO |     Success with highs-ds, alpha=0.01, MAE: 4589
+2025-07-22 13:04:11,804 |     INFO |   Training 90% quantile model...
+2025-07-22 13:04:11,838 |     INFO |     Success with highs-ds, alpha=0.01, MAE: 7182
+2025-07-22 13:04:11,838 |     INFO |   Training bootstrap ensemble...
+2025-07-22 13:04:12,790 |     INFO |   Bootstrap ensemble created with 10 models
+2025-07-22 13:04:12,791 |     INFO | Enhanced models trained successfully!
+2025-07-22 13:04:12,958 |     INFO | Enhanced models saved successfully
+2025-07-22 13:04:12,959 |     INFO | STEP 5: Testing Friday-enhanced model...
+2025-07-22 13:04:12,960 |     INFO | Testing enhanced models comprehensively...
+2025-07-22 13:04:12,967 |     INFO | Overall enhanced performance:
+2025-07-22 13:04:12,968 |     INFO |   MAE: 4247
+2025-07-22 13:04:12,969 |     INFO |   RMSE: 7905
+2025-07-22 13:04:12,969 |     INFO |   R2: 0.226
+2025-07-22 13:04:12,970 |     INFO |   Accuracy: 62.9%
+2025-07-22 13:04:12,971 |     INFO | 
+enhanced performance by weekday:
+2025-07-22 13:04:12,975 |     INFO |   Monday    : MAE=  4359, Bias= -1165, Samples= 13
+2025-07-22 13:04:12,982 |     INFO |   Tuesday   : MAE=  1757, Bias=  +296, Samples= 14
+2025-07-22 13:04:12,986 |     INFO |   Wednesday : MAE=  2966, Bias=  +757, Samples= 14
+2025-07-22 13:04:12,988 |     INFO |   Thursday  : MAE=  1906, Bias=  +497, Samples= 15
+2025-07-22 13:04:12,991 |     INFO |   Friday    : MAE= 10420, Bias= -8478, Samples= 14
+2025-07-22 13:04:12,992 |     INFO |
+FRIDAY enhanced Challenge: MAE = 10420
+2025-07-22 13:04:12,993 |     INFO | STEP 6: Comparing models...
+2025-07-22 13:04:12,993 |     INFO | ================================================================================
+2025-07-22 13:04:12,993 |     INFO | BEFORE/AFTER COMPARISON
+2025-07-22 13:04:12,994 |     INFO | ================================================================================
+2025-07-22 13:04:12,995 |     INFO | OVERALL MODEL IMPROVEMENT:
+2025-07-22 13:04:12,995 |     INFO |   MAE: 4416 -> 4247 (+169, +3.8%)
+2025-07-22 13:04:12,996 |     INFO |   Accuracy: 61.4% -> 62.9%
+2025-07-22 13:04:12,997 |     INFO |   R2: 0.229 -> 0.226
+2025-07-22 13:04:12,997 |     INFO |
+WEEKDAY-SPECIFIC IMPROVEMENTS:
+2025-07-22 13:04:12,998 |     INFO |   Monday    :   4760 ->   4359 (  +401,  +8.4%)
+2025-07-22 13:04:12,999 |     INFO |   Tuesday   :   1920 ->   1757 (  +163,  +8.5%)
+2025-07-22 13:04:13,000 |     INFO |   Wednesday :   3422 ->   2966 (  +456, +13.3%)
+2025-07-22 13:04:13,001 |     INFO |   Thursday  :   3290 ->   1906 ( +1384, +42.1%)
+2025-07-22 13:04:13,002 |     INFO |   Friday    :   8791 ->  10420 ( -1629, -18.5%)
+2025-07-22 13:04:13,002 |     INFO |
+FRIDAY CHALLENGE RESULTS:
+2025-07-22 13:04:13,003 |     INFO |   Friday MAE: 8791 -> 10420
+2025-07-22 13:04:13,003 |     INFO |   Friday Improvement: -1629 calls (-18.5%)
+2025-07-22 13:04:13,003 |     INFO |   WARNING: Friday predictions unchanged or slightly worse
+2025-07-22 13:04:13,004 |     INFO | STEP 7: Creating comparison visualizations...
+2025-07-22 13:04:13,004 |     INFO | Creating before/after comparison visualizations...
+2025-07-22 13:04:15,409 |     INFO | Comparison visualization saved: before_after_comparison\before_after_comparison.png
+2025-07-22 13:04:15,409 |     INFO | STEP 8: Saving results...
+2025-07-22 13:04:15,426 |     INFO | All results saved to JSON files
+2025-07-22 13:04:15,429 |     INFO | STEP 9: Generating final report...
+
+================================================================================
+                FRIDAY-ENHANCED MODEL TRAINING RESULTS
+                      2025-07-22 13:04:15
+================================================================================
+
+EXECUTIVE SUMMARY:
+--------------------------------------------------
+The Friday-enhanced model has been trained and tested against the baseline.
+MINIMAL: Limited improvements detected
+
+OVERALL PERFORMANCE:
+--------------------------------------------------
+• Overall MAE Improvement: +3.8%
+• Baseline MAE: 4416
+• Enhanced MAE: 4247
+• Accuracy: 61.4% -> 62.9%
+
+FRIDAY CHALLENGE RESULTS:
+--------------------------------------------------
+• Friday MAE Improvement: -18.5%
+• Baseline Friday MAE: 8791
+• Enhanced Friday MAE: 10420
+• Error Reduction: -1629 calls per Friday
+
+WEEKDAY BREAKDOWN:
+--------------------------------------------------
+• Monday    :   +401 calls ( +8.4%)
+• Tuesday   :   +163 calls ( +8.5%)
+• Wednesday :   +456 calls (+13.3%)
+• Thursday  :  +1384 calls (+42.1%)
+• Friday    :  -1629 calls (-18.5%)
+
+BUSINESS IMPACT:
+--------------------------------------------------
+• Annual Friday Error Reduction: -84725 calls
+• Staffing Impact: -32.6 agents per Friday
+• Cost Impact: ~$338,900/year
+
+RECOMMENDATIONS:
+--------------------------------------------------
+KEEP BASELINE: Minimal improvements don't justify complexity
+
+NEXT STEPS:
+--------------------------------------------------
+1. Continue with baseline model
+2. Focus on operational improvements
+3. Run testing suite with the baseline model
+4. Document findings
+
+FILES GENERATED:
+--------------------------------------------------
+• before_after_comparison.png - Main comparison dashboard
+• model_comparison.json - Detailed metrics
+• baseline_models.pkl - Trained baseline models
+• friday_enhanced_models.pkl - Trained enhanced models
+
+================================================================================
+              BASELINE CONFIRMED OPTIMAL
+================================================================================
+
+2025-07-22 13:04:15,444 |     INFO | Final report saved: before_after_comparison\FRIDAY_ENHANCEMENT_REPORT.txt
+2025-07-22 13:04:15,445 |     INFO | ================================================================================
+2025-07-22 13:04:15,445 |     INFO | PIPELINE COMPLETE!
+2025-07-22 13:04:15,446 |     INFO | Total time: 20.3 seconds
+2025-07-22 13:04:15,447 |     INFO | Results saved in: before_after_comparison
+
+FRIDAY MODEL TRAINING COMPLETE!
+============================================================
+Both models trained and tested
+Comprehensive comparison generated
+Visualizations created
+Reports saved
+
+NEXT STEPS:
+1. Review the comparison visualizations
+2. Read the final report
+3. Run your testing suite on the best model
+4. Deploy to production if improvements are significant
+
+All results in: before_after_comparison
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> 
+
+
+
+
+
 #!/usr/bin/env python
 # friday_enhanced_model_trainer.py
 # =========================================================
