@@ -1,376 +1,20 @@
-PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> & C:/Users/BhungarD/python.exe "c:/Users/BhungarD/OneDrive - Computershare/Desktop/finprod/model.py"
-======================================================================
-PRODUCTION MAIL-TO-CALLS PREDICTION SYSTEM
-======================================================================
-INPUT: Your actual mail data structure
-  - mail_date, mail_volume, mail_type, source_file
-  - Using your real mail types (New_Chk, Digital_Insert, etc.)
-
-OUTPUT: Call volume + Intent predictions
-  - Daily call volume forecasts
-  - Confidence intervals
-  - Intent distribution predictions
-  - Business insights and recommendations
-
-FEATURES: Production-grade, Self-healing, ASCII-safe
-======================================================================
-
-2025-07-22 21:02:52,657 |     INFO | Output directory structure created: production_mail_calls_system
-2025-07-22 21:02:52,660 |     INFO | ======================================================================
-2025-07-22 21:02:52,661 |     INFO | PRODUCTION MAIL-TO-CALLS PREDICTION PIPELINE
-2025-07-22 21:02:52,662 |     INFO | ======================================================================
-2025-07-22 21:02:52,663 |     INFO | INPUT: Your actual mail data (mail_date, mail_volume, mail_type)
-2025-07-22 21:02:52,664 |     INFO | OUTPUT: Call volume + Intent predictions
-2025-07-22 21:02:52,665 |     INFO | APPROACH: Production-grade with self-healing
-2025-07-22 21:02:52,666 |     INFO | ======================================================================
-2025-07-22 21:02:52,667 |     INFO |
-PHASE 1: PRODUCTION DATA LOADING
-2025-07-22 21:02:52,668 |     INFO | === STARTING PRODUCTION DATA LOADING ===
-2025-07-22 21:02:52,669 |     INFO | Loading production call intent data...
-2025-07-22 21:02:52,670 |     INFO | Loading file: callintent.csv
-2025-07-22 21:02:52,671 |     INFO | Found file at: data/callintent.csv
-2025-07-22 21:03:03,303 |     INFO | Successfully loaded: 1053601 rows, 42 columns
-2025-07-22 21:03:03,360 |     INFO | Detected call columns: {'date': 'ConversationStart', 'intent': 'intent'}
-2025-07-22 21:03:04,928 |     INFO | Found 1053601 call records from 2025+
-2025-07-22 21:03:05,230 |     INFO | Processing intent data...
-2025-07-22 21:03:05,642 |     INFO | Keeping 40 intents (>= 10 occurrences)
-2025-07-22 21:03:05,643 |     INFO | Removed 76 rare intents
-2025-07-22 21:03:05,863 |     INFO | Created intent distribution for 40 intents
-2025-07-22 21:03:06,040 |     INFO | Loading production mail data...
-2025-07-22 21:03:06,040 |     INFO | Loading file: mail.csv
-2025-07-22 21:03:06,041 |     INFO | Found file at: data/mail.csv
-2025-07-22 21:03:07,061 |     INFO | Successfully loaded: 1409780 rows, 4 columns
-2025-07-22 21:03:07,142 |     INFO | Detected mail columns: {'date': 'mail_date', 'volume': 'mail_volume', 'type': 'mail_type'}
-2025-07-22 21:03:07,403 |     INFO | Found 582365 mail records from 2025+
-2025-07-22 21:03:07,487 |     INFO | Keeping 133 mail types after filtering
-2025-07-22 21:03:07,533 |     INFO | Selected top 15 mail types: ['Cheque', 'Scheduled PAYMENT CHECKS', 'Proxy (US)', 'DRP Stmt.', 'Envision', 'Notice', 'Scheduled 1099 DIV', 'Tax StndAlone', 'Scheduled Check +1099 Duplex', 'Scheduled ACH 1099D', 'DRP 1099', 'G_Statements', 'Once Off PRINT JOB ONLY', 'Cheque 1099', 'Scheduled 1099B TAX INFO STATEMENT']
-2025-07-22 21:03:07,536 |     INFO | Mail data processed: 136 days, 15 types
-2025-07-22 21:03:07,538 |     INFO | Aligning production data...
-2025-07-22 21:03:07,539 |     INFO | Found 104 overlapping dates between calls and mail
-2025-07-22 21:03:07,540 |     INFO | Filtered to 82 business days
-2025-07-22 21:03:07,543 |     INFO | Data alignment complete: 82 days
-
-======================================================================
-PRODUCTION DATA LOADING SUMMARY
-======================================================================
-
-CALLS:
-  total_records: 1053601
-  daily_records: 123
-  date_range: 2025-02-05 to 2025-06-08
-  avg_daily_calls: 8565.86
-  max_daily_calls: 18209
-  min_daily_calls: 5
-  has_intents: True
-  intent_count: 40
-
-MAIL:
-  total_records: 122450
-  daily_records: 136
-  date_range: 2025-01-01 to 2025-05-31
-  mail_types: 15
-  mail_type_list: ['Cheque', 'Scheduled PAYMENT CHECKS', 'Proxy (US)']... (total: 15)
-  avg_daily_volume: 288026.56
-  total_volume: 39171612.00
-
-ALIGNMENT:
-  total_days: 82
-  date_range: 2025-02-05 00:00:00 to 2025-05-30 00:00:00
-  has_mail_overlap: True
-  business_days_only: True
-======================================================================
-2025-07-22 21:03:07,549 |     INFO | All data loaded successfully
-2025-07-22 21:03:07,550 |     INFO |
-PHASE 2: PRODUCTION MODEL TRAINING
-2025-07-22 21:03:07,551 |     INFO | === PRODUCTION MODEL TRAINING ===
-2025-07-22 21:03:07,552 |     INFO |
---- APPROACH: BASIC ---
-2025-07-22 21:03:07,553 |     INFO | Creating basic features for volume prediction...
-2025-07-22 21:03:07,554 |     INFO | Creating basic mail features for 15 mail types
-2025-07-22 21:03:07,576 |     INFO | Created 32 mail impact features
-2025-07-22 21:03:07,577 |     INFO | Creating temporal features...
-2025-07-22 21:03:08,223 |     INFO | Created 14 temporal features
-2025-07-22 21:03:08,224 |     INFO | Creating call history features...
-2025-07-22 21:03:08,260 |     INFO | Created 6 call history features
-2025-07-22 21:03:08,263 |     INFO | Volume prediction features: 52 features, 81 samples
-2025-07-22 21:03:08,264 |     INFO | Creating basic features for intent prediction...
-2025-07-22 21:03:08,267 |     INFO | Creating basic mail features for 15 mail types
-2025-07-22 21:03:08,290 |     INFO | Created 32 mail impact features
-2025-07-22 21:03:08,291 |     INFO | Creating temporal features...
-2025-07-22 21:03:08,300 |     INFO | Created 14 temporal features
-2025-07-22 21:03:08,301 |     INFO | Creating call history features...
-2025-07-22 21:03:08,319 |     INFO | Created 6 call history features
-2025-07-22 21:03:08,322 |     INFO | Intent prediction features: 92 features, 81 samples
-2025-07-22 21:03:08,323 |     INFO | Training basic approach models...
-2025-07-22 21:03:08,323 |     INFO |   Training ridge for volume prediction...
-2025-07-22 21:03:08,424 |     INFO |     ridge: CV R = -189350.581, Test R = -2.185
-2025-07-22 21:03:08,425 |     INFO |   Training intent prediction for basic...
-2025-07-22 21:03:09,065 |     INFO |     Intent model: CV Accuracy = 0.983
-2025-07-22 21:03:09,066 |     INFO | Approach basic completed: Best R = -189350.581
-2025-07-22 21:03:09,066 |     INFO |
---- APPROACH: STANDARD ---
-2025-07-22 21:03:09,067 |     INFO | Creating standard features for volume prediction...
-2025-07-22 21:03:09,068 |     INFO | Creating standard mail features for 15 mail types
-2025-07-22 21:03:09,108 |     INFO | Created 75 mail impact features
-2025-07-22 21:03:09,109 |     INFO | Creating temporal features...
-2025-07-22 21:03:09,118 |     INFO | Created 14 temporal features
-2025-07-22 21:03:09,119 |     INFO | Creating call history features...
-2025-07-22 21:03:09,145 |     INFO | Created 22 call history features
-2025-07-22 21:03:09,148 |     INFO | Volume prediction features: 111 features, 81 samples
-2025-07-22 21:03:09,150 |     INFO | Creating standard features for intent prediction...
-2025-07-22 21:03:09,154 |     INFO | Creating standard mail features for 15 mail types
-2025-07-22 21:03:09,197 |     INFO | Created 75 mail impact features
-2025-07-22 21:03:09,198 |     INFO | Creating temporal features...
-2025-07-22 21:03:09,210 |     INFO | Created 14 temporal features
-2025-07-22 21:03:09,211 |     INFO | Creating call history features...
-2025-07-22 21:03:09,242 |     INFO | Created 22 call history features
-2025-07-22 21:03:09,248 |     INFO | Intent prediction features: 151 features, 81 samples
-2025-07-22 21:03:09,249 |     INFO | Training standard approach models...
-2025-07-22 21:03:09,250 |     INFO |   Training ridge for volume prediction...
-2025-07-22 21:03:09,309 |     INFO |     ridge: CV R = -33435.988, Test R = -2062.582
-2025-07-22 21:03:09,309 |     INFO |   Training random_forest for volume prediction...
-2025-07-22 21:03:11,936 |     INFO |     random_forest: CV R = -0.424, Test R = -0.009
-2025-07-22 21:03:11,937 |     INFO |   Training intent prediction for standard...
-2025-07-22 21:03:12,730 |     INFO |     Intent model: CV Accuracy = 0.983
-2025-07-22 21:03:12,731 |     INFO | Approach standard completed: Best R = -0.424
-2025-07-22 21:03:12,731 |     INFO |
---- APPROACH: ADVANCED ---
-2025-07-22 21:03:12,732 |     INFO | Creating advanced features for volume prediction...
-2025-07-22 21:03:12,733 |     INFO | Creating advanced mail features for 15 mail types
-2025-07-22 21:03:12,837 |     INFO | Created 119 mail impact features
-2025-07-22 21:03:12,838 |     INFO | Creating temporal features...
-2025-07-22 21:03:12,844 |     INFO | Created 14 temporal features
-2025-07-22 21:03:12,845 |     INFO | Creating call history features...
-2025-07-22 21:03:12,874 |     INFO | Created 22 call history features
-2025-07-22 21:03:12,903 |     INFO | Volume prediction features: 155 features, 81 samples
-2025-07-22 21:03:12,904 |     INFO | Creating advanced features for intent prediction...
-2025-07-22 21:03:12,906 |     INFO | Creating advanced mail features for 15 mail types
-2025-07-22 21:03:12,996 |     INFO | Created 119 mail impact features
-2025-07-22 21:03:12,997 |     INFO | Creating temporal features...
-2025-07-22 21:03:13,005 |     INFO | Created 14 temporal features
-2025-07-22 21:03:13,005 |     INFO | Creating call history features...
-2025-07-22 21:03:13,049 |     INFO | Created 22 call history features
-2025-07-22 21:03:13,052 |     INFO | Intent prediction features: 195 features, 81 samples
-2025-07-22 21:03:13,053 |     INFO | Training advanced approach models...
-2025-07-22 21:03:13,054 |     INFO |   Training ridge for volume prediction...
-2025-07-22 21:03:13,108 |     INFO |     ridge: CV R = -100.718, Test R = -58.971
-2025-07-22 21:03:13,109 |     INFO |   Training random_forest for volume prediction...
-2025-07-22 21:03:15,060 |     INFO |     random_forest: CV R = -0.812, Test R = -2.215
-2025-07-22 21:03:15,061 |     INFO |   Training gradient_boost for volume prediction...
-2025-07-22 21:03:18,500 |     INFO |     gradient_boost: CV R = -1.380, Test R = -0.996
-2025-07-22 21:03:18,501 |     INFO |   Training intent prediction for advanced...
-2025-07-22 21:03:19,472 |     INFO |     Intent model: CV Accuracy = 0.983
-2025-07-22 21:03:19,473 |     INFO | Approach advanced completed: Best R = -0.812
-2025-07-22 21:03:19,473 |     INFO |
-Best overall approach: standard (R = -0.424)
-2025-07-22 21:03:19,474 |     INFO |
-PHASE 3: PRODUCTION PREDICTION ENGINE
-2025-07-22 21:03:19,474 |     INFO |
-PHASE 4: GENERATING PRODUCTION EXAMPLES
-2025-07-22 21:03:19,475 |     INFO | Generating production examples with your actual mail types...
-2025-07-22 21:03:19,476 |     INFO | Making prediction from your mail inputs...
-2025-07-22 21:03:19,478 |    ERROR | Prediction failed: X has 25 features, but RandomForestRegressor is expecting 111 features as input.
-2025-07-22 21:03:19,479 |     INFO | Making prediction from your mail inputs...
-2025-07-22 21:03:19,484 |    ERROR | Prediction failed: X has 25 features, but RandomForestRegressor is expecting 111 features as input.
-2025-07-22 21:03:19,486 |     INFO | Making prediction from your mail inputs...
-2025-07-22 21:03:19,491 |    ERROR | Prediction failed: X has 25 features, but RandomForestRegressor is expecting 111 features as input.
-2025-07-22 21:03:19,492 |     INFO | Making prediction from your mail inputs...
-2025-07-22 21:03:19,495 |    ERROR | Prediction failed: X has 25 features, but RandomForestRegressor is expecting 111 features as input.
-2025-07-22 21:03:19,497 |     INFO | Making prediction from your mail inputs...
-2025-07-22 21:03:19,501 |    ERROR | Prediction failed: X has 25 features, but RandomForestRegressor is expecting 111 features as input.
-2025-07-22 21:03:19,502 |     INFO | Generated 3 production examples
-2025-07-22 21:03:19,503 |     INFO |
-PHASE 5: SAVING PRODUCTION ASSETS
-2025-07-22 21:03:19,503 |     INFO | Saving production assets...
-2025-07-22 21:03:19,614 |     INFO | All production assets saved successfully
-2025-07-22 21:03:19,615 |     INFO |
-PHASE 6: GENERATING PRODUCTION REPORT
-
-================================================================
-PRODUCTION MAIL-TO-CALLS PREDICTION SYSTEM
-================================================================
-DEPLOYMENT REPORT
-
-EXECUTIVE SUMMARY:
------------------
-Status: SUCCESS
-Execution Time: 0.4 minutes
-Best Model: standard
-Prediction Accuracy: 0.0% (R-squared)
-Mean Absolute Error: 1468 calls
-
-DATA PROCESSED:
---------------
-Call Records: 1,053,601
-Analysis Period: 2025-02-05 to 2025-06-08
-Daily Call Average: 8566
-Mail Data Available: Yes
-Mail Types Processed: 15
-
-YOUR MAIL TYPES:
----------------
-  1. Cheque
-  2. Scheduled PAYMENT CHECKS
-  3. Proxy (US)
-  4. DRP Stmt.
-  5. Envision
-  6. Notice
-  7. Scheduled 1099 DIV
-  8. Tax StndAlone
-  9. Scheduled Check +1099 Duplex
-  10. Scheduled ACH 1099D
-  11. DRP 1099
-  12. G_Statements
-  13. Once Off PRINT JOB ONLY
-  14. Cheque 1099
-  15. Scheduled 1099B TAX INFO STATEMENT
-
-
-MODEL PERFORMANCE:
------------------
-  BASIC: R = 0.000, Features = 104
-  STANDARD: R = 0.000, Features = 222
-  ADVANCED: R = 0.000, Features = 310
-
-PRODUCTION CAPABILITIES:
------------------------
- Single day call volume prediction from your mail data
- Multi-day campaign impact analysis
- 5-day business outlook forecasting
- Intent distribution prediction (if intent data available)
- Confidence intervals and business insights
- Self-healing data processing
- Production-grade error handling
-
-INPUT FORMAT:
-------------
-Your system expects mail data in this format:
-{
-    '2025-07-25': {
-        'Cheque': 127,
-        'Scheduled PAYMENT CHECKS': 50,
-        'Proxy (US)': 31
-    }
-}
-
-OUTPUT EXAMPLE:
---------------
-{
-    'predicted_call_volume': 850,
-    'confidence_intervals': {
-        '68%': {'lower': 765, 'upper': 935},
-        '95%': {'lower': 680, 'upper': 1020}
-    },
-    'business_insights': {
-        'staffing': 'Standard staffing recommended',
-        'capacity_planning': 'Plan for up to 935 calls (includes 10% buffer)'
-    }
-}
-
-DEPLOYMENT FILES:
-----------------
- production_volume_model.pkl - Main prediction model
- production_intent_model.pkl - Intent classification model
- data_summary.json - Data processing summary
- training_results.json - Model performance metrics
- production_examples.json - Usage examples
- mail_types_reference.json - Your mail types reference
- USAGE_GUIDE.txt - Detailed usage instructions
-
-BUSINESS VALUE:
---------------
- Accurate call volume forecasting: 0.0% accuracy
- Proactive staffing optimization based on mail campaigns
- 5-day business outlook for capacity planning
- Reduced under/over-staffing through predictive analytics
- Data-driven resource allocation
-
-SYSTEM INTEGRATION:
-------------------
-The system is production-ready and can be integrated via:
-1. Direct Python API calls
-2. Batch processing for daily forecasts
-3. Real-time prediction endpoints
-4. Automated reporting and alerting
-
-QUALITY ASSURANCE:
------------------
- Robust cross-validation with time series splits
- Multiple model approaches tested
- Production error handling and fallbacks
- Data quality checks and cleaning
- Business rule validation
-
-NEXT STEPS:
-----------
-1. Deploy models to production environment
-2. Set up automated daily forecasting
-3. Integrate with workforce management systems
-4. Monitor prediction accuracy and retrain monthly
-5. Expand to additional mail types as data becomes available
-
-================================================================
-Generated: 2025-07-22 21:03:19
-System Version: Production Grade v1.0
-================================================================
-
-2025-07-22 21:03:19,629 |     INFO | Production report saved to: production_mail_calls_system\reports\PRODUCTION_DEPLOYMENT_REPORT.txt
-2025-07-22 21:03:19,630 |     INFO |
-======================================================================
-2025-07-22 21:03:19,632 |     INFO | PRODUCTION PIPELINE COMPLETED SUCCESSFULLY!
-2025-07-22 21:03:19,633 |     INFO | Execution time: 0.4 minutes
-2025-07-22 21:03:19,634 |     INFO | Best approach: standard
-2025-07-22 21:03:19,635 |     INFO | Output directory: production_mail_calls_system
-2025-07-22 21:03:19,637 |     INFO | ======================================================================
-
-==================================================
-PRODUCTION SYSTEM DEPLOYED SUCCESSFULLY!
-==================================================
-
-READY FOR PRODUCTION USE:
- Best Model: standard
- Mail Types: 15 processed
- Execution Time: 0.4 minutes
-
-YOUR MAIL TYPES INTEGRATED:
-   Cheque
-   Scheduled PAYMENT CHECKS
-   Proxy (US)
-   DRP Stmt.
-   Envision
-  ... and 10 more
-
-CAPABILITIES:
- Single day predictions from your mail data
- Multi-day campaign impact analysis
- 5-day business forecasting
- Confidence intervals and business insights
-
- All files saved to: production_mail_calls_system
- See USAGE_GUIDE.txt for integration instructions
-PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> 
-
-
-
 #!/usr/bin/env python
 """
-PRODUCTION MAIL-TO-CALLS PREDICTION SYSTEM
-==========================================
+OPTIMIZED MAIL-TO-CALLS PREDICTION SYSTEM
+=========================================
 
-CLEAR PURPOSE:
-INPUT: Your actual mail data (mail_date, mail_volume, mail_type, source_file)
-OUTPUT: Call volume predictions + Intent distribution predictions
+OPTIMIZATION STRATEGY:
+1. Analyze mail types by VOLUME (top 25)
+2. Analyze mail types by CORRELATION (top 25) 
+3. Find optimal tradeoff between volume and correlation
+4. Test different feature combinations systematically
+5. Output the highest accuracy model
 
-YOUR MAIL TYPES (examples from your data):
-- New_Chk, MultiClientLaser, MultiClientLodgeCourier, RecordsProcessing
-- Digital_Insert_Sets, Digital_Insert_Images, Digital_Insert_Sheets
-
-PRODUCTION FEATURES:
-- Self-healing data loading with multiple fallback strategies
-- ASCII formatted (no charmap/unicode errors)
-- Progressive model complexity (simple -> advanced)
-- Robust error handling and graceful degradation
-- Real-world mail type handling from your actual data
+SYSTEMATIC APPROACH:
+- Mail type selection: Volume vs Correlation analysis
+- Feature engineering: Comprehensive feature testing
+- Model optimization: Find best performing combination
+- Production deployment: Bulletproof prediction system
 """
 
 import warnings
@@ -386,6 +30,7 @@ from datetime import datetime, timedelta
 import time
 from typing import Dict, List, Tuple, Optional, Union
 from collections import defaultdict
+import itertools
 
 import numpy as np
 import pandas as pd
@@ -394,196 +39,149 @@ import seaborn as sns
 
 # ML Libraries
 from sklearn.model_selection import TimeSeriesSplit, cross_validate
-from sklearn.metrics import mean_absolute_error, r2_score, accuracy_score, classification_report
-from sklearn.preprocessing import LabelEncoder, StandardScaler, RobustScaler
-from sklearn.linear_model import LinearRegression, Ridge, LogisticRegression
-from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier, GradientBoostingRegressor
-from sklearn.feature_selection import SelectKBest, f_regression
+from sklearn.metrics import mean_absolute_error, r2_score, mean_squared_error
+from sklearn.preprocessing import StandardScaler, RobustScaler
+from sklearn.linear_model import LinearRegression, Ridge, Lasso, ElasticNet
+from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
+from sklearn.feature_selection import SelectKBest, f_regression, mutual_info_regression
 import joblib
 
 # Statistical Libraries
 from scipy import stats
-from scipy.stats import pearsonr
+from scipy.stats import pearsonr, spearmanr
 
 # ============================================================================
-# PRODUCTION CONFIGURATION
+# OPTIMIZATION CONFIGURATION
 # ============================================================================
 
 CONFIG = {
-    # Data files - your actual structure
-    "call_intent_file": "callintent.csv", 
+    # Data files
+    "call_intent_file": "callintent.csv",
     "mail_file": "mail.csv",
     
-    # Data quality controls
-    "min_intent_occurrences": 10,  # Remove rare intents
-    "mail_lookback_days": 7,  # How far back to look for mail impact
-    "min_mail_volume_threshold": 5,  # Minimum mail volume to consider
+    # Mail type analysis
+    "top_n_by_volume": 25,
+    "top_n_by_correlation": 25,
+    "min_correlation_threshold": 0.01,
+    "correlation_lags_to_test": [0, 1, 2, 3, 4, 5],
     
-    # Mail type processing
-    "max_mail_types": 15,  # Limit to top N mail types by volume
-    "mail_type_min_days": 3,  # Mail type must appear on at least N days
-    
-    # Model approaches (progressive complexity)
-    "model_approaches": {
-        "basic": {
-            "lags": [1, 2], 
-            "features": ["volume", "temporal"],
-            "models": ["ridge"]
-        },
-        "standard": {
-            "lags": [1, 2, 3], 
-            "features": ["volume", "temporal", "rolling"],
-            "models": ["ridge", "random_forest"]
-        },
-        "advanced": {
-            "lags": [1, 2, 3, 4, 5], 
-            "features": ["volume", "temporal", "rolling", "weighted"],
-            "models": ["ridge", "random_forest", "gradient_boost"]
-        }
+    # Feature engineering options
+    "feature_combinations": {
+        "minimal": ["basic_lags", "temporal_basic"],
+        "standard": ["basic_lags", "rolling", "temporal_basic", "temporal_advanced"],
+        "comprehensive": ["basic_lags", "rolling", "weighted", "temporal_basic", "temporal_advanced", "interaction"],
+        "advanced": ["basic_lags", "rolling", "weighted", "temporal_basic", "temporal_advanced", "interaction", "trend"]
     },
     
-    # Prediction settings
-    "prediction_horizon_days": 5,
-    "confidence_levels": [0.68, 0.95],
-    "business_days_only": True,
+    # Lag configurations
+    "lag_options": {
+        "basic_lags": [1, 2, 3],
+        "extended_lags": [1, 2, 3, 4, 5],
+        "focused_lags": [1, 2],
+        "comprehensive_lags": [1, 2, 3, 4, 5, 6, 7]
+    },
     
-    # Output configuration
-    "output_dir": "production_mail_calls_system",
-    "save_models": True,
-    "save_feature_importance": True,
-    "generate_examples": True,
+    # Model options
+    "models_to_test": {
+        "linear": LinearRegression(),
+        "ridge": Ridge(alpha=10.0, random_state=42),
+        "lasso": Lasso(alpha=1.0, random_state=42, max_iter=2000),
+        "elastic": ElasticNet(alpha=1.0, l1_ratio=0.5, random_state=42, max_iter=2000),
+        "random_forest": RandomForestRegressor(n_estimators=100, max_depth=8, random_state=42),
+        "gradient_boost": GradientBoostingRegressor(n_estimators=100, max_depth=6, random_state=42)
+    },
     
-    # System settings
-    "random_state": 42,
-    "n_jobs": -1,  # Use all available cores
-    "memory_efficient": True
+    # Optimization settings
+    "cv_folds": 5,
+    "test_split": 0.2,
+    "optimization_metric": "cv_r2",  # or "cv_mae"
+    "min_samples_required": 30,
+    
+    # Output
+    "output_dir": "optimized_mail_calls_system",
+    "save_analysis": True,
+    "save_best_model": True,
+    "random_state": 42
 }
 
 # ============================================================================
-# PRODUCTION LOGGING SYSTEM (ASCII SAFE)
+# SAFE LOGGING AND UTILITIES
 # ============================================================================
 
-def setup_production_logging():
-    """Setup production-grade logging without unicode issues"""
-    
+def setup_logging():
+    """Setup safe logging"""
     output_dir = Path(CONFIG["output_dir"])
     output_dir.mkdir(exist_ok=True)
     
-    # Create logs directory
-    logs_dir = output_dir / "logs"
-    logs_dir.mkdir(exist_ok=True)
-    
-    # ASCII-safe formatter
-    formatter = logging.Formatter('%(asctime)s | %(levelname)8s | %(message)s')
-    
-    # Console handler with explicit encoding
-    console_handler = logging.StreamHandler(sys.stdout)
-    console_handler.setFormatter(formatter)
-    
-    # File handler with UTF-8 encoding
-    log_file = logs_dir / f"pipeline_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
-    file_handler = logging.FileHandler(str(log_file), mode='w', encoding='utf-8')
-    file_handler.setFormatter(formatter)
-    
-    # Configure logger
-    logger = logging.getLogger(__name__)
-    logger.setLevel(logging.INFO)
-    logger.handlers.clear()
-    logger.addHandler(console_handler)
-    logger.addHandler(file_handler)
-    
-    return logger
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s | %(levelname)s | %(message)s',
+        handlers=[
+            logging.StreamHandler(sys.stdout),
+            logging.FileHandler(output_dir / "optimization.log", mode='w', encoding='utf-8')
+        ]
+    )
+    return logging.getLogger(__name__)
 
-LOG = setup_production_logging()
+LOG = setup_logging()
 
 def safe_print(message: str):
-    """Print message safely without encoding issues"""
+    """Print safely without encoding issues"""
     try:
-        # Ensure ASCII compatibility
-        clean_message = str(message).encode('ascii', 'ignore').decode('ascii')
-        print(clean_message)
-    except Exception:
+        clean_msg = str(message).encode('ascii', 'ignore').decode('ascii')
+        print(clean_msg)
+    except:
         print(str(message))
 
-def safe_log(message: str, level: str = "info"):
-    """Log message safely"""
-    try:
-        clean_message = str(message).encode('ascii', 'ignore').decode('ascii')
-        getattr(LOG, level.lower())(clean_message)
-    except Exception:
-        getattr(LOG, level.lower())(str(message))
-
 # ============================================================================
-# PRODUCTION DATA LOADER
+# DATA LOADER AND ANALYZER
 # ============================================================================
 
-class ProductionDataLoader:
-    """Production-grade data loader with self-healing capabilities"""
+class OptimizationDataLoader:
+    """Load data and perform comprehensive mail type analysis"""
     
     def __init__(self):
         self.call_data = None
         self.mail_data = None
         self.intent_data = None
-        self.mail_types = []
-        self.data_summary = {}
-        self.load_errors = []
+        self.mail_analysis = {}
+        self.best_mail_types = []
         
-    def robust_file_loader(self, filename: str) -> pd.DataFrame:
-        """Load files with multiple fallback strategies"""
+    def load_data_robust(self, filename: str) -> pd.DataFrame:
+        """Robust data loading"""
+        LOG.info(f"Loading {filename}...")
         
-        safe_log(f"Loading file: {filename}")
-        
-        # Try multiple file locations
-        possible_paths = [
-            filename,
-            f"data/{filename}",
-            f"data\\{filename}",
-            Path.cwd() / filename,
-            Path.cwd() / "data" / filename
-        ]
-        
-        # Try multiple encoding strategies
-        encoding_strategies = [
+        paths = [filename, f"data/{filename}", f"data\\{filename}"]
+        strategies = [
             {'encoding': 'utf-8', 'sep': ','},
             {'encoding': 'utf-8', 'sep': ';'},
-            {'encoding': 'latin-1', 'sep': ','},
-            {'encoding': 'cp1252', 'sep': ','},
-            {'encoding': 'utf-8', 'sep': '\t'},
-            {'encoding': 'iso-8859-1', 'sep': ','}
+            {'encoding': 'latin1', 'sep': ','}
         ]
         
-        for path in possible_paths:
+        for path in paths:
             if not Path(path).exists():
                 continue
-                
-            safe_log(f"Found file at: {path}")
-            
-            for strategy in encoding_strategies:
+            for strategy in strategies:
                 try:
                     df = pd.read_csv(path, low_memory=False, **strategy)
-                    if len(df) > 0 and df.shape[1] > 1:
-                        safe_log(f"Successfully loaded: {df.shape[0]} rows, {df.shape[1]} columns")
+                    if len(df) > 0:
+                        LOG.info(f"Loaded {path}: {len(df)} rows, {df.shape[1]} columns")
                         return df
-                except Exception as e:
+                except:
                     continue
         
-        error_msg = f"Failed to load {filename} with any strategy"
-        self.load_errors.append(error_msg)
-        raise FileNotFoundError(error_msg)
+        raise FileNotFoundError(f"Could not load {filename}")
     
-    def smart_column_detection(self, df: pd.DataFrame) -> Dict[str, str]:
-        """Intelligently detect column purposes"""
-        
+    def detect_columns(self, df: pd.DataFrame) -> Dict[str, str]:
+        """Smart column detection"""
         columns = {}
-        df_cols = [str(col).lower().strip() for col in df.columns]
+        df_cols = [str(col).lower() for col in df.columns]
         
-        # Date column detection
-        date_keywords = ['date', 'time', 'day', 'dt', 'timestamp', 'created', 'start']
+        # Date column
         for i, col in enumerate(df_cols):
-            if any(keyword in col for keyword in date_keywords):
-                # Validate it's actually a date
-                sample = df.iloc[:100, i].dropna()
+            if any(kw in col for kw in ['date', 'time', 'start']):
                 try:
+                    sample = df.iloc[:100, i].dropna()
                     parsed = pd.to_datetime(sample, errors='coerce')
                     if parsed.notna().sum() / len(sample) > 0.7:
                         columns['date'] = df.columns[i]
@@ -591,1755 +189,1144 @@ class ProductionDataLoader:
                 except:
                     continue
         
-        # Volume column detection
-        volume_keywords = ['volume', 'count', 'amount', 'quantity', 'pieces', 'total']
+        # Volume column
         for i, col in enumerate(df_cols):
-            if any(keyword in col for keyword in volume_keywords):
+            if any(kw in col for kw in ['volume', 'count', 'amount']):
                 if df.iloc[:, i].dtype in ['int64', 'float64']:
                     columns['volume'] = df.columns[i]
                     break
         
-        # Type column detection
-        type_keywords = ['type', 'category', 'class', 'kind', 'product']
+        # Type column
         for i, col in enumerate(df_cols):
-            if any(keyword in col for keyword in type_keywords):
-                if 2 <= df.iloc[:, i].nunique() <= 500:  # Reasonable number of categories
+            if any(kw in col for kw in ['type', 'category']):
+                unique_count = df.iloc[:, i].nunique()
+                if 2 <= unique_count <= 500:
                     columns['type'] = df.columns[i]
                     break
         
-        # Intent column detection
-        intent_keywords = ['intent', 'purpose', 'reason', 'classification']
+        # Intent column
         for i, col in enumerate(df_cols):
-            if any(keyword in col for keyword in intent_keywords):
+            if 'intent' in col:
                 columns['intent'] = df.columns[i]
                 break
         
         return columns
     
-    def load_mail_data_production(self) -> pd.DataFrame:
-        """Load and process your actual mail data"""
+    def load_call_data(self) -> Tuple[pd.Series, pd.DataFrame]:
+        """Load and process call data"""
+        LOG.info("Loading call intent data...")
         
-        safe_log("Loading production mail data...")
+        df = self.load_data_robust(CONFIG["call_intent_file"])
+        columns = self.detect_columns(df)
         
-        try:
-            # Load raw mail data
-            df = self.robust_file_loader(CONFIG["mail_file"])
+        # Process dates
+        date_col = columns['date']
+        df[date_col] = pd.to_datetime(df[date_col], errors='coerce')
+        df = df.dropna(subset=[date_col])
+        df = df[df[date_col].dt.year >= 2025]
+        
+        LOG.info(f"Found {len(df)} call records from 2025+")
+        
+        # Daily call volumes
+        df['call_date'] = df[date_col].dt.date
+        daily_calls = df.groupby('call_date').size()
+        daily_calls.index = pd.to_datetime(daily_calls.index)
+        daily_calls = daily_calls.sort_index()
+        
+        # Intent data
+        daily_intents = None
+        if 'intent' in columns:
+            intent_col = columns['intent']
+            df[intent_col] = df[intent_col].fillna('Unknown').astype(str)
             
-            # Detect column structure
-            columns = self.smart_column_detection(df)
-            safe_log(f"Detected mail columns: {columns}")
+            # Keep common intents
+            intent_counts = df[intent_col].value_counts()
+            common_intents = intent_counts[intent_counts >= 10].index
+            df_filtered = df[df[intent_col].isin(common_intents)]
             
-            if 'date' not in columns:
-                raise ValueError("No date column found in mail data")
-            if 'volume' not in columns:
-                raise ValueError("No volume column found in mail data")
-            if 'type' not in columns:
-                safe_log("Warning: No type column found, will use total volume only")
-            
-            # Standardize column names
-            date_col = columns['date']
-            volume_col = columns['volume']
-            type_col = columns.get('type')
-            
-            # Process dates
-            df[date_col] = pd.to_datetime(df[date_col], errors='coerce')
-            df = df.dropna(subset=[date_col])
-            
-            # Filter for recent data only (2025+)
-            df = df[df[date_col].dt.year >= 2025]
-            if len(df) == 0:
-                raise ValueError("No 2025+ mail data found")
-            
-            safe_log(f"Found {len(df)} mail records from 2025+")
-            
-            # Process volumes
-            df[volume_col] = pd.to_numeric(df[volume_col], errors='coerce')
-            df = df.dropna(subset=[volume_col])
-            df = df[df[volume_col] >= CONFIG["min_mail_volume_threshold"]]
-            
-            # Create daily mail data
-            df['mail_date'] = df[date_col].dt.date
-            
-            if type_col is not None:
-                # Process by mail type
-                df[type_col] = df[type_col].astype(str).str.strip()
-                
-                # Remove rare mail types
-                type_counts = df[type_col].value_counts()
-                valid_types = type_counts[type_counts >= CONFIG["mail_type_min_days"]].index
-                df = df[df[type_col].isin(valid_types)]
-                
-                safe_log(f"Keeping {len(valid_types)} mail types after filtering")
-                
-                # Create pivot table
-                mail_daily = df.groupby(['mail_date', type_col])[volume_col].sum().unstack(fill_value=0)
-                
-                # Select top mail types by volume
-                total_volumes = mail_daily.sum().sort_values(ascending=False)
-                top_types = total_volumes.head(CONFIG["max_mail_types"]).index
-                mail_daily = mail_daily[top_types]
-                
-                self.mail_types = list(top_types)
-                safe_log(f"Selected top {len(top_types)} mail types: {self.mail_types}")
-                
-            else:
-                # Total volume only
-                mail_daily = df.groupby('mail_date')[volume_col].sum().to_frame('total_mail')
-                self.mail_types = ['total_mail']
-            
-            # Convert index to datetime
-            mail_daily.index = pd.to_datetime(mail_daily.index)
-            mail_daily = mail_daily.sort_index()
-            
-            # Data quality summary
-            self.data_summary['mail'] = {
-                'total_records': len(df),
-                'daily_records': len(mail_daily),
-                'date_range': f"{mail_daily.index.min().date()} to {mail_daily.index.max().date()}",
-                'mail_types': len(self.mail_types),
-                'mail_type_list': self.mail_types,
-                'avg_daily_volume': float(mail_daily.sum(axis=1).mean()),
-                'total_volume': float(mail_daily.sum().sum())
-            }
-            
-            self.mail_data = mail_daily
-            safe_log(f"Mail data processed: {len(mail_daily)} days, {len(self.mail_types)} types")
-            
-            return mail_daily
-            
-        except Exception as e:
-            error_msg = f"Failed to load mail data: {str(e)}"
-            self.load_errors.append(error_msg)
-            safe_log(error_msg, "error")
-            return None
+            if len(df_filtered) > 0:
+                intent_pivot = df_filtered.groupby(['call_date', intent_col]).size().unstack(fill_value=0)
+                intent_pivot.index = pd.to_datetime(intent_pivot.index)
+                daily_intents = intent_pivot.div(intent_pivot.sum(axis=1), axis=0).fillna(0)
+                LOG.info(f"Created intent data for {len(daily_intents.columns)} intents")
+        
+        self.call_data = daily_calls
+        self.intent_data = daily_intents
+        return daily_calls, daily_intents
     
-    def load_call_intent_data_production(self) -> Tuple[pd.Series, pd.DataFrame]:
-        """Load and process call intent data"""
+    def load_mail_data(self) -> pd.DataFrame:
+        """Load and process mail data"""
+        LOG.info("Loading mail data...")
         
-        safe_log("Loading production call intent data...")
+        df = self.load_data_robust(CONFIG["mail_file"])
+        columns = self.detect_columns(df)
         
-        try:
-            # Load raw call data
-            df = self.robust_file_loader(CONFIG["call_intent_file"])
-            
-            # Detect column structure
-            columns = self.smart_column_detection(df)
-            safe_log(f"Detected call columns: {columns}")
-            
-            if 'date' not in columns:
-                raise ValueError("No date column found in call data")
-            
-            date_col = columns['date']
-            intent_col = columns.get('intent')
-            
-            # Process dates
-            df[date_col] = pd.to_datetime(df[date_col], errors='coerce')
-            df = df.dropna(subset=[date_col])
-            
-            # Filter for 2025+ data
-            df = df[df[date_col].dt.year >= 2025]
-            if len(df) == 0:
-                raise ValueError("No 2025+ call data found")
-            
-            safe_log(f"Found {len(df)} call records from 2025+")
-            
-            # Calculate daily call volumes
-            df['call_date'] = df[date_col].dt.date
-            daily_calls = df.groupby('call_date').size()
-            daily_calls.index = pd.to_datetime(daily_calls.index)
-            daily_calls = daily_calls.sort_index()
-            
-            # Process intents if available
-            daily_intents = None
-            if intent_col is not None:
-                safe_log("Processing intent data...")
-                
-                # Clean intent data
-                df[intent_col] = df[intent_col].fillna('Unknown').astype(str)
-                
-                # Remove rare intents
-                intent_counts = df[intent_col].value_counts()
-                common_intents = intent_counts[intent_counts >= CONFIG["min_intent_occurrences"]].index
-                df_intents = df[df[intent_col].isin(common_intents)]
-                
-                safe_log(f"Keeping {len(common_intents)} intents (>= {CONFIG['min_intent_occurrences']} occurrences)")
-                safe_log(f"Removed {len(intent_counts) - len(common_intents)} rare intents")
-                
-                if len(df_intents) > 0:
-                    # Create daily intent distribution
-                    intent_pivot = df_intents.groupby(['call_date', intent_col]).size().unstack(fill_value=0)
-                    intent_pivot.index = pd.to_datetime(intent_pivot.index)
-                    
-                    # Convert to percentages
-                    daily_intents = intent_pivot.div(intent_pivot.sum(axis=1), axis=0).fillna(0)
-                    
-                    safe_log(f"Created intent distribution for {len(daily_intents.columns)} intents")
-            
-            # Data summary
-            self.data_summary['calls'] = {
-                'total_records': len(df),
-                'daily_records': len(daily_calls),
-                'date_range': f"{daily_calls.index.min().date()} to {daily_calls.index.max().date()}",
-                'avg_daily_calls': float(daily_calls.mean()),
-                'max_daily_calls': int(daily_calls.max()),
-                'min_daily_calls': int(daily_calls.min()),
-                'has_intents': daily_intents is not None,
-                'intent_count': len(daily_intents.columns) if daily_intents is not None else 0
-            }
-            
-            self.call_data = daily_calls
-            self.intent_data = daily_intents
-            
-            return daily_calls, daily_intents
-            
-        except Exception as e:
-            error_msg = f"Failed to load call data: {str(e)}"
-            self.load_errors.append(error_msg)
-            safe_log(error_msg, "error")
-            raise
-    
-    def align_production_data(self) -> Dict:
-        """Align all data to overlapping business dates"""
+        if 'date' not in columns or 'volume' not in columns:
+            raise ValueError("Required mail columns not found")
         
-        safe_log("Aligning production data...")
+        date_col = columns['date']
+        volume_col = columns['volume']
+        type_col = columns.get('type')
         
-        if self.call_data is None:
-            raise ValueError("No call data available for alignment")
+        # Process data
+        df[date_col] = pd.to_datetime(df[date_col], errors='coerce')
+        df = df.dropna(subset=[date_col])
+        df = df[df[date_col].dt.year >= 2025]
         
-        # Start with call data dates
-        call_dates = set(self.call_data.index)
+        df[volume_col] = pd.to_numeric(df[volume_col], errors='coerce')
+        df = df.dropna(subset=[volume_col])
+        df = df[df[volume_col] >= 0]
         
-        # Find mail data overlap
-        if self.mail_data is not None:
-            mail_dates = set(self.mail_data.index)
-            
-            # Find overlap
-            overlap_dates = call_dates.intersection(mail_dates)
-            
-            if len(overlap_dates) >= 10:
-                common_dates = overlap_dates
-                has_mail_overlap = True
-                safe_log(f"Found {len(overlap_dates)} overlapping dates between calls and mail")
-            else:
-                # Not enough overlap - use call dates only
-                common_dates = call_dates
-                has_mail_overlap = False
-                safe_log(f"Insufficient mail overlap ({len(overlap_dates)} days) - using call-only data")
+        LOG.info(f"Processed {len(df)} mail records from 2025+")
+        
+        # Create daily mail data
+        df['mail_date'] = df[date_col].dt.date
+        
+        if type_col:
+            df[type_col] = df[type_col].astype(str)
+            mail_daily = df.groupby(['mail_date', type_col])[volume_col].sum().unstack(fill_value=0)
         else:
-            common_dates = call_dates
-            has_mail_overlap = False
-            safe_log("No mail data available - using call-only data")
+            mail_daily = df.groupby('mail_date')[volume_col].sum().to_frame('total_mail')
         
-        # Filter to business days only if requested
-        if CONFIG["business_days_only"]:
-            business_dates = [d for d in common_dates if d.weekday() < 5]
-            common_dates = business_dates
-            safe_log(f"Filtered to {len(business_dates)} business days")
+        mail_daily.index = pd.to_datetime(mail_daily.index)
+        mail_daily = mail_daily.sort_index()
         
-        if len(common_dates) < 10:
-            raise ValueError(f"Insufficient aligned data: only {len(common_dates)} days")
+        LOG.info(f"Created daily mail data: {len(mail_daily)} days, {len(mail_daily.columns)} types")
         
-        common_dates = sorted(common_dates)
-        
-        # Create aligned dataset
-        aligned_data = {
-            'calls': self.call_data.loc[common_dates],
-            'dates': common_dates,
-            'has_mail': has_mail_overlap
-        }
-        
-        if has_mail_overlap and self.mail_data is not None:
-            aligned_data['mail'] = self.mail_data.loc[common_dates]
-        
-        if self.intent_data is not None:
-            aligned_data['intents'] = self.intent_data.loc[common_dates]
-        
-        self.data_summary['alignment'] = {
-            'total_days': len(common_dates),
-            'date_range': f"{common_dates[0]} to {common_dates[-1]}",
-            'has_mail_overlap': has_mail_overlap,
-            'business_days_only': CONFIG["business_days_only"]
-        }
-        
-        safe_log(f"Data alignment complete: {len(common_dates)} days")
-        return aligned_data
+        self.mail_data = mail_daily
+        return mail_daily
     
-    def load_all_production_data(self) -> Dict:
-        """Load and align all production data"""
+    def analyze_mail_types_comprehensive(self) -> Dict:
+        """Comprehensive analysis of mail types by volume and correlation"""
         
-        safe_log("=== STARTING PRODUCTION DATA LOADING ===")
+        LOG.info("Starting comprehensive mail type analysis...")
         
-        try:
-            # Load call data (required)
-            calls, intents = self.load_call_intent_data_production()
+        if self.call_data is None or self.mail_data is None:
+            raise ValueError("Call and mail data must be loaded first")
+        
+        # Find overlapping dates
+        common_dates = self.call_data.index.intersection(self.mail_data.index)
+        if len(common_dates) < 20:
+            raise ValueError(f"Insufficient overlapping data: {len(common_dates)} days")
+        
+        aligned_calls = self.call_data.loc[common_dates]
+        aligned_mail = self.mail_data.loc[common_dates]
+        
+        LOG.info(f"Analyzing {len(common_dates)} overlapping days with {len(aligned_mail.columns)} mail types")
+        
+        analysis = {}
+        
+        # 1. VOLUME ANALYSIS
+        LOG.info("Analyzing mail types by volume...")
+        volume_analysis = {}
+        
+        for mail_type in aligned_mail.columns:
+            total_volume = aligned_mail[mail_type].sum()
+            avg_daily_volume = aligned_mail[mail_type].mean()
+            days_active = (aligned_mail[mail_type] > 0).sum()
+            volume_std = aligned_mail[mail_type].std()
             
-            # Load mail data (optional but preferred)
-            mail = self.load_mail_data_production()
+            volume_analysis[mail_type] = {
+                'total_volume': total_volume,
+                'avg_daily_volume': avg_daily_volume,
+                'days_active': days_active,
+                'activity_ratio': days_active / len(common_dates),
+                'volume_std': volume_std,
+                'volume_cv': volume_std / (avg_daily_volume + 1e-10),  # Coefficient of variation
+                'volume_score': total_volume * (days_active / len(common_dates))  # Volume weighted by consistency
+            }
+        
+        # Top mail types by volume
+        volume_rankings = sorted(volume_analysis.items(), key=lambda x: x[1]['volume_score'], reverse=True)
+        top_by_volume = [item[0] for item in volume_rankings[:CONFIG["top_n_by_volume"]]]
+        
+        analysis['volume_analysis'] = volume_analysis
+        analysis['top_by_volume'] = top_by_volume
+        
+        LOG.info(f"Top 5 by volume: {top_by_volume[:5]}")
+        
+        # 2. CORRELATION ANALYSIS
+        LOG.info("Analyzing mail types by correlation...")
+        correlation_analysis = {}
+        
+        for mail_type in aligned_mail.columns:
+            mail_series = aligned_mail[mail_type]
             
-            # Align all data
-            aligned_data = self.align_production_data()
+            # Test different lags
+            best_correlation = 0
+            best_lag = 0
+            lag_correlations = {}
             
-            # Print summary
-            self.print_production_summary()
+            for lag in CONFIG["correlation_lags_to_test"]:
+                try:
+                    if lag == 0:
+                        corr, p_value = pearsonr(mail_series, aligned_calls)
+                    else:
+                        # Lag the calls (positive lag means mail leads calls)
+                        lagged_calls = aligned_calls.shift(-lag).dropna()
+                        if len(lagged_calls) > 10:
+                            mail_subset = mail_series.loc[lagged_calls.index]
+                            corr, p_value = pearsonr(mail_subset, lagged_calls)
+                        else:
+                            corr, p_value = 0, 1
+                    
+                    if not np.isnan(corr):
+                        lag_correlations[lag] = {'correlation': corr, 'p_value': p_value}
+                        
+                        if abs(corr) > abs(best_correlation):
+                            best_correlation = corr
+                            best_lag = lag
+                            
+                except Exception as e:
+                    lag_correlations[lag] = {'correlation': 0, 'p_value': 1}
             
-            if self.load_errors:
-                safe_log(f"Completed with {len(self.load_errors)} warnings", "warning")
-            else:
-                safe_log("All data loaded successfully")
+            correlation_analysis[mail_type] = {
+                'best_correlation': best_correlation,
+                'best_lag': best_lag,
+                'lag_correlations': lag_correlations,
+                'abs_correlation': abs(best_correlation),
+                'correlation_strength': 'Strong' if abs(best_correlation) > 0.3 else 
+                                      'Moderate' if abs(best_correlation) > 0.1 else 'Weak'
+            }
+        
+        # Top mail types by correlation
+        correlation_rankings = sorted(
+            correlation_analysis.items(), 
+            key=lambda x: x[1]['abs_correlation'], 
+            reverse=True
+        )
+        
+        # Filter by minimum threshold
+        significant_correlations = [
+            (mail_type, data) for mail_type, data in correlation_rankings 
+            if data['abs_correlation'] >= CONFIG["min_correlation_threshold"]
+        ]
+        
+        top_by_correlation = [item[0] for item in significant_correlations[:CONFIG["top_n_by_correlation"]]]
+        
+        analysis['correlation_analysis'] = correlation_analysis
+        analysis['top_by_correlation'] = top_by_correlation
+        
+        LOG.info(f"Top 5 by correlation: {top_by_correlation[:5]}")
+        LOG.info(f"Best correlations: {[(t, round(correlation_analysis[t]['best_correlation'], 3)) for t in top_by_correlation[:5]]}")
+        
+        # 3. COMBINED ANALYSIS - FIND OPTIMAL TRADEOFF
+        LOG.info("Finding optimal tradeoff between volume and correlation...")
+        
+        combined_analysis = {}
+        
+        for mail_type in aligned_mail.columns:
+            volume_data = volume_analysis[mail_type]
+            corr_data = correlation_analysis[mail_type]
             
-            return aligned_data
+            # Normalize scores to 0-1 range
+            volume_rank = next(i for i, (name, _) in enumerate(volume_rankings) if name == mail_type) + 1
+            corr_rank = next(i for i, (name, _) in enumerate(correlation_rankings) if name == mail_type) + 1
             
-        except Exception as e:
-            safe_log(f"Production data loading failed: {str(e)}", "error")
-            raise
+            volume_score_norm = 1 - (volume_rank - 1) / len(volume_rankings)
+            correlation_score_norm = 1 - (corr_rank - 1) / len(correlation_rankings)
+            
+            # Test different weighting schemes
+            weighting_schemes = {
+                'volume_heavy': 0.8 * volume_score_norm + 0.2 * correlation_score_norm,
+                'balanced': 0.5 * volume_score_norm + 0.5 * correlation_score_norm,
+                'correlation_heavy': 0.2 * volume_score_norm + 0.8 * correlation_score_norm,
+                'correlation_only': correlation_score_norm,
+                'volume_only': volume_score_norm
+            }
+            
+            combined_analysis[mail_type] = {
+                'volume_rank': volume_rank,
+                'correlation_rank': corr_rank,
+                'volume_score_norm': volume_score_norm,
+                'correlation_score_norm': correlation_score_norm,
+                'weighting_schemes': weighting_schemes,
+                'volume_raw': volume_data['total_volume'],
+                'correlation_raw': corr_data['best_correlation'],
+                'best_lag': corr_data['best_lag']
+            }
+        
+        analysis['combined_analysis'] = combined_analysis
+        
+        # Create different mail type selections for testing
+        mail_type_selections = {}
+        
+        for scheme_name, _ in weighting_schemes.items():
+            ranked_by_scheme = sorted(
+                combined_analysis.items(),
+                key=lambda x: x[1]['weighting_schemes'][scheme_name],
+                reverse=True
+            )
+            mail_type_selections[scheme_name] = [item[0] for item in ranked_by_scheme[:15]]  # Top 15
+        
+        analysis['mail_type_selections'] = mail_type_selections
+        
+        # Log the different selections
+        for scheme, types in mail_type_selections.items():
+            LOG.info(f"{scheme} top 5: {types[:5]}")
+        
+        self.mail_analysis = analysis
+        return analysis
     
-    def print_production_summary(self):
-        """Print comprehensive production data summary"""
+    def get_aligned_data(self) -> Dict:
+        """Get aligned call and mail data"""
+        common_dates = self.call_data.index.intersection(self.mail_data.index)
         
-        print("\n" + "="*70)
-        print("PRODUCTION DATA LOADING SUMMARY")
-        print("="*70)
+        # Filter to business days
+        business_dates = [d for d in common_dates if d.weekday() < 5]
         
-        for section, data in self.data_summary.items():
-            print(f"\n{section.upper()}:")
-            for key, value in data.items():
-                if isinstance(value, list) and len(value) > 5:
-                    print(f"  {key}: {value[:3]}... (total: {len(value)})")
-                elif isinstance(value, float):
-                    print(f"  {key}: {value:.2f}")
-                else:
-                    print(f"  {key}: {value}")
-        
-        if self.load_errors:
-            print(f"\nWARNINGS ({len(self.load_errors)}):")
-            for error in self.load_errors:
-                print(f"  - {error}")
-        
-        print("="*70)
+        return {
+            'calls': self.call_data.loc[business_dates],
+            'mail': self.mail_data.loc[business_dates],
+            'intents': self.intent_data.loc[business_dates] if self.intent_data is not None else None,
+            'dates': business_dates
+        }
 
 # ============================================================================
-# PRODUCTION FEATURE ENGINEERING
+# FEATURE ENGINEERING ENGINE
 # ============================================================================
 
-class ProductionFeatureEngine:
-    """Production-grade feature engineering with your actual mail types"""
+class AdvancedFeatureEngine:
+    """Advanced feature engineering with systematic testing"""
     
-    def __init__(self, approach: str = "standard"):
-        self.approach = approach
-        self.config = CONFIG["model_approaches"][approach]
-        self.feature_names = []
+    def __init__(self):
+        self.feature_sets = {}
         self.feature_importance = {}
-        self.scaler = None
         
-    def create_mail_impact_features(self, mail_data: pd.DataFrame, target_dates: pd.DatetimeIndex) -> pd.DataFrame:
-        """Create mail impact features using your actual mail types"""
+    def create_mail_features(self, mail_data: pd.DataFrame, mail_types: List[str], 
+                           feature_config: List[str], lag_config: List[int]) -> pd.DataFrame:
+        """Create mail-based features"""
         
-        if mail_data is None or len(mail_data) == 0:
-            safe_log("No mail data - creating baseline features")
-            baseline = pd.DataFrame(index=target_dates)
-            baseline['no_mail_indicator'] = 1
-            baseline['baseline_volume'] = 100  # Baseline assumption
-            return baseline
+        features = pd.DataFrame(index=mail_data.index)
         
-        safe_log(f"Creating {self.approach} mail features for {len(mail_data.columns)} mail types")
+        # Select mail types
+        available_types = [t for t in mail_types if t in mail_data.columns]
         
-        mail_features = pd.DataFrame(index=target_dates)
-        lags = self.config["lags"]
-        
-        # Process each of your actual mail types
-        for mail_type in mail_data.columns:
-            # Clean mail type name for feature naming
-            clean_name = str(mail_type).replace('_', '').replace('-', '').replace(' ', '')[:12]
+        for mail_type in available_types:
+            clean_name = str(mail_type).replace(' ', '').replace('-', '').replace('_', '')[:10]
             mail_series = mail_data[mail_type]
             
-            # Basic lag features (core impact)
-            for lag in lags:
-                feature_name = f"{clean_name}_lag{lag}d"
-                if lag == 0:
-                    mail_features[feature_name] = mail_series.reindex(target_dates, fill_value=0)
-                else:
-                    shifted = mail_series.shift(lag)
-                    mail_features[feature_name] = shifted.reindex(target_dates, fill_value=0)
-            
-            # Rolling features (if enabled)
-            if "rolling" in self.config["features"]:
-                for window in [3, 7]:
-                    if window <= max(lags):
-                        rolling_avg = mail_series.rolling(window, min_periods=1).mean()
-                        mail_features[f"{clean_name}_avg{window}d"] = rolling_avg.reindex(target_dates, fill_value=0)
-                        
-                        rolling_sum = mail_series.rolling(window, min_periods=1).sum()
-                        mail_features[f"{clean_name}_sum{window}d"] = rolling_sum.reindex(target_dates, fill_value=0)
-            
-            # Weighted distributed lag (if enabled)
-            if "weighted" in self.config["features"]:
-                lag_weights = {1: 0.4, 2: 0.3, 3: 0.2, 4: 0.1, 5: 0.05}
-                weighted_impact = pd.Series(0.0, index=mail_series.index)
-                
-                for lag in lags:
-                    weight = lag_weights.get(lag, 0.05)
+            # Basic lag features
+            if "basic_lags" in feature_config:
+                for lag in lag_config:
                     if lag == 0:
-                        weighted_impact += mail_series * weight
+                        features[f"{clean_name}_today"] = mail_series
                     else:
-                        weighted_impact += mail_series.shift(lag).fillna(0) * weight
-                
-                mail_features[f"{clean_name}_weighted"] = weighted_impact.reindex(target_dates, fill_value=0)
-        
-        # Aggregate features across all mail types
-        total_mail = mail_data.sum(axis=1)
-        
-        for lag in lags:
-            if lag == 0:
-                mail_features['total_mail_today'] = total_mail.reindex(target_dates, fill_value=0)
-            else:
-                mail_features[f'total_mail_lag{lag}d'] = total_mail.shift(lag).reindex(target_dates, fill_value=0)
-        
-        # Mail diversity features
-        if "volume" in self.config["features"] and len(mail_data.columns) > 1:
-            # Number of active mail types per day
-            active_types = (mail_data > 0).sum(axis=1)
-            mail_features['active_mail_types'] = active_types.reindex(target_dates, fill_value=0)
+                        features[f"{clean_name}_lag{lag}"] = mail_series.shift(lag)
             
-            # Mail concentration (entropy-like measure)
-            mail_props = mail_data.div(mail_data.sum(axis=1), axis=0).fillna(0)
-            concentration = -(mail_props * np.log(mail_props + 1e-10)).sum(axis=1)
-            mail_features['mail_diversity'] = concentration.reindex(target_dates, fill_value=0)
+            # Rolling features
+            if "rolling" in feature_config:
+                for window in [3, 7]:
+                    if window <= len(mail_data):
+                        features[f"{clean_name}_avg{window}"] = mail_series.rolling(window, min_periods=1).mean()
+                        features[f"{clean_name}_sum{window}"] = mail_series.rolling(window, min_periods=1).sum()
+                        if window >= 3:
+                            features[f"{clean_name}_std{window}"] = mail_series.rolling(window, min_periods=1).std()
+            
+            # Weighted features
+            if "weighted" in feature_config:
+                weights = {1: 0.4, 2: 0.3, 3: 0.2, 4: 0.1, 5: 0.05}
+                weighted_sum = pd.Series(0.0, index=mail_series.index)
+                
+                for lag in lag_config:
+                    weight = weights.get(lag, 0.05)
+                    if lag == 0:
+                        weighted_sum += mail_series * weight
+                    else:
+                        weighted_sum += mail_series.shift(lag).fillna(0) * weight
+                
+                features[f"{clean_name}_weighted"] = weighted_sum
+            
+            # Trend features
+            if "trend" in feature_config and len(mail_data) >= 7:
+                trend = mail_series.rolling(7, min_periods=3).apply(
+                    lambda x: np.polyfit(range(len(x)), x, 1)[0] if len(x) > 2 else 0
+                )
+                features[f"{clean_name}_trend"] = trend
         
-        # Fill any remaining NaN values
-        mail_features = mail_features.fillna(0)
+        # Aggregate features
+        total_mail = mail_data[available_types].sum(axis=1)
         
-        self.feature_names.extend(mail_features.columns.tolist())
-        safe_log(f"Created {len(mail_features.columns)} mail impact features")
+        for lag in lag_config:
+            if lag == 0:
+                features['total_mail_today'] = total_mail
+            else:
+                features[f'total_mail_lag{lag}'] = total_mail.shift(lag)
         
-        return mail_features
+        if "rolling" in feature_config:
+            features['total_mail_avg7'] = total_mail.rolling(7, min_periods=1).mean()
+            features['total_mail_std7'] = total_mail.rolling(7, min_periods=1).std()
+        
+        # Interaction features
+        if "interaction" in feature_config and len(available_types) >= 2:
+            # Top 2 mail types interaction
+            top_types = available_types[:2]
+            if len(top_types) == 2:
+                type1, type2 = top_types
+                features['interaction_top2'] = mail_data[type1] * mail_data[type2]
+                features['ratio_top2'] = (mail_data[type1] + 1) / (mail_data[type2] + 1)
+        
+        # Fill NaN values
+        features = features.fillna(0)
+        
+        return features
     
-    def create_temporal_features(self, dates: pd.DatetimeIndex) -> pd.DataFrame:
-        """Create temporal and calendar features"""
+    def create_temporal_features(self, dates: pd.DatetimeIndex, feature_config: List[str]) -> pd.DataFrame:
+        """Create temporal features"""
         
-        safe_log("Creating temporal features...")
+        features = pd.DataFrame(index=dates)
         
-        temporal = pd.DataFrame(index=dates)
+        # Basic temporal
+        if "temporal_basic" in feature_config:
+            features['weekday'] = dates.weekday
+            features['month'] = dates.month
+            features['quarter'] = dates.quarter
+            features['day_of_month'] = dates.day
+            features['is_weekend'] = (dates.weekday >= 5).astype(int)
         
-        # Basic temporal features
-        temporal['weekday'] = dates.weekday
-        temporal['month'] = dates.month
-        temporal['day_of_month'] = dates.day
-        temporal['quarter'] = dates.quarter
-        temporal['is_weekend'] = (dates.weekday >= 5).astype(int)
-        
-        # Advanced temporal features
-        if "temporal" in self.config["features"]:
+        # Advanced temporal
+        if "temporal_advanced" in feature_config:
             # Business calendar
-            temporal['is_month_start'] = (dates.day <= 5).astype(int)
-            temporal['is_month_end'] = (dates.day >= 25).astype(int)
-            temporal['is_quarter_end'] = dates.to_series().apply(
+            features['is_month_start'] = (dates.day <= 5).astype(int)
+            features['is_month_end'] = (dates.day >= 25).astype(int)
+            features['is_quarter_end'] = dates.to_series().apply(
                 lambda x: 1 if x.month in [3, 6, 9, 12] and x.day >= 25 else 0
             ).values
             
-            # Cyclical encoding for better model performance
-            temporal['weekday_sin'] = np.sin(2 * np.pi * temporal['weekday'] / 7)
-            temporal['weekday_cos'] = np.cos(2 * np.pi * temporal['weekday'] / 7)
-            temporal['month_sin'] = np.sin(2 * np.pi * temporal['month'] / 12)
-            temporal['month_cos'] = np.cos(2 * np.pi * temporal['month'] / 12)
+            # Cyclical encoding
+            features['weekday_sin'] = np.sin(2 * np.pi * features['weekday'] / 7)
+            features['weekday_cos'] = np.cos(2 * np.pi * features['weekday'] / 7)
+            features['month_sin'] = np.sin(2 * np.pi * features['month'] / 12)
+            features['month_cos'] = np.cos(2 * np.pi * features['month'] / 12)
             
-            # Holiday proximity (simplified)
-            try:
-                import holidays
-                us_holidays = holidays.US()
-                temporal['is_holiday'] = dates.to_series().apply(
-                    lambda x: 1 if x.date() in us_holidays else 0
-                ).values
-                
-                # Days to next/previous holiday
-                holiday_dates = [d for d in dates if d.date() in us_holidays]
-                if holiday_dates:
-                    temporal['days_to_holiday'] = dates.to_series().apply(
-                        lambda x: min([abs((x - h).days) for h in holiday_dates] + [30])
-                    ).values
-                else:
-                    temporal['days_to_holiday'] = 30
-            except ImportError:
-                temporal['is_holiday'] = 0
-                temporal['days_to_holiday'] = 30
+            # Week of year
+            features['week_of_year'] = dates.week
+            features['week_sin'] = np.sin(2 * np.pi * features['week_of_year'] / 52)
+            features['week_cos'] = np.cos(2 * np.pi * features['week_of_year'] / 52)
         
-        self.feature_names.extend(temporal.columns.tolist())
-        safe_log(f"Created {len(temporal.columns)} temporal features")
-        
-        return temporal
+        return features
     
-    def create_call_history_features(self, call_data: pd.Series, target_dates: pd.DatetimeIndex) -> pd.DataFrame:
-        """Create call volume history features"""
+    def create_call_history_features(self, call_data: pd.Series) -> pd.DataFrame:
+        """Create call history features"""
         
-        safe_log("Creating call history features...")
+        features = pd.DataFrame(index=call_data.index)
         
-        call_features = pd.DataFrame(index=target_dates)
-        
-        # Basic lag features
+        # Basic lags
         for lag in [1, 2, 3, 7]:
-            call_features[f'calls_lag{lag}d'] = call_data.shift(lag).reindex(target_dates, fill_value=call_data.mean())
+            features[f'calls_lag{lag}'] = call_data.shift(lag)
         
         # Rolling statistics
-        if "rolling" in self.config["features"]:
-            for window in [3, 7, 14, 30]:
-                if len(call_data) >= window:
-                    call_features[f'calls_mean{window}d'] = call_data.rolling(window, min_periods=1).mean().reindex(target_dates, fill_value=call_data.mean())
-                    call_features[f'calls_std{window}d'] = call_data.rolling(window, min_periods=1).std().reindex(target_dates, fill_value=call_data.std())
-                    call_features[f'calls_max{window}d'] = call_data.rolling(window, min_periods=1).max().reindex(target_dates, fill_value=call_data.max())
-                    call_features[f'calls_min{window}d'] = call_data.rolling(window, min_periods=1).min().reindex(target_dates, fill_value=call_data.min())
+        for window in [3, 7, 14, 30]:
+            if len(call_data) >= window:
+                features[f'calls_mean{window}'] = call_data.rolling(window, min_periods=1).mean()
+                features[f'calls_std{window}'] = call_data.rolling(window, min_periods=1).std()
+                features[f'calls_max{window}'] = call_data.rolling(window, min_periods=1).max()
+                features[f'calls_min{window}'] = call_data.rolling(window, min_periods=1).min()
         
-        # Trend features
+        # Trend and momentum
         if len(call_data) >= 7:
-            # 7-day trend
-            call_features['calls_trend7d'] = call_data.rolling(7, min_periods=2).apply(
-                lambda x: np.polyfit(range(len(x)), x, 1)[0] if len(x) > 1 else 0
-            ).reindex(target_dates, fill_value=0)
+            features['calls_trend7'] = call_data.rolling(7, min_periods=3).apply(
+                lambda x: np.polyfit(range(len(x)), x, 1)[0] if len(x) > 2 else 0
+            )
+            
+            # Momentum (rate of change)
+            features['calls_momentum3'] = call_data.pct_change(3)
+            features['calls_momentum7'] = call_data.pct_change(7)
         
-        # Volatility features
-        if len(call_data) >= 5:
-            call_features['calls_volatility'] = call_data.rolling(7, min_periods=3).std().reindex(target_dates, fill_value=call_data.std())
+        # Fill NaN with reasonable defaults
+        features = features.fillna(method='ffill').fillna(call_data.mean())
         
-        self.feature_names.extend(call_features.columns.tolist())
-        safe_log(f"Created {len(call_features.columns)} call history features")
-        
-        return call_features
+        return features
     
-    def create_production_volume_features(self, aligned_data: Dict) -> Tuple[pd.DataFrame, pd.Series]:
-        """Create production features for call volume prediction"""
-        
-        safe_log(f"Creating {self.approach} features for volume prediction...")
+    def create_feature_set(self, aligned_data: Dict, mail_types: List[str], 
+                          feature_config: List[str], lag_config: List[int]) -> Tuple[pd.DataFrame, pd.Series]:
+        """Create complete feature set"""
         
         calls = aligned_data['calls']
-        mail = aligned_data.get('mail')
+        mail = aligned_data['mail']
         
-        # Target: predict next day's call volume
-        y_volume = calls.shift(-1).dropna()
-        target_dates = y_volume.index
+        # Target: next day calls
+        y = calls.shift(-1).dropna()
+        target_dates = y.index
         
-        feature_sets = []
+        feature_components = []
         
-        # 1. Mail impact features (your actual mail types)
-        mail_features = self.create_mail_impact_features(mail, target_dates)
-        feature_sets.append(mail_features)
+        # 1. Mail features
+        if mail is not None and len(mail_types) > 0:
+            mail_features = self.create_mail_features(mail, mail_types, feature_config, lag_config)
+            mail_features = mail_features.reindex(target_dates, fill_value=0)
+            feature_components.append(mail_features)
         
         # 2. Temporal features
-        temporal_features = self.create_temporal_features(target_dates)
-        feature_sets.append(temporal_features)
+        temporal_features = self.create_temporal_features(target_dates, feature_config)
+        feature_components.append(temporal_features)
         
         # 3. Call history features
-        call_features = self.create_call_history_features(calls, target_dates)
-        feature_sets.append(call_features)
+        call_features = self.create_call_history_features(calls)
+        call_features = call_features.reindex(target_dates, fill_value=0)
+        feature_components.append(call_features)
         
         # Combine all features
-        X_volume = pd.concat(feature_sets, axis=1)
+        X = pd.concat(feature_components, axis=1)
+        X = X.fillna(0)
         
-        # Handle any remaining NaN values
-        X_volume = X_volume.fillna(0)
-        
-        # Feature scaling for advanced models
-        if self.approach == "advanced" and CONFIG["memory_efficient"]:
-            self.scaler = RobustScaler()
-            X_volume_scaled = pd.DataFrame(
-                self.scaler.fit_transform(X_volume),
-                index=X_volume.index,
-                columns=X_volume.columns
-            )
-            X_volume = X_volume_scaled
-        
-        safe_log(f"Volume prediction features: {X_volume.shape[1]} features, {len(y_volume)} samples")
-        return X_volume, y_volume
-    
-    def create_production_intent_features(self, aligned_data: Dict) -> Tuple[pd.DataFrame, pd.DataFrame]:
-        """Create features for intent prediction"""
-        
-        intents = aligned_data.get('intents')
-        if intents is None:
-            safe_log("No intent data available")
-            return None, None
-        
-        safe_log(f"Creating {self.approach} features for intent prediction...")
-        
-        calls = aligned_data['calls']
-        mail = aligned_data.get('mail')
-        
-        # Target: predict next day's intent distribution
-        y_intents = intents.shift(-1).dropna()
-        target_dates = y_intents.index
-        
-        feature_sets = []
-        
-        # 1. Current intent distribution as features
-        current_intents = intents.reindex(target_dates, fill_value=0)
-        current_intents.columns = [f'current_{col}' for col in current_intents.columns]
-        feature_sets.append(current_intents)
-        
-        # 2. Mail features
-        mail_features = self.create_mail_impact_features(mail, target_dates)
-        feature_sets.append(mail_features)
-        
-        # 3. Temporal features
-        temporal_features = self.create_temporal_features(target_dates)
-        feature_sets.append(temporal_features)
-        
-        # 4. Call volume features
-        call_features = self.create_call_history_features(calls, target_dates)
-        feature_sets.append(call_features)
-        
-        # Combine all features
-        X_intents = pd.concat(feature_sets, axis=1)
-        X_intents = X_intents.fillna(0)
-        
-        safe_log(f"Intent prediction features: {X_intents.shape[1]} features, {len(y_intents)} samples")
-        return X_intents, y_intents
+        return X, y
 
 # ============================================================================
-# PRODUCTION MODEL TRAINER
+# SYSTEMATIC MODEL OPTIMIZER
 # ============================================================================
 
-class ProductionModelTrainer:
-    """Production-grade model trainer with robust validation"""
+class SystematicModelOptimizer:
+    """Systematic optimization engine"""
     
-    def __init__(self):
-        self.volume_models = {}
-        self.intent_models = {}
-        self.training_results = {}
-        self.best_approach = None
-        self.best_volume_model = None
-        self.feature_importance = {}
+    def __init__(self, data_loader: OptimizationDataLoader):
+        self.data_loader = data_loader
+        self.feature_engine = AdvancedFeatureEngine()
+        self.optimization_results = {}
+        self.best_configuration = None
+        self.best_model = None
+        self.best_score = -float('inf')
         
-    def get_production_models(self, approach: str) -> Dict:
-        """Get production-ready models for each approach"""
+    def evaluate_model_configuration(self, model, X: pd.DataFrame, y: pd.Series, config_name: str) -> Dict:
+        """Evaluate a single model configuration"""
         
-        models = {}
-        
-        if "ridge" in CONFIG["model_approaches"][approach]["models"]:
-            models['ridge'] = Ridge(
-                alpha=10.0, 
-                random_state=CONFIG["random_state"],
-                fit_intercept=True
-            )
-        
-        if "random_forest" in CONFIG["model_approaches"][approach]["models"]:
-            models['random_forest'] = RandomForestRegressor(
-                n_estimators=100,
-                max_depth=10,
-                min_samples_split=5,
-                min_samples_leaf=2,
-                random_state=CONFIG["random_state"],
-                n_jobs=CONFIG["n_jobs"]
-            )
-        
-        if "gradient_boost" in CONFIG["model_approaches"][approach]["models"]:
-            models['gradient_boost'] = GradientBoostingRegressor(
-                n_estimators=100,
-                max_depth=6,
-                learning_rate=0.1,
-                subsample=0.8,
-                random_state=CONFIG["random_state"]
-            )
-        
-        return models
-    
-    def robust_model_validation(self, model, X: pd.DataFrame, y: pd.Series, approach: str) -> Dict:
-        """Robust model validation with multiple metrics"""
-        
-        if len(X) < 15:
-            return {"error": "insufficient_data", "samples": len(X)}
+        if len(X) < CONFIG["min_samples_required"]:
+            return {"error": "insufficient_samples", "samples": len(X)}
         
         try:
-            results = {}
+            results = {"config_name": config_name, "features": len(X.columns), "samples": len(X)}
             
-            # Time series cross-validation
-            n_splits = min(5, max(2, len(X) // 15))
-            tscv = TimeSeriesSplit(n_splits=n_splits)
+            # Cross-validation
+            n_splits = min(CONFIG["cv_folds"], len(X) // 10, 5)
+            tscv = TimeSeriesSplit(n_splits=max(2, n_splits))
             
-            try:
-                cv_results = cross_validate(
-                    model, X, y, cv=tscv,
-                    scoring=['neg_mean_absolute_error', 'r2', 'neg_mean_squared_error'],
-                    return_train_score=False,
-                    error_score='raise'
-                )
-                
-                results['cv_mae'] = -cv_results['test_neg_mean_absolute_error'].mean()
-                results['cv_mae_std'] = cv_results['test_neg_mean_absolute_error'].std()
-                results['cv_r2'] = cv_results['test_r2'].mean()
-                results['cv_r2_std'] = cv_results['test_r2'].std()
-                results['cv_rmse'] = np.sqrt(-cv_results['test_neg_mean_squared_error'].mean())
-                
-            except Exception as cv_error:
-                safe_log(f"CV failed: {cv_error}", "warning")
-                results['cv_mae'] = float('inf')
-                results['cv_r2'] = -float('inf')
+            cv_results = cross_validate(
+                model, X, y, cv=tscv,
+                scoring=['neg_mean_absolute_error', 'r2'],
+                return_train_score=False
+            )
             
-            # Holdout validation
-            try:
-                split_idx = max(10, int(len(X) * 0.8))
-                X_train, X_test = X.iloc[:split_idx], X.iloc[split_idx:]
-                y_train, y_test = y.iloc[:split_idx], y.iloc[split_idx:]
-                
+            results['cv_mae'] = -cv_results['test_neg_mean_absolute_error'].mean()
+            results['cv_mae_std'] = cv_results['test_neg_mean_absolute_error'].std()
+            results['cv_r2'] = cv_results['test_r2'].mean()
+            results['cv_r2_std'] = cv_results['test_r2'].std()
+            
+            # Holdout test
+            split_idx = int(len(X) * (1 - CONFIG["test_split"]))
+            X_train, X_test = X.iloc[:split_idx], X.iloc[split_idx:]
+            y_train, y_test = y.iloc[:split_idx], y.iloc[split_idx:]
+            
+            if len(X_test) >= 3:  # Minimum test set
                 model.fit(X_train, y_train)
-                
-                train_pred = model.predict(X_train)
                 test_pred = model.predict(X_test)
                 
-                results['holdout_train_mae'] = mean_absolute_error(y_train, train_pred)
-                results['holdout_test_mae'] = mean_absolute_error(y_test, test_pred)
-                results['holdout_train_r2'] = r2_score(y_train, train_pred)
-                results['holdout_test_r2'] = r2_score(y_test, test_pred)
+                results['test_mae'] = mean_absolute_error(y_test, test_pred)
+                results['test_r2'] = r2_score(y_test, test_pred)
+                results['test_mape'] = np.mean(np.abs((y_test - test_pred) / (y_test + 1e-10))) * 100
                 
-                # Business metrics
-                mape = np.mean(np.abs((y_test - test_pred) / (y_test + 1e-10))) * 100
-                results['mape'] = min(mape, 999)  # Cap extreme values
-                
-                # Prediction stability
-                pred_std = np.std(test_pred)
-                actual_std = np.std(y_test)
-                results['prediction_stability'] = pred_std / (actual_std + 1e-10)
-                
-            except Exception as holdout_error:
-                safe_log(f"Holdout validation failed: {holdout_error}", "warning")
-                results['holdout_test_r2'] = -float('inf')
-            
-            # Final model training
-            try:
+                # Final model with all data
                 model.fit(X, y)
-                full_pred = model.predict(X)
-                results['full_r2'] = r2_score(y, full_pred)
-                results['full_mae'] = mean_absolute_error(y, full_pred)
                 results['model'] = model
                 
-                # Feature importance (if available)
+                # Feature importance if available
                 if hasattr(model, 'feature_importances_'):
                     importance = dict(zip(X.columns, model.feature_importances_))
-                    top_features = sorted(importance.items(), key=lambda x: x[1], reverse=True)[:15]
-                    results['feature_importance'] = top_features
+                    results['feature_importance'] = sorted(importance.items(), key=lambda x: x[1], reverse=True)[:15]
                 elif hasattr(model, 'coef_'):
                     importance = dict(zip(X.columns, np.abs(model.coef_)))
-                    top_features = sorted(importance.items(), key=lambda x: x[1], reverse=True)[:15]
-                    results['feature_importance'] = top_features
-                
-            except Exception as final_error:
-                safe_log(f"Final model training failed: {final_error}", "error")
-                return {"error": str(final_error)}
+                    results['feature_importance'] = sorted(importance.items(), key=lambda x: x[1], reverse=True)[:15]
+            else:
+                results['test_mae'] = float('inf')
+                results['test_r2'] = -float('inf')
             
             return results
             
         except Exception as e:
-            safe_log(f"Model validation completely failed: {str(e)}", "error")
-            return {"error": str(e)}
+            return {"error": str(e), "config_name": config_name}
     
-    def train_approach_models(self, approach: str, volume_data: Tuple, intent_data: Tuple) -> Dict:
-        """Train all models for one approach"""
+    def run_systematic_optimization(self) -> Dict:
+        """Run systematic optimization across all combinations"""
         
-        safe_log(f"Training {approach} approach models...")
+        LOG.info("=== STARTING SYSTEMATIC OPTIMIZATION ===")
         
-        approach_results = {'volume': {}, 'intent': {}}
+        # Get aligned data
+        aligned_data = self.data_loader.get_aligned_data()
+        mail_analysis = self.data_loader.mail_analysis
         
-        # Train volume prediction models
-        if volume_data[0] is not None:
-            X_vol, y_vol = volume_data
-            models = self.get_production_models(approach)
-            
-            best_model = None
-            best_score = -float('inf')
-            
-            for model_name, model in models.items():
-                safe_log(f"  Training {model_name} for volume prediction...")
-                
-                try:
-                    results = self.robust_model_validation(model, X_vol, y_vol, approach)
-                    
-                    if "error" not in results:
-                        approach_results['volume'][model_name] = results
+        LOG.info(f"Optimization dataset: {len(aligned_data['calls'])} samples")
+        
+        # Test configurations
+        configurations_to_test = []
+        
+        # 1. Mail type selection strategies
+        mail_type_strategies = mail_analysis['mail_type_selections']
+        
+        # 2. Feature combinations
+        feature_combinations = CONFIG["feature_combinations"]
+        
+        # 3. Lag configurations
+        lag_configurations = CONFIG["lag_options"]
+        
+        # 4. Models
+        models = CONFIG["models_to_test"]
+        
+        # Create all combinations (but limit to reasonable number)
+        test_combinations = []
+        
+        for mail_strategy, mail_types in mail_type_strategies.items():
+            for feature_name, feature_config in feature_combinations.items():
+                for lag_name, lag_config in lag_configurations.items():
+                    for model_name, model in models.items():
                         
-                        # Track best model
-                        score = results.get('cv_r2', -float('inf'))
-                        if score > best_score:
-                            best_score = score
-                            best_model = results['model']
-                        
-                        safe_log(f"    {model_name}: CV R² = {results.get('cv_r2', 0):.3f}, Test R² = {results.get('holdout_test_r2', 0):.3f}")
-                    else:
-                        safe_log(f"    {model_name}: {results['error']}", "warning")
-                        
-                except Exception as e:
-                    safe_log(f"    {model_name} failed: {str(e)}", "error")
-            
-            if best_model is not None:
-                self.volume_models[approach] = best_model
-                approach_results['volume']['best_model'] = best_model
-                approach_results['volume']['best_score'] = best_score
+                        config = {
+                            'mail_strategy': mail_strategy,
+                            'mail_types': mail_types[:10],  # Limit to top 10
+                            'feature_config': feature_config,
+                            'lag_config': lag_config,
+                            'model_name': model_name,
+                            'model': model,
+                            'config_id': f"{mail_strategy}_{feature_name}_{lag_name}_{model_name}"
+                        }
+                        test_combinations.append(config)
         
-        # Train intent prediction models (simplified for production)
-        if intent_data[0] is not None:
-            safe_log(f"  Training intent prediction for {approach}...")
+        LOG.info(f"Testing {len(test_combinations)} configurations...")
+        
+        # Limit combinations to avoid excessive computation
+        if len(test_combinations) > 200:
+            LOG.info("Limiting to 200 configurations for efficiency")
+            
+            # Prioritize certain combinations
+            priority_configs = []
+            other_configs = []
+            
+            for config in test_combinations:
+                if (config['mail_strategy'] in ['balanced', 'correlation_heavy'] and 
+                    config['feature_config'] in ['standard', 'comprehensive'] and
+                    config['model_name'] in ['ridge', 'random_forest']):
+                    priority_configs.append(config)
+                else:
+                    other_configs.append(config)
+            
+            # Take top priority + random sample of others
+            np.random.shuffle(other_configs)
+            test_combinations = priority_configs + other_configs[:200-len(priority_configs)]
+        
+        # Run optimization
+        all_results = {}
+        progress_counter = 0
+        
+        for config in test_combinations:
+            progress_counter += 1
+            if progress_counter % 20 == 0:
+                LOG.info(f"Progress: {progress_counter}/{len(test_combinations)} configurations tested")
             
             try:
-                X_int, y_int = intent_data
-                
-                # Use dominant intent as target for simplicity
-                dominant_intents = y_int.idxmax(axis=1)
-                
-                # Simple random forest for intent classification
-                intent_model = RandomForestClassifier(
-                    n_estimators=50,
-                    max_depth=8,
-                    random_state=CONFIG["random_state"],
-                    n_jobs=CONFIG["n_jobs"]
+                # Create feature set
+                X, y = self.feature_engine.create_feature_set(
+                    aligned_data,
+                    config['mail_types'],
+                    config['feature_config'],
+                    config['lag_config']
                 )
                 
-                # Quick validation
-                if len(X_int) >= 10:
-                    n_splits = min(3, len(X_int) // 10)
-                    if n_splits >= 2:
-                        tscv = TimeSeriesSplit(n_splits=n_splits)
-                        cv_scores = cross_validate(intent_model, X_int, dominant_intents, cv=tscv, scoring='accuracy')
-                        cv_accuracy = cv_scores['test_score'].mean()
-                        
-                        # Final training
-                        intent_model.fit(X_int, dominant_intents)
-                        
-                        self.intent_models[approach] = intent_model
-                        approach_results['intent']['dominant_intent'] = {
-                            'cv_accuracy': cv_accuracy,
-                            'model': intent_model,
-                            'intent_classes': list(intent_model.classes_)
-                        }
-                        
-                        safe_log(f"    Intent model: CV Accuracy = {cv_accuracy:.3f}")
+                # Evaluate model
+                results = self.evaluate_model_configuration(
+                    config['model'],
+                    X, y,
+                    config['config_id']
+                )
                 
-            except Exception as e:
-                safe_log(f"  Intent training failed: {str(e)}", "warning")
-        
-        return approach_results
-    
-    def train_progressive_production(self, aligned_data: Dict) -> Dict:
-        """Train models with progressive complexity"""
-        
-        safe_log("=== PRODUCTION MODEL TRAINING ===")
-        
-        all_results = {}
-        best_overall_score = -float('inf')
-        
-        for approach in ["basic", "standard", "advanced"]:
-            if approach not in CONFIG["model_approaches"]:
-                continue
-                
-            safe_log(f"\n--- APPROACH: {approach.upper()} ---")
-            
-            try:
-                # Create features for this approach
-                feature_engine = ProductionFeatureEngine(approach)
-                
-                # Volume prediction features
-                volume_data = feature_engine.create_production_volume_features(aligned_data)
-                
-                # Intent prediction features
-                intent_data = feature_engine.create_production_intent_features(aligned_data)
-                
-                # Train models
-                approach_results = self.train_approach_models(approach, volume_data, intent_data)
-                
-                # Store results with metadata
-                approach_results['metadata'] = {
-                    'feature_count': len(feature_engine.feature_names),
-                    'sample_count': len(volume_data[1]) if volume_data[0] is not None else 0,
-                    'feature_names': feature_engine.feature_names[:20]  # First 20 features
+                # Store configuration details
+                results['configuration'] = {
+                    'mail_strategy': config['mail_strategy'],
+                    'mail_types': config['mail_types'],
+                    'feature_config': config['feature_config'],
+                    'lag_config': config['lag_config'],
+                    'model_name': config['model_name']
                 }
                 
-                all_results[approach] = approach_results
+                all_results[config['config_id']] = results
                 
-                # Track best approach
-                best_score = approach_results['volume'].get('best_score', -float('inf'))
-                if best_score > best_overall_score:
-                    best_overall_score = best_score
-                    self.best_approach = approach
-                    self.best_volume_model = self.volume_models.get(approach)
-                
-                safe_log(f"Approach {approach} completed: Best R² = {best_score:.3f}")
+                # Track best configuration
+                if "error" not in results:
+                    optimization_score = results.get(CONFIG["optimization_metric"], -float('inf'))
+                    
+                    if optimization_score > self.best_score:
+                        self.best_score = optimization_score
+                        self.best_configuration = config
+                        self.best_model = results.get('model')
+                        
+                        LOG.info(f"New best configuration: {config['config_id']}")
+                        LOG.info(f"  Score ({CONFIG['optimization_metric']}): {optimization_score:.3f}")
+                        LOG.info(f"  Mail strategy: {config['mail_strategy']}")
+                        LOG.info(f"  Features: {results['features']}")
+                        LOG.info(f"  Mail types: {config['mail_types'][:3]}...")
                 
             except Exception as e:
-                safe_log(f"Approach {approach} failed: {str(e)}", "error")
-                all_results[approach] = {"error": str(e)}
+                LOG.error(f"Configuration {config['config_id']} failed: {str(e)}")
+                all_results[config['config_id']] = {"error": str(e), "configuration": config}
         
-        self.training_results = all_results
+        self.optimization_results = all_results
         
-        if self.best_approach:
-            safe_log(f"\nBest overall approach: {self.best_approach} (R² = {best_overall_score:.3f})")
+        # Log final results
+        if self.best_configuration:
+            LOG.info(f"\n=== OPTIMIZATION COMPLETE ===")
+            LOG.info(f"Best configuration: {self.best_configuration['config_id']}")
+            LOG.info(f"Best score: {self.best_score:.3f}")
+            LOG.info(f"Total configurations tested: {len(test_combinations)}")
+            LOG.info(f"Successful configurations: {len([r for r in all_results.values() if 'error' not in r])}")
         else:
-            safe_log("No successful models trained", "warning")
+            LOG.warning("No successful configurations found!")
         
         return all_results
-
-# ============================================================================
-# PRODUCTION PREDICTION ENGINE
-# ============================================================================
-
-class ProductionPredictionEngine:
-    """Production prediction engine using your actual mail types"""
     
-    def __init__(self, trainer: ProductionModelTrainer, data_summary: Dict, mail_types: List[str]):
-        self.trainer = trainer
-        self.data_summary = data_summary
-        self.mail_types = mail_types
-        self.best_approach = trainer.best_approach
+    def get_top_configurations(self, top_n: int = 10) -> List[Dict]:
+        """Get top N configurations"""
         
-        if self.best_approach:
-            self.volume_model = trainer.volume_models.get(self.best_approach)
-            self.intent_model = trainer.intent_models.get(self.best_approach)
-        else:
-            self.volume_model = None
-            self.intent_model = None
+        successful_configs = []
+        
+        for config_id, results in self.optimization_results.items():
+            if "error" not in results and CONFIG["optimization_metric"] in results:
+                score = results[CONFIG["optimization_metric"]]
+                successful_configs.append({
+                    'config_id': config_id,
+                    'score': score,
+                    'results': results
+                })
+        
+        # Sort by score
+        successful_configs.sort(key=lambda x: x['score'], reverse=True)
+        
+        return successful_configs[:top_n]
     
-    def predict_calls_from_your_mail(self, mail_inputs: Dict[str, Dict[str, float]], 
-                                   prediction_date: str = None) -> Dict:
-        """
-        Predict calls from your actual mail data structure
-        
-        Args:
-            mail_inputs: {
-                '2025-07-23': {
-                    'New_Chk': 127,
-                    'MultiClientLaser': 50,
-                    'Digital_Insert_Sets': 31,
-                    'Digital_Insert_Images': 93
-                },
-                '2025-07-24': {...}
-            }
-            prediction_date: Date to predict for
-        """
-        
-        safe_log("Making prediction from your mail inputs...")
-        
-        try:
-            if self.volume_model is None:
-                return {
-                    'error': 'No trained volume model available',
-                    'mail_inputs': mail_inputs
-                }
-            
-            # Determine prediction date
-            if prediction_date is None:
-                mail_dates = [pd.to_datetime(d) for d in mail_inputs.keys()]
-                prediction_date = max(mail_dates) + timedelta(days=1)
-            else:
-                prediction_date = pd.to_datetime(prediction_date)
-            
-            # Process your mail inputs into features
-            feature_vector = self.create_prediction_features(mail_inputs, prediction_date)
-            
-            # Make volume prediction
-            volume_prediction = self.volume_model.predict([feature_vector])[0]
-            volume_prediction = max(0, round(volume_prediction, 0))
-            
-            # Make intent prediction (if available)
-            intent_prediction = None
-            if self.intent_model is not None:
-                try:
-                    intent_pred = self.intent_model.predict([feature_vector])[0]
-                    intent_confidence = max(self.intent_model.predict_proba([feature_vector])[0])
-                    intent_prediction = {
-                        'dominant_intent': intent_pred,
-                        'confidence': round(intent_confidence, 3)
-                    }
-                except Exception as e:
-                    safe_log(f"Intent prediction failed: {e}", "warning")
-                    intent_prediction = {'dominant_intent': 'Unknown', 'confidence': 0.0}
-            
-            # Calculate confidence intervals
-            historical_std = self.data_summary.get('calls', {}).get('avg_daily_calls', 500) * 0.25
-            confidence_intervals = {}
-            
-            for conf_level in CONFIG["confidence_levels"]:
-                z_score = stats.norm.ppf((1 + conf_level) / 2)
-                margin = z_score * historical_std
-                
-                confidence_intervals[f'{conf_level:.0%}'] = {
-                    'lower': max(0, round(volume_prediction - margin, 0)),
-                    'upper': round(volume_prediction + margin, 0),
-                    'margin': round(margin, 0)
-                }
-            
-            # Analyze mail input
-            mail_analysis = self.analyze_mail_inputs(mail_inputs)
-            
-            result = {
-                'prediction_date': prediction_date.strftime('%Y-%m-%d'),
-                'weekday': prediction_date.strftime('%A'),
-                'predicted_call_volume': int(volume_prediction),
-                'confidence_intervals': confidence_intervals,
-                'predicted_intent': intent_prediction,
-                'mail_analysis': mail_analysis,
-                'model_info': {
-                    'approach': self.best_approach,
-                    'model_type': type(self.volume_model).__name__,
-                    'prediction_quality': self.assess_prediction_quality(mail_inputs)
-                },
-                'business_insights': self.generate_business_insights(volume_prediction, mail_analysis)
-            }
-            
-            safe_log(f"Prediction complete: {volume_prediction:.0f} calls on {prediction_date.strftime('%Y-%m-%d')}")
-            return result
-            
-        except Exception as e:
-            safe_log(f"Prediction failed: {str(e)}", "error")
-            return {
-                'error': str(e),
-                'prediction_date': str(prediction_date) if prediction_date else 'unknown',
-                'mail_inputs': mail_inputs
-            }
-    
-    def create_prediction_features(self, mail_inputs: Dict, prediction_date: pd.Timestamp) -> List[float]:
-        """Create feature vector from mail inputs"""
-        
-        features = []
-        
-        # Total mail volume
-        total_mail = sum(sum(daily_mail.values()) for daily_mail in mail_inputs.values())
-        features.append(total_mail)
-        
-        # Individual mail type features (using your actual types)
-        for mail_type in self.mail_types[:10]:  # Top 10 types
-            type_volume = 0
-            for daily_mail in mail_inputs.values():
-                type_volume += daily_mail.get(mail_type, 0)
-            features.append(type_volume)
-        
-        # Recent mail (last 2 days)
-        sorted_dates = sorted(mail_inputs.keys(), reverse=True)
-        for i in range(2):
-            if i < len(sorted_dates):
-                daily_total = sum(mail_inputs[sorted_dates[i]].values())
-                features.append(daily_total)
-            else:
-                features.append(0)
-        
-        # Temporal features
-        features.extend([
-            prediction_date.weekday(),
-            prediction_date.month,
-            prediction_date.quarter,
-            1 if prediction_date.weekday() >= 5 else 0,  # is_weekend
-            1 if prediction_date.day <= 5 else 0,  # is_month_start
-            1 if prediction_date.day >= 25 else 0   # is_month_end
-        ])
-        
-        # Pad or truncate to expected length
-        expected_length = 25  # Reasonable feature count
-        while len(features) < expected_length:
-            features.append(0)
-        
-        return features[:expected_length]
-    
-    def analyze_mail_inputs(self, mail_inputs: Dict) -> Dict:
-        """Analyze the mail inputs for business insights"""
-        
-        analysis = {}
-        
-        # Total volume analysis
-        total_volume = sum(sum(daily_mail.values()) for daily_mail in mail_inputs.values())
-        analysis['total_mail_volume'] = total_volume
-        analysis['days_of_mail'] = len(mail_inputs)
-        analysis['avg_daily_volume'] = total_volume / len(mail_inputs) if mail_inputs else 0
-        
-        # Mail type breakdown
-        type_totals = defaultdict(float)
-        for daily_mail in mail_inputs.values():
-            for mail_type, volume in daily_mail.items():
-                type_totals[mail_type] += volume
-        
-        analysis['mail_type_breakdown'] = dict(type_totals)
-        analysis['dominant_mail_type'] = max(type_totals.items(), key=lambda x: x[1])[0] if type_totals else 'None'
-        analysis['mail_type_diversity'] = len(type_totals)
-        
-        # Volume level assessment
-        avg_historical = self.data_summary.get('mail', {}).get('avg_daily_volume', 1000)
-        if total_volume > avg_historical * 1.5:
-            analysis['volume_level'] = 'High'
-        elif total_volume < avg_historical * 0.7:
-            analysis['volume_level'] = 'Low'
-        else:
-            analysis['volume_level'] = 'Normal'
-        
-        return analysis
-    
-    def assess_prediction_quality(self, mail_inputs: Dict) -> str:
-        """Assess the quality of prediction based on input data"""
-        
-        if not mail_inputs:
-            return 'Poor - No mail data'
-        
-        # Check data completeness
-        known_types = set()
-        for daily_mail in mail_inputs.values():
-            known_types.update(daily_mail.keys())
-        
-        overlap_ratio = len(known_types.intersection(self.mail_types)) / len(self.mail_types)
-        
-        if overlap_ratio > 0.7:
-            return 'High'
-        elif overlap_ratio > 0.4:
-            return 'Medium'
-        else:
-            return 'Low - Limited mail type overlap'
-    
-    def generate_business_insights(self, predicted_volume: float, mail_analysis: Dict) -> Dict:
-        """Generate actionable business insights"""
+    def analyze_optimization_insights(self) -> Dict:
+        """Analyze insights from optimization results"""
         
         insights = {}
         
-        # Staffing recommendations
-        avg_calls = self.data_summary.get('calls', {}).get('avg_daily_calls', 500)
+        # Get successful results
+        successful = [r for r in self.optimization_results.values() if "error" not in r]
         
-        if predicted_volume > avg_calls * 1.3:
-            insights['staffing'] = 'Consider additional staff - high call volume expected'
-        elif predicted_volume < avg_calls * 0.7:
-            insights['staffing'] = 'Normal staffing sufficient - low call volume expected'
-        else:
-            insights['staffing'] = 'Standard staffing recommended'
+        if len(successful) == 0:
+            return {"error": "No successful configurations to analyze"}
         
-        # Mail impact assessment
-        volume_level = mail_analysis.get('volume_level', 'Normal')
-        if volume_level == 'High':
-            insights['mail_impact'] = 'High mail volume may drive increased call activity'
-        elif volume_level == 'Low':
-            insights['mail_impact'] = 'Low mail volume suggests reduced call activity'
-        else:
-            insights['mail_impact'] = 'Normal mail volume indicates typical call patterns'
+        # Mail strategy effectiveness
+        strategy_scores = defaultdict(list)
+        for result in successful:
+            if 'configuration' in result:
+                strategy = result['configuration']['mail_strategy']
+                score = result.get(CONFIG["optimization_metric"], 0)
+                strategy_scores[strategy].append(score)
         
-        # Capacity planning
-        capacity_buffer = predicted_volume * 1.1  # 10% buffer
-        insights['capacity_planning'] = f'Plan for up to {capacity_buffer:.0f} calls (includes 10% buffer)'
+        strategy_analysis = {}
+        for strategy, scores in strategy_scores.items():
+            strategy_analysis[strategy] = {
+                'avg_score': np.mean(scores),
+                'best_score': max(scores),
+                'count': len(scores)
+            }
+        
+        insights['mail_strategy_analysis'] = strategy_analysis
+        
+        # Model effectiveness
+        model_scores = defaultdict(list)
+        for result in successful:
+            if 'configuration' in result:
+                model = result['configuration']['model_name']
+                score = result.get(CONFIG["optimization_metric"], 0)
+                model_scores[model].append(score)
+        
+        model_analysis = {}
+        for model, scores in model_scores.items():
+            model_analysis[model] = {
+                'avg_score': np.mean(scores),
+                'best_score': max(scores),
+                'count': len(scores)
+            }
+        
+        insights['model_analysis'] = model_analysis
+        
+        # Feature combination effectiveness
+        feature_scores = defaultdict(list)
+        for result in successful:
+            if 'configuration' in result:
+                features = str(result['configuration']['feature_config'])
+                score = result.get(CONFIG["optimization_metric"], 0)
+                feature_scores[features].append(score)
+        
+        feature_analysis = {}
+        for features, scores in feature_scores.items():
+            feature_analysis[features] = {
+                'avg_score': np.mean(scores),
+                'best_score': max(scores),
+                'count': len(scores)
+            }
+        
+        insights['feature_analysis'] = feature_analysis
         
         return insights
-    
-    def forecast_multi_day_outlook(self, base_mail_pattern: Dict[str, float], 
-                                 start_date: str, days: int = 5) -> Dict:
-        """Generate multi-day forecast using base mail pattern"""
-        
-        try:
-            start_dt = pd.to_datetime(start_date)
-            daily_predictions = []
-            
-            for day in range(days):
-                forecast_date = start_dt + timedelta(days=day)
-                
-                # Skip weekends if business days only
-                if CONFIG["business_days_only"] and forecast_date.weekday() >= 5:
-                    continue
-                
-                # Create mail input for this day
-                mail_input = {forecast_date.strftime('%Y-%m-%d'): base_mail_pattern}
-                
-                # Make prediction
-                prediction = self.predict_calls_from_your_mail(mail_input, forecast_date.strftime('%Y-%m-%d'))
-                prediction['forecast_day'] = day + 1
-                daily_predictions.append(prediction)
-            
-            # Generate summary
-            successful_predictions = [p for p in daily_predictions if 'predicted_call_volume' in p]
-            
-            if successful_predictions:
-                volumes = [p['predicted_call_volume'] for p in successful_predictions]
-                
-                summary = {
-                    'forecast_period': f"{len(successful_predictions)} business days",
-                    'date_range': f"{successful_predictions[0]['prediction_date']} to {successful_predictions[-1]['prediction_date']}",
-                    'volume_forecast': {
-                        'min_calls': min(volumes),
-                        'max_calls': max(volumes),
-                        'avg_calls': round(np.mean(volumes), 0),
-                        'total_calls': sum(volumes)
-                    },
-                    'base_mail_pattern': base_mail_pattern,
-                    'forecast_quality': self.assess_prediction_quality({start_date: base_mail_pattern})
-                }
-            else:
-                summary = {'error': 'No successful predictions generated'}
-            
-            return {
-                'forecast_summary': summary,
-                'daily_forecasts': daily_predictions
-            }
-            
-        except Exception as e:
-            safe_log(f"Multi-day forecast failed: {str(e)}", "error")
-            return {'error': str(e)}
 
 # ============================================================================
-# MAIN PRODUCTION PIPELINE ORCHESTRATOR
+# MAIN ORCHESTRATOR
 # ============================================================================
 
-class ProductionPipelineOrchestrator:
-    """Main orchestrator for production mail-to-calls pipeline"""
+class OptimizationOrchestrator:
+    """Main orchestrator for the optimization process"""
     
     def __init__(self):
         self.start_time = time.time()
         self.output_dir = Path(CONFIG["output_dir"])
-        self.setup_output_structure()
-        
-    def setup_output_structure(self):
-        """Setup organized output directory structure"""
-        
         self.output_dir.mkdir(exist_ok=True)
         
         # Create subdirectories
-        subdirs = ["models", "results", "logs", "examples", "reports"]
-        for subdir in subdirs:
+        for subdir in ["analysis", "models", "results"]:
             (self.output_dir / subdir).mkdir(exist_ok=True)
-        
-        safe_log(f"Output directory structure created: {self.output_dir}")
     
-    def run_production_pipeline(self) -> Dict:
-        """Run the complete production pipeline"""
+    def run_complete_optimization(self) -> Dict:
+        """Run the complete optimization process"""
         
-        safe_log("="*70)
-        safe_log("PRODUCTION MAIL-TO-CALLS PREDICTION PIPELINE")
-        safe_log("="*70)
-        safe_log("INPUT: Your actual mail data (mail_date, mail_volume, mail_type)")
-        safe_log("OUTPUT: Call volume + Intent predictions")
-        safe_log("APPROACH: Production-grade with self-healing")
-        safe_log("="*70)
+        LOG.info("="*80)
+        LOG.info("OPTIMIZED MAIL-TO-CALLS PREDICTION SYSTEM")
+        LOG.info("="*80)
+        LOG.info("STRATEGY: Systematic optimization of:")
+        LOG.info("  1. Mail types (Volume vs Correlation tradeoff)")
+        LOG.info("  2. Feature engineering combinations")
+        LOG.info("  3. Model selection and tuning")
+        LOG.info("  4. Find highest accuracy configuration")
+        LOG.info("="*80)
         
         try:
-            # Phase 1: Production Data Loading
-            safe_log("\nPHASE 1: PRODUCTION DATA LOADING")
-            data_loader = ProductionDataLoader()
-            aligned_data = data_loader.load_all_production_data()
+            # Phase 1: Load and Analyze Data
+            LOG.info("\nPHASE 1: DATA LOADING AND MAIL TYPE ANALYSIS")
+            data_loader = OptimizationDataLoader()
             
-            if len(aligned_data['calls']) < 15:
-                raise ValueError(f"Insufficient data for production modeling: {len(aligned_data['calls'])} days")
+            # Load data
+            data_loader.load_call_data()
+            data_loader.load_mail_data()
             
-            # Phase 2: Production Model Training
-            safe_log("\nPHASE 2: PRODUCTION MODEL TRAINING")
-            trainer = ProductionModelTrainer()
-            training_results = trainer.train_progressive_production(aligned_data)
+            # Comprehensive mail type analysis
+            mail_analysis = data_loader.analyze_mail_types_comprehensive()
             
-            # Phase 3: Production Prediction Engine
-            safe_log("\nPHASE 3: PRODUCTION PREDICTION ENGINE")
-            prediction_engine = ProductionPredictionEngine(
-                trainer, 
-                data_loader.data_summary,
-                data_loader.mail_types
-            )
+            # Phase 2: Systematic Optimization
+            LOG.info("\nPHASE 2: SYSTEMATIC MODEL OPTIMIZATION")
+            optimizer = SystematicModelOptimizer(data_loader)
+            optimization_results = optimizer.run_systematic_optimization()
             
-            # Phase 4: Generate Production Examples
-            safe_log("\nPHASE 4: GENERATING PRODUCTION EXAMPLES")
-            examples = self.generate_production_examples(prediction_engine, data_loader)
+            # Phase 3: Analysis and Insights
+            LOG.info("\nPHASE 3: ANALYZING OPTIMIZATION RESULTS")
+            top_configs = optimizer.get_top_configurations(10)
+            insights = optimizer.analyze_optimization_insights()
             
-            # Phase 5: Save Production Assets
-            safe_log("\nPHASE 5: SAVING PRODUCTION ASSETS")
-            self.save_production_assets(data_loader, training_results, examples, trainer, prediction_engine)
+            # Phase 4: Save Results
+            LOG.info("\nPHASE 4: SAVING OPTIMIZATION RESULTS")
+            self.save_optimization_results(data_loader, optimizer, top_configs, insights)
             
-            # Phase 6: Generate Production Report
-            safe_log("\nPHASE 6: GENERATING PRODUCTION REPORT")
-            report_path = self.generate_production_report(data_loader, training_results, examples, trainer)
+            # Phase 5: Generate Report
+            LOG.info("\nPHASE 5: GENERATING OPTIMIZATION REPORT")
+            report_path = self.generate_optimization_report(data_loader, optimizer, top_configs, insights)
             
             execution_time = (time.time() - self.start_time) / 60
             
-            safe_log("\n" + "="*70)
-            safe_log("PRODUCTION PIPELINE COMPLETED SUCCESSFULLY!")
-            safe_log(f"Execution time: {execution_time:.1f} minutes")
-            safe_log(f"Best approach: {trainer.best_approach}")
-            safe_log(f"Output directory: {self.output_dir}")
-            safe_log("="*70)
+            LOG.info(f"\n{'='*80}")
+            LOG.info("OPTIMIZATION COMPLETE!")
+            LOG.info(f"Execution time: {execution_time:.1f} minutes")
+            if optimizer.best_configuration:
+                LOG.info(f"Best configuration: {optimizer.best_configuration['config_id']}")
+                LOG.info(f"Best {CONFIG['optimization_metric']}: {optimizer.best_score:.3f}")
+            LOG.info(f"Results saved to: {self.output_dir}")
+            LOG.info(f"{'='*80}")
             
             return {
                 'success': True,
                 'execution_time_minutes': execution_time,
-                'best_approach': trainer.best_approach,
+                'best_score': optimizer.best_score,
+                'best_configuration': optimizer.best_configuration,
+                'best_model': optimizer.best_model,
+                'top_configurations': top_configs,
+                'optimization_insights': insights,
+                'mail_analysis': mail_analysis,
                 'output_directory': str(self.output_dir),
-                'prediction_engine': prediction_engine,
-                'data_summary': data_loader.data_summary,
-                'training_results': training_results,
-                'examples': examples,
-                'report_path': report_path,
-                'mail_types_used': data_loader.mail_types
+                'report_path': report_path
             }
             
         except Exception as e:
-            safe_log(f"PRODUCTION PIPELINE FAILED: {str(e)}", "error")
-            safe_log(traceback.format_exc(), "error")
+            LOG.error(f"OPTIMIZATION FAILED: {str(e)}")
+            LOG.error(traceback.format_exc())
             
             return {
                 'success': False,
                 'error': str(e),
-                'execution_time_minutes': (time.time() - self.start_time) / 60,
-                'output_directory': str(self.output_dir)
+                'execution_time_minutes': (time.time() - self.start_time) / 60
             }
     
-    def generate_production_examples(self, prediction_engine, data_loader) -> Dict:
-        """Generate examples using your actual mail types"""
-        
-        safe_log("Generating production examples with your actual mail types...")
-        
-        examples = {}
+    def save_optimization_results(self, data_loader, optimizer, top_configs, insights):
+        """Save all optimization results"""
         
         try:
-            # Example 1: Single day prediction with your actual mail types
-            sample_mail = {}
-            if data_loader.mail_types:
-                # Use your actual mail types from the data
-                for i, mail_type in enumerate(data_loader.mail_types[:5]):  # Top 5 types
-                    if 'New_Chk' in mail_type:
-                        sample_mail[mail_type] = 127  # From your sample data
-                    elif 'Digital_Insert' in mail_type:
-                        sample_mail[mail_type] = 31   # From your sample data
-                    elif 'MultiClient' in mail_type:
-                        sample_mail[mail_type] = 50   # Reasonable volume
+            # Save mail analysis
+            with open(self.output_dir / "analysis" / "mail_type_analysis.json", 'w') as f:
+                json.dump(data_loader.mail_analysis, f, indent=2, default=str)
+            
+            # Save optimization results (simplified for JSON)
+            simplified_results = {}
+            for config_id, results in optimizer.optimization_results.items():
+                simplified_results[config_id] = {}
+                for key, value in results.items():
+                    if key == 'model':
+                        simplified_results[config_id][key] = str(type(value).__name__)
+                    elif key == 'feature_importance' and isinstance(value, list):
+                        simplified_results[config_id][key] = value[:10]  # Top 10
                     else:
-                        sample_mail[mail_type] = 25   # Default volume
-            else:
-                sample_mail = {'total_mail': 200}
+                        simplified_results[config_id][key] = value
             
-            single_day_example = prediction_engine.predict_calls_from_your_mail(
-                {'2025-07-25': sample_mail}
-            )
-            examples['single_day_prediction'] = single_day_example
+            with open(self.output_dir / "results" / "optimization_results.json", 'w') as f:
+                json.dump(simplified_results, f, indent=2, default=str)
             
-            # Example 2: Multi-day campaign with your mail types
-            campaign_mail = {}
-            for day in range(3):
-                date_str = (datetime.now() + timedelta(days=day+1)).strftime('%Y-%m-%d')
-                daily_mail = {}
+            # Save top configurations
+            with open(self.output_dir / "results" / "top_configurations.json", 'w') as f:
+                json.dump(top_configs, f, indent=2, default=str)
+            
+            # Save insights
+            with open(self.output_dir / "results" / "optimization_insights.json", 'w') as f:
+                json.dump(insights, f, indent=2, default=str)
+            
+            # Save best model if available
+            if optimizer.best_model and CONFIG["save_best_model"]:
+                joblib.dump(optimizer.best_model, self.output_dir / "models" / "best_optimized_model.pkl")
                 
-                for mail_type in data_loader.mail_types[:3]:  # Top 3 types
-                    # Simulate campaign with decreasing volume
-                    multiplier = [2.0, 1.5, 1.0][day]
-                    if 'New_Chk' in mail_type:
-                        daily_mail[mail_type] = int(127 * multiplier)
-                    elif 'Digital_Insert' in mail_type:
-                        daily_mail[mail_type] = int(31 * multiplier)
-                    else:
-                        daily_mail[mail_type] = int(50 * multiplier)
-                
-                campaign_mail[date_str] = daily_mail
-            
-            campaign_example = prediction_engine.predict_calls_from_your_mail(campaign_mail)
-            examples['campaign_prediction'] = campaign_example
-            
-            # Example 3: Multi-day forecast
-            if data_loader.mail_types:
-                # Use typical volumes from your data
-                avg_volumes = {}
-                mail_summary = data_loader.data_summary.get('mail', {})
-                if 'avg_daily_volume' in mail_summary:
-                    total_avg = mail_summary['avg_daily_volume']
-                    # Distribute across mail types (simplified)
-                    per_type = total_avg / len(data_loader.mail_types)
-                    for mail_type in data_loader.mail_types[:5]:
-                        avg_volumes[mail_type] = max(10, int(per_type))
-                else:
-                    # Fallback volumes
-                    for mail_type in data_loader.mail_types[:5]:
-                        if 'New_Chk' in mail_type:
-                            avg_volumes[mail_type] = 100
-                        elif 'Digital_Insert' in mail_type:
-                            avg_volumes[mail_type] = 30
-                        else:
-                            avg_volumes[mail_type] = 50
-                
-                forecast_example = prediction_engine.forecast_multi_day_outlook(
-                    avg_volumes,
-                    (datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d'),
-                    days=5
-                )
-                examples['forecast_outlook'] = forecast_example
-            
-            safe_log(f"Generated {len(examples)} production examples")
-            
-        except Exception as e:
-            safe_log(f"Example generation failed: {str(e)}", "error")
-            examples['error'] = str(e)
-        
-        return examples
-    
-    def save_production_assets(self, data_loader, training_results, examples, trainer, prediction_engine):
-        """Save all production assets"""
-        
-        safe_log("Saving production assets...")
-        
-        try:
-            # Save data summary
-            with open(self.output_dir / "results" / "data_summary.json", 'w', encoding='utf-8') as f:
-                json.dump(data_loader.data_summary, f, indent=2, default=str)
-            
-            # Save training results (serialize models as strings)
-            serializable_results = {}
-            for approach, results in training_results.items():
-                serializable_results[approach] = {}
-                for section, section_data in results.items():
-                    if section == 'metadata':
-                        serializable_results[approach][section] = section_data
-                    else:
-                        serializable_results[approach][section] = {}
-                        for model_name, model_data in section_data.items():
-                            if isinstance(model_data, dict):
-                                serializable_results[approach][section][model_name] = {}
-                                for k, v in model_data.items():
-                                    if k in ['model', 'best_model']:
-                                        serializable_results[approach][section][model_name][k] = str(type(v).__name__)
-                                    elif k == 'feature_importance' and isinstance(v, list):
-                                        serializable_results[approach][section][model_name][k] = v[:10]  # Top 10
-                                    else:
-                                        serializable_results[approach][section][model_name][k] = v
-                            else:
-                                serializable_results[approach][section][model_name] = str(type(model_data).__name__)
-            
-            with open(self.output_dir / "results" / "training_results.json", 'w', encoding='utf-8') as f:
-                json.dump(serializable_results, f, indent=2, default=str)
-            
-            # Save examples
-            with open(self.output_dir / "examples" / "production_examples.json", 'w', encoding='utf-8') as f:
-                json.dump(examples, f, indent=2, default=str)
-            
-            # Save mail types reference
-            mail_types_info = {
-                'mail_types_used': data_loader.mail_types,
-                'total_mail_types': len(data_loader.mail_types),
-                'example_usage': {
-                    'single_day': {'2025-07-25': {mail_type: 50 for mail_type in data_loader.mail_types[:3]}},
-                    'campaign': {'2025-07-25': {mail_type: 100 for mail_type in data_loader.mail_types[:2]}}
+                # Save best configuration details
+                best_config_details = {
+                    'configuration': optimizer.best_configuration,
+                    'performance': {
+                        'best_score': optimizer.best_score,
+                        'optimization_metric': CONFIG['optimization_metric']
+                    }
                 }
-            }
-            
-            with open(self.output_dir / "results" / "mail_types_reference.json", 'w', encoding='utf-8') as f:
-                json.dump(mail_types_info, f, indent=2)
-            
-            # Save production models
-            if CONFIG["save_models"] and trainer.best_approach:
-                if trainer.volume_models.get(trainer.best_approach):
-                    joblib.dump(
-                        trainer.volume_models[trainer.best_approach],
-                        self.output_dir / "models" / "production_volume_model.pkl"
-                    )
                 
-                if trainer.intent_models.get(trainer.best_approach):
-                    joblib.dump(
-                        trainer.intent_models[trainer.best_approach],
-                        self.output_dir / "models" / "production_intent_model.pkl"
-                    )
+                with open(self.output_dir / "models" / "best_model_config.json", 'w') as f:
+                    json.dump(best_config_details, f, indent=2, default=str)
             
-            # Create usage guide
-            usage_guide = self.create_usage_guide(data_loader.mail_types, examples)
-            with open(self.output_dir / "USAGE_GUIDE.txt", 'w', encoding='utf-8') as f:
-                f.write(usage_guide)
-            
-            safe_log("All production assets saved successfully")
+            LOG.info("All optimization results saved successfully")
             
         except Exception as e:
-            safe_log(f"Failed to save production assets: {str(e)}", "error")
+            LOG.error(f"Failed to save optimization results: {str(e)}")
     
-    def create_usage_guide(self, mail_types: List[str], examples: Dict) -> str:
-        """Create usage guide with your actual mail types"""
-        
-        guide = f"""
-PRODUCTION MAIL-TO-CALLS PREDICTION SYSTEM
-=========================================
-USAGE GUIDE
-
-YOUR MAIL TYPES DETECTED:
-{chr(10).join([f'  - {mail_type}' for mail_type in mail_types[:10]])}
-{f'  ... and {len(mail_types)-10} more' if len(mail_types) > 10 else ''}
-
-BASIC USAGE:
------------
-
-1. SINGLE DAY PREDICTION:
-   Input format:
-   {{
-       '2025-07-25': {{
-           '{mail_types[0] if mail_types else 'mail_type_1'}': 127,
-           '{mail_types[1] if len(mail_types) > 1 else 'mail_type_2'}': 50,
-           '{mail_types[2] if len(mail_types) > 2 else 'mail_type_3'}': 31
-       }}
-   }}
-   
-   Returns: Predicted call volume + confidence intervals + intent
-
-2. CAMPAIGN ANALYSIS:
-   Input format:
-   {{
-       '2025-07-25': {{{mail_types[0] if mail_types else 'type1'}: 200, '{mail_types[1] if len(mail_types) > 1 else 'type2'}': 100}},
-       '2025-07-26': {{{mail_types[0] if mail_types else 'type1'}: 150, '{mail_types[1] if len(mail_types) > 1 else 'type2'}': 80}},
-       '2025-07-27': {{{mail_types[0] if mail_types else 'type1'}: 100, '{mail_types[1] if len(mail_types) > 1 else 'type2'}': 60}}
-   }}
-   
-   Returns: Call volume prediction considering cumulative mail impact
-
-3. MULTI-DAY FORECAST:
-   Input: Base daily mail pattern
-   Returns: 5-day business outlook
-
-EXAMPLE OUTPUTS:
----------------
-Single day prediction typically returns:
-- Predicted call volume (e.g., 850 calls)
-- Confidence intervals (68% and 95%)
-- Dominant intent prediction (if available)
-- Business insights and staffing recommendations
-
-API INTEGRATION:
----------------
-The prediction engine can be integrated into your systems:
-- Load the saved models from /models directory
-- Use the same input format as shown above
-- Production-ready with error handling
-
-BUSINESS APPLICATIONS:
----------------------
-- Daily staffing optimization
-- Mail campaign impact analysis
-- Capacity planning (5-day outlook)
-- Resource allocation based on intent predictions
-
-TECHNICAL NOTES:
----------------
-- Models trained on 2025+ data only
-- Business days only (weekends excluded)
-- Self-healing data processing
-- Robust error handling and fallbacks
-"""
-        
-        return guide
-    
-    def generate_production_report(self, data_loader, training_results, examples, trainer) -> str:
-        """Generate comprehensive production report"""
+    def generate_optimization_report(self, data_loader, optimizer, top_configs, insights) -> str:
+        """Generate comprehensive optimization report"""
         
         try:
             execution_time = (time.time() - self.start_time) / 60
             
-            # Extract performance metrics
-            best_r2 = 0
-            best_mae = float('inf')
-            feature_count = 0
-            
-            if trainer.best_approach and trainer.best_approach in training_results:
-                approach_results = training_results[trainer.best_approach]
-                if 'volume' in approach_results:
-                    for model_name, model_results in approach_results['volume'].items():
-                        if isinstance(model_results, dict):
-                            if 'cv_r2' in model_results:
-                                best_r2 = max(best_r2, model_results['cv_r2'])
-                            if 'cv_mae' in model_results:
-                                best_mae = min(best_mae, model_results['cv_mae'])
-                
-                if 'metadata' in approach_results:
-                    feature_count = approach_results['metadata'].get('feature_count', 0)
-            
             report = f"""
 ================================================================
-PRODUCTION MAIL-TO-CALLS PREDICTION SYSTEM
+OPTIMIZED MAIL-TO-CALLS PREDICTION SYSTEM
 ================================================================
-DEPLOYMENT REPORT
+OPTIMIZATION REPORT
 
 EXECUTIVE SUMMARY:
 -----------------
-Status: {'SUCCESS' if trainer.best_approach else 'PARTIAL SUCCESS'}
+Optimization Status: {'SUCCESS' if optimizer.best_configuration else 'PARTIAL'}
 Execution Time: {execution_time:.1f} minutes
-Best Model: {trainer.best_approach or 'None'}
-Prediction Accuracy: {best_r2:.1%} (R-squared)
-Mean Absolute Error: {best_mae:.0f} calls
+Configurations Tested: {len(optimizer.optimization_results)}
+Best {CONFIG['optimization_metric'].upper()}: {optimizer.best_score:.3f}
+Best Configuration: {optimizer.best_configuration['config_id'] if optimizer.best_configuration else 'None'}
 
-DATA PROCESSED:
---------------
-Call Records: {data_loader.data_summary.get('calls', {}).get('total_records', 'N/A'):,}
-Analysis Period: {data_loader.data_summary.get('calls', {}).get('date_range', 'N/A')}
-Daily Call Average: {data_loader.data_summary.get('calls', {}).get('avg_daily_calls', 0):.0f}
-Mail Data Available: {'Yes' if data_loader.data_summary.get('mail', {}) else 'No'}
-Mail Types Processed: {len(data_loader.mail_types)}
-
-YOUR MAIL TYPES:
----------------
-{chr(10).join([f'  {i+1}. {mail_type}' for i, mail_type in enumerate(data_loader.mail_types[:15])])}
-{f'  ... and {len(data_loader.mail_types)-15} more types' if len(data_loader.mail_types) > 15 else ''}
-
-MODEL PERFORMANCE:
------------------"""
+MAIL TYPE ANALYSIS RESULTS:
+--------------------------"""
             
-            for approach in ["basic", "standard", "advanced"]:
-                if approach in training_results:
-                    results = training_results[approach]
-                    if 'volume' in results and results['volume']:
-                        best_model_r2 = max([
-                            model_data.get('cv_r2', 0) 
-                            for model_data in results['volume'].values() 
-                            if isinstance(model_data, dict) and 'cv_r2' in model_data
-                        ] + [0])
-                        features = results.get('metadata', {}).get('feature_count', 0)
-                        report += f"\n  {approach.upper()}: R² = {best_model_r2:.3f}, Features = {features}"
+            # Mail type analysis summary
+            if 'top_by_volume' in data_loader.mail_analysis:
+                report += f"\nTop 5 Mail Types by Volume:"
+                for i, mail_type in enumerate(data_loader.mail_analysis['top_by_volume'][:5]):
+                    volume = data_loader.mail_analysis['volume_analysis'][mail_type]['total_volume']
+                    report += f"\n  {i+1}. {mail_type}: {volume:,.0f} total volume"
+            
+            if 'top_by_correlation' in data_loader.mail_analysis:
+                report += f"\n\nTop 5 Mail Types by Correlation:"
+                for i, mail_type in enumerate(data_loader.mail_analysis['top_by_correlation'][:5]):
+                    corr = data_loader.mail_analysis['correlation_analysis'][mail_type]['best_correlation']
+                    lag = data_loader.mail_analysis['correlation_analysis'][mail_type]['best_lag']
+                    report += f"\n  {i+1}. {mail_type}: {corr:.3f} correlation (lag {lag} days)"
+            
+            report += f"\n\nOPTIMIZATION INSIGHTS:\n{'-'*25}"
+            
+            # Strategy effectiveness
+            if 'mail_strategy_analysis' in insights:
+                report += f"\nMail Strategy Effectiveness:"
+                for strategy, data in insights['mail_strategy_analysis'].items():
+                    report += f"\n  {strategy}: Avg {CONFIG['optimization_metric']} = {data['avg_score']:.3f} ({data['count']} tests)"
+            
+            # Model effectiveness
+            if 'model_analysis' in insights:
+                report += f"\n\nModel Effectiveness:"
+                for model, data in insights['model_analysis'].items():
+                    report += f"\n  {model}: Avg {CONFIG['optimization_metric']} = {data['avg_score']:.3f} ({data['count']} tests)"
+            
+            # Top configurations
+            report += f"\n\nTOP {len(top_configs)} CONFIGURATIONS:\n{'-'*30}"
+            
+            for i, config in enumerate(top_configs[:10]):
+                config_info = config['results']['configuration']
+                report += f"""
+{i+1}. Configuration: {config['config_id']}
+   Score ({CONFIG['optimization_metric']}): {config['score']:.3f}
+   Mail Strategy: {config_info['mail_strategy']}
+   Model: {config_info['model_name']}
+   Features: {config['results']['features']}
+   Test R²: {config['results'].get('test_r2', 'N/A')}
+   Test MAE: {config['results'].get('test_mae', 'N/A')}"""
+            
+            # Best configuration details
+            if optimizer.best_configuration:
+                best_config = optimizer.best_configuration
+                best_results = optimizer.optimization_results[best_config['config_id']]
+                
+                report += f"""
+
+BEST CONFIGURATION DETAILS:
+===========================
+Configuration ID: {best_config['config_id']}
+Mail Strategy: {best_config['mail_strategy']}
+Model: {best_config['model_name']}
+Feature Configuration: {best_config['feature_config']}
+Lag Configuration: {best_config['lag_config']}
+
+Performance Metrics:
+- CV {CONFIG['optimization_metric'].upper()}: {optimizer.best_score:.3f}
+- CV MAE: {best_results.get('cv_mae', 'N/A')}
+- Test R²: {best_results.get('test_r2', 'N/A')}
+- Test MAE: {best_results.get('test_mae', 'N/A')}
+- Features Used: {best_results.get('features', 'N/A')}
+
+Top Mail Types Used:
+{chr(10).join([f"  {i+1}. {mail_type}" for i, mail_type in enumerate(best_config['mail_types'][:10])])}"""
+                
+                if 'feature_importance' in best_results:
+                    report += f"\n\nTop 10 Most Important Features:"
+                    for i, (feature, importance) in enumerate(best_results['feature_importance'][:10]):
+                        report += f"\n  {i+1}. {feature}: {importance:.4f}"
             
             report += f"""
 
-PRODUCTION CAPABILITIES:
------------------------
-✓ Single day call volume prediction from your mail data
-✓ Multi-day campaign impact analysis
-✓ 5-day business outlook forecasting
-✓ Intent distribution prediction (if intent data available)
-✓ Confidence intervals and business insights
-✓ Self-healing data processing
-✓ Production-grade error handling
+PRODUCTION DEPLOYMENT:
+=====================
+Status: {'READY' if optimizer.best_model else 'NOT READY'}
+Model File: {'best_optimized_model.pkl' if optimizer.best_model else 'Not available'}
+Configuration File: {'best_model_config.json' if optimizer.best_model else 'Not available'}
 
-INPUT FORMAT:
-------------
-Your system expects mail data in this format:
-{{
-    '2025-07-25': {{
-        '{data_loader.mail_types[0] if data_loader.mail_types else 'New_Chk'}': 127,
-        '{data_loader.mail_types[1] if len(data_loader.mail_types) > 1 else 'MultiClientLaser'}': 50,
-        '{data_loader.mail_types[2] if len(data_loader.mail_types) > 2 else 'Digital_Insert_Sets'}': 31
-    }}
-}}
-
-OUTPUT EXAMPLE:
---------------
-{{
-    'predicted_call_volume': 850,
-    'confidence_intervals': {{
-        '68%': {{'lower': 765, 'upper': 935}},
-        '95%': {{'lower': 680, 'upper': 1020}}
-    }},
-    'business_insights': {{
-        'staffing': 'Standard staffing recommended',
-        'capacity_planning': 'Plan for up to 935 calls (includes 10% buffer)'
-    }}
-}}
-
-DEPLOYMENT FILES:
-----------------
-✓ production_volume_model.pkl - Main prediction model
-✓ production_intent_model.pkl - Intent classification model  
-✓ data_summary.json - Data processing summary
-✓ training_results.json - Model performance metrics
-✓ production_examples.json - Usage examples
-✓ mail_types_reference.json - Your mail types reference
-✓ USAGE_GUIDE.txt - Detailed usage instructions
+Usage Instructions:
+1. Load the best model: joblib.load('best_optimized_model.pkl')
+2. Use the exact mail types and feature configuration from best_model_config.json
+3. Ensure feature engineering matches the optimized pipeline
+4. Apply to new mail data for call volume predictions
 
 BUSINESS VALUE:
---------------
-• Accurate call volume forecasting: {best_r2:.1%} accuracy
-• Proactive staffing optimization based on mail campaigns
-• 5-day business outlook for capacity planning
-• Reduced under/over-staffing through predictive analytics
-• Data-driven resource allocation
-
-SYSTEM INTEGRATION:
-------------------
-The system is production-ready and can be integrated via:
-1. Direct Python API calls
-2. Batch processing for daily forecasts
-3. Real-time prediction endpoints
-4. Automated reporting and alerting
-
-QUALITY ASSURANCE:
------------------
-✓ Robust cross-validation with time series splits
-✓ Multiple model approaches tested
-✓ Production error handling and fallbacks
-✓ Data quality checks and cleaning
-✓ Business rule validation
+==============
+• Optimized mail type selection based on volume-correlation tradeoff
+• Systematic testing of {len(optimizer.optimization_results)} configurations
+• Best performing model achieves {optimizer.best_score:.1%} {CONFIG['optimization_metric']} score
+• Production-ready prediction system
+• Data-driven mail campaign impact assessment
 
 NEXT STEPS:
-----------
-1. Deploy models to production environment
-2. Set up automated daily forecasting
-3. Integrate with workforce management systems
-4. Monitor prediction accuracy and retrain monthly
-5. Expand to additional mail types as data becomes available
+==========
+1. Deploy the best optimized model to production
+2. Set up automated daily predictions using optimized configuration
+3. Monitor performance and retrain with new data
+4. Use mail type insights for campaign planning
 
 ================================================================
 Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
-System Version: Production Grade v1.0
+Optimization Method: Systematic Grid Search
+Total Runtime: {execution_time:.1f} minutes
 ================================================================
 """
             
             # Save report
-            report_path = self.output_dir / "reports" / "PRODUCTION_DEPLOYMENT_REPORT.txt"
+            report_path = self.output_dir / "OPTIMIZATION_REPORT.txt"
             with open(report_path, 'w', encoding='utf-8') as f:
                 f.write(report)
             
             # Print key sections
             safe_print(report)
             
-            safe_log(f"Production report saved to: {report_path}")
             return str(report_path)
             
         except Exception as e:
-            safe_log(f"Report generation failed: {str(e)}", "error")
+            LOG.error(f"Report generation failed: {str(e)}")
             return ""
 
 # ============================================================================
-# MAIN EXECUTION FUNCTION
+# MAIN EXECUTION
 # ============================================================================
 
 def main():
-    """Main execution function for production pipeline"""
+    """Main execution function"""
     
-    safe_print("="*70)
-    safe_print("PRODUCTION MAIL-TO-CALLS PREDICTION SYSTEM")
-    safe_print("="*70)
-    safe_print("INPUT: Your actual mail data structure")
-    safe_print("  - mail_date, mail_volume, mail_type, source_file")
-    safe_print("  - Using your real mail types (New_Chk, Digital_Insert, etc.)")
+    safe_print("="*80)
+    safe_print("OPTIMIZED MAIL-TO-CALLS PREDICTION SYSTEM")
+    safe_print("="*80)
+    safe_print("SYSTEMATIC OPTIMIZATION APPROACH:")
+    safe_print("  1. Analyze mail types by VOLUME and CORRELATION")
+    safe_print("  2. Find optimal tradeoff between volume and correlation")
+    safe_print("  3. Test comprehensive feature combinations")
+    safe_print("  4. Systematic model testing and selection")
+    safe_print("  5. Output the HIGHEST ACCURACY configuration")
     safe_print("")
-    safe_print("OUTPUT: Call volume + Intent predictions")
-    safe_print("  - Daily call volume forecasts")
-    safe_print("  - Confidence intervals")
-    safe_print("  - Intent distribution predictions")
-    safe_print("  - Business insights and recommendations")
-    safe_print("")
-    safe_print("FEATURES: Production-grade, Self-healing, ASCII-safe")
-    safe_print("="*70)
+    safe_print("GOAL: Maximum prediction accuracy through systematic optimization")
+    safe_print("="*80)
     safe_print("")
     
     try:
-        # Run the production pipeline
-        orchestrator = ProductionPipelineOrchestrator()
-        results = orchestrator.run_production_pipeline()
+        orchestrator = OptimizationOrchestrator()
+        results = orchestrator.run_complete_optimization()
         
         if results['success']:
-            safe_print("\n" + "="*50)
-            safe_print("PRODUCTION SYSTEM DEPLOYED SUCCESSFULLY!")
-            safe_print("="*50)
+            safe_print("\n" + "="*60)
+            safe_print("OPTIMIZATION COMPLETED SUCCESSFULLY!")
+            safe_print("="*60)
             safe_print("")
-            safe_print("READY FOR PRODUCTION USE:")
-            safe_print(f"✓ Best Model: {results['best_approach']}")
-            safe_print(f"✓ Mail Types: {len(results['mail_types_used'])} processed")
-            safe_print(f"✓ Execution Time: {results['execution_time_minutes']:.1f} minutes")
+            safe_print("OPTIMAL CONFIGURATION FOUND:")
+            
+            if results['best_configuration']:
+                best_config = results['best_configuration']
+                safe_print(f"  Configuration: {best_config['config_id']}")
+                safe_print(f"  Best Score: {results['best_score']:.3f}")
+                safe_print(f"  Mail Strategy: {best_config['mail_strategy']}")
+                safe_print(f"  Model: {best_config['model_name']}")
+                safe_print(f"  Mail Types Used: {len(best_config['mail_types'])}")
+                safe_print("")
+                safe_print("TOP MAIL TYPES:")
+                for i, mail_type in enumerate(best_config['mail_types'][:5]):
+                    safe_print(f"    {i+1}. {mail_type}")
+                safe_print("")
+            
+            safe_print("OPTIMIZATION INSIGHTS:")
+            safe_print(f"  Total Configurations Tested: {len(results.get('optimization_insights', {}))}")
+            safe_print(f"  Execution Time: {results['execution_time_minutes']:.1f} minutes")
+            safe_print(f"  Results Saved: {results['output_directory']}")
             safe_print("")
-            safe_print("YOUR MAIL TYPES INTEGRATED:")
-            for mail_type in results['mail_types_used'][:5]:
-                safe_print(f"  • {mail_type}")
-            if len(results['mail_types_used']) > 5:
-                safe_print(f"  ... and {len(results['mail_types_used'])-5} more")
-            safe_print("")
-            safe_print("CAPABILITIES:")
-            safe_print("✓ Single day predictions from your mail data")
-            safe_print("✓ Multi-day campaign impact analysis")
-            safe_print("✓ 5-day business forecasting")
-            safe_print("✓ Confidence intervals and business insights")
-            safe_print("")
-            safe_print(f"📁 All files saved to: {results['output_directory']}")
-            safe_print("📋 See USAGE_GUIDE.txt for integration instructions")
+            safe_print("PRODUCTION READY:")
+            safe_print("  * Best optimized model saved")
+            safe_print("  * Complete configuration documented") 
+            safe_print("  * Mail type analysis completed")
+            safe_print("  * Feature engineering optimized")
             
         else:
-            safe_print("\n" + "="*40)
-            safe_print("PRODUCTION PIPELINE FAILED")
-            safe_print("="*40)
+            safe_print("\n" + "="*50)
+            safe_print("OPTIMIZATION FAILED")
+            safe_print("="*50)
             safe_print(f"Error: {results['error']}")
-            safe_print("Check logs for detailed error information")
-            safe_print(f"Partial results may be available in: {results['output_directory']}")
+            safe_print("Check logs for detailed information")
         
         return 0 if results['success'] else 1
         
     except KeyboardInterrupt:
-        safe_print("\nPipeline interrupted by user")
+        safe_print("\nOptimization interrupted by user")
         return 1
         
     except Exception as e:
-        safe_print(f"\nUnexpected system error: {str(e)}")
-        safe_print("Check logs for detailed error information")
+        safe_print(f"\nSystem error: {str(e)}")
         return 1
 
 if __name__ == "__main__":
