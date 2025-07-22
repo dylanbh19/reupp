@@ -1,3 +1,357 @@
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> & C:/Users/BhungarD/python.exe "c:/Users/BhungarD/OneDrive - Computershare/Desktop/finprod/model.py"
+======================================================================
+PRODUCTION MAIL-TO-CALLS PREDICTION SYSTEM
+======================================================================
+INPUT: Your actual mail data structure
+  - mail_date, mail_volume, mail_type, source_file
+  - Using your real mail types (New_Chk, Digital_Insert, etc.)
+
+OUTPUT: Call volume + Intent predictions
+  - Daily call volume forecasts
+  - Confidence intervals
+  - Intent distribution predictions
+  - Business insights and recommendations
+
+FEATURES: Production-grade, Self-healing, ASCII-safe
+======================================================================
+
+2025-07-22 21:02:52,657 |     INFO | Output directory structure created: production_mail_calls_system
+2025-07-22 21:02:52,660 |     INFO | ======================================================================
+2025-07-22 21:02:52,661 |     INFO | PRODUCTION MAIL-TO-CALLS PREDICTION PIPELINE
+2025-07-22 21:02:52,662 |     INFO | ======================================================================
+2025-07-22 21:02:52,663 |     INFO | INPUT: Your actual mail data (mail_date, mail_volume, mail_type)
+2025-07-22 21:02:52,664 |     INFO | OUTPUT: Call volume + Intent predictions
+2025-07-22 21:02:52,665 |     INFO | APPROACH: Production-grade with self-healing
+2025-07-22 21:02:52,666 |     INFO | ======================================================================
+2025-07-22 21:02:52,667 |     INFO |
+PHASE 1: PRODUCTION DATA LOADING
+2025-07-22 21:02:52,668 |     INFO | === STARTING PRODUCTION DATA LOADING ===
+2025-07-22 21:02:52,669 |     INFO | Loading production call intent data...
+2025-07-22 21:02:52,670 |     INFO | Loading file: callintent.csv
+2025-07-22 21:02:52,671 |     INFO | Found file at: data/callintent.csv
+2025-07-22 21:03:03,303 |     INFO | Successfully loaded: 1053601 rows, 42 columns
+2025-07-22 21:03:03,360 |     INFO | Detected call columns: {'date': 'ConversationStart', 'intent': 'intent'}
+2025-07-22 21:03:04,928 |     INFO | Found 1053601 call records from 2025+
+2025-07-22 21:03:05,230 |     INFO | Processing intent data...
+2025-07-22 21:03:05,642 |     INFO | Keeping 40 intents (>= 10 occurrences)
+2025-07-22 21:03:05,643 |     INFO | Removed 76 rare intents
+2025-07-22 21:03:05,863 |     INFO | Created intent distribution for 40 intents
+2025-07-22 21:03:06,040 |     INFO | Loading production mail data...
+2025-07-22 21:03:06,040 |     INFO | Loading file: mail.csv
+2025-07-22 21:03:06,041 |     INFO | Found file at: data/mail.csv
+2025-07-22 21:03:07,061 |     INFO | Successfully loaded: 1409780 rows, 4 columns
+2025-07-22 21:03:07,142 |     INFO | Detected mail columns: {'date': 'mail_date', 'volume': 'mail_volume', 'type': 'mail_type'}
+2025-07-22 21:03:07,403 |     INFO | Found 582365 mail records from 2025+
+2025-07-22 21:03:07,487 |     INFO | Keeping 133 mail types after filtering
+2025-07-22 21:03:07,533 |     INFO | Selected top 15 mail types: ['Cheque', 'Scheduled PAYMENT CHECKS', 'Proxy (US)', 'DRP Stmt.', 'Envision', 'Notice', 'Scheduled 1099 DIV', 'Tax StndAlone', 'Scheduled Check +1099 Duplex', 'Scheduled ACH 1099D', 'DRP 1099', 'G_Statements', 'Once Off PRINT JOB ONLY', 'Cheque 1099', 'Scheduled 1099B TAX INFO STATEMENT']
+2025-07-22 21:03:07,536 |     INFO | Mail data processed: 136 days, 15 types
+2025-07-22 21:03:07,538 |     INFO | Aligning production data...
+2025-07-22 21:03:07,539 |     INFO | Found 104 overlapping dates between calls and mail
+2025-07-22 21:03:07,540 |     INFO | Filtered to 82 business days
+2025-07-22 21:03:07,543 |     INFO | Data alignment complete: 82 days
+
+======================================================================
+PRODUCTION DATA LOADING SUMMARY
+======================================================================
+
+CALLS:
+  total_records: 1053601
+  daily_records: 123
+  date_range: 2025-02-05 to 2025-06-08
+  avg_daily_calls: 8565.86
+  max_daily_calls: 18209
+  min_daily_calls: 5
+  has_intents: True
+  intent_count: 40
+
+MAIL:
+  total_records: 122450
+  daily_records: 136
+  date_range: 2025-01-01 to 2025-05-31
+  mail_types: 15
+  mail_type_list: ['Cheque', 'Scheduled PAYMENT CHECKS', 'Proxy (US)']... (total: 15)
+  avg_daily_volume: 288026.56
+  total_volume: 39171612.00
+
+ALIGNMENT:
+  total_days: 82
+  date_range: 2025-02-05 00:00:00 to 2025-05-30 00:00:00
+  has_mail_overlap: True
+  business_days_only: True
+======================================================================
+2025-07-22 21:03:07,549 |     INFO | All data loaded successfully
+2025-07-22 21:03:07,550 |     INFO |
+PHASE 2: PRODUCTION MODEL TRAINING
+2025-07-22 21:03:07,551 |     INFO | === PRODUCTION MODEL TRAINING ===
+2025-07-22 21:03:07,552 |     INFO |
+--- APPROACH: BASIC ---
+2025-07-22 21:03:07,553 |     INFO | Creating basic features for volume prediction...
+2025-07-22 21:03:07,554 |     INFO | Creating basic mail features for 15 mail types
+2025-07-22 21:03:07,576 |     INFO | Created 32 mail impact features
+2025-07-22 21:03:07,577 |     INFO | Creating temporal features...
+2025-07-22 21:03:08,223 |     INFO | Created 14 temporal features
+2025-07-22 21:03:08,224 |     INFO | Creating call history features...
+2025-07-22 21:03:08,260 |     INFO | Created 6 call history features
+2025-07-22 21:03:08,263 |     INFO | Volume prediction features: 52 features, 81 samples
+2025-07-22 21:03:08,264 |     INFO | Creating basic features for intent prediction...
+2025-07-22 21:03:08,267 |     INFO | Creating basic mail features for 15 mail types
+2025-07-22 21:03:08,290 |     INFO | Created 32 mail impact features
+2025-07-22 21:03:08,291 |     INFO | Creating temporal features...
+2025-07-22 21:03:08,300 |     INFO | Created 14 temporal features
+2025-07-22 21:03:08,301 |     INFO | Creating call history features...
+2025-07-22 21:03:08,319 |     INFO | Created 6 call history features
+2025-07-22 21:03:08,322 |     INFO | Intent prediction features: 92 features, 81 samples
+2025-07-22 21:03:08,323 |     INFO | Training basic approach models...
+2025-07-22 21:03:08,323 |     INFO |   Training ridge for volume prediction...
+2025-07-22 21:03:08,424 |     INFO |     ridge: CV R = -189350.581, Test R = -2.185
+2025-07-22 21:03:08,425 |     INFO |   Training intent prediction for basic...
+2025-07-22 21:03:09,065 |     INFO |     Intent model: CV Accuracy = 0.983
+2025-07-22 21:03:09,066 |     INFO | Approach basic completed: Best R = -189350.581
+2025-07-22 21:03:09,066 |     INFO |
+--- APPROACH: STANDARD ---
+2025-07-22 21:03:09,067 |     INFO | Creating standard features for volume prediction...
+2025-07-22 21:03:09,068 |     INFO | Creating standard mail features for 15 mail types
+2025-07-22 21:03:09,108 |     INFO | Created 75 mail impact features
+2025-07-22 21:03:09,109 |     INFO | Creating temporal features...
+2025-07-22 21:03:09,118 |     INFO | Created 14 temporal features
+2025-07-22 21:03:09,119 |     INFO | Creating call history features...
+2025-07-22 21:03:09,145 |     INFO | Created 22 call history features
+2025-07-22 21:03:09,148 |     INFO | Volume prediction features: 111 features, 81 samples
+2025-07-22 21:03:09,150 |     INFO | Creating standard features for intent prediction...
+2025-07-22 21:03:09,154 |     INFO | Creating standard mail features for 15 mail types
+2025-07-22 21:03:09,197 |     INFO | Created 75 mail impact features
+2025-07-22 21:03:09,198 |     INFO | Creating temporal features...
+2025-07-22 21:03:09,210 |     INFO | Created 14 temporal features
+2025-07-22 21:03:09,211 |     INFO | Creating call history features...
+2025-07-22 21:03:09,242 |     INFO | Created 22 call history features
+2025-07-22 21:03:09,248 |     INFO | Intent prediction features: 151 features, 81 samples
+2025-07-22 21:03:09,249 |     INFO | Training standard approach models...
+2025-07-22 21:03:09,250 |     INFO |   Training ridge for volume prediction...
+2025-07-22 21:03:09,309 |     INFO |     ridge: CV R = -33435.988, Test R = -2062.582
+2025-07-22 21:03:09,309 |     INFO |   Training random_forest for volume prediction...
+2025-07-22 21:03:11,936 |     INFO |     random_forest: CV R = -0.424, Test R = -0.009
+2025-07-22 21:03:11,937 |     INFO |   Training intent prediction for standard...
+2025-07-22 21:03:12,730 |     INFO |     Intent model: CV Accuracy = 0.983
+2025-07-22 21:03:12,731 |     INFO | Approach standard completed: Best R = -0.424
+2025-07-22 21:03:12,731 |     INFO |
+--- APPROACH: ADVANCED ---
+2025-07-22 21:03:12,732 |     INFO | Creating advanced features for volume prediction...
+2025-07-22 21:03:12,733 |     INFO | Creating advanced mail features for 15 mail types
+2025-07-22 21:03:12,837 |     INFO | Created 119 mail impact features
+2025-07-22 21:03:12,838 |     INFO | Creating temporal features...
+2025-07-22 21:03:12,844 |     INFO | Created 14 temporal features
+2025-07-22 21:03:12,845 |     INFO | Creating call history features...
+2025-07-22 21:03:12,874 |     INFO | Created 22 call history features
+2025-07-22 21:03:12,903 |     INFO | Volume prediction features: 155 features, 81 samples
+2025-07-22 21:03:12,904 |     INFO | Creating advanced features for intent prediction...
+2025-07-22 21:03:12,906 |     INFO | Creating advanced mail features for 15 mail types
+2025-07-22 21:03:12,996 |     INFO | Created 119 mail impact features
+2025-07-22 21:03:12,997 |     INFO | Creating temporal features...
+2025-07-22 21:03:13,005 |     INFO | Created 14 temporal features
+2025-07-22 21:03:13,005 |     INFO | Creating call history features...
+2025-07-22 21:03:13,049 |     INFO | Created 22 call history features
+2025-07-22 21:03:13,052 |     INFO | Intent prediction features: 195 features, 81 samples
+2025-07-22 21:03:13,053 |     INFO | Training advanced approach models...
+2025-07-22 21:03:13,054 |     INFO |   Training ridge for volume prediction...
+2025-07-22 21:03:13,108 |     INFO |     ridge: CV R = -100.718, Test R = -58.971
+2025-07-22 21:03:13,109 |     INFO |   Training random_forest for volume prediction...
+2025-07-22 21:03:15,060 |     INFO |     random_forest: CV R = -0.812, Test R = -2.215
+2025-07-22 21:03:15,061 |     INFO |   Training gradient_boost for volume prediction...
+2025-07-22 21:03:18,500 |     INFO |     gradient_boost: CV R = -1.380, Test R = -0.996
+2025-07-22 21:03:18,501 |     INFO |   Training intent prediction for advanced...
+2025-07-22 21:03:19,472 |     INFO |     Intent model: CV Accuracy = 0.983
+2025-07-22 21:03:19,473 |     INFO | Approach advanced completed: Best R = -0.812
+2025-07-22 21:03:19,473 |     INFO |
+Best overall approach: standard (R = -0.424)
+2025-07-22 21:03:19,474 |     INFO |
+PHASE 3: PRODUCTION PREDICTION ENGINE
+2025-07-22 21:03:19,474 |     INFO |
+PHASE 4: GENERATING PRODUCTION EXAMPLES
+2025-07-22 21:03:19,475 |     INFO | Generating production examples with your actual mail types...
+2025-07-22 21:03:19,476 |     INFO | Making prediction from your mail inputs...
+2025-07-22 21:03:19,478 |    ERROR | Prediction failed: X has 25 features, but RandomForestRegressor is expecting 111 features as input.
+2025-07-22 21:03:19,479 |     INFO | Making prediction from your mail inputs...
+2025-07-22 21:03:19,484 |    ERROR | Prediction failed: X has 25 features, but RandomForestRegressor is expecting 111 features as input.
+2025-07-22 21:03:19,486 |     INFO | Making prediction from your mail inputs...
+2025-07-22 21:03:19,491 |    ERROR | Prediction failed: X has 25 features, but RandomForestRegressor is expecting 111 features as input.
+2025-07-22 21:03:19,492 |     INFO | Making prediction from your mail inputs...
+2025-07-22 21:03:19,495 |    ERROR | Prediction failed: X has 25 features, but RandomForestRegressor is expecting 111 features as input.
+2025-07-22 21:03:19,497 |     INFO | Making prediction from your mail inputs...
+2025-07-22 21:03:19,501 |    ERROR | Prediction failed: X has 25 features, but RandomForestRegressor is expecting 111 features as input.
+2025-07-22 21:03:19,502 |     INFO | Generated 3 production examples
+2025-07-22 21:03:19,503 |     INFO |
+PHASE 5: SAVING PRODUCTION ASSETS
+2025-07-22 21:03:19,503 |     INFO | Saving production assets...
+2025-07-22 21:03:19,614 |     INFO | All production assets saved successfully
+2025-07-22 21:03:19,615 |     INFO |
+PHASE 6: GENERATING PRODUCTION REPORT
+
+================================================================
+PRODUCTION MAIL-TO-CALLS PREDICTION SYSTEM
+================================================================
+DEPLOYMENT REPORT
+
+EXECUTIVE SUMMARY:
+-----------------
+Status: SUCCESS
+Execution Time: 0.4 minutes
+Best Model: standard
+Prediction Accuracy: 0.0% (R-squared)
+Mean Absolute Error: 1468 calls
+
+DATA PROCESSED:
+--------------
+Call Records: 1,053,601
+Analysis Period: 2025-02-05 to 2025-06-08
+Daily Call Average: 8566
+Mail Data Available: Yes
+Mail Types Processed: 15
+
+YOUR MAIL TYPES:
+---------------
+  1. Cheque
+  2. Scheduled PAYMENT CHECKS
+  3. Proxy (US)
+  4. DRP Stmt.
+  5. Envision
+  6. Notice
+  7. Scheduled 1099 DIV
+  8. Tax StndAlone
+  9. Scheduled Check +1099 Duplex
+  10. Scheduled ACH 1099D
+  11. DRP 1099
+  12. G_Statements
+  13. Once Off PRINT JOB ONLY
+  14. Cheque 1099
+  15. Scheduled 1099B TAX INFO STATEMENT
+
+
+MODEL PERFORMANCE:
+-----------------
+  BASIC: R = 0.000, Features = 104
+  STANDARD: R = 0.000, Features = 222
+  ADVANCED: R = 0.000, Features = 310
+
+PRODUCTION CAPABILITIES:
+-----------------------
+ Single day call volume prediction from your mail data
+ Multi-day campaign impact analysis
+ 5-day business outlook forecasting
+ Intent distribution prediction (if intent data available)
+ Confidence intervals and business insights
+ Self-healing data processing
+ Production-grade error handling
+
+INPUT FORMAT:
+------------
+Your system expects mail data in this format:
+{
+    '2025-07-25': {
+        'Cheque': 127,
+        'Scheduled PAYMENT CHECKS': 50,
+        'Proxy (US)': 31
+    }
+}
+
+OUTPUT EXAMPLE:
+--------------
+{
+    'predicted_call_volume': 850,
+    'confidence_intervals': {
+        '68%': {'lower': 765, 'upper': 935},
+        '95%': {'lower': 680, 'upper': 1020}
+    },
+    'business_insights': {
+        'staffing': 'Standard staffing recommended',
+        'capacity_planning': 'Plan for up to 935 calls (includes 10% buffer)'
+    }
+}
+
+DEPLOYMENT FILES:
+----------------
+ production_volume_model.pkl - Main prediction model
+ production_intent_model.pkl - Intent classification model
+ data_summary.json - Data processing summary
+ training_results.json - Model performance metrics
+ production_examples.json - Usage examples
+ mail_types_reference.json - Your mail types reference
+ USAGE_GUIDE.txt - Detailed usage instructions
+
+BUSINESS VALUE:
+--------------
+ Accurate call volume forecasting: 0.0% accuracy
+ Proactive staffing optimization based on mail campaigns
+ 5-day business outlook for capacity planning
+ Reduced under/over-staffing through predictive analytics
+ Data-driven resource allocation
+
+SYSTEM INTEGRATION:
+------------------
+The system is production-ready and can be integrated via:
+1. Direct Python API calls
+2. Batch processing for daily forecasts
+3. Real-time prediction endpoints
+4. Automated reporting and alerting
+
+QUALITY ASSURANCE:
+-----------------
+ Robust cross-validation with time series splits
+ Multiple model approaches tested
+ Production error handling and fallbacks
+ Data quality checks and cleaning
+ Business rule validation
+
+NEXT STEPS:
+----------
+1. Deploy models to production environment
+2. Set up automated daily forecasting
+3. Integrate with workforce management systems
+4. Monitor prediction accuracy and retrain monthly
+5. Expand to additional mail types as data becomes available
+
+================================================================
+Generated: 2025-07-22 21:03:19
+System Version: Production Grade v1.0
+================================================================
+
+2025-07-22 21:03:19,629 |     INFO | Production report saved to: production_mail_calls_system\reports\PRODUCTION_DEPLOYMENT_REPORT.txt
+2025-07-22 21:03:19,630 |     INFO |
+======================================================================
+2025-07-22 21:03:19,632 |     INFO | PRODUCTION PIPELINE COMPLETED SUCCESSFULLY!
+2025-07-22 21:03:19,633 |     INFO | Execution time: 0.4 minutes
+2025-07-22 21:03:19,634 |     INFO | Best approach: standard
+2025-07-22 21:03:19,635 |     INFO | Output directory: production_mail_calls_system
+2025-07-22 21:03:19,637 |     INFO | ======================================================================
+
+==================================================
+PRODUCTION SYSTEM DEPLOYED SUCCESSFULLY!
+==================================================
+
+READY FOR PRODUCTION USE:
+ Best Model: standard
+ Mail Types: 15 processed
+ Execution Time: 0.4 minutes
+
+YOUR MAIL TYPES INTEGRATED:
+   Cheque
+   Scheduled PAYMENT CHECKS
+   Proxy (US)
+   DRP Stmt.
+   Envision
+  ... and 10 more
+
+CAPABILITIES:
+ Single day predictions from your mail data
+ Multi-day campaign impact analysis
+ 5-day business forecasting
+ Confidence intervals and business insights
+
+ All files saved to: production_mail_calls_system
+ See USAGE_GUIDE.txt for integration instructions
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> 
+
+
+
 #!/usr/bin/env python
 """
 PRODUCTION MAIL-TO-CALLS PREDICTION SYSTEM
