@@ -920,7 +920,7 @@ class UltimateFeatureEngine:
                 
                 # === INTERACTION FEATURES ===
                 feature_row["mail_x_weekday"] = total_mail * current_date.weekday()
-                feature_row["mail_x_month"] = total_mail * current_date.month()
+                feature_row["mail_x_month"] = total_mail * current_date.month
                 
                 # Economic-mail interactions
                 if econ_cols and total_mail > 0:
@@ -971,23 +971,31 @@ class UltimateFeatureEngine:
                 X[col] = X[col] / 1000
         
         # Remove features with no variance
-        variance_selector = VarianceThreshold(threshold=0)
-        X = pd.DataFrame(
-            variance_selector.fit_transform(X),
-            columns=X.columns[variance_selector.get_support()],
-            index=X.index
-        )
+        if not X.empty and X.shape[1] > 0:
+            variance_selector = VarianceThreshold(threshold=0)
+            X_transformed = variance_selector.fit_transform(X)
+            if X_transformed.shape[1] > 0:
+                X = pd.DataFrame(
+                    X_transformed,
+                    columns=X.columns[variance_selector.get_support()],
+                    index=X.index
+                )
+            else:
+                LOG.warning("All features removed by variance threshold")
         
         LOG.info(f"Ultimate features created: {X.shape[0]} samples x {X.shape[1]} features")
         
         # Feature selection to keep best features
-        if X.shape[1] > CFG["max_features"]:
+        if X.shape[1] > CFG["max_features"] and not X.empty:
             LOG.info(f"Selecting top {CFG['max_features']} features...")
-            selector = SelectKBest(score_func=f_regression, k=CFG["max_features"])
-            X_selected = selector.fit_transform(X, y)
-            selected_features = X.columns[selector.get_support()]
-            X = pd.DataFrame(X_selected, columns=selected_features, index=X.index)
-            LOG.info(f"Selected {len(selected_features)} best features")
+            try:
+                selector = SelectKBest(score_func=f_regression, k=min(CFG["max_features"], X.shape[1]))
+                X_selected = selector.fit_transform(X, y)
+                selected_features = X.columns[selector.get_support()]
+                X = pd.DataFrame(X_selected, columns=selected_features, index=X.index)
+                LOG.info(f"Selected {len(selected_features)} best features")
+            except Exception as e:
+                LOG.warning(f"Feature selection failed: {e}")
         
         return X, y
 
@@ -1152,6 +1160,11 @@ class ModelTester:
         """Test all models on a feature set"""
         
         LOG.info(f"Testing all models on {feature_set_name}...")
+        
+        # Check if we have valid data
+        if X.empty or len(y) == 0:
+            LOG.warning(f"No valid data for {feature_set_name} - skipping")
+            return []
         
         results = []
         
@@ -2249,7 +2262,12 @@ class UltimateModelOrchestrator:
             
             LOG.info("Creating and testing ultimate features...")
             X_ultimate, y_ultimate = ultimate_engine.create_features()
-            ultimate_results = model_tester.test_all_models(X_ultimate, y_ultimate, "ultimate")
+            
+            if not X_ultimate.empty and len(y_ultimate) > 0:
+                ultimate_results = model_tester.test_all_models(X_ultimate, y_ultimate, "ultimate")
+            else:
+                LOG.warning("Ultimate feature creation failed - skipping ultimate models")
+                ultimate_results = []
             
             # === PHASE 4: ANALYZE RESULTS ===
             print_ascii_section("PHASE 4: ANALYZING RESULTS")
