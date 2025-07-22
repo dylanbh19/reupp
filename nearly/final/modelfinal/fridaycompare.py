@@ -1,264 +1,3 @@
-PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> & C:/Users/BhungarD/python.exe "c:/Users/BhungarD/OneDrive - Computershare/Desktop/finprod/firdaycompare.py"
-2025-07-22 13:13:04,896 |     INFO | Comprehensive Model Analyzer initialized
-COMPREHENSIVE MODEL ANALYSIS & TESTING SUITE
-============================================================
-Complete analysis of all strategic options:
-✓ Option 1: Baseline Model Analysis
-✓ Option 2: Hybrid Approach Implementation
-✓ Option 3: Friday Pattern Investigation
-✓ Interactive Testing & Visualizations
-
-Prerequisites:
-• Run friday_enhanced_model_trainer.py first
-• Ensure model files are available
-
-2025-07-22 13:13:04,900 |     INFO | COMPREHENSIVE MODEL ANALYSIS & TESTING SUITE
-2025-07-22 13:13:04,901 |     INFO | ================================================================================
-2025-07-22 13:13:04,901 |     INFO | Loading trained models...
-2025-07-22 13:13:04,902 |     INFO | Loading trained models...
-2025-07-22 13:13:04,964 |     INFO | Baseline models loaded: 6 models
-2025-07-22 13:13:05,052 |     INFO | Enhanced models loaded: 6 models
-2025-07-22 13:13:05,053 |     INFO |
-================================================================================
-2025-07-22 13:13:05,054 |     INFO | OPTION 1: ANALYZING BASELINE MODEL OPTIMALITY
-2025-07-22 13:13:05,055 |     INFO | ============================================================
-2025-07-22 13:13:05,056 |     INFO | Top 10 most important features:
-2025-07-22 13:13:05,056 |     INFO |    1. weekday                  :  +915.45
-2025-07-22 13:13:05,057 |     INFO |    2. month                    :  +150.88
-2025-07-22 13:13:05,058 |     INFO |    3. log_total_mail_volume    :   +25.55
-2025-07-22 13:13:05,058 |     INFO |    4. NOTC_WITHDRAW_volume     :   +25.21
-2025-07-22 13:13:05,059 |     INFO |    5. Exch_chks_volume         :    +5.26
-2025-07-22 13:13:05,060 |     INFO |    6. ACH_Debit_Enrollment_volume:    +3.13
-2025-07-22 13:13:05,061 |     INFO |    7. Reject_Ltrs_volume       :    +1.85
-2025-07-22 13:13:05,061 |     INFO |    8. Transfer_volume          :    -1.70
-2025-07-22 13:13:05,062 |     INFO |    9. Repl_Chks_volume         :    -1.17
-2025-07-22 13:13:05,063 |     INFO |   10. SOI_Confirms_volume      :    -1.05
-2025-07-22 13:13:05,069 |     INFO | 
-Baseline residual analysis by weekday:
-2025-07-22 13:13:05,072 |     INFO |   Monday    : Mean residual= +1237, Std=  6600, Samples=13
-2025-07-22 13:13:05,076 |     INFO |   Tuesday   : Mean residual=  -505, Std=  2363, Samples=14
-2025-07-22 13:13:05,078 |     INFO |   Wednesday : Mean residual= -1978, Std=  4538, Samples=14
-2025-07-22 13:13:05,080 |     INFO |   Thursday  : Mean residual= -3109, Std=  2845, Samples=15
-2025-07-22 13:13:05,082 |     INFO |   Friday    : Mean residual= +8235, Std= 13027, Samples=14
-2025-07-22 13:13:05,083 |     INFO |
-Data constraints:
-2025-07-22 13:13:05,084 |     INFO |   Total test samples: 70
-2025-07-22 13:13:05,084 |     INFO |   Friday samples: 14
-2025-07-22 13:13:05,085 |     INFO |   Friday percentage: 20.0%
-2025-07-22 13:13:05,086 |     INFO |
-================================================================================
-2025-07-22 13:13:05,087 |     INFO | OPTION 2: IMPLEMENTING HYBRID APPROACH
-2025-07-22 13:13:05,087 |     INFO | ============================================================
-2025-07-22 13:13:05,088 |     INFO | Feature alignment:
-2025-07-22 13:13:05,089 |     INFO |   Baseline features: 19
-2025-07-22 13:13:05,089 |     INFO |   Enhanced features: 43
-2025-07-22 13:13:05,090 |     INFO |   Common features: 19
-2025-07-22 13:13:05,091 |     INFO |
-Testing baseline strategy:
-2025-07-22 13:13:05,093 |    ERROR | Error testing baseline: The feature names should match those that were passed during fit.
-Feature names must be in the same order as they were in fit.
-
-2025-07-22 13:13:05,094 |     INFO |
-Testing enhanced strategy:
-2025-07-22 13:13:05,109 |     INFO |   MAE: 4247, RMSE: 7905, R²: 0.226
-2025-07-22 13:13:05,110 |     INFO |     Monday: 4359
-2025-07-22 13:13:05,110 |     INFO |     Tuesday: 1757
-2025-07-22 13:13:05,111 |     INFO |     Wednesday: 2966
-2025-07-22 13:13:05,112 |     INFO |     Thursday: 1906
-2025-07-22 13:13:05,113 |     INFO |     Friday: 10420
-2025-07-22 13:13:05,113 |     INFO | 
-Testing hybrid strategy:
-2025-07-22 13:13:05,120 |    ERROR | Error testing hybrid: 'HybridModel' object has no attribute 'baseline_data'
-2025-07-22 13:13:05,121 |     INFO |
-================================================================================
-2025-07-22 13:13:05,122 |     INFO | OPTION 3: INVESTIGATING FRIDAY PATTERNS
-2025-07-22 13:13:05,122 |     INFO | ============================================================
-2025-07-22 13:13:05,123 |     INFO | Friday sample analysis:
-2025-07-22 13:13:05,124 |     INFO |   Total Friday samples: 70
-2025-07-22 13:13:05,124 |     INFO |   Friday call range: 1889 to 70828
-2025-07-22 13:13:05,125 |     INFO |   Friday call mean: 23444
-2025-07-22 13:13:05,125 |     INFO |   Friday call std: 16304
-2025-07-22 13:13:05,126 |     INFO |   Overall call mean: 15830
-2025-07-22 13:13:05,126 |     INFO |   Friday vs Overall Z-score: 0.62
-2025-07-22 13:13:05,128 |     INFO |
-Friday-specific features (24):
-2025-07-22 13:13:05,129 |     INFO |   friday_mail_squared: mean=861.61, std=4132.59
-2025-07-22 13:13:05,131 |     INFO |   friday_mail_sqrt: mean=81.71, std=79.60
-2025-07-22 13:13:05,133 |     INFO |   friday_mail_cubed: mean=110.27, std=730.09
-2025-07-22 13:13:05,135 |     INFO |   friday_log_mail_squared: mean=62.77, std=39.49
-2025-07-22 13:13:05,136 |     INFO |   friday_Reject_Ltrs_volume: mean=57.84, std=125.03
-2025-07-22 13:13:05,137 |     INFO |   friday_Reject_Ltrs_volume_squared: mean=0.02, std=0.06
-2025-07-22 13:13:05,138 |     INFO |   friday_Cheque 1099_volume: mean=8112.46, std=25948.95
-2025-07-22 13:13:05,139 |     INFO |   friday_Cheque 1099_volume_squared: mean=729.54, std=3989.12
-2025-07-22 13:13:05,139 |     INFO |
-Testing simpler Friday approaches...
-2025-07-22 13:13:05,177 |     INFO |   Friday dummy only: MAE = 4498
-2025-07-22 13:13:05,183 |     INFO |   Friday 1.0x multiplier: MAE = 4416
-2025-07-22 13:13:05,185 |     INFO |   Friday 1.1x multiplier: MAE = 4307
-2025-07-22 13:13:05,186 |     INFO |   Friday 1.2x multiplier: MAE = 4234
-2025-07-22 13:13:05,188 |     INFO |   Friday 1.3x multiplier: MAE = 4184
-2025-07-22 13:13:05,189 |     INFO |   Friday 1.4x multiplier: MAE = 4229
-2025-07-22 13:13:05,190 |     INFO |   Friday 1.5x multiplier: MAE = 4295
-2025-07-22 13:13:05,190 |     INFO |   Best Friday multiplier: 1.3x (MAE = 4184)
-2025-07-22 13:13:05,190 |     INFO |
-================================================================================
-2025-07-22 13:13:05,191 |     INFO | INTERACTIVE MODEL TESTING
-2025-07-22 13:13:05,191 |     INFO | ============================================================
-2025-07-22 13:13:05,193 |     INFO | 
-Testing scenario: Light Day
-2025-07-22 13:13:05,193 |     INFO |   Inputs: {'name': 'Light Day', 'Reject_Ltrs': 500, 'Cheque 1099': 200, 'Transfer': 100, 'weekday': 'Monday'}
-2025-07-22 13:13:05,202 |     INFO |   Baseline prediction: 12581 calls
-2025-07-22 13:13:05,205 |     INFO |   Enhanced prediction: 10321 calls
-2025-07-22 13:13:05,207 |     INFO |   Hybrid prediction:   10321 calls
-2025-07-22 13:13:05,209 |     INFO |   Prediction ranges:
-2025-07-22 13:13:05,210 |     INFO |     Conservative (25-75%): 8382 - 13894
-2025-07-22 13:13:05,210 |     INFO |     Wide range (10-90%):   4899 - 18636
-2025-07-22 13:13:05,211 |     INFO | 
-Testing scenario: Normal Day
-2025-07-22 13:13:05,212 |     INFO |   Inputs: {'name': 'Normal Day', 'Reject_Ltrs': 1200, 'Cheque 1099': 800, 'Exercise_Converted': 300, 'weekday': 'Wednesday'}
-2025-07-22 13:13:05,221 |     INFO |   Baseline prediction: 16403 calls
-2025-07-22 13:13:05,224 |     INFO |   Enhanced prediction: 7951 calls
-2025-07-22 13:13:05,226 |     INFO |   Hybrid prediction:   7951 calls
-2025-07-22 13:13:05,234 |     INFO |   Prediction ranges:
-2025-07-22 13:13:05,235 |     INFO |     Conservative (25-75%): 9863 - 15469
-2025-07-22 13:13:05,236 |     INFO |     Wide range (10-90%):   4614 - 19702
-2025-07-22 13:13:05,237 |     INFO |
-Testing scenario: Heavy Day
-2025-07-22 13:13:05,238 |     INFO |   Inputs: {'name': 'Heavy Day', 'Reject_Ltrs': 2500, 'Cheque 1099': 1500, 'Exercise_Converted': 600, 'SOI_Confirms': 400, 'weekday': 'Thursday'}
-2025-07-22 13:13:05,244 |     INFO |   Baseline prediction: 20432 calls
-2025-07-22 13:13:05,247 |     INFO |   Enhanced prediction: 3861 calls
-2025-07-22 13:13:05,252 |     INFO |   Hybrid prediction:   3861 calls
-2025-07-22 13:13:05,257 |     INFO |   Prediction ranges:
-2025-07-22 13:13:05,258 |     INFO |     Conservative (25-75%): 11141 - 14440
-2025-07-22 13:13:05,258 |     INFO |     Wide range (10-90%):   2682 - 10310
-2025-07-22 13:13:05,259 |     INFO |
-Testing scenario: Friday Light
-2025-07-22 13:13:05,259 |     INFO |   Inputs: {'name': 'Friday Light', 'Reject_Ltrs': 800, 'Cheque 1099': 400, 'weekday': 'Friday'}
-2025-07-22 13:13:05,266 |     INFO |   Baseline prediction: 17090 calls
-2025-07-22 13:13:05,270 |     INFO |   Enhanced prediction: 18629 calls
-2025-07-22 13:13:05,271 |  WARNING | Hybrid prediction failed: 'HybridModel' object has no attribute 'baseline_data'
-2025-07-22 13:13:05,277 |     INFO |   Prediction ranges:
-2025-07-22 13:13:05,278 |     INFO |     Conservative (25-75%): 10944 - 19317
-2025-07-22 13:13:05,278 |     INFO |     Wide range (10-90%):   5407 - 30784
-2025-07-22 13:13:05,279 |     INFO |
-Testing scenario: Friday Heavy
-2025-07-22 13:13:05,280 |     INFO |   Inputs: {'name': 'Friday Heavy', 'Reject_Ltrs': 2000, 'Cheque 1099': 1200, 'Exercise_Converted': 500, 'weekday': 'Friday'}
-2025-07-22 13:13:05,285 |     INFO |   Baseline prediction: 20281 calls
-2025-07-22 13:13:05,289 |     INFO |   Enhanced prediction: 33401 calls
-2025-07-22 13:13:05,290 |  WARNING | Hybrid prediction failed: 'HybridModel' object has no attribute 'baseline_data'
-2025-07-22 13:13:05,293 |     INFO |   Prediction ranges:
-2025-07-22 13:13:05,293 |     INFO |     Conservative (25-75%): 11227 - 16897
-2025-07-22 13:13:05,294 |     INFO |     Wide range (10-90%):   4097 - 19095
-2025-07-22 13:13:05,295 |     INFO | 
-================================================================================
-2025-07-22 13:13:05,297 |     INFO | Creating comprehensive visualizations...
-2025-07-22 13:13:06,523 |     INFO | Model comparison dashboard saved: comprehensive_analysis_results\model_comparison_dashboard.png
-2025-07-22 13:13:07,534 |     INFO | Friday investigation plots saved: comprehensive_analysis_results\friday_investigation.png
-2025-07-22 13:13:07,831 |    ERROR | Error creating test scenario plots: 'yerr' must not contain negative values
-2025-07-22 13:13:08,238 |     INFO | Strategy recommendation plot saved: comprehensive_analysis_results\strategy_recommendation.png
-2025-07-22 13:13:08,239 |     INFO | All visualizations created successfully!
-2025-07-22 13:13:08,248 |     INFO | All analysis results saved to JSON
-
-================================================================================
-          COMPREHENSIVE MODEL ANALYSIS - FINAL REPORT
-                    2025-07-22 13:13:08
-================================================================================
-
-EXECUTIVE SUMMARY:
---------------------------------------------------
-Complete analysis of all three strategic options has been conducted:
-✓ Option 1: Baseline model optimality analysis
-✓ Option 2: Hybrid approach implementation
-✓ Option 3: Friday pattern investigation
-✓ Interactive testing with realistic scenarios
-
-FINAL RECOMMENDATION: BASELINE
---------------------------------------------------
-
-DETAILED FINDINGS:
---------------------------------------------------
-OPTION 1 - BASELINE ANALYSIS:
-• Baseline model shows strong optimization for your specific data
-• Feature importance analysis reveals key drivers
-• Friday MAE represents natural data constraints
-• Recommendation: Baseline is production-ready
-
-OPTION 2 - HYBRID APPROACH:
-• Weekday-specific routing implemented successfully
-• Enhanced model excels on Mon-Thu (especially Thursday!)
-• Baseline model handles Friday better
-• Recommendation: Keep for future consideration
-
-OPTION 3 - FRIDAY INVESTIGATION:
-• Friday samples analyzed for representativeness
-• Simple approaches (multipliers) tested
-• Complex Friday features may overfit limited samples
-• Recommendation: Focus on operational solutions for Friday
-
-INTERACTIVE TESTING:
-• Multiple realistic scenarios tested
-• All models provide reasonable predictions
-• Quantile ranges available for uncertainty estimation
-• Recommendation: Use for stakeholder demonstrations
-
-BUSINESS IMPACT:
---------------------------------------------------
-• Model accuracy enables reliable workforce planning
-• Prediction ranges support capacity planning decisions
-• Friday challenges addressed through multiple approaches
-• Operational improvements likely more impactful than model complexity
-
-IMPLEMENTATION PLAN:
---------------------------------------------------
-1. IMMEDIATE: Deploy baseline model to production
-2. MONITORING: Track prediction accuracy by weekday
-3. OPERATIONS: Implement Friday-specific planning procedures
-4. REVIEW: Monthly model performance assessment
-5. IMPROVEMENT: Focus on data quality and business processes
-
-FILES GENERATED:
---------------------------------------------------
-📊 model_comparison_dashboard.png - Main analysis dashboard
-🔍 friday_investigation.png - Friday pattern deep dive
-🧪 test_scenario_results.png - Interactive testing results
-💡 strategy_recommendation.png - Implementation guidance
-📋 comprehensive_analysis_results.json - Detailed metrics
-
-CONCLUSION:
---------------------------------------------------
-Your analysis is complete! The baseline strategy provides the best
-balance of performance, complexity, and maintainability for your specific
-use case. Focus on operational excellence alongside model deployment.
-
-================================================================================
-           READY FOR PRODUCTION DEPLOYMENT!
-================================================================================
-
-2025-07-22 13:13:08,258 |     INFO | Final comprehensive report saved: comprehensive_analysis_results\COMPREHENSIVE_ANALYSIS_REPORT.txt
-2025-07-22 13:13:08,259 |     INFO | ================================================================================
-2025-07-22 13:13:08,259 |     INFO | COMPREHENSIVE ANALYSIS COMPLETE!
-2025-07-22 13:13:08,259 |     INFO | Total analysis time: 3.4 seconds
-2025-07-22 13:13:08,260 |     INFO | Results saved in: comprehensive_analysis_results
-
-COMPREHENSIVE ANALYSIS COMPLETE!
-============================================================
-✓ All three options analyzed
-✓ Interactive testing completed
-✓ Visualizations created
-✓ Strategy recommendations generated
-
-RESULTS AVAILABLE:
-• Detailed analysis dashboard
-• Friday investigation plots
-• Test scenario comparisons
-• Implementation recommendations
-
-📁 All results in: comprehensive_analysis_results
-PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> 
-
-
-
-
 #!/usr/bin/env python
 # comprehensive_model_analyzer.py
 # =========================================================
@@ -434,9 +173,10 @@ class ModelLoader:
 class HybridModel:
     """Weekday-switching ensemble model"""
     
-    def __init__(self, baseline_models, enhanced_models):
+    def __init__(self, baseline_models, enhanced_models, model_loader):
         self.baseline_models = baseline_models
         self.enhanced_models = enhanced_models
+        self.model_loader = model_loader
         
     def predict_with_strategy(self, X, strategy="hybrid"):
         """
@@ -464,8 +204,8 @@ class HybridModel:
                 
                 if friday_mask.sum() > 0:
                     # For Fridays, use baseline model with baseline features
-                    baseline_features = [col for col in X.columns if col in self.baseline_data['X'].columns]
-                    X_friday_baseline = X[friday_mask][baseline_features]
+                    baseline_feature_names = list(self.model_loader.baseline_data['X'].columns)
+                    X_friday_baseline = X[friday_mask][baseline_feature_names]
                     predictions[friday_mask] = self.baseline_models["quantile_0.5"].predict(X_friday_baseline)
             else:
                 # Fallback if no weekday column
@@ -598,7 +338,8 @@ class HybridAnalyzer:
             # Create hybrid model
             hybrid = HybridModel(
                 self.model_loader.baseline_models,
-                self.model_loader.enhanced_models
+                self.model_loader.enhanced_models,
+                self.model_loader
             )
             
             # Test different strategies
@@ -614,8 +355,9 @@ class HybridAnalyzer:
                 
                 try:
                     if strategy == 'baseline':
-                        # Use only baseline features
-                        X_test_strategy = X_test[common_features]
+                        # Use only baseline features in correct order
+                        baseline_feature_names = list(self.model_loader.baseline_data['X'].columns)
+                        X_test_strategy = X_test[baseline_feature_names]
                         y_pred = self.model_loader.baseline_models['quantile_0.5'].predict(X_test_strategy)
                     elif strategy == 'enhanced':
                         y_pred = self.model_loader.enhanced_models['quantile_0.5'].predict(X_test)
@@ -826,7 +568,8 @@ class InteractiveTester:
         self.model_loader = model_loader
         self.hybrid = HybridModel(
             model_loader.baseline_models,
-            model_loader.enhanced_models
+            model_loader.enhanced_models,
+            model_loader
         ) if model_loader.baseline_models and model_loader.enhanced_models else None
         
     def run_test_scenarios(self):
@@ -1228,12 +971,22 @@ class VisualizationEngine:
             if scenario_names:
                 x2 = np.arange(len(scenario_names))
                 
-                # Plot ranges as error bars
-                ax2.errorbar(x2, q25_vals, yerr=[np.array(q25_vals) - np.array(q10_vals), 
-                                                np.array(q90_vals) - np.array(q25_vals)], 
+                # Plot ranges as error bars with positive values only
+                q10_array = np.array(q10_vals)
+                q25_array = np.array(q25_vals) 
+                q75_array = np.array(q75_vals)
+                q90_array = np.array(q90_vals)
+                
+                # Ensure positive error bar values
+                lower_err = np.maximum(0, q25_array - q10_array)
+                upper_err = np.maximum(0, q90_array - q25_array)
+                
+                ax2.errorbar(x2, q25_vals, yerr=[lower_err, upper_err], 
                             fmt='o', capsize=5, capthick=2, label='10-90% Range', color='blue')
-                ax2.errorbar(x2, q25_vals, yerr=[np.zeros(len(q25_vals)), 
-                                                np.array(q75_vals) - np.array(q25_vals)], 
+                
+                # 25-75% range
+                upper_err_75 = np.maximum(0, q75_array - q25_array)
+                ax2.errorbar(x2, q25_vals, yerr=[np.zeros(len(q25_vals)), upper_err_75], 
                             fmt='s', capsize=3, capthick=3, label='25-75% Range', color='red')
                 
                 ax2.set_xlabel('Test Scenarios')
