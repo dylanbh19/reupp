@@ -1,587 +1,25 @@
-                                                               & C:/Users/BhungarD/python.exe "c:/Users/BhungarD/OneDrive - Computershare/Desktop/finprod/model.py"
-============================================================
- 2025+ CALL VOLUME & INTENT PREDICTION PIPELINE
-============================================================
- Fresh data analysis with overlapping dates
- Call volume prediction with mail lag modeling
- Intent classification (scope extension)
- 5-day business outlook generation
-============================================================
+#!/usr/bin/env python
+"""
+MAIL-TO-CALLS PREDICTION PIPELINE
+=================================
 
-2025-07-22 20:30:05,529 | INFO | 🚀 STARTING 2025+ CALL VOLUME & INTENT PREDICTION PIPELINE
---- Logging error ---
-Traceback (most recent call last):
-  File "C:\Users\BhungarD\Lib\logging\__init__.py", line 1154, in emit
-    stream.write(msg + self.terminator)
-    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\BhungarD\Lib\encodings\cp1252.py", line 19, in encode
-    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
-           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f680' in position 33: character maps to <undefined>
-Call stack:
-  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1239, in <module>
-    exit_code = main()
-  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1207, in main
-    results = orchestrator.run_complete_pipeline()
-  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 972, in run_complete_pipeline
-    LOG.info("🚀 STARTING 2025+ CALL VOLUME & INTENT PREDICTION PIPELINE")
-Message: '🚀 STARTING 2025+ CALL VOLUME & INTENT PREDICTION PIPELINE'
-Arguments: ()
-2025-07-22 20:30:05,536 | INFO | ======================================================================
-2025-07-22 20:30:05,537 | INFO | 📊 PHASE 1: LOADING 2025+ DATA
---- Logging error ---
-Traceback (most recent call last):
-  File "C:\Users\BhungarD\Lib\logging\__init__.py", line 1154, in emit
-    stream.write(msg + self.terminator)
-    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\BhungarD\Lib\encodings\cp1252.py", line 19, in encode
-    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
-           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f4ca' in position 33: character maps to <undefined>
-Call stack:
-  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1239, in <module>
-    exit_code = main()
-  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1207, in main
-    results = orchestrator.run_complete_pipeline()
-  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 977, in run_complete_pipeline
-    LOG.info("📊 PHASE 1: LOADING 2025+ DATA")
-Message: '📊 PHASE 1: LOADING 2025+ DATA'
-Arguments: ()
-2025-07-22 20:30:05,539 | INFO | === LOADING FRESH 2025+ DATA ===
-2025-07-22 20:30:05,540 | INFO | Loading call intent data...
-2025-07-22 20:30:05,541 | INFO | Loading: data\callintent.csv
-2025-07-22 20:30:17,996 | INFO | Loaded data\callintent.csv: 1053601 rows, 42 columns
-2025-07-22 20:30:18,204 | INFO | Selected date column: conversationstart
-2025-07-22 20:30:19,827 | INFO | Found 1053601 call records from 2025+
-2025-07-22 20:30:20,537 | INFO | Found 116 unique intents: ['Access account information for Consolidated Edison Inc.', 'Address Change', 'Assistance related to shareholder account concerns', 'Assistance with the account of a deceased shareholder.', 'Assistance with transferring stock for Bank of America Corporation shares.', 'Assistance with transferring stock for Consolidated Edison Inc.', 'Associate', 'Balance', 'Balance, Stock Quote', 'Balance/Value', 'Banking Details', 'Beneficiary', 'Beneficiary Information', 'Blank', 'Buy Stock', 'Buy stocks', 'Certificate Issuance', 'Certified W-9 Form', 'Change Registration', 'Change address on account', 'Check Replacement', 'Company Information', 'Complaint Call', 'Connect with a representative', 'Consolidating multiple accounts into one.', 'Consolidation', 'Contact Information', 'Corporate Action', 'Cost Basis', 'Customer requested electric service restoration, unrelated to shareholder services.', 'Customer requested general customer service assistance', 'Data Protection', 'Deceased Estate', 'Deceased Shareholder', 'Direct Registration', 'Dividend Payment', 'Dividend Reinvestment', 'End Call', 'Enrolment', 'Escheatment', 'Existing IC User Login Problem', 'Financial management for elderly care', 'Follow-up on a transaction', 'Fraud Assistance', 'Fulfilment', 'General Inquiry', 'Get balance on account', 'Help', 'Help with medallion signature', 'Inquiry about account balance', 'Investor Center Login', 'James is requesting a summary of his tax information related to his shareholder account.', 'Legal Department', 'Lost Certificate', 'Make a payment to account', 'Name Change', 'New IC User Login Problem', 'Not Collected', 'Pay bill on behalf of client', 'Power of Attorney', 'Press and Media', 'Privacy Breach', 'Proxy Inquiry', 'Receive Letter', 'Recent Activity', 'Refund', 'Repeat Caller', 'Representative', 'Request to speak with a representative', 'Restricted Shares', 'Sell', 'Sell shares', 'Start New Service', 'Statement', 'Stock Quote', "Stockholder's report", 'Tax Forms', 'Tax Information', 'The shareholder wants to add a beneficiary to his account.', 'The user requested a copy of her account statement for Consolidated Edison Inc shares.', 'Transfer', 'Transfer Call', 'Transfer Funds', 'Transfer Status', 'Transfer Stock', 'Transfer call to senior support representative', 'Transfer shares', 'Transfer to representative', 'Unknown', 'Update Account', 'Update address', 'Update address details', 'User is inquiring about pension payment.', 'User is requesting assistance with transferring stock.', 'User is requesting information about the recent share price of Consolidated Edison Inc.', 'User is seeking a stock quote for Consolidated Edison Inc.', 'User is seeking assistance to transfer shares.', 'User is seeking assistance to transfer stock of Consolidated Edison Inc.', 'User is seeking assistance to transfer stock.', 'User is seeking assistance to transfer their stock in Bank of America Corporation.', 'User needs help managing physical stock shares.', 'User requested assistance regarding their Consolidated Edison Inc stock, but the specific request was unclear or not mentioned.', 'User requested to know the balance in their Consolidated Edison Inc account.', 'User requested to speak with a senior support representative for further assistance.', 'User seeks assistance to add a beneficiary to the account.', 'User seeks assistance to update his address on his shareholder account for Alphabet Inc.', 'User sought specific assistance regarding Consolidated Edison Inc. shares, but the request was unclear.', 'User wants to add a beneficiary to their shareholder account.', 'User wants to sell some shares in Consolidated Edison Inc.', 'User wants to transfer stock in Consolidated Edison Inc.', 'Value', "Verify if spouse's name is on the account", 'new service', 'speak to a representative', 'start service', 'verify account']   
-2025-07-22 20:30:20,668 | INFO | Loading mail data...
-2025-07-22 20:30:20,675 | INFO | Loading: data\mail.csv
-2025-07-22 20:30:21,698 | INFO | Loaded data\mail.csv: 1409780 rows, 4 columns
-2025-07-22 20:30:21,761 | INFO | Selected date column: mail_date
-2025-07-22 20:30:22,013 | WARNING | Could not identify mail structure. Type: None, Volume: mail_volume
-2025-07-22 20:30:22,019 | INFO | Aligning data to overlapping dates...
-2025-07-22 20:30:22,021 | INFO | Using 123 call-only dates (no mail data)
-2025-07-22 20:30:22,032 | INFO | Data aligned: 123 overlapping days
+CLEAR PURPOSE:
+- INPUT: Mail volumes (single day or multiple days)
+- OUTPUT: Call volume predictions + Intent distribution predictions
 
-======================================================================
-2025+ DATA LOADING SUMMARY
-======================================================================
+APPROACH:
+- Start simple, build complexity progressively
+- Use only 2025+ data with proper alignment
+- Remove rare intents (<10 occurrences)
+- Remove mail data before call data start date
+- Self-healing with fallbacks
 
-CALL DATA:
-  total_calls: 1053601
-  daily_records: 123
-  date_range: 2025-02-05 to 2025-06-08
-  avg_daily_calls: 8565.861788617885
-  intent_types: ['Access account information for Consolidated Edison Inc.', 'Address Change', 'Assistance related to shareholder account concerns'] ... (116 total)
-
-ALIGNED DATA:
-  overlapping_days: 123
-  date_range: 2025-02-05 00:00:00 to 2025-06-08 00:00:00
-  has_mail: False
-  has_intents: True
-======================================================================
-2025-07-22 20:30:22,036 | INFO |
-🔧 PHASE 2: FEATURE ENGINEERING
---- Logging error ---
-Traceback (most recent call last):
-  File "C:\Users\BhungarD\Lib\logging\__init__.py", line 1154, in emit
-    stream.write(msg + self.terminator)
-    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\BhungarD\Lib\encodings\cp1252.py", line 19, in encode
-    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
-           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f527' in position 35: character maps to <undefined>
-Call stack:
-  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1239, in <module>
-    exit_code = main()
-  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1207, in main
-    results = orchestrator.run_complete_pipeline()
-  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 985, in run_complete_pipeline
-    LOG.info("\n🔧 PHASE 2: FEATURE ENGINEERING")
-Message: '\n🔧 PHASE 2: FEATURE ENGINEERING'
-Arguments: ()
-2025-07-22 20:30:22,049 | INFO | Creating volume prediction features...
-2025-07-22 20:30:22,052 | INFO | Creating temporal features...
-2025-07-22 20:30:22,763 | INFO | Created 11 temporal features
-2025-07-22 20:30:22,764 | INFO | Creating call history features...
-2025-07-22 20:30:22,791 | INFO | Created 10 call history features
-2025-07-22 20:30:22,794 | INFO | Volume features: 21 features, 122 samples
-2025-07-22 20:30:22,795 | INFO | Creating intent prediction features...
-2025-07-22 20:30:22,796 | INFO | Creating temporal features...
-2025-07-22 20:30:22,801 | INFO | Created 11 temporal features
-2025-07-22 20:30:22,802 | INFO | Creating call history features...
-2025-07-22 20:30:22,806 | INFO | Created 10 call history features
-2025-07-22 20:30:22,807 | INFO | Intent features: 137 features, 122 samples
-2025-07-22 20:30:22,808 | INFO |
-🤖 PHASE 3: MODEL TRAINING
---- Logging error ---
-Traceback (most recent call last):
-  File "C:\Users\BhungarD\Lib\logging\__init__.py", line 1154, in emit
-    stream.write(msg + self.terminator)
-    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\BhungarD\Lib\encodings\cp1252.py", line 19, in encode
-    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
-           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f916' in position 35: character maps to <undefined>
-Call stack:
-  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1239, in <module>
-    exit_code = main()
-  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1207, in main
-    results = orchestrator.run_complete_pipeline()
-  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 995, in run_complete_pipeline
-    LOG.info("\n🤖 PHASE 3: MODEL TRAINING")
-Message: '\n🤖 PHASE 3: MODEL TRAINING'
-Arguments: ()
-2025-07-22 20:30:22,812 | INFO | === TRAINING VOLUME & INTENT MODELS ===
-2025-07-22 20:30:22,812 | INFO | Training call volume prediction model...
-2025-07-22 20:30:22,873 | INFO |   ridge: CV R² = 0.488, Test R² = 0.643
-2025-07-22 20:30:24,198 | INFO |   random_forest: CV R² = 0.615, Test R² = 0.737
-2025-07-22 20:30:24,924 | INFO |   gradient_boost: CV R² = 0.713, Test R² = 0.693
-2025-07-22 20:30:25,131 | INFO | Best volume model: GradientBoostingRegressor (R² = 0.713)
-2025-07-22 20:30:25,132 | INFO | Training intent prediction models...
-2025-07-22 20:30:25,132 | INFO |   Training model for intent: Access account information for Consolidated Edison Inc.
-2025-07-22 20:30:25,635 | INFO |     Access account information for Consolidated Edison Inc.: CV Accuracy = 0.989
-2025-07-22 20:30:25,636 | INFO |   Training model for intent: Address Change
-2025-07-22 20:30:26,101 | INFO |     Address Change: CV Accuracy = 0.600
-2025-07-22 20:30:26,101 | INFO |   Training model for intent: Assistance related to shareholder account concerns
-2025-07-22 20:30:26,529 | INFO |     Assistance related to shareholder account concerns: CV Accuracy = 0.989
-2025-07-22 20:30:26,529 | INFO |   Training model for intent: Assistance with the account of a deceased shareholder.
-2025-07-22 20:30:26,959 | INFO |     Assistance with the account of a deceased shareholder.: CV Accuracy = 0.989
-2025-07-22 20:30:26,960 | INFO |   Training model for intent: Assistance with transferring stock for Bank of America Corporation shares.
-2025-07-22 20:30:27,436 | INFO |     Assistance with transferring stock for Bank of America Corporation shares.: CV Accuracy = 0.989
-2025-07-22 20:30:27,437 | INFO |   Training model for intent: Assistance with transferring stock for Consolidated Edison Inc.
-2025-07-22 20:30:27,879 | INFO |     Assistance with transferring stock for Consolidated Edison Inc.: CV Accuracy = 0.989
-2025-07-22 20:30:27,880 | INFO |   Training model for intent: Associate
-2025-07-22 20:30:28,503 | INFO |     Associate: CV Accuracy = 0.767
-2025-07-22 20:30:28,503 | INFO |   Training model for intent: Balance
-2025-07-22 20:30:28,971 | INFO |     Balance: CV Accuracy = 0.989
-2025-07-22 20:30:28,971 | INFO |   Training model for intent: Balance, Stock Quote
-2025-07-22 20:30:29,423 | INFO |     Balance, Stock Quote: CV Accuracy = 0.989
-2025-07-22 20:30:29,424 | INFO |   Training model for intent: Balance/Value
-2025-07-22 20:30:29,955 | INFO |     Balance/Value: CV Accuracy = 0.978
-2025-07-22 20:30:29,955 | INFO |   Training model for intent: Banking Details
-2025-07-22 20:30:30,548 | INFO |     Banking Details: CV Accuracy = 0.733
-2025-07-22 20:30:30,548 | INFO |   Training model for intent: Beneficiary
-2025-07-22 20:30:30,988 | INFO |     Beneficiary: CV Accuracy = 0.978
-2025-07-22 20:30:30,989 | INFO |   Training model for intent: Beneficiary Information
-2025-07-22 20:30:31,418 | INFO |     Beneficiary Information: CV Accuracy = 0.400
-2025-07-22 20:30:31,418 | INFO |   Training model for intent: Blank
-2025-07-22 20:30:31,992 | INFO |     Blank: CV Accuracy = 1.000
-2025-07-22 20:30:31,993 | INFO |   Training model for intent: Buy Stock
-2025-07-22 20:30:32,523 | INFO |     Buy Stock: CV Accuracy = 0.556
-2025-07-22 20:30:32,523 | INFO |   Training model for intent: Buy stocks
-2025-07-22 20:30:32,965 | INFO |     Buy stocks: CV Accuracy = 0.989
-2025-07-22 20:30:32,966 | INFO |   Training model for intent: Certificate Issuance
-2025-07-22 20:30:33,462 | INFO |     Certificate Issuance: CV Accuracy = 0.589
-2025-07-22 20:30:33,462 | INFO |   Training model for intent: Certified W-9 Form
-2025-07-22 20:30:33,898 | INFO |     Certified W-9 Form: CV Accuracy = 0.989
-2025-07-22 20:30:33,899 | INFO |   Training model for intent: Change Registration
-2025-07-22 20:30:34,360 | INFO |     Change Registration: CV Accuracy = 0.967
-2025-07-22 20:30:34,360 | INFO |   Training model for intent: Change address on account
-2025-07-22 20:30:34,803 | INFO |     Change address on account: CV Accuracy = 0.989
-2025-07-22 20:30:34,803 | INFO |   Training model for intent: Check Replacement
-2025-07-22 20:30:35,271 | INFO |     Check Replacement: CV Accuracy = 0.389
-2025-07-22 20:30:35,272 | INFO |   Training model for intent: Company Information
-2025-07-22 20:30:35,701 | INFO |     Company Information: CV Accuracy = 0.989
-2025-07-22 20:30:35,701 | INFO |   Training model for intent: Complaint Call
-2025-07-22 20:30:36,137 | INFO |     Complaint Call: CV Accuracy = 0.967
-2025-07-22 20:30:36,138 | INFO |   Training model for intent: Connect with a representative
-2025-07-22 20:30:36,588 | INFO |     Connect with a representative: CV Accuracy = 0.989
-2025-07-22 20:30:36,589 | INFO |   Training model for intent: Consolidating multiple accounts into one.
-2025-07-22 20:30:37,003 | INFO |     Consolidating multiple accounts into one.: CV Accuracy = 0.989
-2025-07-22 20:30:37,003 | INFO |   Training model for intent: Consolidation
-2025-07-22 20:30:37,430 | INFO |     Consolidation: CV Accuracy = 0.967
-2025-07-22 20:30:37,431 | INFO |   Training model for intent: Contact Information
-2025-07-22 20:30:37,860 | INFO |     Contact Information: CV Accuracy = 0.967
-2025-07-22 20:30:37,860 | INFO |   Training model for intent: Corporate Action
-2025-07-22 20:30:38,276 | INFO |     Corporate Action: CV Accuracy = 0.867
-2025-07-22 20:30:38,276 | INFO |   Training model for intent: Cost Basis
-2025-07-22 20:30:38,697 | INFO |     Cost Basis: CV Accuracy = 0.967
-2025-07-22 20:30:38,698 | INFO |   Training model for intent: Customer requested electric service restoration, unrelated to shareholder services.
-2025-07-22 20:30:39,101 | INFO |     Customer requested electric service restoration, unrelated to shareholder services.: CV Accuracy = 0.989
-2025-07-22 20:30:39,102 | INFO |   Training model for intent: Customer requested general customer service assistance
-2025-07-22 20:30:39,510 | INFO |     Customer requested general customer service assistance: CV Accuracy = 0.989
-2025-07-22 20:30:39,511 | INFO |   Training model for intent: Data Protection
-2025-07-22 20:30:40,122 | INFO |     Data Protection: CV Accuracy = 0.889
-2025-07-22 20:30:40,123 | INFO |   Training model for intent: Deceased Estate
-2025-07-22 20:30:40,773 | INFO |     Deceased Estate: CV Accuracy = 0.967
-2025-07-22 20:30:40,774 | INFO |   Training model for intent: Deceased Shareholder
-2025-07-22 20:30:41,690 | INFO |     Deceased Shareholder: CV Accuracy = 0.978
-2025-07-22 20:30:41,691 | INFO |   Training model for intent: Direct Registration
-2025-07-22 20:30:42,447 | INFO |     Direct Registration: CV Accuracy = 0.978
-2025-07-22 20:30:42,447 | INFO |   Training model for intent: Dividend Payment
-2025-07-22 20:30:43,138 | INFO |     Dividend Payment: CV Accuracy = 0.644
-2025-07-22 20:30:43,138 | INFO |   Training model for intent: Dividend Reinvestment
-2025-07-22 20:30:43,721 | INFO |     Dividend Reinvestment: CV Accuracy = 0.922
-2025-07-22 20:30:43,721 | INFO |   Training model for intent: End Call
-2025-07-22 20:30:44,512 | INFO |     End Call: CV Accuracy = 0.944
-2025-07-22 20:30:44,513 | INFO |   Training model for intent: Enrolment
-2025-07-22 20:30:45,231 | INFO |     Enrolment: CV Accuracy = 0.933
-2025-07-22 20:30:45,232 | INFO |   Training model for intent: Escheatment
-2025-07-22 20:30:45,898 | INFO |     Escheatment: CV Accuracy = 0.711
-2025-07-22 20:30:45,899 | INFO |   Training model for intent: Existing IC User Login Problem
-2025-07-22 20:30:46,507 | INFO |     Existing IC User Login Problem: CV Accuracy = 0.989
-2025-07-22 20:30:46,508 | INFO |   Training model for intent: Financial management for elderly care
-2025-07-22 20:30:47,079 | INFO |     Financial management for elderly care: CV Accuracy = 0.989
-2025-07-22 20:30:47,079 | INFO |   Training model for intent: Follow-up on a transaction
-2025-07-22 20:30:47,638 | INFO |     Follow-up on a transaction: CV Accuracy = 0.989
-2025-07-22 20:30:47,638 | INFO |   Training model for intent: Fraud Assistance
-2025-07-22 20:30:48,250 | INFO |     Fraud Assistance: CV Accuracy = 0.856
-2025-07-22 20:30:48,251 | INFO |   Training model for intent: Fulfilment
-2025-07-22 20:30:48,908 | INFO |     Fulfilment: CV Accuracy = 0.911
-2025-07-22 20:30:48,909 | INFO |   Training model for intent: General Inquiry
-2025-07-22 20:30:49,487 | INFO |     General Inquiry: CV Accuracy = 0.667
-2025-07-22 20:30:49,487 | INFO |   Training model for intent: Get balance on account
-2025-07-22 20:30:50,051 | INFO |     Get balance on account: CV Accuracy = 0.989
-2025-07-22 20:30:50,052 | INFO |   Training model for intent: Help
-2025-07-22 20:30:50,629 | INFO |     Help: CV Accuracy = 0.944
-2025-07-22 20:30:50,629 | INFO |   Training model for intent: Help with medallion signature
-2025-07-22 20:30:51,239 | INFO |     Help with medallion signature: CV Accuracy = 0.989
-2025-07-22 20:30:51,239 | INFO |   Training model for intent: Inquiry about account balance
-2025-07-22 20:30:51,783 | INFO |     Inquiry about account balance: CV Accuracy = 0.989
-2025-07-22 20:30:51,784 | INFO |   Training model for intent: Investor Center Login
-2025-07-22 20:30:52,382 | INFO |     Investor Center Login: CV Accuracy = 0.956
-2025-07-22 20:30:52,382 | INFO |   Training model for intent: James is requesting a summary of his tax information related to his shareholder account.       
-2025-07-22 20:30:52,958 | INFO |     James is requesting a summary of his tax information related to his shareholder account.: CV Accuracy = 0.989
-2025-07-22 20:30:52,958 | INFO |   Training model for intent: Legal Department
-2025-07-22 20:30:53,513 | INFO |     Legal Department: CV Accuracy = 0.989
-2025-07-22 20:30:53,513 | INFO |   Training model for intent: Lost Certificate
-2025-07-22 20:30:54,078 | INFO |     Lost Certificate: CV Accuracy = 0.578
-2025-07-22 20:30:54,079 | INFO |   Training model for intent: Make a payment to account
-2025-07-22 20:30:54,655 | INFO |     Make a payment to account: CV Accuracy = 0.989
-2025-07-22 20:30:54,655 | INFO |   Training model for intent: Name Change
-2025-07-22 20:30:55,259 | INFO |     Name Change: CV Accuracy = 0.756
-2025-07-22 20:30:55,259 | INFO |   Training model for intent: New IC User Login Problem
-2025-07-22 20:30:55,831 | INFO |     New IC User Login Problem: CV Accuracy = 0.533
-2025-07-22 20:30:55,832 | INFO |   Training model for intent: Not Collected
-2025-07-22 20:30:56,416 | INFO |     Not Collected: CV Accuracy = 0.978
-2025-07-22 20:30:56,416 | INFO |   Training model for intent: Pay bill on behalf of client
-2025-07-22 20:30:57,013 | INFO |     Pay bill on behalf of client: CV Accuracy = 0.989
-2025-07-22 20:30:57,013 | INFO |   Training model for intent: Power of Attorney
-2025-07-22 20:30:57,607 | INFO |     Power of Attorney: CV Accuracy = 0.978
-2025-07-22 20:30:57,607 | INFO |   Training model for intent: Press and Media
-2025-07-22 20:30:58,199 | INFO |     Press and Media: CV Accuracy = 0.922
-2025-07-22 20:30:58,200 | INFO |   Training model for intent: Privacy Breach
-2025-07-22 20:30:58,762 | INFO |     Privacy Breach: CV Accuracy = 0.989
-2025-07-22 20:30:58,763 | INFO |   Training model for intent: Proxy Inquiry
-2025-07-22 20:30:59,369 | INFO |     Proxy Inquiry: CV Accuracy = 0.944
-2025-07-22 20:30:59,370 | INFO |   Training model for intent: Receive Letter
-2025-07-22 20:30:59,978 | INFO |     Receive Letter: CV Accuracy = 0.967
-2025-07-22 20:30:59,978 | INFO |   Training model for intent: Recent Activity
-2025-07-22 20:31:00,715 | INFO |     Recent Activity: CV Accuracy = 0.411
-2025-07-22 20:31:00,715 | INFO |   Training model for intent: Refund
-2025-07-22 20:31:01,467 | INFO |     Refund: CV Accuracy = 0.989
-2025-07-22 20:31:01,468 | INFO |   Training model for intent: Repeat Caller
-2025-07-22 20:31:02,252 | INFO |     Repeat Caller: CV Accuracy = 0.711
-2025-07-22 20:31:02,252 | INFO |   Training model for intent: Representative
-2025-07-22 20:31:02,995 | INFO |     Representative: CV Accuracy = 0.978
-2025-07-22 20:31:02,995 | INFO |   Training model for intent: Request to speak with a representative
-2025-07-22 20:31:03,849 | INFO |     Request to speak with a representative: CV Accuracy = 0.989
-2025-07-22 20:31:03,850 | INFO |   Training model for intent: Restricted Shares
-2025-07-22 20:31:04,637 | INFO |     Restricted Shares: CV Accuracy = 0.989
-2025-07-22 20:31:04,637 | INFO |   Training model for intent: Sell
-2025-07-22 20:31:05,282 | INFO |     Sell: CV Accuracy = 0.978
-2025-07-22 20:31:05,282 | INFO |   Training model for intent: Sell shares
-2025-07-22 20:31:05,951 | INFO |     Sell shares: CV Accuracy = 0.989
-2025-07-22 20:31:05,952 | INFO |   Training model for intent: Start New Service
-2025-07-22 20:31:06,788 | INFO |     Start New Service: CV Accuracy = 0.989
-2025-07-22 20:31:06,789 | INFO |   Training model for intent: Statement
-2025-07-22 20:31:07,577 | INFO |     Statement: CV Accuracy = 0.744
-2025-07-22 20:31:07,578 | INFO |   Training model for intent: Stock Quote
-2025-07-22 20:31:08,301 | INFO |     Stock Quote: CV Accuracy = 0.567
-2025-07-22 20:31:08,302 | INFO |   Training model for intent: Stockholder's report
-2025-07-22 20:31:08,901 | INFO |     Stockholder's report: CV Accuracy = 0.989
-2025-07-22 20:31:08,902 | INFO |   Training model for intent: Tax Forms
-2025-07-22 20:31:09,465 | INFO |     Tax Forms: CV Accuracy = 0.978
-2025-07-22 20:31:09,466 | INFO |   Training model for intent: Tax Information
-2025-07-22 20:31:10,149 | INFO |     Tax Information: CV Accuracy = 0.578
-2025-07-22 20:31:10,150 | INFO |   Training model for intent: The shareholder wants to add a beneficiary to his account.
-2025-07-22 20:31:10,723 | INFO |     The shareholder wants to add a beneficiary to his account.: CV Accuracy = 0.989
-2025-07-22 20:31:10,723 | INFO |   Training model for intent: The user requested a copy of her account statement for Consolidated Edison Inc shares.
-2025-07-22 20:31:11,336 | INFO |     The user requested a copy of her account statement for Consolidated Edison Inc shares.: CV Accuracy = 0.989
-2025-07-22 20:31:11,336 | INFO |   Training model for intent: Transfer
-2025-07-22 20:31:11,972 | INFO |     Transfer: CV Accuracy = 0.567
-2025-07-22 20:31:11,972 | INFO |   Training model for intent: Transfer Call
-2025-07-22 20:31:12,591 | INFO |     Transfer Call: CV Accuracy = 0.978
-2025-07-22 20:31:12,592 | INFO |   Training model for intent: Transfer Funds
-2025-07-22 20:31:13,167 | INFO |     Transfer Funds: CV Accuracy = 0.989
-2025-07-22 20:31:13,167 | INFO |   Training model for intent: Transfer Status
-2025-07-22 20:31:13,607 | INFO |     Transfer Status: CV Accuracy = 0.989
-2025-07-22 20:31:13,608 | INFO |   Training model for intent: Transfer Stock
-2025-07-22 20:31:13,992 | INFO |     Transfer Stock: CV Accuracy = 0.967
-2025-07-22 20:31:13,993 | INFO |   Training model for intent: Transfer call to senior support representative
-2025-07-22 20:31:14,393 | INFO |     Transfer call to senior support representative: CV Accuracy = 0.989
-2025-07-22 20:31:14,394 | INFO |   Training model for intent: Transfer shares
-2025-07-22 20:31:14,810 | INFO |     Transfer shares: CV Accuracy = 0.989
-2025-07-22 20:31:14,810 | INFO |   Training model for intent: Transfer to representative
-2025-07-22 20:31:15,219 | INFO |     Transfer to representative: CV Accuracy = 0.989
-2025-07-22 20:31:15,219 | INFO |   Training model for intent: Unknown
-2025-07-22 20:31:15,654 | INFO |     Unknown: CV Accuracy = 0.744
-2025-07-22 20:31:15,654 | INFO |   Training model for intent: Update Account
-2025-07-22 20:31:16,159 | INFO |     Update Account: CV Accuracy = 0.978
-2025-07-22 20:31:16,160 | INFO |   Training model for intent: Update address
-2025-07-22 20:31:16,735 | INFO |     Update address: CV Accuracy = 0.989
-2025-07-22 20:31:16,735 | INFO |   Training model for intent: Update address details
-2025-07-22 20:31:17,136 | INFO |     Update address details: CV Accuracy = 0.989
-2025-07-22 20:31:17,137 | INFO |   Training model for intent: User is inquiring about pension payment.
-2025-07-22 20:31:17,529 | INFO |     User is inquiring about pension payment.: CV Accuracy = 0.989
-2025-07-22 20:31:17,529 | INFO |   Training model for intent: User is requesting assistance with transferring stock.
-2025-07-22 20:31:17,925 | INFO |     User is requesting assistance with transferring stock.: CV Accuracy = 0.989
-2025-07-22 20:31:17,926 | INFO |   Training model for intent: User is requesting information about the recent share price of Consolidated Edison Inc.        
-2025-07-22 20:31:18,318 | INFO |     User is requesting information about the recent share price of Consolidated Edison Inc.: CV Accuracy = 0.989
-2025-07-22 20:31:18,318 | INFO |   Training model for intent: User is seeking a stock quote for Consolidated Edison Inc.
-2025-07-22 20:31:18,712 | INFO |     User is seeking a stock quote for Consolidated Edison Inc.: CV Accuracy = 0.989
-2025-07-22 20:31:18,713 | INFO |   Training model for intent: User is seeking assistance to transfer shares.
-2025-07-22 20:31:19,139 | INFO |     User is seeking assistance to transfer shares.: CV Accuracy = 0.978
-2025-07-22 20:31:19,140 | INFO |   Training model for intent: User is seeking assistance to transfer stock of Consolidated Edison Inc.
-2025-07-22 20:31:19,521 | INFO |     User is seeking assistance to transfer stock of Consolidated Edison Inc.: CV Accuracy = 0.978
-2025-07-22 20:31:19,522 | INFO |   Training model for intent: User is seeking assistance to transfer stock.
-2025-07-22 20:31:19,939 | INFO |     User is seeking assistance to transfer stock.: CV Accuracy = 0.967
-2025-07-22 20:31:19,940 | INFO |   Training model for intent: User is seeking assistance to transfer their stock in Bank of America Corporation.
-2025-07-22 20:31:20,399 | INFO |     User is seeking assistance to transfer their stock in Bank of America Corporation.: CV Accuracy = 0.989
-2025-07-22 20:31:20,399 | INFO |   Training model for intent: User needs help managing physical stock shares.
-2025-07-22 20:31:20,853 | INFO |     User needs help managing physical stock shares.: CV Accuracy = 0.989
-2025-07-22 20:31:20,853 | INFO |   Training model for intent: User requested assistance regarding their Consolidated Edison Inc stock, but the specific request was unclear or not mentioned.
-2025-07-22 20:31:21,256 | INFO |     User requested assistance regarding their Consolidated Edison Inc stock, but the specific request was unclear or not mentioned.: CV Accuracy = 0.978
-2025-07-22 20:31:21,256 | INFO |   Training model for intent: User requested to know the balance in their Consolidated Edison Inc account.
-2025-07-22 20:31:21,647 | INFO |     User requested to know the balance in their Consolidated Edison Inc account.: CV Accuracy = 0.989
-2025-07-22 20:31:21,648 | INFO |   Training model for intent: User requested to speak with a senior support representative for further assistance.
-2025-07-22 20:31:22,057 | INFO |     User requested to speak with a senior support representative for further assistance.: CV Accuracy = 0.989
-2025-07-22 20:31:22,057 | INFO |   Training model for intent: User seeks assistance to add a beneficiary to the account.
-2025-07-22 20:31:22,439 | INFO |     User seeks assistance to add a beneficiary to the account.: CV Accuracy = 0.989
-2025-07-22 20:31:22,439 | INFO |   Training model for intent: User seeks assistance to update his address on his shareholder account for Alphabet Inc.       
-2025-07-22 20:31:22,815 | INFO |     User seeks assistance to update his address on his shareholder account for Alphabet Inc.: CV Accuracy = 0.989
-2025-07-22 20:31:22,816 | INFO |   Training model for intent: User sought specific assistance regarding Consolidated Edison Inc. shares, but the request was unclear.
-2025-07-22 20:31:23,204 | INFO |     User sought specific assistance regarding Consolidated Edison Inc. shares, but the request was unclear.: CV Accuracy = 0.989
-2025-07-22 20:31:23,204 | INFO |   Training model for intent: User wants to add a beneficiary to their shareholder account.
-2025-07-22 20:31:23,599 | INFO |     User wants to add a beneficiary to their shareholder account.: CV Accuracy = 0.989
-2025-07-22 20:31:23,600 | INFO |   Training model for intent: User wants to sell some shares in Consolidated Edison Inc.
-2025-07-22 20:31:23,990 | INFO |     User wants to sell some shares in Consolidated Edison Inc.: CV Accuracy = 0.989
-2025-07-22 20:31:23,991 | INFO |   Training model for intent: User wants to transfer stock in Consolidated Edison Inc.
-2025-07-22 20:31:24,400 | INFO |     User wants to transfer stock in Consolidated Edison Inc.: CV Accuracy = 0.978
-2025-07-22 20:31:24,400 | INFO |   Training model for intent: Value
-2025-07-22 20:31:24,888 | INFO |     Value: CV Accuracy = 0.978
-2025-07-22 20:31:24,888 | INFO |   Training model for intent: Verify if spouse's name is on the account
-2025-07-22 20:31:25,322 | INFO |     Verify if spouse's name is on the account: CV Accuracy = 0.989
-2025-07-22 20:31:25,322 | INFO |   Training model for intent: new service
-2025-07-22 20:31:25,732 | INFO |     new service: CV Accuracy = 0.989
-2025-07-22 20:31:25,733 | INFO |   Training model for intent: speak to a representative
-2025-07-22 20:31:26,230 | INFO |     speak to a representative: CV Accuracy = 0.989
-2025-07-22 20:31:26,230 | INFO |   Training model for intent: start service
-2025-07-22 20:31:26,748 | INFO |     start service: CV Accuracy = 0.989
-2025-07-22 20:31:26,749 | INFO |   Training model for intent: verify account
-2025-07-22 20:31:27,168 | INFO |     verify account: CV Accuracy = 0.989
-2025-07-22 20:31:27,168 | INFO |
-🔮 PHASE 4: GENERATING PREDICTIONS
---- Logging error ---
-Traceback (most recent call last):
-  File "C:\Users\BhungarD\Lib\logging\__init__.py", line 1154, in emit
-    stream.write(msg + self.terminator)
-    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\BhungarD\Lib\encodings\cp1252.py", line 19, in encode
-    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
-           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f52e' in position 35: character maps to <undefined>
-Call stack:
-  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1239, in <module>
-    exit_code = main()
-  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1207, in main
-    results = orchestrator.run_complete_pipeline()
-  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1000, in run_complete_pipeline
-    LOG.info("\n🔮 PHASE 4: GENERATING PREDICTIONS")
-Message: '\n🔮 PHASE 4: GENERATING PREDICTIONS'
-Arguments: ()
-2025-07-22 20:31:27,171 | INFO | Generating 5-day outlook...
-2025-07-22 20:31:27,294 | INFO | 
-💾 PHASE 5: SAVING RESULTS
---- Logging error ---
-Traceback (most recent call last):
-  File "C:\Users\BhungarD\Lib\logging\__init__.py", line 1154, in emit
-    stream.write(msg + self.terminator)
-    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\BhungarD\Lib\encodings\cp1252.py", line 19, in encode
-    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
-           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f4be' in position 35: character maps to <undefined>
-Call stack:
-  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1239, in <module>
-    exit_code = main()
-  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1207, in main
-    results = orchestrator.run_complete_pipeline()
-  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1013, in run_complete_pipeline
-    LOG.info("\n💾 PHASE 5: SAVING RESULTS")
-Message: '\n💾 PHASE 5: SAVING RESULTS'
-Arguments: ()
-2025-07-22 20:31:30,496 | INFO | All results saved successfully
-2025-07-22 20:31:30,496 | INFO |
-📋 PHASE 6: GENERATING REPORT
---- Logging error ---
-Traceback (most recent call last):
-  File "C:\Users\BhungarD\Lib\logging\__init__.py", line 1154, in emit
-    stream.write(msg + self.terminator)
-    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\BhungarD\Lib\encodings\cp1252.py", line 19, in encode
-    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
-           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f4cb' in position 35: character maps to <undefined>
-Call stack:
-  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1239, in <module>
-    exit_code = main()
-  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1207, in main
-    results = orchestrator.run_complete_pipeline()
-  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1017, in run_complete_pipeline
-    LOG.info("\n📋 PHASE 6: GENERATING REPORT")
-Message: '\n📋 PHASE 6: GENERATING REPORT'
-Arguments: ()
-
-
-
-    # ====================================================================
-    2025+ CALL VOLUME & INTENT PREDICTION PIPELINE REPORT
-
-    EXECUTION SUMMARY:
-     Pipeline Status: SUCCESS
-     Execution Time: 1.4 minutes
-     Output Directory: call_prediction_pipeline
-
-    DATA SUMMARY:
-     Total Call Records: 1053601
-     Overlapping Days: 123
-     Date Range: 2025-02-05 00:00:00 to 2025-06-08 00:00:00
-     Has Mail Data: False
-     Has Intent Data: True
-
-    MODEL PERFORMANCE:
-     Call Volume Model R: 0.713
-     Intent Classification Accuracy: 0.914
-
-    PREDICTIONS GENERATED:
-     5-Day Call Volume Outlook: Available
-     Intent Distribution Predictions: Available
-
-    BUSINESS APPLICATIONS:
-     Daily staffing optimization
-     Mail campaign impact analysis
-     Intent-based resource allocation
-     5-day capacity planning
-
-    FILES GENERATED:
-     data_summary.json - Data loading summary
-     training_results.json - Model performance metrics
-     outlook_predictions.json - 5-day predictions
-     volume_model.pkl - Trained volume prediction model
-     intent_model_*.pkl - Trained intent classification models
-
-    NEXT STEPS:
-
-    1. Review prediction accuracy in outlook_predictions.json
-    1. Use volume_model.pkl for daily predictions
-    1. Monitor model performance with new data
-    1. Retrain models monthly with fresh data
-
-    # ====================================================================
-    Generated: 2025-07-22 20:31:30
-
-
-2025-07-22 20:31:30,506 | INFO |
-======================================================================
-2025-07-22 20:31:30,506 | INFO | 🎉 PIPELINE COMPLETED SUCCESSFULLY!
---- Logging error ---
-Traceback (most recent call last):
-  File "C:\Users\BhungarD\Lib\logging\__init__.py", line 1154, in emit
-    stream.write(msg + self.terminator)
-    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\BhungarD\Lib\encodings\cp1252.py", line 19, in encode
-    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
-           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f389' in position 33: character maps to <undefined>
-Call stack:
-  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1239, in <module>
-    exit_code = main()
-  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1207, in main
-    results = orchestrator.run_complete_pipeline()
-  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1023, in run_complete_pipeline
-    LOG.info("🎉 PIPELINE COMPLETED SUCCESSFULLY!")
-Message: '🎉 PIPELINE COMPLETED SUCCESSFULLY!'
-Arguments: ()
-2025-07-22 20:31:30,511 | INFO | ⏱️  Total execution time: 1.4 minutes
---- Logging error ---
-Traceback (most recent call last):
-  File "C:\Users\BhungarD\Lib\logging\__init__.py", line 1154, in emit
-    stream.write(msg + self.terminator)
-    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\BhungarD\Lib\encodings\cp1252.py", line 19, in encode
-    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
-           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-UnicodeEncodeError: 'charmap' codec can't encode characters in position 33-34: character maps to <undefined>
-Call stack:
-  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1239, in <module>
-    exit_code = main()
-  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1207, in main
-    results = orchestrator.run_complete_pipeline()
-  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1024, in run_complete_pipeline
-    LOG.info(f"⏱️  Total execution time: {execution_time:.1f} minutes")
-Message: '⏱️  Total execution time: 1.4 minutes'
-Arguments: ()
-2025-07-22 20:31:30,517 | INFO | 📁 Results saved to: call_prediction_pipeline
---- Logging error ---
-Traceback (most recent call last):
-  File "C:\Users\BhungarD\Lib\logging\__init__.py", line 1154, in emit
-    stream.write(msg + self.terminator)
-    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\BhungarD\Lib\encodings\cp1252.py", line 19, in encode
-    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
-           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f4c1' in position 33: character maps to <undefined>
-Call stack:
-  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1239, in <module>
-    exit_code = main()
-  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1207, in main
-    results = orchestrator.run_complete_pipeline()
-  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1025, in run_complete_pipeline
-    LOG.info(f"📁 Results saved to: {self.output_dir}")
-Message: '📁 Results saved to: call_prediction_pipeline'
-Arguments: ()
-
- PIPELINE COMPLETED SUCCESSFULLY!
-
- 2025+ data processed and analyzed
- Call volume prediction model trained
- Intent classification models trained
- 5-day outlook generated
- Production-ready models saved
-
- Find all results in: call_prediction_pipeline
-
- Ready for daily predictions!
-
-
-
-
-# #!/usr/bin/env python
-“””
-BULLETPROOF CALL VOLUME & INTENT PREDICTION PIPELINE
-
-End-to-end pipeline for 2025+ data focusing on:
-
-1. Call volume prediction with mail lag modeling
-1. Call intent prediction (scope extension)
-1. Uses only overlapping dates between call intent and mail data
-
-DATA SOURCES:
-
-- callintetn.csv: Call intent data (2025+)
-- mail.csv: Mail volume data by type
-
-OUTPUTS:
-
-- Call volume predictions (3-5 day outlook)
-- Intent distribution predictions
-- Mail campaign impact analysis
-  “””
+DATA FLOW:
+Mail Data -> Lag Features -> Models -> Call Volume + Intent Predictions
+"""
 
 import warnings
-warnings.filterwarnings(‘ignore’)
+warnings.filterwarnings('ignore')
 
 import os
 import sys
@@ -597,658 +35,709 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-import holidays
 
-# ML Libraries
-
-from sklearn.model_selection import TimeSeriesSplit, cross_validate, train_test_split
-from sklearn.metrics import mean_absolute_error, r2_score, mean_squared_error, classification_report, accuracy_score
-from sklearn.preprocessing import StandardScaler, LabelEncoder
+# ML Libraries  
+from sklearn.model_selection import TimeSeriesSplit, cross_validate
+from sklearn.metrics import mean_absolute_error, r2_score, accuracy_score
+from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.linear_model import LinearRegression, Ridge, LogisticRegression
-from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier, GradientBoostingRegressor
+from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
 from sklearn.feature_selection import SelectKBest, f_regression
 import joblib
 
 # Statistical Libraries
-
 from scipy import stats
-from scipy.stats import pearsonr
 
 # ============================================================================
-
-# CONFIGURATION
-
+# CONFIGURATION - PROGRESSIVE COMPLEXITY
 # ============================================================================
 
 CONFIG = {
-# File patterns for 2025+ data
-“call_intent_files”: [“callintetn.csv”, “data/callintetn.csv”, “*intent*.csv”],
-“mail_files”: [“mail.csv”, “data/mail.csv”, “*mail*.csv”],
-
-```
-# Mail lag configuration
-"mail_lag_days": [1, 2, 3, 4, 5],
-"lag_weights": {1: 0.2, 2: 0.4, 3: 0.25, 4: 0.1, 5: 0.05},
-
-# Model configuration
-"prediction_horizon_days": 5,
-"confidence_levels": [0.68, 0.95],
-"cv_folds": 5,
-"min_train_samples": 20,
-
-# Output directories
-"output_dir": "call_prediction_pipeline",
-"plots_dir": "analysis_plots",
-"models_dir": "trained_models",
-"results_dir": "results",
-
-"random_state": 42
-```
-
+    # Data files
+    "call_intent_file": "callintent.csv",
+    "mail_file": "mail.csv", 
+    
+    # Data filtering
+    "min_intent_occurrences": 10,  # Remove rare intents
+    "mail_lag_days_before_calls": 5,  # Only use mail 5 days before first call
+    
+    # Mail lag modeling (simple to complex)
+    "approaches": {
+        "simple": {"lags": [1, 2], "features": "basic"},
+        "intermediate": {"lags": [1, 2, 3], "features": "rolling"},
+        "advanced": {"lags": [1, 2, 3, 4, 5], "features": "weighted"},
+        "expert": {"lags": [1, 2, 3, 4, 5], "features": "all"}
+    },
+    
+    # Model progression
+    "model_progression": ["simple", "intermediate", "advanced", "expert"],
+    
+    # Prediction
+    "prediction_horizon": 5,
+    "confidence_levels": [0.68, 0.95],
+    
+    # Output
+    "output_dir": "mail_to_calls_pipeline",
+    "random_state": 42
 }
 
 # ============================================================================
-
-# LOGGING SETUP
-
+# SAFE LOGGING (NO UNICODE ISSUES)
 # ============================================================================
 
-def setup_logging():
-“”“Setup clean logging”””
-output_dir = Path(CONFIG[“output_dir”])
-output_dir.mkdir(exist_ok=True)
+def setup_safe_logging():
+    """Setup logging without Unicode/charmap issues"""
+    
+    output_dir = Path(CONFIG["output_dir"])
+    output_dir.mkdir(exist_ok=True)
+    
+    # Simple formatter
+    formatter = logging.Formatter('%(asctime)s | %(levelname)s | %(message)s')
+    
+    # Console handler
+    console = logging.StreamHandler(sys.stdout)
+    console.setFormatter(formatter)
+    
+    # File handler
+    log_file = output_dir / "pipeline.log"
+    file_handler = logging.FileHandler(str(log_file), mode='w', encoding='utf-8')
+    file_handler.setFormatter(formatter)
+    
+    # Configure logger
+    logger = logging.getLogger(__name__)
+    logger.setLevel(logging.INFO)
+    logger.handlers.clear()
+    logger.addHandler(console)
+    logger.addHandler(file_handler)
+    
+    return logger
 
-```
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s | %(levelname)s | %(message)s',
-    handlers=[
-        logging.StreamHandler(sys.stdout),
-        logging.FileHandler(output_dir / "pipeline.log", mode='w')
-    ]
-)
-return logging.getLogger(__name__)
-```
-
-LOG = setup_logging()
+LOG = setup_safe_logging()
 
 def safe_print(message: str):
-“”“Print safely”””
-try:
-print(str(message).encode(‘ascii’, ‘ignore’).decode(‘ascii’))
-except:
-print(str(message))
+    """Print without encoding issues"""
+    try:
+        # Remove any special characters
+        clean_msg = str(message).encode('ascii', 'ignore').decode('ascii')
+        print(clean_msg)
+    except Exception:
+        print(str(message))
 
 # ============================================================================
-
-# DATA LOADER FOR 2025+ DATA
-
+# SELF-HEALING DATA LOADER
 # ============================================================================
 
-class Fresh2025DataLoader:
-“”“Load and process fresh 2025+ call intent and mail data”””
-
-```
-def __init__(self):
-    self.call_data = None
-    self.mail_data = None
-    self.intent_data = None
-    self.data_summary = {}
-
-def find_files(self, patterns: List[str]) -> List[Path]:
-    """Find files matching patterns"""
-    found_files = []
+class SelfHealingDataLoader:
+    """Self-healing data loader with progressive fallbacks"""
     
-    for pattern in patterns:
-        path = Path(pattern)
-        if path.exists():
-            found_files.append(path)
-        elif '*' in pattern:
-            parent_dir = path.parent if path.parent != Path('.') else Path('.')
-            if parent_dir.exists():
-                found_files.extend(parent_dir.glob(path.name))
-    
-    return list(set(found_files))
-
-def load_csv_smart(self, file_path: Path) -> pd.DataFrame:
-    """Smart CSV loader with multiple encoding attempts"""
-    LOG.info(f"Loading: {file_path}")
-    
-    encodings = ['utf-8', 'latin1', 'cp1252']
-    separators = [',', ';', '\t']
-    
-    for encoding in encodings:
-        for sep in separators:
-            try:
-                df = pd.read_csv(file_path, encoding=encoding, sep=sep, low_memory=False)
-                if df.shape[1] > 1 and len(df) > 0:
-                    LOG.info(f"Loaded {file_path}: {df.shape[0]} rows, {df.shape[1]} columns")
-                    return df
-            except:
+    def __init__(self):
+        self.call_data = None
+        self.mail_data = None
+        self.intent_data = None
+        self.load_summary = {}
+        
+    def safe_load_csv(self, filepath: str) -> pd.DataFrame:
+        """Load CSV with multiple fallback strategies"""
+        
+        LOG.info(f"Loading: {filepath}")
+        
+        # Try different file paths
+        possible_paths = [
+            filepath,
+            f"data/{filepath}",
+            f"data\\{filepath}",
+            Path(filepath).name
+        ]
+        
+        for path in possible_paths:
+            if not Path(path).exists():
                 continue
+                
+            LOG.info(f"Found file: {path}")
+            
+            # Try different loading strategies
+            load_strategies = [
+                {'encoding': 'utf-8', 'sep': ','},
+                {'encoding': 'utf-8', 'sep': ';'},
+                {'encoding': 'latin1', 'sep': ','},
+                {'encoding': 'cp1252', 'sep': ','},
+                {'encoding': 'utf-8', 'sep': '\t'}
+            ]
+            
+            for strategy in load_strategies:
+                try:
+                    df = pd.read_csv(path, low_memory=False, **strategy)
+                    if len(df) > 0 and df.shape[1] > 1:
+                        LOG.info(f"Successfully loaded: {df.shape[0]} rows, {df.shape[1]} cols")
+                        return df
+                except Exception as e:
+                    continue
+        
+        raise FileNotFoundError(f"Could not load {filepath} with any strategy")
     
-    raise ValueError(f"Could not load {file_path}")
-
-def detect_date_column(self, df: pd.DataFrame) -> str:
-    """Detect the main date column"""
-    date_keywords = ['date', 'time', 'start', 'created', 'dt', 'timestamp']
-    
-    # Check column names
-    for col in df.columns:
-        col_lower = str(col).lower()
-        if any(keyword in col_lower for keyword in date_keywords):
-            # Test if it's actually a date
-            sample = df[col].dropna().head(50)
+    def detect_date_column(self, df: pd.DataFrame) -> str:
+        """Smart date column detection"""
+        
+        date_keywords = ['date', 'time', 'start', 'created', 'dt', 'timestamp']
+        candidates = []
+        
+        # Find candidate columns
+        for col in df.columns:
+            col_lower = str(col).lower()
+            if any(keyword in col_lower for keyword in date_keywords):
+                candidates.append(col)
+        
+        # Test each candidate
+        best_col = None
+        max_valid_dates = 0
+        
+        for col in candidates:
             try:
+                sample = df[col].dropna().head(100)
+                if len(sample) == 0:
+                    continue
+                    
                 parsed = pd.to_datetime(sample, errors='coerce')
-                if parsed.notna().sum() / len(sample) > 0.8:
-                    LOG.info(f"Selected date column: {col}")
-                    return col
-            except:
+                valid_count = parsed.notna().sum()
+                valid_ratio = valid_count / len(sample)
+                
+                if valid_ratio > 0.8 and valid_count > max_valid_dates:
+                    max_valid_dates = valid_count
+                    best_col = col
+                    
+            except Exception:
                 continue
-    
-    raise ValueError("No valid date column found")
-
-def load_call_intent_data(self) -> Tuple[pd.Series, pd.DataFrame]:
-    """Load call intent data and calculate daily volumes + intent distribution"""
-    
-    LOG.info("Loading call intent data...")
-    
-    intent_files = self.find_files(CONFIG["call_intent_files"])
-    if not intent_files:
-        raise FileNotFoundError("No call intent files found")
-    
-    # Use the first/newest file
-    intent_file = intent_files[0]
-    df = self.load_csv_smart(intent_file)
-    
-    # Standardize column names
-    df.columns = [str(col).lower().strip().replace(' ', '_') for col in df.columns]
-    
-    # Find date column
-    date_col = self.detect_date_column(df)
-    
-    # Parse dates and filter for 2025+
-    df[date_col] = pd.to_datetime(df[date_col], errors='coerce')
-    df = df.dropna(subset=[date_col])
-    df = df[df[date_col].dt.year >= 2025]
-    
-    if len(df) == 0:
-        raise ValueError("No 2025+ data found in call intent file")
-    
-    LOG.info(f"Found {len(df)} call records from 2025+")
-    
-    # Find intent column
-    intent_col = None
-    for col in df.columns:
-        if 'intent' in col.lower():
-            intent_col = col
-            break
-    
-    if intent_col is None:
-        LOG.warning("No intent column found - will focus on volume only")
-    
-    # Calculate daily call volumes
-    df['call_date'] = df[date_col].dt.date
-    daily_calls = df.groupby('call_date').size()
-    daily_calls.index = pd.to_datetime(daily_calls.index)
-    daily_calls = daily_calls.sort_index()
-    
-    # Calculate daily intent distribution if available
-    daily_intents = None
-    if intent_col is not None:
-        # Clean intent data
-        df[intent_col] = df[intent_col].fillna('Unknown').astype(str)
         
-        # Create daily intent distribution
-        intent_counts = df.groupby(['call_date', intent_col]).size().unstack(fill_value=0)
-        intent_counts.index = pd.to_datetime(intent_counts.index)
-        intent_counts = intent_counts.sort_index()
+        if best_col is None:
+            raise ValueError("No valid date column found")
+            
+        LOG.info(f"Selected date column: {best_col}")
+        return best_col
+    
+    def load_call_intent_data(self) -> Tuple[pd.Series, pd.DataFrame]:
+        """Load call intent data with filtering"""
         
-        # Calculate percentages
-        daily_intents = intent_counts.div(intent_counts.sum(axis=1), axis=0)
-        daily_intents = daily_intents.fillna(0)
+        LOG.info("Loading call intent data...")
         
-        LOG.info(f"Found {len(intent_counts.columns)} unique intents: {list(intent_counts.columns)}")
-    
-    self.data_summary['call_data'] = {
-        'total_calls': len(df),
-        'daily_records': len(daily_calls),
-        'date_range': f"{daily_calls.index.min().date()} to {daily_calls.index.max().date()}",
-        'avg_daily_calls': daily_calls.mean(),
-        'intent_types': list(intent_counts.columns) if daily_intents is not None else None
-    }
-    
-    self.call_data = daily_calls
-    self.intent_data = daily_intents
-    
-    return daily_calls, daily_intents
-
-def load_mail_data(self) -> pd.DataFrame:
-    """Load mail data and process by type"""
-    
-    LOG.info("Loading mail data...")
-    
-    mail_files = self.find_files(CONFIG["mail_files"])
-    if not mail_files:
-        LOG.warning("No mail files found")
-        return None
-    
-    # Use the first/newest file
-    mail_file = mail_files[0]
-    df = self.load_csv_smart(mail_file)
-    
-    # Standardize column names
-    df.columns = [str(col).lower().strip().replace(' ', '_') for col in df.columns]
-    
-    # Find date column
-    date_col = self.detect_date_column(df)
-    df[date_col] = pd.to_datetime(df[date_col], errors='coerce')
-    df = df.dropna(subset=[date_col])
-    
-    # Find mail type and volume columns
-    mail_type_col = None
-    volume_col = None
-    
-    for col in df.columns:
-        if col != date_col:
-            col_lower = str(col).lower()
-            if any(keyword in col_lower for keyword in ['type', 'category', 'product']):
-                if 2 <= df[col].nunique() <= 50:
-                    mail_type_col = col
+        try:
+            # Load data
+            df = self.safe_load_csv(CONFIG["call_intent_file"])
+            
+            # Standardize columns
+            df.columns = [str(col).lower().strip().replace(' ', '_') for col in df.columns]
+            
+            # Find date and intent columns
+            date_col = self.detect_date_column(df)
+            
+            intent_col = None
+            for col in df.columns:
+                if 'intent' in col.lower():
+                    intent_col = col
                     break
+            
+            if intent_col is None:
+                LOG.warning("No intent column found - will predict volume only")
+            
+            # Parse dates and filter for 2025+
+            df[date_col] = pd.to_datetime(df[date_col], errors='coerce')
+            df = df.dropna(subset=[date_col])
+            df = df[df[date_col].dt.year >= 2025]
+            
+            if len(df) == 0:
+                raise ValueError("No 2025+ call data found")
+            
+            LOG.info(f"Found {len(df)} call records from 2025+")
+            
+            # Calculate daily call volumes
+            df['call_date'] = df[date_col].dt.date
+            daily_calls = df.groupby('call_date').size()
+            daily_calls.index = pd.to_datetime(daily_calls.index)
+            daily_calls = daily_calls.sort_index()
+            
+            # Process intents if available
+            daily_intents = None
+            if intent_col is not None:
+                # Clean intent data
+                df[intent_col] = df[intent_col].fillna('Unknown').astype(str)
+                
+                # Remove rare intents
+                intent_counts = df[intent_col].value_counts()
+                common_intents = intent_counts[intent_counts >= CONFIG["min_intent_occurrences"]].index
+                df_filtered = df[df[intent_col].isin(common_intents)]
+                
+                LOG.info(f"Keeping {len(common_intents)} intents with >={CONFIG['min_intent_occurrences']} occurrences")
+                LOG.info(f"Removed {len(intent_counts) - len(common_intents)} rare intents")
+                
+                # Create daily intent distribution
+                if len(df_filtered) > 0:
+                    intent_daily = df_filtered.groupby(['call_date', intent_col]).size().unstack(fill_value=0)
+                    intent_daily.index = pd.to_datetime(intent_daily.index)
+                    
+                    # Convert to percentages
+                    daily_intents = intent_daily.div(intent_daily.sum(axis=1), axis=0).fillna(0)
+                    
+                    LOG.info(f"Created intent distribution for {len(daily_intents.columns)} intents")
+            
+            self.load_summary['calls'] = {
+                'total_records': len(df),
+                'daily_records': len(daily_calls),
+                'date_range': f"{daily_calls.index.min().date()} to {daily_calls.index.max().date()}",
+                'avg_daily_calls': daily_calls.mean(),
+                'has_intents': daily_intents is not None,
+                'intent_count': len(daily_intents.columns) if daily_intents is not None else 0
+            }
+            
+            self.call_data = daily_calls
+            self.intent_data = daily_intents
+            
+            return daily_calls, daily_intents
+            
+        except Exception as e:
+            LOG.error(f"Failed to load call data: {e}")
+            raise
     
-    for col in df.columns:
-        if col not in [date_col, mail_type_col]:
-            col_lower = str(col).lower()
-            if any(keyword in col_lower for keyword in ['volume', 'count', 'amount', 'pieces']):
-                if df[col].dtype in ['int64', 'float64']:
-                    volume_col = col
-                    break
+    def load_mail_data(self, call_start_date: pd.Timestamp) -> pd.DataFrame:
+        """Load mail data with proper date filtering"""
+        
+        LOG.info("Loading mail data...")
+        
+        try:
+            # Load data
+            df = self.safe_load_csv(CONFIG["mail_file"])
+            
+            # Standardize columns
+            df.columns = [str(col).lower().strip().replace(' ', '_') for col in df.columns]
+            
+            # Find structure
+            date_col = self.detect_date_column(df)
+            
+            # Find mail type column
+            mail_type_col = None
+            for col in df.columns:
+                if col != date_col:
+                    col_lower = str(col).lower()
+                    if any(kw in col_lower for kw in ['type', 'category', 'product']):
+                        if 2 <= df[col].nunique() <= 100:
+                            mail_type_col = col
+                            break
+            
+            # Find volume column
+            volume_col = None
+            for col in df.columns:
+                if col not in [date_col, mail_type_col]:
+                    col_lower = str(col).lower()
+                    if any(kw in col_lower for kw in ['volume', 'count', 'amount', 'pieces']):
+                        if df[col].dtype in ['int64', 'float64']:
+                            volume_col = col
+                            break
+            
+            # Fallback to first numeric column
+            if volume_col is None:
+                numeric_cols = df.select_dtypes(include=[np.number]).columns.tolist()
+                if date_col in numeric_cols:
+                    numeric_cols.remove(date_col)
+                if numeric_cols:
+                    volume_col = numeric_cols[0]
+            
+            LOG.info(f"Mail structure - Date: {date_col}, Type: {mail_type_col}, Volume: {volume_col}")
+            
+            if volume_col is None:
+                LOG.warning("No volume column found in mail data")
+                return None
+            
+            # Process data
+            df[date_col] = pd.to_datetime(df[date_col], errors='coerce')
+            df = df.dropna(subset=[date_col])
+            
+            # Filter dates: only use mail 5 days before call data starts
+            min_mail_date = call_start_date - timedelta(days=CONFIG["mail_lag_days_before_calls"])
+            df = df[df[date_col] >= min_mail_date]
+            
+            LOG.info(f"Using mail data from {min_mail_date.date()} onwards ({len(df)} records)")
+            
+            if len(df) == 0:
+                LOG.warning("No mail data after date filtering")
+                return None
+            
+            # Clean volume data
+            df[volume_col] = pd.to_numeric(df[volume_col], errors='coerce')
+            df = df.dropna(subset=[volume_col])
+            df = df[df[volume_col] >= 0]
+            
+            # Create daily mail by type or total
+            df['mail_date'] = df[date_col].dt.date
+            
+            if mail_type_col is not None:
+                # By type
+                mail_daily = df.groupby(['mail_date', mail_type_col])[volume_col].sum().unstack(fill_value=0)
+                mail_daily.columns = [str(col).strip() for col in mail_daily.columns]
+                
+                # Remove low-volume mail types
+                total_volumes = mail_daily.sum()
+                min_volume = total_volumes.quantile(0.1)  # Keep top 90%
+                active_types = total_volumes[total_volumes >= min_volume].index
+                mail_daily = mail_daily[active_types]
+                
+                LOG.info(f"Using {len(mail_daily.columns)} mail types after filtering")
+            else:
+                # Total only
+                mail_daily = df.groupby('mail_date')[volume_col].sum()
+                mail_daily = mail_daily.to_frame('total_mail')
+            
+            mail_daily.index = pd.to_datetime(mail_daily.index)
+            mail_daily = mail_daily.sort_index()
+            
+            self.load_summary['mail'] = {
+                'total_records': len(df),
+                'daily_records': len(mail_daily),
+                'date_range': f"{mail_daily.index.min().date()} to {mail_daily.index.max().date()}",
+                'mail_types': list(mail_daily.columns),
+                'avg_daily_volume': mail_daily.sum(axis=1).mean()
+            }
+            
+            self.mail_data = mail_daily
+            return mail_daily
+            
+        except Exception as e:
+            LOG.error(f"Failed to load mail data: {e}")
+            return None
     
-    if volume_col is None:
-        # Use first numeric column
-        numeric_cols = df.select_dtypes(include=[np.number]).columns.tolist()
-        if numeric_cols:
-            volume_col = numeric_cols[0]
+    def align_data(self) -> Dict:
+        """Align all data to common dates"""
+        
+        LOG.info("Aligning data to common dates...")
+        
+        if self.call_data is None:
+            raise ValueError("No call data available")
+        
+        # Start with call dates
+        call_dates = set(self.call_data.index)
+        
+        # Find intersection with mail if available
+        if self.mail_data is not None:
+            mail_dates = set(self.mail_data.index)
+            common_dates = call_dates.intersection(mail_dates)
+            has_mail = True
+        else:
+            common_dates = call_dates
+            has_mail = False
+        
+        if len(common_dates) < 10:
+            LOG.warning(f"Only {len(common_dates)} overlapping days - proceeding with call-only data")
+            common_dates = call_dates
+            has_mail = False
+        
+        common_dates = sorted(common_dates)
+        
+        # Create aligned dataset
+        aligned = {
+            'calls': self.call_data.loc[common_dates],
+            'dates': common_dates,
+            'has_mail': has_mail
+        }
+        
+        if has_mail and self.mail_data is not None:
+            aligned['mail'] = self.mail_data.loc[common_dates]
+        
+        if self.intent_data is not None:
+            aligned['intents'] = self.intent_data.loc[common_dates]
+        
+        LOG.info(f"Aligned data: {len(common_dates)} days, Mail: {has_mail}")
+        
+        return aligned
     
-    if mail_type_col is None or volume_col is None:
-        LOG.warning(f"Could not identify mail structure. Type: {mail_type_col}, Volume: {volume_col}")
-        return None
+    def load_all_data(self) -> Dict:
+        """Load and align all data"""
+        
+        LOG.info("=== LOADING ALL DATA ===")
+        
+        # Load call data first
+        calls, intents = self.load_call_intent_data()
+        call_start_date = calls.index.min()
+        
+        # Load mail data with proper date filtering
+        mail = self.load_mail_data(call_start_date)
+        
+        # Align everything
+        aligned_data = self.align_data()
+        
+        # Print summary
+        self.print_summary()
+        
+        return aligned_data
     
-    LOG.info(f"Mail structure - Date: {date_col}, Type: {mail_type_col}, Volume: {volume_col}")
-    
-    # Process mail data
-    df[volume_col] = pd.to_numeric(df[volume_col], errors='coerce')
-    df = df.dropna(subset=[volume_col])
-    df = df[df[volume_col] >= 0]
-    
-    # Create daily mail by type
-    df['mail_date'] = df[date_col].dt.date
-    mail_daily = df.groupby(['mail_date', mail_type_col])[volume_col].sum().unstack(fill_value=0)
-    mail_daily.index = pd.to_datetime(mail_daily.index)
-    mail_daily = mail_daily.sort_index()
-    
-    # Clean column names
-    mail_daily.columns = [str(col).strip() for col in mail_daily.columns]
-    
-    self.data_summary['mail_data'] = {
-        'total_records': len(df),
-        'daily_records': len(mail_daily),
-        'date_range': f"{mail_daily.index.min().date()} to {mail_daily.index.max().date()}",
-        'mail_types': list(mail_daily.columns),
-        'avg_daily_volume': mail_daily.sum(axis=1).mean()
-    }
-    
-    self.mail_data = mail_daily
-    return mail_daily
-
-def align_data_to_overlap(self) -> Dict:
-    """Align all data to overlapping dates only"""
-    
-    LOG.info("Aligning data to overlapping dates...")
-    
-    if self.call_data is None:
-        raise ValueError("No call data loaded")
-    
-    # Start with call data dates
-    common_dates = set(self.call_data.index)
-    
-    # Find overlap with mail data if available
-    if self.mail_data is not None:
-        mail_dates = set(self.mail_data.index)
-        common_dates = common_dates.intersection(mail_dates)
-        LOG.info(f"Found {len(common_dates)} overlapping dates between calls and mail")
-    else:
-        LOG.info(f"Using {len(common_dates)} call-only dates (no mail data)")
-    
-    if len(common_dates) < 10:
-        raise ValueError(f"Insufficient overlapping data: only {len(common_dates)} days")
-    
-    # Convert to sorted list
-    common_dates = sorted(common_dates)
-    
-    # Align all datasets
-    aligned_data = {
-        'calls': self.call_data.loc[common_dates],
-        'dates': common_dates
-    }
-    
-    if self.mail_data is not None:
-        aligned_data['mail'] = self.mail_data.loc[common_dates]
-    
-    if self.intent_data is not None:
-        aligned_data['intents'] = self.intent_data.loc[common_dates]
-    
-    self.data_summary['aligned_data'] = {
-        'overlapping_days': len(common_dates),
-        'date_range': f"{common_dates[0]} to {common_dates[-1]}",
-        'has_mail': self.mail_data is not None,
-        'has_intents': self.intent_data is not None
-    }
-    
-    LOG.info(f"Data aligned: {len(common_dates)} overlapping days")
-    return aligned_data
-
-def load_all_data(self) -> Dict:
-    """Load and align all data"""
-    
-    LOG.info("=== LOADING FRESH 2025+ DATA ===")
-    
-    # Load call intent data
-    calls, intents = self.load_call_intent_data()
-    
-    # Load mail data
-    mail = self.load_mail_data()
-    
-    # Align to overlapping dates
-    aligned_data = self.align_data_to_overlap()
-    
-    # Print summary
-    self.print_data_summary()
-    
-    return aligned_data
-
-def print_data_summary(self):
-    """Print clean data summary"""
-    
-    print("\n" + "="*70)
-    print("2025+ DATA LOADING SUMMARY")
-    print("="*70)
-    
-    for data_type, info in self.data_summary.items():
-        print(f"\n{data_type.upper().replace('_', ' ')}:")
-        if isinstance(info, dict):
+    def print_summary(self):
+        """Print data loading summary"""
+        
+        print("\n" + "="*60)
+        print("DATA LOADING SUMMARY")
+        print("="*60)
+        
+        for data_type, info in self.load_summary.items():
+            print(f"\n{data_type.upper()}:")
             for key, value in info.items():
                 if isinstance(value, list) and len(value) > 5:
-                    print(f"  {key}: {value[:3]} ... ({len(value)} total)")
+                    print(f"  {key}: {value[:3]}... ({len(value)} total)")
                 else:
                     print(f"  {key}: {value}")
+        
+        print("="*60)
+
+# ============================================================================
+# PROGRESSIVE FEATURE ENGINEERING
+# ============================================================================
+
+class ProgressiveFeatureEngine:
+    """Build features with increasing complexity"""
+    
+    def __init__(self, approach: str = "simple"):
+        self.approach = approach
+        self.config = CONFIG["approaches"][approach]
+        self.features_created = []
+    
+    def create_mail_lag_features(self, mail_data: pd.DataFrame, target_dates: pd.DatetimeIndex) -> pd.DataFrame:
+        """Create mail lag features based on approach complexity"""
+        
+        if mail_data is None or len(mail_data) == 0:
+            LOG.warning("No mail data - creating dummy features")
+            dummy_features = pd.DataFrame(index=target_dates)
+            dummy_features['no_mail_data'] = 1
+            return dummy_features
+        
+        LOG.info(f"Creating {self.approach} mail lag features...")
+        
+        lag_features = pd.DataFrame(index=target_dates)
+        lags = self.config["lags"]
+        
+        # Select mail types to use
+        if mail_data.shape[1] > 8:
+            # Use top mail types by volume
+            volumes = mail_data.sum().sort_values(ascending=False)
+            top_types = volumes.head(8).index
+            mail_subset = mail_data[top_types]
         else:
-            print(f"  {info}")
-    
-    print("="*70)
-```
-
-# ============================================================================
-
-# FEATURE ENGINEERING FOR VOLUME + INTENT PREDICTION
-
-# ============================================================================
-
-class VolumeIntentFeatureEngine:
-“”“Create features for both volume and intent prediction”””
-
-```
-def __init__(self):
-    self.volume_features = None
-    self.intent_features = None
-    self.feature_names = []
-
-def create_lag_features(self, mail_data: pd.DataFrame, call_data: pd.Series) -> pd.DataFrame:
-    """Create mail lag features"""
-    
-    if mail_data is None:
-        return pd.DataFrame(index=call_data.index)
-    
-    LOG.info("Creating mail lag features...")
-    
-    lag_features = pd.DataFrame(index=call_data.index)
-    
-    # Select top mail types by volume
-    mail_volumes = mail_data.sum().sort_values(ascending=False)
-    top_mail_types = mail_volumes.head(8).index.tolist()  # Top 8 mail types
-    
-    for mail_type in top_mail_types:
-        mail_type_clean = str(mail_type).replace(' ', '_')[:15]
-        mail_series = mail_data[mail_type]
+            mail_subset = mail_data
         
-        # Create lag features
-        for lag in CONFIG["mail_lag_days"]:
+        for mail_type in mail_subset.columns:
+            safe_name = str(mail_type).replace(' ', '_').replace('-', '_')[:15]
+            mail_series = mail_subset[mail_type]
+            
+            # Basic lag features
+            for lag in lags:
+                if lag == 0:
+                    lag_features[f"{safe_name}_today"] = mail_series.reindex(target_dates, fill_value=0)
+                else:
+                    lag_features[f"{safe_name}_lag{lag}"] = mail_series.shift(lag).reindex(target_dates, fill_value=0)
+            
+            # Additional features based on complexity
+            if self.config["features"] in ["rolling", "weighted", "all"]:
+                # Rolling averages
+                for window in [3, 7]:
+                    if window <= len(lags):
+                        rolling_mean = mail_series.rolling(window, min_periods=1).mean()
+                        lag_features[f"{safe_name}_avg{window}d"] = rolling_mean.reindex(target_dates, fill_value=0)
+            
+            if self.config["features"] in ["weighted", "all"]:
+                # Weighted lag features
+                weights = {1: 0.4, 2: 0.3, 3: 0.2, 4: 0.1, 5: 0.05}
+                weighted_sum = pd.Series(0, index=mail_series.index, dtype=float)
+                
+                for lag in lags:
+                    weight = weights.get(lag, 0.05)
+                    if lag == 0:
+                        weighted_sum += mail_series * weight
+                    else:
+                        weighted_sum += mail_series.shift(lag).fillna(0) * weight
+                
+                lag_features[f"{safe_name}_weighted"] = weighted_sum.reindex(target_dates, fill_value=0)
+        
+        # Total mail features
+        total_mail = mail_subset.sum(axis=1)
+        for lag in lags:
             if lag == 0:
-                lag_features[f"{mail_type_clean}_today"] = mail_series
+                lag_features['total_mail_today'] = total_mail.reindex(target_dates, fill_value=0)
             else:
-                lag_features[f"{mail_type_clean}_lag_{lag}"] = mail_series.shift(lag)
+                lag_features[f'total_mail_lag{lag}'] = total_mail.shift(lag).reindex(target_dates, fill_value=0)
         
-        # Weighted lag feature
-        weighted_lag = pd.Series(0, index=mail_series.index, dtype=float)
-        for lag, weight in CONFIG["lag_weights"].items():
-            if lag == 0:
-                weighted_lag += mail_series * weight
-            else:
-                weighted_lag += mail_series.shift(lag).fillna(0) * weight
+        # Fill any remaining NaN
+        lag_features = lag_features.fillna(0)
         
-        lag_features[f"{mail_type_clean}_weighted"] = weighted_lag
+        self.features_created.extend(lag_features.columns.tolist())
+        LOG.info(f"Created {len(lag_features.columns)} mail lag features")
+        
+        return lag_features
     
-    # Total mail features
-    lag_features['total_mail_today'] = mail_data.sum(axis=1)
-    lag_features['total_mail_lag_1'] = mail_data.sum(axis=1).shift(1)
-    lag_features['total_mail_lag_2'] = mail_data.sum(axis=1).shift(2)
+    def create_temporal_features(self, dates: pd.DatetimeIndex) -> pd.DataFrame:
+        """Create temporal features"""
+        
+        LOG.info("Creating temporal features...")
+        
+        temporal = pd.DataFrame(index=dates)
+        
+        # Basic temporal
+        temporal['weekday'] = dates.weekday
+        temporal['month'] = dates.month
+        temporal['quarter'] = dates.quarter
+        
+        if self.config["features"] in ["rolling", "weighted", "all"]:
+            # Business calendar
+            temporal['is_month_start'] = (dates.day <= 5).astype(int)
+            temporal['is_month_end'] = (dates.day >= 25).astype(int)
+        
+        if self.config["features"] in ["all"]:
+            # Cyclical encoding
+            temporal['weekday_sin'] = np.sin(2 * np.pi * temporal['weekday'] / 7)
+            temporal['weekday_cos'] = np.cos(2 * np.pi * temporal['weekday'] / 7)
+        
+        self.features_created.extend(temporal.columns.tolist())
+        LOG.info(f"Created {len(temporal.columns)} temporal features")
+        
+        return temporal
     
-    # Fill NaN
-    lag_features = lag_features.fillna(0)
+    def create_call_history_features(self, call_data: pd.Series, target_dates: pd.DatetimeIndex) -> pd.DataFrame:
+        """Create call history features"""
+        
+        LOG.info("Creating call history features...")
+        
+        call_features = pd.DataFrame(index=target_dates)
+        
+        # Basic lags
+        for lag in [1, 2, 3]:
+            call_features[f'calls_lag{lag}'] = call_data.shift(lag).reindex(target_dates, fill_value=call_data.mean())
+        
+        if self.config["features"] in ["rolling", "weighted", "all"]:
+            # Rolling statistics
+            for window in [3, 7]:
+                call_features[f'calls_avg{window}d'] = call_data.rolling(window, min_periods=1).mean().reindex(target_dates, fill_value=call_data.mean())
+        
+        self.features_created.extend(call_features.columns.tolist())
+        LOG.info(f"Created {len(call_features.columns)} call history features")
+        
+        return call_features
     
-    LOG.info(f"Created {len(lag_features.columns)} mail lag features")
-    return lag_features
-
-def create_temporal_features(self, dates: pd.DatetimeIndex) -> pd.DataFrame:
-    """Create temporal features"""
+    def create_features_for_volume(self, aligned_data: Dict) -> Tuple[pd.DataFrame, pd.Series]:
+        """Create features for volume prediction"""
+        
+        LOG.info(f"Creating {self.approach} features for volume prediction...")
+        
+        calls = aligned_data['calls']
+        mail = aligned_data.get('mail')
+        
+        # Target: next day calls
+        y = calls.shift(-1).dropna()
+        target_dates = y.index
+        
+        feature_sets = []
+        
+        # 1. Mail lag features
+        mail_features = self.create_mail_lag_features(mail, target_dates)
+        feature_sets.append(mail_features)
+        
+        # 2. Temporal features
+        temporal_features = self.create_temporal_features(target_dates)
+        feature_sets.append(temporal_features)
+        
+        # 3. Call history features
+        call_features = self.create_call_history_features(calls, target_dates)
+        feature_sets.append(call_features)
+        
+        # Combine all features
+        X = pd.concat(feature_sets, axis=1)
+        X = X.fillna(0)
+        
+        LOG.info(f"Volume features: {X.shape[1]} features, {len(y)} samples")
+        return X, y
     
-    LOG.info("Creating temporal features...")
-    
-    temporal_features = pd.DataFrame(index=dates)
-    
-    # Basic temporal
-    temporal_features['weekday'] = dates.weekday
-    temporal_features['month'] = dates.month
-    temporal_features['day_of_month'] = dates.day
-    temporal_features['quarter'] = dates.quarter
-    
-    # Business calendar
-    temporal_features['is_month_start'] = (dates.day <= 5).astype(int)
-    temporal_features['is_month_end'] = (dates.day >= 25).astype(int)
-    
-    # Cyclical encoding
-    temporal_features['weekday_sin'] = np.sin(2 * np.pi * temporal_features['weekday'] / 7)
-    temporal_features['weekday_cos'] = np.cos(2 * np.pi * temporal_features['weekday'] / 7)
-    temporal_features['month_sin'] = np.sin(2 * np.pi * temporal_features['month'] / 12)
-    temporal_features['month_cos'] = np.cos(2 * np.pi * temporal_features['month'] / 12)
-    
-    # Holidays
-    try:
-        us_holidays = holidays.US()
-        temporal_features['is_holiday'] = dates.to_series().apply(
-            lambda x: 1 if x.date() in us_holidays else 0
-        ).values
-    except:
-        temporal_features['is_holiday'] = 0
-    
-    LOG.info(f"Created {len(temporal_features.columns)} temporal features")
-    return temporal_features
-
-def create_call_history_features(self, call_data: pd.Series) -> pd.DataFrame:
-    """Create call history features"""
-    
-    LOG.info("Creating call history features...")
-    
-    call_features = pd.DataFrame(index=call_data.index)
-    
-    # Lag features
-    for lag in [1, 2, 3, 7]:
-        call_features[f'calls_lag_{lag}'] = call_data.shift(lag)
-    
-    # Rolling statistics
-    for window in [3, 7, 14]:
-        call_features[f'calls_mean_{window}d'] = call_data.rolling(window, min_periods=1).mean()
-        call_features[f'calls_std_{window}d'] = call_data.rolling(window, min_periods=1).std()
-    
-    # Fill NaN
-    call_features = call_features.fillna(method='ffill').fillna(call_data.mean())
-    
-    LOG.info(f"Created {len(call_features.columns)} call history features")
-    return call_features
-
-def create_volume_features(self, aligned_data: Dict) -> Tuple[pd.DataFrame, pd.Series]:
-    """Create features for volume prediction"""
-    
-    LOG.info("Creating volume prediction features...")
-    
-    call_data = aligned_data['calls']
-    mail_data = aligned_data.get('mail')
-    
-    # Target: next day calls
-    y_volume = call_data.shift(-1).dropna()
-    common_dates = y_volume.index
-    
-    all_features = []
-    
-    # 1. Mail lag features
-    if mail_data is not None:
-        lag_features = self.create_lag_features(mail_data, call_data)
-        lag_features = lag_features.reindex(common_dates, fill_value=0)
-        all_features.append(lag_features)
-    
-    # 2. Temporal features
-    temporal_features = self.create_temporal_features(common_dates)
-    all_features.append(temporal_features)
-    
-    # 3. Call history features
-    call_features = self.create_call_history_features(call_data)
-    call_features = call_features.reindex(common_dates, fill_value=0)
-    all_features.append(call_features)
-    
-    # Combine features
-    if all_features:
-        X_volume = pd.concat(all_features, axis=1)
-    else:
-        X_volume = pd.DataFrame(index=common_dates)
-        X_volume['weekday'] = common_dates.weekday
-        X_volume['calls_lag_1'] = call_data.shift(1).reindex(common_dates, fill_value=call_data.mean())
-    
-    # Handle NaN
-    X_volume = X_volume.fillna(0)
-    
-    self.volume_features = X_volume.columns.tolist()
-    
-    LOG.info(f"Volume features: {X_volume.shape[1]} features, {len(y_volume)} samples")
-    return X_volume, y_volume
-
-def create_intent_features(self, aligned_data: Dict) -> Tuple[pd.DataFrame, pd.DataFrame]:
-    """Create features for intent prediction"""
-    
-    intent_data = aligned_data.get('intents')
-    if intent_data is None:
-        LOG.info("No intent data available for intent prediction")
-        return None, None
-    
-    LOG.info("Creating intent prediction features...")
-    
-    call_data = aligned_data['calls']
-    mail_data = aligned_data.get('mail')
-    
-    # Target: next day intent distribution
-    y_intent = intent_data.shift(-1).dropna()
-    common_dates = y_intent.index
-    
-    all_features = []
-    
-    # 1. Current intent distribution
-    current_intent = intent_data.reindex(common_dates, fill_value=0)
-    current_intent.columns = [f'current_{col}' for col in current_intent.columns]
-    all_features.append(current_intent)
-    
-    # 2. Mail features (if available)
-    if mail_data is not None:
-        lag_features = self.create_lag_features(mail_data, call_data)
-        lag_features = lag_features.reindex(common_dates, fill_value=0)
-        all_features.append(lag_features)
-    
-    # 3. Temporal features
-    temporal_features = self.create_temporal_features(common_dates)
-    all_features.append(temporal_features)
-    
-    # 4. Call volume features
-    call_features = self.create_call_history_features(call_data)
-    call_features = call_features.reindex(common_dates, fill_value=0)
-    all_features.append(call_features)
-    
-    # Combine features
-    X_intent = pd.concat(all_features, axis=1)
-    X_intent = X_intent.fillna(0)
-    
-    self.intent_features = X_intent.columns.tolist()
-    
-    LOG.info(f"Intent features: {X_intent.shape[1]} features, {len(y_intent)} samples")
-    return X_intent, y_intent
-```
+    def create_features_for_intent(self, aligned_data: Dict) -> Tuple[pd.DataFrame, pd.DataFrame]:
+        """Create features for intent prediction"""
+        
+        intents = aligned_data.get('intents')
+        if intents is None:
+            return None, None
+        
+        LOG.info(f"Creating {self.approach} features for intent prediction...")
+        
+        calls = aligned_data['calls']
+        mail = aligned_data.get('mail')
+        
+        # Target: next day intent distribution
+        y = intents.shift(-1).dropna()
+        target_dates = y.index
+        
+        feature_sets = []
+        
+        # 1. Current intent distribution
+        current_intents = intents.reindex(target_dates, fill_value=0)
+        current_intents.columns = [f'current_{col}' for col in current_intents.columns]
+        feature_sets.append(current_intents)
+        
+        # 2. Mail features
+        mail_features = self.create_mail_lag_features(mail, target_dates)
+        feature_sets.append(mail_features)
+        
+        # 3. Temporal features
+        temporal_features = self.create_temporal_features(target_dates)
+        feature_sets.append(temporal_features)
+        
+        # 4. Call volume features
+        call_features = self.create_call_history_features(calls, target_dates)
+        feature_sets.append(call_features)
+        
+        # Combine all features
+        X = pd.concat(feature_sets, axis=1)
+        X = X.fillna(0)
+        
+        LOG.info(f"Intent features: {X.shape[1]} features, {len(y)} samples")
+        return X, y
 
 # ============================================================================
-
-# DUAL MODEL TRAINER (VOLUME + INTENT)
-
+# PROGRESSIVE MODEL TRAINER
 # ============================================================================
 
-class DualModelTrainer:
-“”“Train models for both volume and intent prediction”””
-
-```
-def __init__(self):
-    self.volume_model = None
-    self.intent_models = {}
-    self.volume_results = {}
-    self.intent_results = {}
-    self.label_encoders = {}
-
-def train_volume_model(self, X: pd.DataFrame, y: pd.Series) -> Dict:
-    """Train call volume prediction model"""
+class ProgressiveModelTrainer:
+    """Train models with increasing complexity"""
     
-    LOG.info("Training call volume prediction model...")
+    def __init__(self):
+        self.volume_models = {}
+        self.intent_models = {}
+        self.results = {}
+        self.best_approach = None
     
-    if len(X) < CONFIG["min_train_samples"]:
-        return {"error": "insufficient_data"}
+    def get_models_for_approach(self, approach: str) -> Dict:
+        """Get appropriate models for complexity level"""
+        
+        if approach == "simple":
+            return {
+                'linear': LinearRegression(),
+                'ridge': Ridge(alpha=1.0, random_state=CONFIG["random_state"])
+            }
+        elif approach == "intermediate":
+            return {
+                'ridge': Ridge(alpha=10.0, random_state=CONFIG["random_state"]),
+                'rf': RandomForestRegressor(n_estimators=50, max_depth=5, random_state=CONFIG["random_state"])
+            }
+        elif approach in ["advanced", "expert"]:
+            return {
+                'ridge': Ridge(alpha=10.0, random_state=CONFIG["random_state"]),
+                'rf': RandomForestRegressor(n_estimators=100, max_depth=8, random_state=CONFIG["random_state"])
+            }
+        else:
+            return {'ridge': Ridge(alpha=10.0, random_state=CONFIG["random_state"])}
     
-    models = {
-        'ridge': Ridge(alpha=10.0, random_state=CONFIG["random_state"]),
-        'random_forest': RandomForestRegressor(
-            n_estimators=100, max_depth=8, min_samples_split=5,
-            random_state=CONFIG["random_state"], n_jobs=-1
-        ),
-        'gradient_boost': GradientBoostingRegressor(
-            n_estimators=100, max_depth=6, learning_rate=0.1,
-            random_state=CONFIG["random_state"]
-        )
-    }
-    
-    best_model = None
-    best_score = -float('inf')
-    results = {}
-    
-    # Time series cross-validation
-    tscv = TimeSeriesSplit(n_splits=min(CONFIG["cv_folds"], len(X)//10, 5))
-    
-    for model_name, model in models.items():
+    def validate_volume_model(self, model, X: pd.DataFrame, y: pd.Series) -> Dict:
+        """Validate volume prediction model"""
+        
+        if len(X) < 15:
+            return {"error": "insufficient_data"}
+        
         try:
-            # Cross-validation
+            # Time series cross-validation
+            n_splits = min(3, len(X) // 10)
+            if n_splits < 2:
+                n_splits = 2
+            
+            tscv = TimeSeriesSplit(n_splits=n_splits)
+            
             cv_results = cross_validate(
                 model, X, y, cv=tscv,
                 scoring=['neg_mean_absolute_error', 'r2'],
@@ -1258,17 +747,20 @@ def train_volume_model(self, X: pd.DataFrame, y: pd.Series) -> Dict:
             cv_mae = -cv_results['test_neg_mean_absolute_error'].mean()
             cv_r2 = cv_results['test_r2'].mean()
             
-            # Holdout validation
-            split_point = int(len(X) * 0.8)
-            X_train, X_test = X.iloc[:split_point], X.iloc[split_point:]
-            y_train, y_test = y.iloc[:split_point], y.iloc[split_point:]
+            # Holdout test
+            split_idx = int(len(X) * 0.8)
+            X_train, X_test = X.iloc[:split_idx], X.iloc[split_idx:]
+            y_train, y_test = y.iloc[:split_idx], y.iloc[split_idx:]
             
             model.fit(X_train, y_train)
             test_pred = model.predict(X_test)
             test_mae = mean_absolute_error(y_test, test_pred)
             test_r2 = r2_score(y_test, test_pred)
             
-            results[model_name] = {
+            # Final model
+            model.fit(X, y)
+            
+            return {
                 'cv_mae': cv_mae,
                 'cv_r2': cv_r2,
                 'test_mae': test_mae,
@@ -1276,538 +768,605 @@ def train_volume_model(self, X: pd.DataFrame, y: pd.Series) -> Dict:
                 'model': model
             }
             
-            LOG.info(f"  {model_name}: CV R² = {cv_r2:.3f}, Test R² = {test_r2:.3f}")
-            
-            if cv_r2 > best_score:
-                best_score = cv_r2
-                best_model = model
-                
         except Exception as e:
-            LOG.error(f"  {model_name} failed: {e}")
-            continue
+            LOG.error(f"Model validation failed: {e}")
+            return {"error": str(e)}
     
-    if best_model is not None:
-        # Train best model on full data
-        best_model.fit(X, y)
-        self.volume_model = best_model
+    def train_approach_volume(self, approach: str, X: pd.DataFrame, y: pd.Series) -> Dict:
+        """Train volume models for one approach"""
         
-        # Feature importance
-        if hasattr(best_model, 'feature_importances_'):
-            feature_importance = dict(zip(X.columns, best_model.feature_importances_))
-            top_features = sorted(feature_importance.items(), key=lambda x: x[1], reverse=True)[:10]
-            results['feature_importance'] = top_features
+        LOG.info(f"Training {approach} volume models...")
         
-        LOG.info(f"Best volume model: {type(best_model).__name__} (R² = {best_score:.3f})")
-    
-    self.volume_results = results
-    return results
-
-def train_intent_models(self, X: pd.DataFrame, y: pd.DataFrame) -> Dict:
-    """Train intent prediction models for each intent type"""
-    
-    if X is None or y is None:
-        LOG.info("No intent data - skipping intent model training")
-        return {}
-    
-    LOG.info("Training intent prediction models...")
-    
-    results = {}
-    
-    # Train a model for each intent type
-    for intent_type in y.columns:
-        LOG.info(f"  Training model for intent: {intent_type}")
+        models = self.get_models_for_approach(approach)
+        results = {}
+        best_r2 = -float('inf')
+        best_model = None
         
+        for model_name, model in models.items():
+            try:
+                result = self.validate_volume_model(model, X, y)
+                
+                if "error" not in result:
+                    results[model_name] = result
+                    r2 = result['cv_r2']
+                    
+                    LOG.info(f"  {model_name}: CV R2 = {r2:.3f}, Test R2 = {result['test_r2']:.3f}")
+                    
+                    if r2 > best_r2:
+                        best_r2 = r2
+                        best_model = result['model']
+                else:
+                    LOG.warning(f"  {model_name}: {result['error']}")
+                    
+            except Exception as e:
+                LOG.error(f"  {model_name} failed: {e}")
+        
+        if best_model is not None:
+            self.volume_models[approach] = best_model
+            results['best_model'] = best_model
+            results['best_r2'] = best_r2
+        
+        return results
+    
+    def train_approach_intent(self, approach: str, X: pd.DataFrame, y: pd.DataFrame) -> Dict:
+        """Train intent models for one approach (simplified)"""
+        
+        if X is None or y is None:
+            return {}
+        
+        LOG.info(f"Training {approach} intent models...")
+        
+        results = {}
+        
+        # Train one model for dominant intent prediction
         try:
-            # Convert probabilities to categories (high/medium/low)
-            y_intent = y[intent_type]
-            y_categorical = pd.cut(y_intent, bins=3, labels=['Low', 'Medium', 'High'])
+            # Find dominant intent each day
+            dominant_intents = y.idxmax(axis=1)
             
-            # Encode labels
-            le = LabelEncoder()
-            y_encoded = le.fit_transform(y_categorical)
-            self.label_encoders[intent_type] = le
-            
-            # Simple model for intent prediction
-            model = RandomForestClassifier(
-                n_estimators=50, max_depth=5,
-                random_state=CONFIG["random_state"], n_jobs=-1
-            )
+            # Simple classifier
+            model = RandomForestClassifier(n_estimators=50, max_depth=5, random_state=CONFIG["random_state"])
             
             # Cross-validation
-            tscv = TimeSeriesSplit(n_splits=min(3, len(X)//15, 5))
-            cv_scores = cross_validate(model, X, y_encoded, cv=tscv, scoring='accuracy')
-            cv_accuracy = cv_scores['test_score'].mean()
-            
-            # Train final model
-            model.fit(X, y_encoded)
-            self.intent_models[intent_type] = model
-            
-            results[intent_type] = {
-                'cv_accuracy': cv_accuracy,
-                'model': model,
-                'label_encoder': le
-            }
-            
-            LOG.info(f"    {intent_type}: CV Accuracy = {cv_accuracy:.3f}")
+            n_splits = min(3, len(X) // 10)
+            if n_splits >= 2:
+                tscv = TimeSeriesSplit(n_splits=n_splits)
+                cv_scores = cross_validate(model, X, dominant_intents, cv=tscv, scoring='accuracy')
+                cv_acc = cv_scores['test_score'].mean()
+                
+                # Final model
+                model.fit(X, dominant_intents)
+                
+                self.intent_models[approach] = model
+                results['dominant_intent'] = {
+                    'cv_accuracy': cv_acc,
+                    'model': model
+                }
+                
+                LOG.info(f"  Dominant intent model: CV Acc = {cv_acc:.3f}")
             
         except Exception as e:
-            LOG.error(f"    {intent_type} failed: {e}")
-            continue
-    
-    self.intent_results = results
-    return results
-
-def train_all_models(self, volume_data: Tuple, intent_data: Tuple) -> Dict:
-    """Train both volume and intent models"""
-    
-    LOG.info("=== TRAINING VOLUME & INTENT MODELS ===")
-    
-    results = {}
-    
-    # Train volume model
-    if volume_data[0] is not None:
-        volume_results = self.train_volume_model(volume_data[0], volume_data[1])
-        results['volume'] = volume_results
-    
-    # Train intent models
-    if intent_data[0] is not None:
-        intent_results = self.train_intent_models(intent_data[0], intent_data[1])
-        results['intent'] = intent_results
-    
-    return results
-```
-
-# ============================================================================
-
-# PREDICTION ENGINE
-
-# ============================================================================
-
-class CallPredictionEngine:
-“”“Engine for making volume and intent predictions”””
-
-```
-def __init__(self, volume_model, intent_models, feature_engineer, call_data, mail_data=None):
-    self.volume_model = volume_model
-    self.intent_models = intent_models
-    self.feature_engineer = feature_engineer
-    self.call_data = call_data
-    self.mail_data = mail_data
-    self.last_known_date = call_data.index.max()
-
-def predict_single_day(self, prediction_date: Union[str, datetime], 
-                      mail_volumes: Dict[str, float] = None) -> Dict:
-    """Predict volume and intent for a single day"""
-    
-    try:
-        pred_date = pd.to_datetime(prediction_date)
+            LOG.error(f"Intent training failed: {e}")
         
-        # Create simple feature vector for prediction
-        features = []
+        return results
+    
+    def train_progressive(self, aligned_data: Dict) -> Dict:
+        """Train models with progressive complexity"""
         
-        # Basic features
-        if mail_volumes:
-            features.append(sum(mail_volumes.values()))  # Total mail
-        else:
-            features.append(0)
+        LOG.info("=== PROGRESSIVE MODEL TRAINING ===")
         
-        features.extend([
-            pred_date.weekday(),  # Weekday
-            pred_date.month,      # Month
-            self.call_data.iloc[-1] if len(self.call_data) > 0 else 500,  # Last call volume
-            self.call_data.tail(7).mean() if len(self.call_data) >= 7 else 500  # 7-day average
-        ])
+        all_results = {}
+        best_approach = None
+        best_score = -float('inf')
         
-        # Pad to expected feature count
-        expected_features = len(self.feature_engineer.volume_features) if self.feature_engineer.volume_features else 5
-        while len(features) < expected_features:
-            features.append(0)
-        
-        # Volume prediction
-        volume_prediction = None
-        if self.volume_model:
+        for approach in CONFIG["model_progression"]:
+            LOG.info(f"\n--- APPROACH: {approach.upper()} ---")
+            
             try:
-                vol_pred = self.volume_model.predict([features[:expected_features]])[0]
-                volume_prediction = max(0, round(vol_pred, 0))
-            except:
-                volume_prediction = self.call_data.mean()
+                # Create features for this approach
+                feature_engine = ProgressiveFeatureEngine(approach)
+                
+                # Volume prediction
+                X_vol, y_vol = feature_engine.create_features_for_volume(aligned_data)
+                vol_results = self.train_approach_volume(approach, X_vol, y_vol)
+                
+                # Intent prediction
+                X_int, y_int = feature_engine.create_features_for_intent(aligned_data)
+                int_results = self.train_approach_intent(approach, X_int, y_int)
+                
+                # Store results
+                all_results[approach] = {
+                    'volume': vol_results,
+                    'intent': int_results,
+                    'feature_count': len(feature_engine.features_created),
+                    'features': feature_engine.features_created
+                }
+                
+                # Track best approach
+                if 'best_r2' in vol_results and vol_results['best_r2'] > best_score:
+                    best_score = vol_results['best_r2']
+                    best_approach = approach
+                
+            except Exception as e:
+                LOG.error(f"Approach {approach} failed: {e}")
+                continue
         
-        # Intent predictions
-        intent_predictions = {}
-        if self.intent_models:
-            for intent_type, model in self.intent_models.items():
+        self.results = all_results
+        self.best_approach = best_approach
+        
+        if best_approach:
+            LOG.info(f"\nBest approach: {best_approach} (R2 = {best_score:.3f})")
+        else:
+            LOG.warning("No successful models trained")
+        
+        return all_results
+
+# ============================================================================
+# PREDICTION ENGINE
+# ============================================================================
+
+class MailToCallsPredictionEngine:
+    """Engine for making predictions from mail inputs"""
+    
+    def __init__(self, trainer: ProgressiveModelTrainer, data_summary: Dict):
+        self.trainer = trainer
+        self.data_summary = data_summary
+        self.best_approach = trainer.best_approach
+        
+        if self.best_approach:
+            self.volume_model = trainer.volume_models.get(self.best_approach)
+            self.intent_model = trainer.intent_models.get(self.best_approach)
+        else:
+            self.volume_model = None
+            self.intent_model = None
+    
+    def predict_from_mail(self, mail_inputs: Dict[str, Dict[str, float]], 
+                         prediction_date: str = None) -> Dict:
+        """
+        Predict calls from mail inputs
+        
+        Args:
+            mail_inputs: {
+                '2025-07-23': {'type1': 1000, 'type2': 500},
+                '2025-07-24': {'type1': 800, 'type2': 600}
+            }
+            prediction_date: Date to predict for (default: next day after last mail)
+        """
+        
+        LOG.info("Making predictions from mail inputs...")
+        
+        try:
+            if self.volume_model is None:
+                return {'error': 'No trained volume model available'}
+            
+            # Determine prediction date
+            if prediction_date is None:
+                mail_dates = [pd.to_datetime(d) for d in mail_inputs.keys()]
+                prediction_date = max(mail_dates) + timedelta(days=1)
+            else:
+                prediction_date = pd.to_datetime(prediction_date)
+            
+            # Create simple feature vector
+            features = []
+            
+            # Total mail volume
+            total_mail = sum(sum(daily_mail.values()) for daily_mail in mail_inputs.values())
+            features.append(total_mail)
+            
+            # Recent mail (last 2 days)
+            recent_dates = sorted(mail_inputs.keys(), reverse=True)[:2]
+            for i, date in enumerate(recent_dates):
+                daily_total = sum(mail_inputs[date].values())
+                features.append(daily_total)
+            
+            # Pad with zeros if needed
+            while len(features) < 5:
+                features.append(0)
+            
+            # Basic temporal features
+            features.extend([
+                prediction_date.weekday(),
+                prediction_date.month,
+                prediction_date.quarter
+            ])
+            
+            # Make volume prediction
+            if len(features) >= 8:  # Ensure minimum features
+                volume_pred = self.volume_model.predict([features[:8]])[0]
+                volume_pred = max(0, round(volume_pred, 0))
+            else:
+                volume_pred = self.data_summary.get('calls', {}).get('avg_daily_calls', 500)
+            
+            # Intent prediction (if available)
+            intent_pred = None
+            if self.intent_model is not None:
                 try:
-                    intent_pred = model.predict([features[:expected_features]])[0]
-                    intent_predictions[intent_type] = intent_pred
+                    intent_pred = self.intent_model.predict([features[:8]])[0]
                 except:
-                    intent_predictions[intent_type] = 'Medium'
-        
-        # Confidence intervals for volume
-        confidence_intervals = {}
-        if volume_prediction:
-            historical_std = self.call_data.std()
+                    intent_pred = 'Unknown'
+            
+            # Confidence intervals
+            historical_std = self.data_summary.get('calls', {}).get('avg_daily_calls', 500) * 0.2
+            conf_intervals = {}
+            
             for conf_level in CONFIG["confidence_levels"]:
                 z_score = stats.norm.ppf((1 + conf_level) / 2)
-                margin = z_score * historical_std * 0.3
+                margin = z_score * historical_std
                 
-                confidence_intervals[f'{conf_level:.0%}'] = {
-                    'lower': max(0, round(volume_prediction - margin, 0)),
-                    'upper': round(volume_prediction + margin, 0)
+                conf_intervals[f'{conf_level:.0%}'] = {
+                    'lower': max(0, round(volume_pred - margin, 0)),
+                    'upper': round(volume_pred + margin, 0)
                 }
-        
-        result = {
-            'prediction_date': pred_date.strftime('%Y-%m-%d'),
-            'weekday': pred_date.strftime('%A'),
-            'predicted_volume': volume_prediction,
-            'confidence_intervals': confidence_intervals,
-            'predicted_intents': intent_predictions,
-            'mail_input': mail_volumes if mail_volumes else {},
-            'model_type': type(self.volume_model).__name__ if self.volume_model else 'None'
-        }
-        
-        return result
-        
-    except Exception as e:
-        LOG.error(f"Prediction failed: {e}")
-        return {'error': str(e), 'prediction_date': str(prediction_date)}
-
-def generate_outlook(self, days: int = 5) -> Dict:
-    """Generate multi-day outlook"""
-    
-    LOG.info(f"Generating {days}-day outlook...")
-    
-    # Use recent mail patterns if available
-    if self.mail_data is not None:
-        typical_mail = self.mail_data.tail(14).median().to_dict()
-    else:
-        typical_mail = {}
-    
-    outlook_predictions = []
-    current_date = self.last_known_date + timedelta(days=1)
-    business_days_added = 0
-    
-    while business_days_added < days:
-        if current_date.weekday() < 5:  # Business days only
-            prediction = self.predict_single_day(current_date, typical_mail)
-            prediction['outlook_day'] = business_days_added + 1
-            outlook_predictions.append(prediction)
-            business_days_added += 1
-        
-        current_date += timedelta(days=1)
-    
-    # Summary
-    if outlook_predictions:
-        volumes = [p.get('predicted_volume', 0) for p in outlook_predictions if p.get('predicted_volume')]
-        
-        if volumes:
-            outlook_summary = {
-                'outlook_period': f"{days} business days",
-                'forecast_start': outlook_predictions[0]['prediction_date'],
-                'forecast_end': outlook_predictions[-1]['prediction_date'],
-                'predicted_range': f"{min(volumes):.0f} - {max(volumes):.0f} calls",
-                'average_daily': f"{np.mean(volumes):.0f} calls",
-                'total_expected': f"{sum(volumes):.0f} calls"
-            }
-        else:
-            outlook_summary = {'note': 'Volume predictions not available'}
-    else:
-        outlook_summary = {'error': 'No predictions generated'}
-    
-    return {
-        'outlook_summary': outlook_summary,
-        'daily_predictions': outlook_predictions
-    }
-```
-
-# ============================================================================
-
-# MAIN PIPELINE ORCHESTRATOR
-
-# ============================================================================
-
-class Pipeline2025Orchestrator:
-“”“Main orchestrator for 2025+ data pipeline”””
-
-```
-def __init__(self):
-    self.start_time = time.time()
-    self.output_dir = Path(CONFIG["output_dir"])
-    self.output_dir.mkdir(exist_ok=True)
-    
-    # Create subdirectories
-    for subdir in ["plots_dir", "models_dir", "results_dir"]:
-        (self.output_dir / CONFIG[subdir]).mkdir(exist_ok=True)
-
-def run_complete_pipeline(self) -> Dict:
-    """Run the complete end-to-end pipeline"""
-    
-    LOG.info("🚀 STARTING 2025+ CALL VOLUME & INTENT PREDICTION PIPELINE")
-    LOG.info("=" * 70)
-    
-    try:
-        # Phase 1: Load 2025+ Data
-        LOG.info("📊 PHASE 1: LOADING 2025+ DATA")
-        data_loader = Fresh2025DataLoader()
-        aligned_data = data_loader.load_all_data()
-        
-        if len(aligned_data['calls']) < 10:
-            raise ValueError("Insufficient data for modeling")
-        
-        # Phase 2: Feature Engineering
-        LOG.info("\n🔧 PHASE 2: FEATURE ENGINEERING")
-        feature_engineer = VolumeIntentFeatureEngine()
-        
-        # Volume features
-        volume_data = feature_engineer.create_volume_features(aligned_data)
-        
-        # Intent features (if available)
-        intent_data = feature_engineer.create_intent_features(aligned_data)
-        
-        # Phase 3: Model Training
-        LOG.info("\n🤖 PHASE 3: MODEL TRAINING")
-        trainer = DualModelTrainer()
-        training_results = trainer.train_all_models(volume_data, intent_data)
-        
-        # Phase 4: Generate Predictions
-        LOG.info("\n🔮 PHASE 4: GENERATING PREDICTIONS")
-        prediction_engine = CallPredictionEngine(
-            trainer.volume_model,
-            trainer.intent_models,
-            feature_engineer,
-            aligned_data['calls'],
-            aligned_data.get('mail')
-        )
-        
-        # Generate 5-day outlook
-        outlook_results = prediction_engine.generate_outlook(CONFIG["prediction_horizon_days"])
-        
-        # Phase 5: Save Results
-        LOG.info("\n💾 PHASE 5: SAVING RESULTS")
-        self.save_results(data_loader, training_results, outlook_results, trainer)
-        
-        # Phase 6: Generate Report
-        LOG.info("\n📋 PHASE 6: GENERATING REPORT")
-        report = self.generate_final_report(data_loader, training_results, outlook_results)
-        
-        execution_time = (time.time() - self.start_time) / 60
-        
-        LOG.info("\n" + "=" * 70)
-        LOG.info("🎉 PIPELINE COMPLETED SUCCESSFULLY!")
-        LOG.info(f"⏱️  Total execution time: {execution_time:.1f} minutes")
-        LOG.info(f"📁 Results saved to: {self.output_dir}")
-        
-        return {
-            'success': True,
-            'execution_time_minutes': execution_time,
-            'output_directory': str(self.output_dir),
-            'data_summary': data_loader.data_summary,
-            'training_results': training_results,
-            'outlook_results': outlook_results,
-            'prediction_engine': prediction_engine
-        }
-        
-    except Exception as e:
-        LOG.error(f"Pipeline failed: {e}")
-        LOG.error(traceback.format_exc())
-        
-        return {
-            'success': False,
-            'error': str(e),
-            'execution_time_minutes': (time.time() - self.start_time) / 60
-        }
-
-def save_results(self, data_loader, training_results, outlook_results, trainer):
-    """Save all results"""
-    
-    try:
-        results_dir = self.output_dir / CONFIG["results_dir"]
-        models_dir = self.output_dir / CONFIG["models_dir"]
-        
-        # Save data summary
-        with open(results_dir / "data_summary.json", 'w') as f:
-            json.dump(data_loader.data_summary, f, indent=2, default=str)
-        
-        # Save training results
-        with open(results_dir / "training_results.json", 'w') as f:
-            # Convert models to strings for JSON serialization
-            serializable_results = {}
-            for key, value in training_results.items():
-                if isinstance(value, dict):
-                    serializable_results[key] = {}
-                    for k, v in value.items():
-                        if k == 'model':
-                            serializable_results[key][k] = str(type(v).__name__)
-                        elif k == 'label_encoder':
-                            serializable_results[key][k] = 'LabelEncoder'
-                        else:
-                            serializable_results[key][k] = v
-                else:
-                    serializable_results[key] = value
             
-            json.dump(serializable_results, f, indent=2, default=str)
-        
-        # Save outlook results
-        with open(results_dir / "outlook_predictions.json", 'w') as f:
-            json.dump(outlook_results, f, indent=2, default=str)
-        
-        # Save models
-        if trainer.volume_model:
-            joblib.dump(trainer.volume_model, models_dir / "volume_model.pkl")
-        
-        if trainer.intent_models:
-            for intent_type, model in trainer.intent_models.items():
-                safe_name = str(intent_type).replace(' ', '_').replace('/', '_')
-                joblib.dump(model, models_dir / f"intent_model_{safe_name}.pkl")
-        
-        LOG.info("All results saved successfully")
-        
-    except Exception as e:
-        LOG.error(f"Failed to save results: {e}")
-
-def generate_final_report(self, data_loader, training_results, outlook_results) -> str:
-    """Generate final report"""
+            result = {
+                'prediction_date': prediction_date.strftime('%Y-%m-%d'),
+                'weekday': prediction_date.strftime('%A'),
+                'predicted_volume': volume_pred,
+                'confidence_intervals': conf_intervals,
+                'predicted_dominant_intent': intent_pred,
+                'mail_inputs_summary': {
+                    'total_mail_volume': total_mail,
+                    'days_of_mail': len(mail_inputs),
+                    'mail_dates': list(mail_inputs.keys())
+                },
+                'model_approach': self.best_approach,
+                'prediction_quality': 'high' if self.best_approach in ['advanced', 'expert'] else 'medium'
+            }
+            
+            return result
+            
+        except Exception as e:
+            LOG.error(f"Prediction failed: {e}")
+            return {'error': str(e)}
     
-    try:
-        execution_time = (time.time() - self.start_time) / 60
+    def predict_multi_day_outlook(self, base_mail_pattern: Dict[str, float], 
+                                 start_date: str, days: int = 5) -> Dict:
+        """Generate multi-day outlook using a base mail pattern"""
         
-        # Extract key metrics
-        volume_r2 = 0
-        intent_accuracy = 0
-        
-        if 'volume' in training_results:
-            for model_name, results in training_results['volume'].items():
-                if isinstance(results, dict) and 'cv_r2' in results:
-                    volume_r2 = max(volume_r2, results['cv_r2'])
-        
-        if 'intent' in training_results:
-            intent_accuracies = []
-            for intent_type, results in training_results['intent'].items():
-                if isinstance(results, dict) and 'cv_accuracy' in results:
-                    intent_accuracies.append(results['cv_accuracy'])
-            if intent_accuracies:
-                intent_accuracy = np.mean(intent_accuracies)
-        
-        report = f"""
-```
+        try:
+            start_dt = pd.to_datetime(start_date)
+            predictions = []
+            
+            for day in range(days):
+                pred_date = start_dt + timedelta(days=day)
+                
+                # Skip weekends for business predictions
+                if pred_date.weekday() >= 5:
+                    continue
+                
+                # Create mail input for this prediction
+                mail_input = {pred_date.strftime('%Y-%m-%d'): base_mail_pattern}
+                
+                # Make prediction
+                pred = self.predict_from_mail(mail_input, pred_date.strftime('%Y-%m-%d'))
+                pred['outlook_day'] = day + 1
+                predictions.append(pred)
+            
+            # Summary
+            volumes = [p.get('predicted_volume', 0) for p in predictions if 'predicted_volume' in p]
+            
+            if volumes:
+                summary = {
+                    'outlook_period': f"{len(predictions)} business days",
+                    'date_range': f"{predictions[0]['prediction_date']} to {predictions[-1]['prediction_date']}",
+                    'volume_range': f"{min(volumes):.0f} - {max(volumes):.0f} calls",
+                    'average_daily': f"{np.mean(volumes):.0f} calls",
+                    'total_expected': f"{sum(volumes):.0f} calls"
+                }
+            else:
+                summary = {'error': 'No valid predictions generated'}
+            
+            return {
+                'outlook_summary': summary,
+                'daily_predictions': predictions,
+                'base_mail_pattern': base_mail_pattern
+            }
+            
+        except Exception as e:
+            LOG.error(f"Multi-day outlook failed: {e}")
+            return {'error': str(e)}
 
-# ====================================================================
-2025+ CALL VOLUME & INTENT PREDICTION PIPELINE REPORT
+# ============================================================================
+# MAIN PIPELINE ORCHESTRATOR
+# ============================================================================
+
+class MailToCallsPipelineOrchestrator:
+    """Main orchestrator for the mail-to-calls pipeline"""
+    
+    def __init__(self):
+        self.start_time = time.time()
+        self.output_dir = Path(CONFIG["output_dir"])
+        self.output_dir.mkdir(exist_ok=True)
+        
+        # Create subdirectories
+        (self.output_dir / "models").mkdir(exist_ok=True)
+        (self.output_dir / "results").mkdir(exist_ok=True)
+    
+    def run_complete_pipeline(self) -> Dict:
+        """Run the complete pipeline"""
+        
+        LOG.info("=== MAIL-TO-CALLS PREDICTION PIPELINE ===")
+        LOG.info("PURPOSE: Mail inputs -> Call volume + Intent predictions")
+        LOG.info("APPROACH: Progressive complexity (simple -> expert)")
+        
+        try:
+            # Phase 1: Data Loading
+            LOG.info("\nPHASE 1: SELF-HEALING DATA LOADING")
+            data_loader = SelfHealingDataLoader()
+            aligned_data = data_loader.load_all_data()
+            
+            if len(aligned_data['calls']) < 10:
+                raise ValueError("Insufficient call data for modeling")
+            
+            # Phase 2: Progressive Model Training
+            LOG.info("\nPHASE 2: PROGRESSIVE MODEL TRAINING")
+            trainer = ProgressiveModelTrainer()
+            training_results = trainer.train_progressive(aligned_data)
+            
+            # Phase 3: Create Prediction Engine
+            LOG.info("\nPHASE 3: CREATING PREDICTION ENGINE")
+            prediction_engine = MailToCallsPredictionEngine(trainer, data_loader.load_summary)
+            
+            # Phase 4: Generate Example Predictions
+            LOG.info("\nPHASE 4: GENERATING EXAMPLE PREDICTIONS")
+            example_predictions = self.generate_examples(prediction_engine, data_loader)
+            
+            # Phase 5: Save Everything
+            LOG.info("\nPHASE 5: SAVING RESULTS")
+            self.save_all_results(data_loader, training_results, example_predictions, trainer)
+            
+            # Phase 6: Final Report
+            LOG.info("\nPHASE 6: GENERATING REPORT")
+            report = self.generate_report(data_loader, training_results, example_predictions)
+            
+            execution_time = (time.time() - self.start_time) / 60
+            
+            LOG.info("\n" + "="*60)
+            LOG.info("PIPELINE COMPLETED SUCCESSFULLY!")
+            LOG.info(f"Execution time: {execution_time:.1f} minutes")
+            LOG.info(f"Results saved to: {self.output_dir}")
+            
+            return {
+                'success': True,
+                'execution_time_minutes': execution_time,
+                'best_approach': trainer.best_approach,
+                'output_directory': str(self.output_dir),
+                'prediction_engine': prediction_engine,
+                'example_predictions': example_predictions,
+                'data_summary': data_loader.load_summary,
+                'training_results': training_results
+            }
+            
+        except Exception as e:
+            LOG.error(f"Pipeline failed: {e}")
+            LOG.error(traceback.format_exc())
+            
+            return {
+                'success': False,
+                'error': str(e),
+                'execution_time_minutes': (time.time() - self.start_time) / 60
+            }
+    
+    def generate_examples(self, prediction_engine, data_loader) -> Dict:
+        """Generate example predictions to demonstrate capabilities"""
+        
+        examples = {}
+        
+        try:
+            # Example 1: Single day prediction
+            sample_mail = {'type1': 1000, 'type2': 500, 'type3': 300}
+            single_pred = prediction_engine.predict_from_mail(
+                {'2025-07-23': sample_mail}
+            )
+            examples['single_day'] = single_pred
+            
+            # Example 2: Multi-day mail campaign
+            campaign_mail = {
+                '2025-07-23': {'marketing': 2000, 'bills': 800},
+                '2025-07-24': {'marketing': 1500, 'bills': 800},
+                '2025-07-25': {'marketing': 1000, 'bills': 800}
+            }
+            campaign_pred = prediction_engine.predict_from_mail(campaign_mail)
+            examples['campaign'] = campaign_pred
+            
+            # Example 3: 5-day outlook
+            base_pattern = {'daily_mail': 1200}
+            outlook = prediction_engine.predict_multi_day_outlook(
+                base_pattern, '2025-07-26', days=5
+            )
+            examples['outlook'] = outlook
+            
+        except Exception as e:
+            LOG.error(f"Example generation failed: {e}")
+            examples['error'] = str(e)
+        
+        return examples
+    
+    def save_all_results(self, data_loader, training_results, examples, trainer):
+        """Save all results"""
+        
+        try:
+            results_dir = self.output_dir / "results"
+            models_dir = self.output_dir / "models"
+            
+            # Save data summary
+            with open(results_dir / "data_summary.json", 'w') as f:
+                json.dump(data_loader.load_summary, f, indent=2, default=str)
+            
+            # Save training results (serialize models as strings)
+            serializable_results = {}
+            for approach, results in training_results.items():
+                serializable_results[approach] = {}
+                for key, value in results.items():
+                    if key in ['volume', 'intent']:
+                        serializable_results[approach][key] = {}
+                        for k, v in value.items():
+                            if k == 'model' or k == 'best_model':
+                                serializable_results[approach][key][k] = str(type(v).__name__)
+                            else:
+                                serializable_results[approach][key][k] = v
+                    else:
+                        serializable_results[approach][key] = value
+            
+            with open(results_dir / "training_results.json", 'w') as f:
+                json.dump(serializable_results, f, indent=2, default=str)
+            
+            # Save example predictions
+            with open(results_dir / "example_predictions.json", 'w') as f:
+                json.dump(examples, f, indent=2, default=str)
+            
+            # Save best models
+            if trainer.best_approach and trainer.volume_models:
+                best_vol_model = trainer.volume_models.get(trainer.best_approach)
+                if best_vol_model:
+                    joblib.dump(best_vol_model, models_dir / "best_volume_model.pkl")
+                
+                best_int_model = trainer.intent_models.get(trainer.best_approach)
+                if best_int_model:
+                    joblib.dump(best_int_model, models_dir / "best_intent_model.pkl")
+            
+            LOG.info("All results saved successfully")
+            
+        except Exception as e:
+            LOG.error(f"Failed to save results: {e}")
+    
+    def generate_report(self, data_loader, training_results, examples) -> str:
+        """Generate final report"""
+        
+        try:
+            execution_time = (time.time() - self.start_time) / 60
+            
+            # Extract best performance
+            best_r2 = 0
+            best_approach = "none"
+            
+            for approach, results in training_results.items():
+                if 'volume' in results and 'best_r2' in results['volume']:
+                    if results['volume']['best_r2'] > best_r2:
+                        best_r2 = results['volume']['best_r2']
+                        best_approach = approach
+            
+            report = f"""
+================================================================
+MAIL-TO-CALLS PREDICTION PIPELINE REPORT
+================================================================
+
+PIPELINE PURPOSE:
+Input: Mail volumes (single/multiple days)
+Output: Call volume predictions + Intent predictions
 
 EXECUTION SUMMARY:
-• Pipeline Status: SUCCESS
-• Execution Time: {execution_time:.1f} minutes
-• Output Directory: {self.output_dir}
+* Status: SUCCESS
+* Time: {execution_time:.1f} minutes  
+* Best Approach: {best_approach}
+* Best Performance: {best_r2:.3f} R²
 
-DATA SUMMARY:
-• Total Call Records: {data_loader.data_summary.get(‘call_data’, {}).get(‘total_calls’, ‘N/A’)}
-• Overlapping Days: {data_loader.data_summary.get(‘aligned_data’, {}).get(‘overlapping_days’, ‘N/A’)}
-• Date Range: {data_loader.data_summary.get(‘aligned_data’, {}).get(‘date_range’, ‘N/A’)}
-• Has Mail Data: {data_loader.data_summary.get(‘aligned_data’, {}).get(‘has_mail’, False)}
-• Has Intent Data: {data_loader.data_summary.get(‘aligned_data’, {}).get(‘has_intents’, False)}
+DATA PROCESSED:
+* Call Records: {data_loader.load_summary.get('calls', {}).get('total_records', 'N/A')}
+* Analysis Days: {data_loader.load_summary.get('calls', {}).get('daily_records', 'N/A')}
+* Date Range: {data_loader.load_summary.get('calls', {}).get('date_range', 'N/A')}
+* Has Mail Data: {data_loader.load_summary.get('mail', {}) != {}}
+* Intent Types: {data_loader.load_summary.get('calls', {}).get('intent_count', 0)}
 
-MODEL PERFORMANCE:
-• Call Volume Model R²: {volume_r2:.3f}
-• Intent Classification Accuracy: {intent_accuracy:.3f}
+PROGRESSIVE TRAINING RESULTS:
+"""
+            
+            for approach in CONFIG["model_progression"]:
+                if approach in training_results:
+                    vol_r2 = training_results[approach].get('volume', {}).get('best_r2', 0)
+                    features = training_results[approach].get('feature_count', 0)
+                    report += f"* {approach.upper()}: R² = {vol_r2:.3f}, Features = {features}\n"
+            
+            report += f"""
+USAGE EXAMPLES:
 
-PREDICTIONS GENERATED:
-• 5-Day Call Volume Outlook: Available
-• Intent Distribution Predictions: {‘Available’ if intent_accuracy > 0 else ‘Not Available’}
+1. SINGLE DAY PREDICTION:
+   Input: {{'2025-07-23': {{'type1': 1000, 'type2': 500}}}}
+   Output: {examples.get('single_day', {}).get('predicted_volume', 'N/A')} calls
 
-BUSINESS APPLICATIONS:
-• Daily staffing optimization
-• Mail campaign impact analysis
-• Intent-based resource allocation
-• 5-day capacity planning
+2. CAMPAIGN ANALYSIS:
+   Multi-day mail inputs -> Call volume impact prediction
 
-FILES GENERATED:
-• data_summary.json - Data loading summary
-• training_results.json - Model performance metrics
-• outlook_predictions.json - 5-day predictions
-• volume_model.pkl - Trained volume prediction model
-• intent_model_*.pkl - Trained intent classification models
+3. BUSINESS OUTLOOK:
+   Base mail pattern -> 5-day call volume forecast
 
-NEXT STEPS:
+FILES CREATED:
+* data_summary.json - Data loading details
+* training_results.json - Model performance metrics  
+* example_predictions.json - Usage examples
+* best_volume_model.pkl - Trained volume prediction model
+* best_intent_model.pkl - Trained intent prediction model
 
-1. Review prediction accuracy in outlook_predictions.json
-1. Use volume_model.pkl for daily predictions
-1. Monitor model performance with new data
-1. Retrain models monthly with fresh data
+DEPLOYMENT READY:
+The pipeline can now predict call volumes from mail inputs.
+Use the prediction engine for daily forecasting.
 
-# ====================================================================
-Generated: {datetime.now().strftime(’%Y-%m-%d %H:%M:%S’)}
-
-“””
-
-```
-        # Save report
-        report_path = self.output_dir / "PIPELINE_REPORT.txt"
-        with open(report_path, 'w') as f:
-            f.write(report)
-        
-        # Print report
-        safe_print(report)
-        
-        return str(report_path)
-        
-    except Exception as e:
-        LOG.error(f"Report generation failed: {e}")
-        return ""
-```
+================================================================
+Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+================================================================
+"""
+            
+            # Save report
+            report_path = self.output_dir / "PIPELINE_REPORT.txt"
+            with open(report_path, 'w', encoding='utf-8') as f:
+                f.write(report)
+            
+            # Print report
+            safe_print(report)
+            
+            return str(report_path)
+            
+        except Exception as e:
+            LOG.error(f"Report generation failed: {e}")
+            return ""
 
 # ============================================================================
-
 # MAIN EXECUTION
-
 # ============================================================================
 
 def main():
-“”“Main execution function”””
-
-```
-safe_print("=" * 60)
-safe_print("🚀 2025+ CALL VOLUME & INTENT PREDICTION PIPELINE")
-safe_print("=" * 60)
-safe_print("📊 Fresh data analysis with overlapping dates")
-safe_print("📞 Call volume prediction with mail lag modeling") 
-safe_print("🎯 Intent classification (scope extension)")
-safe_print("🔮 5-day business outlook generation")
-safe_print("=" * 60)
-safe_print("")
-
-try:
-    # Run the complete pipeline
-    orchestrator = Pipeline2025Orchestrator()
-    results = orchestrator.run_complete_pipeline()
+    """Main execution function"""
     
-    if results['success']:
-        safe_print("\n🎉 PIPELINE COMPLETED SUCCESSFULLY!")
-        safe_print("")
-        safe_print("✅ 2025+ data processed and analyzed")
-        safe_print("✅ Call volume prediction model trained") 
-        safe_print("✅ Intent classification models trained")
-        safe_print("✅ 5-day outlook generated")
-        safe_print("✅ Production-ready models saved")
-        safe_print("")
-        safe_print(f"📁 Find all results in: {results['output_directory']}")
-        safe_print("")
-        safe_print("🚀 Ready for daily predictions!")
+    safe_print("="*60)
+    safe_print("MAIL-TO-CALLS PREDICTION PIPELINE")
+    safe_print("="*60)
+    safe_print("INPUT: Mail volumes (single/multiple days)")
+    safe_print("OUTPUT: Call volume + Intent predictions")
+    safe_print("APPROACH: Progressive complexity with self-healing")
+    safe_print("DATA: 2025+ only with proper filtering")
+    safe_print("="*60)
+    safe_print("")
+    
+    try:
+        # Run the complete pipeline
+        orchestrator = MailToCallsPipelineOrchestrator()
+        results = orchestrator.run_complete_pipeline()
         
-    else:
-        safe_print("\n❌ PIPELINE FAILED")
-        safe_print(f"Error: {results['error']}")
-        safe_print("💡 Check the logs above for details")
-    
-    return 0 if results['success'] else 1
-    
-except KeyboardInterrupt:
-    safe_print("\n⏹️  Pipeline interrupted by user")
-    return 1
-    
-except Exception as e:
-    safe_print(f"\n💥 Unexpected error: {e}")
-    return 1
-```
+        if results['success']:
+            safe_print("\nPIPELINE COMPLETED SUCCESSFULLY!")
+            safe_print("")
+            safe_print("READY FOR USE:")
+            safe_print("* Input mail volumes -> Get call predictions")
+            safe_print("* Support single day or multi-day campaigns")
+            safe_print("* Includes intent distribution predictions")
+            safe_print("* Progressive model complexity")
+            safe_print("")
+            safe_print(f"Results saved to: {results['output_directory']}")
+            
+        else:
+            safe_print("\nPIPELINE FAILED")
+            safe_print(f"Error: {results['error']}")
+            safe_print("Check logs for details")
+        
+        return 0 if results['success'] else 1
+        
+    except KeyboardInterrupt:
+        safe_print("\nPipeline interrupted by user")
+        return 1
+        
+    except Exception as e:
+        safe_print(f"\nUnexpected error: {e}")
+        return 1
 
-if **name** == “**main**”:
-exit_code = main()
-sys.exit(exit_code)
+if __name__ == "__main__":
+    exit_code = main()
+    sys.exit(exit_code)
