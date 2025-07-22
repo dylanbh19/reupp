@@ -82,7 +82,8 @@ CFG = {
         "improved": "#2ca02c", 
         "failed": "#d62728",
         "friday": "#ff7f0e",
-        "neutral": "#6c757d"
+        "neutral": "#6c757d",
+        "primary": "#1f77b4"
     }
 }
 
@@ -1426,7 +1427,7 @@ class FridayResultsVisualizer:
         
         # Save
         results_path = self.output_dir / "friday_improvement_dashboard.png"
-        plt.savefig(results_path, dpi=CFG["colors"]["neutral"], bbox_inches='tight')
+        plt.savefig(results_path, dpi=300, bbox_inches='tight')
         plt.close()
         
         LOG.info(f"Main results dashboard saved: {results_path}")
