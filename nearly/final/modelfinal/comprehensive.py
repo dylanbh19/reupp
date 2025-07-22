@@ -1,3 +1,253 @@
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> & C:/Users/BhungarD/python.exe "c:/Users/BhungarD/OneDrive - Computershare/Desktop/finprod/explainvis.py"
+🚀 Starting Ultimate Model Testing & Analysis Suite...
+📊 This will test all models, features, and create comprehensive visualizations
+⏱️  Expected runtime: 5-15 minutes depending on data size
+
+║ 2025-07-22 14:04:49,747 │     INFO │ 🔧 System Configuration Check:
+║ 2025-07-22 14:04:49,748 │     INFO │    XGBoost: ✅
+║ 2025-07-22 14:04:49,749 │     INFO │    LightGBM: ✅
+║ 2025-07-22 14:04:49,750 │     INFO │    Neural Networks: ✅
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                                                                              ║
+║   ██╗   ██╗██╗  ████████╗██╗███╗   ███╗ █████╗ ████████╗███████╗            ║
+║   ██║   ██║██║  ╚══██╔══╝██║████╗ ████║██╔══██╗╚══██╔══╝██╔════╝            ║
+║   ██║   ██║██║     ██║   ██║██╔████╔██║███████║   ██║   █████╗              ║
+║   ██║   ██║██║     ██║   ██║██║╚██╔╝██║██╔══██║   ██║   ██╔══╝              ║
+║   ╚██████╔╝███████╗██║   ██║██║ ╚═╝ ██║██║  ██║   ██║   ███████╗            ║
+║    ╚═════╝ ╚══════╝╚═╝   ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝   ╚═╝   ╚══════╝            ║
+║                                                                              ║
+║            🎯 MODEL TESTING & ANALYSIS SUITE 🎯                             ║
+║                                                                              ║
+║  ✓ Test current models with clean data                                      ║
+║  ✓ Test economic indicators                                                  ║
+║  ✓ Test all feature combinations                                             ║
+║  ✓ Find best performers                                                      ║
+║  ✓ Run realistic predictions                                                 ║
+║  ✓ Generate 10+ comprehensive plots                                          ║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+
+================================================================================
+=========================  DATA LOADING & PREPARATION  =========================
+================================================================================
+║ 2025-07-22 14:04:49,756 │     INFO │ Combining all datasets...
+║ 2025-07-22 14:04:49,757 │     INFO │ Loading and cleaning call data...
+║ 2025-07-22 14:04:49,758 │     INFO │ Found file: data\callvolumes.csv
+║ 2025-07-22 14:04:53,495 │     INFO │ Found file: data\callintent.csv
+║ 2025-07-22 14:07:28,029 │     INFO │ Using call volumes only (insufficient overlap)
+║ 2025-07-22 14:07:28,036 │     INFO │ Original data: 550 days
+║ 2025-07-22 14:07:28,037 │     INFO │ Outliers removed: 8 days
+║ 2025-07-22 14:07:28,038 │     INFO │ Clean data: 542 days
+║ 2025-07-22 14:07:28,039 │     INFO │ Outliers detected:
+║ 2025-07-22 14:07:28,041 │     INFO │   2024-11-26 (Tuesday): 2,480 calls
+║ 2025-07-22 14:07:28,042 │     INFO │   2024-12-02 (Monday): 2,812 calls
+║ 2025-07-22 14:07:28,043 │     INFO │   2024-12-16 (Monday): 2,341 calls
+║ 2025-07-22 14:07:28,045 │     INFO │   2025-01-02 (Thursday): 2,630 calls
+║ 2025-07-22 14:07:28,046 │     INFO │   2025-01-03 (Friday): 2,903 calls
+║ 2025-07-22 14:07:28,048 │     INFO │   2025-01-06 (Monday): 2,690 calls
+║ 2025-07-22 14:07:28,048 │     INFO │   2025-01-13 (Monday): 2,294 calls
+║ 2025-07-22 14:07:28,049 │     INFO │   2025-03-03 (Monday): 2,475 calls
+║ 2025-07-22 14:07:28,189 │     INFO │ Loading mail data...
+║ 2025-07-22 14:07:28,191 │     INFO │ Found file: data\mail.csv
+║ 2025-07-22 14:07:35,848 │     INFO │ Mail data: 401 days x 231 mail types
+║ 2025-07-22 14:07:35,850 │     INFO │ Available mail types: 231
+║ 2025-07-22 14:07:35,910 │     INFO │ Loading economic data...
+║ 2025-07-22 14:07:35,912 │    ERROR │ No files found from candidates: ['economics_expanded.csv', 'data/economics_expanded.csv', 'economics.csv', 'data/economics.csv']
+║ 2025-07-22 14:07:35,914 │  WARNING │ No economic data found - creating realistic dummy data
+║ 2025-07-22 14:07:35,956 │     INFO │ Created dummy economic data: (1566, 14)
+║ 2025-07-22 14:07:36,039 │     INFO │ Combined dataset: 341 days x 246 features
+
+┌─ COMBINED DATASET STATISTICS ───────────────────────┐
+│ Total Days                :                  341 │
+│ Date Range                : 2024-01-02 to 2025-05-30 │
+│ Call Range                :            3 to 2009 │
+│ Call Mean                 :                  582 │
+│ Mail Types                :                  231 │
+│ Economic Indicators       :                   14 │
+└──────────────────────────────────────────────────┘
+
+================================================================================
+======================  PHASE 1: TESTING CURRENT MODELS  =======================
+================================================================================
+║ 2025-07-22 14:07:36,049 │     INFO │ Creating and testing baseline features...
+║ 2025-07-22 14:07:36,050 │     INFO │ Creating baseline features...
+║ 2025-07-22 14:07:38,453 │     INFO │ Baseline features created: 340 samples x 19 features
+║ 2025-07-22 14:07:38,454 │     INFO │ Testing all models on baseline...
+║ 2025-07-22 14:07:38,455 │     INFO │   Testing quantile_0.1...
+║ 2025-07-22 14:07:38,621 │     INFO │     MAE: 1364, R²: -151.973
+║ 2025-07-22 14:07:38,622 │     INFO │   Testing quantile_0.25...
+║ 2025-07-22 14:07:38,789 │     INFO │     MAE: 1340, R²: -152.040
+║ 2025-07-22 14:07:38,790 │     INFO │   Testing quantile_0.5...
+║ 2025-07-22 14:07:38,942 │     INFO │     MAE: 258, R²: -0.120
+║ 2025-07-22 14:07:38,943 │     INFO │   Testing quantile_0.75...
+║ 2025-07-22 14:07:39,099 │     INFO │     MAE: 1266, R²: -106.090
+║ 2025-07-22 14:07:39,100 │     INFO │   Testing quantile_0.9...
+║ 2025-07-22 14:07:39,259 │     INFO │     MAE: 516, R²: -2.281
+║ 2025-07-22 14:07:39,260 │     INFO │   Testing linear...
+║ 2025-07-22 14:07:39,344 │     INFO │     MAE: 3663, R²: -633.630
+║ 2025-07-22 14:07:39,345 │     INFO │   Testing ridge...
+║ 2025-07-22 14:07:39,413 │     INFO │     MAE: 3561, R²: -606.943
+║ 2025-07-22 14:07:39,414 │     INFO │   Testing lasso...
+║ 2025-07-22 14:07:39,513 │     INFO │     MAE: 277, R²: -0.081
+║ 2025-07-22 14:07:39,514 │     INFO │   Testing elastic_net...
+║ 2025-07-22 14:07:39,622 │     INFO │     MAE: 364, R²: -1.119
+║ 2025-07-22 14:07:39,623 │     INFO │   Testing bayesian_ridge...
+║ 2025-07-22 14:07:39,691 │     INFO │     MAE: 932, R²: -57.052
+║ 2025-07-22 14:07:39,692 │     INFO │   Testing huber...
+║ 2025-07-22 14:07:40,161 │     INFO │     MAE: 3561, R²: -778.287
+║ 2025-07-22 14:07:40,163 │     INFO │   Testing random_forest...
+║ 2025-07-22 14:07:41,822 │     INFO │     MAE: 266, R²: -0.016
+║ 2025-07-22 14:07:41,823 │     INFO │   Testing gradient_boosting...
+║ 2025-07-22 14:07:43,475 │     INFO │     MAE: 339, R²: -0.723
+║ 2025-07-22 14:07:43,477 │     INFO │   Testing extra_trees...
+║ 2025-07-22 14:07:44,448 │     INFO │     MAE: 259, R²: 0.043
+║ 2025-07-22 14:07:44,449 │     INFO │   Testing xgboost...
+║ 2025-07-22 14:07:45,416 │     INFO │     MAE: 327, R²: -0.587
+║ 2025-07-22 14:07:45,417 │     INFO │   Testing lightgbm...
+║ 2025-07-22 14:07:50,767 │     INFO │     MAE: 272, R²: -0.077
+║ 2025-07-22 14:07:50,768 │     INFO │   Testing neural_net...
+║ 2025-07-22 14:07:53,840 │     INFO │     MAE: 1950, R²: -105.661
+║ 2025-07-22 14:07:53,841 │     INFO │ Completed baseline: 17 models successful
+║ 2025-07-22 14:07:53,842 │     INFO │ Creating and testing enhanced features...
+║ 2025-07-22 14:07:53,843 │     INFO │ Creating enhanced features...
+║ 2025-07-22 14:07:56,587 │     INFO │ Enhanced features created: 340 samples x 37 features
+║ 2025-07-22 14:07:56,589 │     INFO │ Testing all models on enhanced...
+║ 2025-07-22 14:07:56,590 │     INFO │   Testing quantile_0.1...
+║ 2025-07-22 14:07:56,766 │     INFO │     MAE: 1949, R²: -262.257
+║ 2025-07-22 14:07:56,767 │     INFO │   Testing quantile_0.25...
+║ 2025-07-22 14:07:56,934 │     INFO │     MAE: 1264, R²: -116.865
+║ 2025-07-22 14:07:56,935 │     INFO │   Testing quantile_0.5...
+║ 2025-07-22 14:07:57,113 │     INFO │     MAE: 432, R²: -5.934
+║ 2025-07-22 14:07:57,114 │     INFO │   Testing quantile_0.75...
+║ 2025-07-22 14:07:57,285 │     INFO │     MAE: 398, R²: -1.429
+║ 2025-07-22 14:07:57,286 │     INFO │   Testing quantile_0.9...
+║ 2025-07-22 14:07:57,472 │     INFO │     MAE: 542, R²: -2.868
+║ 2025-07-22 14:07:57,473 │     INFO │   Testing linear...
+║ 2025-07-22 14:07:57,528 │     INFO │     MAE: 1868, R²: -250.186
+║ 2025-07-22 14:07:57,530 │     INFO │   Testing ridge...
+║ 2025-07-22 14:07:57,586 │     INFO │     MAE: 7569, R²: -12388.842
+║ 2025-07-22 14:07:57,587 │     INFO │   Testing lasso...
+║ 2025-07-22 14:07:57,726 │     INFO │     MAE: 1574, R²: -1073.830
+║ 2025-07-22 14:07:57,727 │     INFO │   Testing elastic_net...
+║ 2025-07-22 14:07:57,888 │     INFO │     MAE: 1404, R²: -803.352
+║ 2025-07-22 14:07:57,890 │     INFO │   Testing bayesian_ridge...
+║ 2025-07-22 14:07:57,972 │     INFO │     MAE: 369, R²: -2.780
+║ 2025-07-22 14:07:57,973 │     INFO │   Testing huber...
+║ 2025-07-22 14:07:58,595 │     INFO │     MAE: 1566, R²: -80.294
+║ 2025-07-22 14:07:58,595 │     INFO │   Testing random_forest...
+║ 2025-07-22 14:08:00,301 │     INFO │     MAE: 269, R²: -0.024
+║ 2025-07-22 14:08:00,302 │     INFO │   Testing gradient_boosting...
+║ 2025-07-22 14:08:01,823 │     INFO │     MAE: 353, R²: -0.953
+║ 2025-07-22 14:08:01,823 │     INFO │   Testing extra_trees...
+║ 2025-07-22 14:08:02,342 │     INFO │     MAE: 251, R²: 0.115
+║ 2025-07-22 14:08:02,342 │     INFO │   Testing xgboost...
+║ 2025-07-22 14:08:03,238 │     INFO │     MAE: 334, R²: -0.647
+║ 2025-07-22 14:08:03,239 │     INFO │   Testing lightgbm...
+║ 2025-07-22 14:08:03,502 │     INFO │     MAE: 274, R²: -0.091
+║ 2025-07-22 14:08:03,504 │     INFO │   Testing neural_net...
+║ 2025-07-22 14:08:03,965 │     INFO │     MAE: 7611, R²: -1922.209
+║ 2025-07-22 14:08:03,966 │     INFO │ Completed enhanced: 17 models successful
+
+================================================================================
+=================  PHASE 2: TESTING ECONOMIC INDICATORS ONLY  ==================
+================================================================================
+║ 2025-07-22 14:08:03,969 │     INFO │ Creating and testing economic-only features...
+║ 2025-07-22 14:08:03,969 │     INFO │ Creating economic-only features...
+║ 2025-07-22 14:08:06,022 │     INFO │ Economic features created: 335 samples x 89 features
+║ 2025-07-22 14:08:06,024 │     INFO │ Testing all models on economic_only...
+║ 2025-07-22 14:08:06,024 │     INFO │   Testing quantile_0.1...
+║ 2025-07-22 14:08:06,201 │     INFO │     MAE: 425, R²: -1.786
+║ 2025-07-22 14:08:06,202 │     INFO │   Testing quantile_0.25...
+║ 2025-07-22 14:08:06,399 │     INFO │     MAE: 381, R²: -1.328
+║ 2025-07-22 14:08:06,399 │     INFO │   Testing quantile_0.5...
+║ 2025-07-22 14:08:06,591 │     INFO │     MAE: 477, R²: -2.176
+║ 2025-07-22 14:08:06,591 │     INFO │   Testing quantile_0.75...
+║ 2025-07-22 14:08:06,790 │     INFO │     MAE: 485, R²: -2.323
+║ 2025-07-22 14:08:06,790 │     INFO │   Testing quantile_0.9...
+║ 2025-07-22 14:08:06,939 │     INFO │     MAE: 683, R²: -4.640
+║ 2025-07-22 14:08:06,939 │     INFO │   Testing linear...
+║ 2025-07-22 14:08:07,043 │     INFO │     MAE: 623, R²: -5.065
+║ 2025-07-22 14:08:07,043 │     INFO │   Testing ridge...
+║ 2025-07-22 14:08:07,082 │     INFO │     MAE: 580, R²: -3.450
+║ 2025-07-22 14:08:07,083 │     INFO │   Testing lasso...
+║ 2025-07-22 14:08:07,198 │     INFO │     MAE: 517, R²: -2.465
+║ 2025-07-22 14:08:07,199 │     INFO │   Testing elastic_net...
+║ 2025-07-22 14:08:07,293 │     INFO │     MAE: 433, R²: -1.448
+║ 2025-07-22 14:08:07,294 │     INFO │   Testing bayesian_ridge...
+║ 2025-07-22 14:08:07,476 │     INFO │     MAE: 438, R²: -1.768
+║ 2025-07-22 14:08:07,477 │     INFO │   Testing huber...
+║ 2025-07-22 14:08:07,874 │     INFO │     MAE: 345, R²: -0.929
+║ 2025-07-22 14:08:07,875 │     INFO │   Testing random_forest...
+║ 2025-07-22 14:08:10,327 │     INFO │     MAE: 325, R²: -0.406
+║ 2025-07-22 14:08:10,328 │     INFO │   Testing gradient_boosting...
+║ 2025-07-22 14:08:14,889 │     INFO │     MAE: 433, R²: -1.517
+║ 2025-07-22 14:08:14,889 │     INFO │   Testing extra_trees...
+║ 2025-07-22 14:08:15,641 │     INFO │     MAE: 334, R²: -0.527
+║ 2025-07-22 14:08:15,642 │     INFO │   Testing xgboost...
+║ 2025-07-22 14:08:17,958 │     INFO │     MAE: 362, R²: -0.725
+║ 2025-07-22 14:08:17,959 │     INFO │   Testing lightgbm...
+║ 2025-07-22 14:08:18,344 │     INFO │     MAE: 338, R²: -0.652
+║ 2025-07-22 14:08:18,345 │     INFO │   Testing neural_net...
+║ 2025-07-22 14:08:22,399 │     INFO │     MAE: 482, R²: -2.841
+║ 2025-07-22 14:08:22,399 │     INFO │ Completed economic_only: 17 models successful
+
+================================================================================
+===================  PHASE 3: TESTING ULTIMATE FEATURE SET  ====================
+================================================================================
+║ 2025-07-22 14:08:22,401 │     INFO │ Creating and testing ultimate features...
+║ 2025-07-22 14:08:22,402 │     INFO │ Creating ultimate feature set...
+║ 2025-07-22 14:08:22,508 │  WARNING │ Error processing ultimate day 7: 'int' object is not callable
+║ 2025-07-22 14:08:22,606 │  WARNING │ Error processing ultimate day 8: 'int' object is not callable
+║ 2025-07-22 14:08:22,705 │  WARNING │ Error processing ultimate day 9: 'int' object is not callable
+║ 2025-07-22 14:08:22,814 │  WARNING │ Error processing ultimate day 10: 'int' object is not callable
+║ 2025-07-22 14:08:22,903 │  WARNING │ Error processing ultimate day 11: 'int' object is not callable
+║ .....
+║ 2025-07-22 14:08:48,520 │  WARNING │ Error processing ultimate day 335: 'int' object is not callable
+║ 2025-07-22 14:08:48,645 │  WARNING │ Error processing ultimate day 336: 'int' object is not callable
+║ 2025-07-22 14:08:48,701 │  WARNING │ Error processing ultimate day 337: 'int' object is not callable
+║ 2025-07-22 14:08:48,769 │  WARNING │ Error processing ultimate day 338: 'int' object is not callable
+║ 2025-07-22 14:08:48,820 │  WARNING │ Error processing ultimate day 339: 'int' object is not callable
+║ 2025-07-22 14:08:48,823 │    ERROR │ Critical error in ultimate analysis: at least one array or dtype is required
+║ 2025-07-22 14:08:48,997 │    ERROR │ Traceback (most recent call last):
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\explainvis.py", line 2251, in run_ultimate_analysis
+    X_ultimate, y_ultimate = ultimate_engine.create_features()
+                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\explainvis.py", line 976, in create_features
+    variance_selector.fit_transform(X),
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\_set_output.py", line 319, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\base.py", line 918, in fit_transform
+    return self.fit(X, **fit_params).transform(X)
+           ~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\base.py", line 1389, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\feature_selection\_variance_threshold.py", line 100, in fit
+    X = validate_data(
+        self,
+    ...<3 lines>...
+        ensure_all_finite="allow-nan",
+    )
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 2944, in validate_data
+    out = check_array(X, input_name="X", **check_params)
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 931, in check_array
+    dtype_orig = np.result_type(*dtypes_orig)
+ValueError: at least one array or dtype is required
+
+
+❌ ANALYSIS FAILED - Check logs for details
+
+💡 Check the log files for detailed error information.
+
+
+
+
+
+
+
+
 #!/usr/bin/env python
 # ultimate_model_tester.py
 # ============================================================================
