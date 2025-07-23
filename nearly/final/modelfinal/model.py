@@ -1,315 +1,3 @@
-PRODUCTION-GRADE: Ready for stakeholder deployment
-================================================================================
-
-2025-07-23 09:16:19,017 | INFO | ================================================================================
-2025-07-23 09:16:19,018 | INFO | ADVANCED MAIL-TO-CALLS & INTENT PREDICTION SYSTEM
-2025-07-23 09:16:19,019 | INFO | ================================================================================
-2025-07-23 09:16:19,020 | INFO | CAPABILITIES:
-2025-07-23 09:16:19,021 | INFO |   - Single day predictions (no compounding)
-2025-07-23 09:16:19,022 | INFO |   - Multi-day independent forecasts
-2025-07-23 09:16:19,022 | INFO |   - Intent classification
-2025-07-23 09:16:19,023 | INFO |   - Advanced feature engineering
-2025-07-23 09:16:19,024 | INFO | ================================================================================
-2025-07-23 09:16:19,026 | INFO |
-PHASE 1: ADVANCED DATA LOADING & ANALYSIS
-2025-07-23 09:16:19,027 | INFO | Loading call and intent data...
-2025-07-23 09:16:19,027 | INFO | Loading callintent.csv...
-2025-07-23 09:16:35,349 | INFO | Loaded data/callintent.csv: 1053601 rows, 42 columns
-2025-07-23 09:16:35,355 | INFO | Using columns - Date: conversationstart, Intent: intent
-2025-07-23 09:16:38,276 | INFO | Found 1053601 call records from 2025+
-2025-07-23 09:16:39,646 | INFO | Processing 15 top intents from 38 total
-2025-07-23 09:16:40,033 | INFO | Created intent data: 15 intents
-2025-07-23 09:16:40,037 | INFO | Final call data: 88 business days
-2025-07-23 09:16:40,663 | INFO | Loading mail data...
-2025-07-23 09:16:40,663 | INFO | Loading mail.csv...
-2025-07-23 09:16:43,007 | INFO | Loaded data/mail.csv: 1409780 rows, 4 columns
-2025-07-23 09:16:43,008 | INFO | Mail columns - Date: mail_date, Volume: mail_volume, Type: mail_type
-2025-07-23 09:16:44,173 | INFO | Mail data: 107 business days, 197 mail types
-2025-07-23 09:16:44,195 | INFO | Analyzing mail types for optimal selection...
-2025-07-23 09:16:44,239 | INFO | Analyzing 82 days with 197 mail types
-2025-07-23 09:16:46,317 | INFO | Selected 15 mail types:
-2025-07-23 09:16:46,318 | INFO |   1. Due Diligence (Vol: 116462, Corr: -0.463)
-2025-07-23 09:16:46,319 | INFO |   2. DRP Stmt. (Vol: 4839540, Corr: 0.203)
-2025-07-23 09:16:46,319 | INFO |   3. Rep_1099Div (Vol: 67757, Corr: 0.437)
-2025-07-23 09:16:46,320 | INFO |   4. Envision (Vol: 5130345, Corr: 0.171)
-2025-07-23 09:16:46,321 | INFO |   5. DRS_Advices (Vol: 366283, Corr: 0.187)
-2025-07-23 09:16:46,322 | INFO |   6. Scheduled 1099B TAX INFO STATEMENT (Vol: 553690, Corr: 0.175)
-2025-07-23 09:16:46,323 | INFO |   7. Scheduled 1099 DIV (Vol: 715121, Corr: 0.172)
-2025-07-23 09:16:46,324 | INFO |   8. ACH Conf. (Vol: 307607, Corr: 0.182)
-2025-07-23 09:16:46,325 | INFO |   9. Scheduled SMS (Vol: 326743, Corr: 0.176)
-2025-07-23 09:16:46,326 | INFO |   10. Scheduled Combo 1099DIV & 1099B Form (Vol: 314633, Corr: 0.161)
-2025-07-23 09:16:46,340 | INFO | 
-PHASE 2: ADVANCED FEATURE ENGINEERING
-2025-07-23 09:16:46,342 | INFO | Creating features for volume prediction...
-2025-07-23 09:16:46,344 | INFO | Creating advanced mail features...
-2025-07-23 09:16:46,648 | INFO | Created 210 mail features
-2025-07-23 09:16:46,649 | INFO | Creating temporal features...
-2025-07-23 09:16:47,714 | INFO | Created 17 temporal features
-2025-07-23 09:16:47,715 | INFO | Creating call history features...
-2025-07-23 09:16:47,839 | INFO | Created 35 call history features
-2025-07-23 09:16:47,849 | INFO | Volume prediction: 262 features, 81 samples
-2025-07-23 09:16:47,851 | INFO | Creating features for intent prediction...
-2025-07-23 09:16:47,857 | INFO | Creating advanced mail features...
-2025-07-23 09:16:48,103 | INFO | Created 210 mail features
-2025-07-23 09:16:48,103 | INFO | Creating temporal features...
-2025-07-23 09:16:48,118 | INFO | Created 17 temporal features
-2025-07-23 09:16:48,119 | INFO | Creating call history features...
-2025-07-23 09:16:48,207 | INFO | Created 35 call history features
-2025-07-23 09:16:48,216 | INFO | Intent prediction: 277 features, 81 samples
-2025-07-23 09:16:48,217 | INFO | 
-PHASE 3: ADVANCED MODEL TRAINING
-2025-07-23 09:16:48,218 | INFO | Training volume prediction models...
-2025-07-23 09:16:48,220 | INFO |   Training ridge...
-2025-07-23 09:16:48,311 | ERROR |     ridge failed: 
-All the 5 fits failed.
-It is very likely that your model is misconfigured.
-You can try to debug the error by setting error_score='raise'.
-
-Below are more details about the failures:
---------------------------------------------------------------------------------
-5 fits failed with the following error:
-Traceback (most recent call last):
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\model_selection\_validation.py", line 866, in _fit_and_score
-    estimator.fit(X_train, y_train, **fit_params)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\base.py", line 1389, in wrapper
-    return fit_method(estimator, *args, **kwargs)
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_ridge.py", line 1239, in fit
-    X, y = validate_data(
-           ~~~~~~~~~~~~~^
-        self,
-        ^^^^^
-    ...<6 lines>...
-        y_numeric=True,
-        ^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 2961, in validate_data
-    X, y = check_X_y(X, y, **check_params)
-           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 1370, in check_X_y
-    X = check_array(
-        X,
-    ...<12 lines>...
-        input_name="X",
-    )
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 1107, in check_array
-    _assert_all_finite(
-    ~~~~~~~~~~~~~~~~~~^
-        array,
-        ^^^^^^
-    ...<2 lines>...
-        allow_nan=ensure_all_finite == "allow-nan",
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 120, in _assert_all_finite
-    _assert_all_finite_element_wise(
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        X,
-        ^^
-    ...<4 lines>...
-        input_name=input_name,
-        ^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 169, in _assert_all_finite_element_wise
-    raise ValueError(msg_err)
-ValueError: Input X contains infinity or a value too large for dtype('float64').
-
-2025-07-23 09:16:48,317 | INFO |   Training random_forest...
-2025-07-23 09:16:48,387 | ERROR |     random_forest failed: 
-All the 5 fits failed.
-It is very likely that your model is misconfigured.
-You can try to debug the error by setting error_score='raise'.
-
-Below are more details about the failures:
---------------------------------------------------------------------------------
-5 fits failed with the following error:
-Traceback (most recent call last):
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\model_selection\_validation.py", line 866, in _fit_and_score
-    estimator.fit(X_train, y_train, **fit_params)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\base.py", line 1389, in wrapper
-    return fit_method(estimator, *args, **kwargs)
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\ensemble\_forest.py", line 375, in fit
-    estimator._compute_missing_values_in_feature_mask(
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        X, estimator_name=self.__class__.__name__
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\tree\_classes.py", line 222, in _compute_missing_values_in_feature_mask
-    _assert_all_finite_element_wise(X, xp=np, allow_nan=True, **common_kwargs)
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 169, in _assert_all_finite_element_wise
-    raise ValueError(msg_err)
-ValueError: Input X contains infinity or a value too large for dtype('float32').
-
-2025-07-23 09:16:48,389 | INFO |   Training gradient_boost...
-2025-07-23 09:16:48,458 | ERROR |     gradient_boost failed: 
-All the 5 fits failed.
-It is very likely that your model is misconfigured.
-You can try to debug the error by setting error_score='raise'.
-
-Below are more details about the failures:
---------------------------------------------------------------------------------
-5 fits failed with the following error:
-Traceback (most recent call last):
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\model_selection\_validation.py", line 866, in _fit_and_score
-    estimator.fit(X_train, y_train, **fit_params)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\base.py", line 1389, in wrapper
-    return fit_method(estimator, *args, **kwargs)
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\ensemble\_gb.py", line 658, in fit
-    X, y = validate_data(
-           ~~~~~~~~~~~~~^
-        self,
-        ^^^^^
-    ...<4 lines>...
-        multi_output=True,
-        ^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 2961, in validate_data
-    X, y = check_X_y(X, y, **check_params)
-           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 1370, in check_X_y
-    X = check_array(
-        X,
-    ...<12 lines>...
-        input_name="X",
-    )
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 1107, in check_array
-    _assert_all_finite(
-    ~~~~~~~~~~~~~~~~~~^
-        array,
-        ^^^^^^
-    ...<2 lines>...
-        allow_nan=ensure_all_finite == "allow-nan",
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 120, in _assert_all_finite
-    _assert_all_finite_element_wise(
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        X,
-        ^^
-    ...<4 lines>...
-        input_name=input_name,
-        ^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 169, in _assert_all_finite_element_wise
-    raise ValueError(msg_err)
-ValueError: Input X contains infinity or a value too large for dtype('float32').
-
-2025-07-23 09:16:48,462 | INFO | Best volume model R²: -inf
-2025-07-23 09:16:48,463 | INFO | Training intent prediction models...
-2025-07-23 09:16:48,463 | INFO |   Training logistic...
-2025-07-23 09:16:48,519 | ERROR |     logistic failed: 
-All the 4 fits failed.
-It is very likely that your model is misconfigured.
-You can try to debug the error by setting error_score='raise'.
-
-Below are more details about the failures:
---------------------------------------------------------------------------------
-4 fits failed with the following error:
-Traceback (most recent call last):
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\model_selection\_validation.py", line 866, in _fit_and_score
-    estimator.fit(X_train, y_train, **fit_params)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\base.py", line 1389, in wrapper
-    return fit_method(estimator, *args, **kwargs)
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_logistic.py", line 1222, in fit
-    X, y = validate_data(
-           ~~~~~~~~~~~~~^
-        self,
-        ^^^^^
-    ...<5 lines>...
-        accept_large_sparse=solver not in ["liblinear", "sag", "saga"],
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 2961, in validate_data
-    X, y = check_X_y(X, y, **check_params)
-           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 1370, in check_X_y
-    X = check_array(
-        X,
-    ...<12 lines>...
-        input_name="X",
-    )
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 1107, in check_array
-    _assert_all_finite(
-    ~~~~~~~~~~~~~~~~~~^
-        array,
-        ^^^^^^
-    ...<2 lines>...
-        allow_nan=ensure_all_finite == "allow-nan",
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 120, in _assert_all_finite
-    _assert_all_finite_element_wise(
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        X,
-        ^^
-    ...<4 lines>...
-        input_name=input_name,
-        ^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 169, in _assert_all_finite_element_wise
-    raise ValueError(msg_err)
-ValueError: Input X contains infinity or a value too large for dtype('float64').
-
-2025-07-23 09:16:48,523 | INFO |   Training random_forest...
-2025-07-23 09:16:48,661 | ERROR |     random_forest failed: 
-All the 4 fits failed.
-It is very likely that your model is misconfigured.
-You can try to debug the error by setting error_score='raise'.
-
-Below are more details about the failures:
---------------------------------------------------------------------------------
-4 fits failed with the following error:
-Traceback (most recent call last):
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\model_selection\_validation.py", line 866, in _fit_and_score
-    estimator.fit(X_train, y_train, **fit_params)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\base.py", line 1389, in wrapper
-    return fit_method(estimator, *args, **kwargs)
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\ensemble\_forest.py", line 375, in fit
-    estimator._compute_missing_values_in_feature_mask(
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        X, estimator_name=self.__class__.__name__
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\tree\_classes.py", line 222, in _compute_missing_values_in_feature_mask
-    _assert_all_finite_element_wise(X, xp=np, allow_nan=True, **common_kwargs)
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 169, in _assert_all_finite_element_wise
-    raise ValueError(msg_err)
-ValueError: Input X contains infinity or a value too large for dtype('float32').
-
-2025-07-23 09:16:48,664 | INFO | Best intent model accuracy: 0.000
-2025-07-23 09:16:48,664 | INFO |
-PHASE 4: CREATING ADVANCED PREDICTION ENGINE
-2025-07-23 09:16:48,675 | INFO | 
-PHASE 5: GENERATING ADVANCED EXAMPLES
-2025-07-23 09:16:48,676 | INFO | Generating advanced examples...
-2025-07-23 09:16:48,773 | ERROR | Single day prediction failed: 'NoneType' object has no attribute 'predict'
-2025-07-23 09:16:48,774 | INFO | Generating 5-day independent forecasts...
-2025-07-23 09:16:48,788 | ERROR | Single day prediction failed: 'NoneType' object has no attribute 'predict'
-2025-07-23 09:16:48,790 | WARNING | Prediction failed for 2025-07-28
-2025-07-23 09:16:48,806 | ERROR | Single day prediction failed: 'NoneType' object has no attribute 'predict'
-2025-07-23 09:16:48,807 | WARNING | Prediction failed for 2025-07-29
-
-
-
-
-
 #!/usr/bin/env python
 """
 ADVANCED MAIL-TO-CALLS & INTENT PREDICTION SYSTEM
@@ -358,122 +46,7 @@ import joblib
 from scipy import stats
 from scipy.stats import pearsonr
 
-# ============================================================================
-# MAIN EXECUTION
-# ============================================================================
-
-def main():
-    """Main execution function"""
-    
-    safe_print("="*80)
-    safe_print("ADVANCED MAIL-TO-CALLS & INTENT PREDICTION SYSTEM")
-    safe_print("="*80)
-    safe_print("ADVANCED CAPABILITIES:")
-    safe_print("  ✓ Single day predictions (no compounding errors)")
-    safe_print("  ✓ Multi-day independent forecasts")
-    safe_print("  ✓ Intent classification with probabilities")
-    safe_print("  ✓ Advanced feature engineering")
-    safe_print("  ✓ Mail type optimization (volume + correlation)")
-    safe_print("  ✓ Confidence intervals at multiple levels")
-    safe_print("")
-    safe_print("PRODUCTION-GRADE: Ready for stakeholder deployment")
-    safe_print("="*80)
-    safe_print("")
-    
-    try:
-        orchestrator = AdvancedPipelineOrchestrator()
-        results = orchestrator.run_advanced_pipeline()
-        
-        if results['success']:
-            safe_print("\n" + "="*60)
-            safe_print("🎯 ADVANCED SYSTEM DEPLOYED SUCCESSFULLY!")
-            safe_print("="*60)
-            safe_print("")
-            safe_print("SYSTEM CAPABILITIES:")
-            safe_print(f"  📊 Mail Types Analyzed: {len(results.get('selected_mail_types', []))}")
-            
-            # Volume model performance
-            volume_r2 = 0
-            if results.get('volume_results'):
-                volume_r2 = max([r.get('cv_r2', 0) for r in results['volume_results'].values() if isinstance(r, dict)])
-            safe_print(f"  📈 Volume Model R²: {volume_r2:.3f}")
-            
-            # Intent model performance
-            if results.get('intent_results'):
-                intent_acc = max([r.get('cv_accuracy', 0) for r in results['intent_results'].values() if isinstance(r, dict)])
-                safe_print(f"  🎯 Intent Model Accuracy: {intent_acc:.3f}")
-            else:
-                safe_print("  🎯 Intent Model: Ready (pending intent data)")
-            
-            safe_print(f"  ⏱️  Build Time: {results['execution_time']:.1f} minutes")
-            safe_print("")
-            
-            safe_print("YOUR OPTIMIZED MAIL TYPES:")
-            mail_types = results.get('selected_mail_types', [])
-            for i, mail_type in enumerate(mail_types[:8]):
-                safe_print(f"  {i+1:2d}. {mail_type}")
-            if len(mail_types) > 8:
-                safe_print(f"  ... and {len(mail_types)-8} more")
-            safe_print("")
-            
-            safe_print("PREDICTION EXAMPLES:")
-            examples = results.get('examples', {})
-            
-            # Single day example
-            if 'single_day_advanced' in examples:
-                single = examples['single_day_advanced']
-                if single.get('status') == 'success':
-                    volume = single.get('predicted_call_volume', 0)
-                    conf_80 = single.get('confidence_intervals', {}).get('80%', {})
-                    safe_print(f"  📞 Single Day: {volume} calls (80% CI: {conf_80.get('lower', 0)}-{conf_80.get('upper', 0)})")
-                    
-                    if single.get('predicted_intent', {}).get('dominant_intent'):
-                        intent = single['predicted_intent']['dominant_intent']
-                        safe_print(f"  🎯 Dominant Intent: {intent}")
-            
-            # Multi-day example
-            if 'multi_day_independent' in examples:
-                multi = examples['multi_day_independent']
-                if multi.get('forecast_summary', {}).get('volume_forecast'):
-                    vol_forecast = multi['forecast_summary']['volume_forecast']
-                    avg_daily = vol_forecast.get('average_daily', 0)
-                    total_calls = vol_forecast.get('total_calls', 0)
-                    safe_print(f"  📅 5-Day Forecast: {avg_daily} avg/day ({total_calls} total)")
-            
-            safe_print("")
-            safe_print("READY FOR PRODUCTION:")
-            safe_print("  ✓ Independent predictions (no compounding errors)")
-            safe_print("  ✓ Intent classification with confidence scores")  
-            safe_print("  ✓ Multiple confidence interval levels")
-            safe_print("  ✓ Business day handling (skips weekends)")
-            safe_print("  ✓ Advanced feature engineering")
-            safe_print("")
-            safe_print(f"📁 All files saved to: {results['output_dir']}")
-            safe_print("📖 See ADVANCED_USAGE_GUIDE.txt for integration")
-            
-        else:
-            safe_print("\n" + "="*50)
-            safe_print("❌ PIPELINE FAILED")
-            safe_print("="*50)
-            safe_print(f"Error: {results['error']}")
-            safe_print(f"Runtime: {results['execution_time']:.1f} minutes")
-            safe_print("")
-            safe_print("Check logs for detailed error information")
-        
-        return 0 if results['success'] else 1
-        
-    except KeyboardInterrupt:
-        safe_print("\n⚠️  Pipeline interrupted by user")
-        return 1
-        
-    except Exception as e:
-        safe_print(f"\n💥 System error: {str(e)}")
-        safe_print("Check logs for full traceback")
-        return 1
-
-if __name__ == "__main__":
-    exit_code = main()
-    sys.exit(exit_code) ADVANCED CONFIGURATION
+ ADVANCED CONFIGURATION
 # ============================================================================
 
 CONFIG = {
@@ -827,7 +400,7 @@ class AdvancedFeatureEngine:
         self.scaler = StandardScaler()
         
     def create_mail_features(self, mail_data: pd.DataFrame, target_dates: pd.DatetimeIndex) -> pd.DataFrame:
-        """Create comprehensive mail features"""
+        """Create comprehensive mail features with robust data cleaning"""
         LOG.info("Creating advanced mail features...")
         
         features = pd.DataFrame(index=target_dates)
@@ -837,17 +410,28 @@ class AdvancedFeatureEngine:
         
         for mail_type in available_types:
             clean_name = str(mail_type).replace(' ', '').replace('-', '').replace('_', '')[:10]
-            mail_series = mail_data[mail_type]
+            mail_series = mail_data[mail_type].fillna(0)
+            
+            # Clip extreme values to prevent overflow
+            mail_series = mail_series.clip(lower=0, upper=mail_series.quantile(0.99) * 2)
             
             # Basic lag features
             for lag in CONFIG["mail_lags"]:
-                features[f"{clean_name}_lag{lag}"] = mail_series.shift(lag).reindex(target_dates, fill_value=0)
+                lag_series = mail_series.shift(lag).reindex(target_dates, fill_value=0)
+                features[f"{clean_name}_lag{lag}"] = lag_series
             
-            # Rolling features
+            # Rolling features with safer calculations
             for window in CONFIG["rolling_windows"]:
                 if len(mail_series) >= window:
-                    features[f"{clean_name}_roll{window}"] = mail_series.rolling(window, min_periods=1).mean().reindex(target_dates, fill_value=0)
-                    features[f"{clean_name}_rollstd{window}"] = mail_series.rolling(window, min_periods=1).std().reindex(target_dates, fill_value=0)
+                    roll_mean = mail_series.rolling(window, min_periods=1).mean().reindex(target_dates, fill_value=0)
+                    roll_std = mail_series.rolling(window, min_periods=1).std().reindex(target_dates, fill_value=0)
+                    
+                    # Replace any infinite/NaN values
+                    roll_mean = roll_mean.replace([np.inf, -np.inf], 0).fillna(0)
+                    roll_std = roll_std.replace([np.inf, -np.inf], 0).fillna(0)
+                    
+                    features[f"{clean_name}_roll{window}"] = roll_mean
+                    features[f"{clean_name}_rollstd{window}"] = roll_std
             
             # Weighted distributed lag
             weighted_sum = pd.Series(0.0, index=mail_series.index)
@@ -855,42 +439,70 @@ class AdvancedFeatureEngine:
                 shifted = mail_series.shift(lag).fillna(0)
                 weighted_sum += shifted * weight
             
+            weighted_sum = weighted_sum.replace([np.inf, -np.inf], 0).fillna(0)
             features[f"{clean_name}_weighted"] = weighted_sum.reindex(target_dates, fill_value=0)
             
-            # Momentum features
-            features[f"{clean_name}_mom3"] = mail_series.pct_change(3).reindex(target_dates, fill_value=0)
-            features[f"{clean_name}_mom7"] = mail_series.pct_change(7).reindex(target_dates, fill_value=0)
+            # Momentum features with safe percentage change
+            mom3 = mail_series.pct_change(3).replace([np.inf, -np.inf], 0).fillna(0)
+            mom7 = mail_series.pct_change(7).replace([np.inf, -np.inf], 0).fillna(0)
+            
+            # Clip momentum to reasonable range
+            features[f"{clean_name}_mom3"] = mom3.clip(-5, 5).reindex(target_dates, fill_value=0)
+            features[f"{clean_name}_mom7"] = mom7.clip(-5, 5).reindex(target_dates, fill_value=0)
         
         # Aggregate mail features
         mail_subset = mail_data[available_types] if available_types else mail_data
-        total_mail = mail_subset.sum(axis=1)
+        total_mail = mail_subset.sum(axis=1).fillna(0)
+        
+        # Clip total mail to prevent extreme values
+        total_mail = total_mail.clip(lower=0, upper=total_mail.quantile(0.99) * 2)
         
         for lag in CONFIG["mail_lags"]:
-            features[f'total_mail_lag{lag}'] = total_mail.shift(lag).reindex(target_dates, fill_value=0)
+            lag_total = total_mail.shift(lag).reindex(target_dates, fill_value=0)
+            features[f'total_mail_lag{lag}'] = lag_total
         
         for window in CONFIG["rolling_windows"]:
-            features[f'total_mail_roll{window}'] = total_mail.rolling(window, min_periods=1).mean().reindex(target_dates, fill_value=0)
-            features[f'total_mail_rollstd{window}'] = total_mail.rolling(window, min_periods=1).std().reindex(target_dates, fill_value=0)
+            roll_mean = total_mail.rolling(window, min_periods=1).mean().reindex(target_dates, fill_value=0)
+            roll_std = total_mail.rolling(window, min_periods=1).std().reindex(target_dates, fill_value=0)
+            
+            # Clean rolling statistics
+            roll_mean = roll_mean.replace([np.inf, -np.inf], 0).fillna(0)
+            roll_std = roll_std.replace([np.inf, -np.inf], 0).fillna(0)
+            
+            features[f'total_mail_roll{window}'] = roll_mean
+            features[f'total_mail_rollstd{window}'] = roll_std
         
-        # Mail diversity features
+        # Mail diversity features with safe calculations
         if len(available_types) > 1:
             # Number of active mail types
             active_types = (mail_subset > 0).sum(axis=1)
             features['active_mail_types'] = active_types.reindex(target_dates, fill_value=0)
             
-            # Mail concentration (entropy)
-            mail_props = mail_subset.div(mail_subset.sum(axis=1), axis=0).fillna(0)
-            entropy = -(mail_props * np.log(mail_props + 1e-10)).sum(axis=1)
+            # Mail concentration (entropy) with safe log
+            mail_total = mail_subset.sum(axis=1)
+            mail_props = mail_subset.div(mail_total + 1e-10, axis=0).fillna(0)  # Add small constant
+            
+            # Safe entropy calculation
+            log_props = np.log(mail_props + 1e-10)  # Prevent log(0)
+            entropy = -(mail_props * log_props).sum(axis=1)
+            entropy = entropy.replace([np.inf, -np.inf], 0).fillna(0)
+            
             features['mail_entropy'] = entropy.reindex(target_dates, fill_value=0)
             
             # Dominant mail type share
-            max_share = mail_props.max(axis=1)
+            max_share = mail_props.max(axis=1).replace([np.inf, -np.inf], 0).fillna(0)
             features['dominant_mail_share'] = max_share.reindex(target_dates, fill_value=0)
         
-        # Fill any remaining NaN
-        features = features.fillna(0)
+        # Final cleaning of all features
+        for col in features.columns:
+            features[col] = features[col].replace([np.inf, -np.inf], 0).fillna(0)
+            # Clip extreme values
+            if features[col].std() > 0:
+                mean_val = features[col].mean()
+                std_val = features[col].std()
+                features[col] = features[col].clip(mean_val - 5*std_val, mean_val + 5*std_val)
         
-        LOG.info(f"Created {len(features.columns)} mail features")
+        LOG.info(f"Created {len(features.columns)} clean mail features")
         return features
     
     def create_temporal_features(self, dates: pd.DatetimeIndex) -> pd.DataFrame:
@@ -941,50 +553,102 @@ class AdvancedFeatureEngine:
         return features
     
     def create_call_history_features(self, call_data: pd.Series, target_dates: pd.DatetimeIndex) -> pd.DataFrame:
-        """Create call volume history features"""
+        """Create call volume history features with robust data cleaning"""
         LOG.info("Creating call history features...")
         
         features = pd.DataFrame(index=target_dates)
         
+        # Clean call data first
+        call_data = call_data.fillna(call_data.mean())
+        call_data = call_data.clip(lower=0, upper=call_data.quantile(0.99) * 2)
+        
         # Basic lags
         for lag in [1, 2, 3, 7, 14]:
-            features[f'calls_lag{lag}'] = call_data.shift(lag).reindex(target_dates, fill_value=call_data.mean())
+            lag_series = call_data.shift(lag).reindex(target_dates, fill_value=call_data.mean())
+            features[f'calls_lag{lag}'] = lag_series
         
-        # Rolling statistics
+        # Rolling statistics with safe calculations
         for window in [3, 7, 14, 30]:
             if len(call_data) >= window:
-                features[f'calls_mean{window}'] = call_data.rolling(window, min_periods=1).mean().reindex(target_dates, fill_value=call_data.mean())
-                features[f'calls_std{window}'] = call_data.rolling(window, min_periods=1).std().reindex(target_dates, fill_value=call_data.std())
-                features[f'calls_max{window}'] = call_data.rolling(window, min_periods=1).max().reindex(target_dates, fill_value=call_data.max())
-                features[f'calls_min{window}'] = call_data.rolling(window, min_periods=1).min().reindex(target_dates, fill_value=call_data.min())
+                roll_mean = call_data.rolling(window, min_periods=1).mean().reindex(target_dates, fill_value=call_data.mean())
+                roll_std = call_data.rolling(window, min_periods=1).std().reindex(target_dates, fill_value=call_data.std())
+                roll_max = call_data.rolling(window, min_periods=1).max().reindex(target_dates, fill_value=call_data.max())
+                roll_min = call_data.rolling(window, min_periods=1).min().reindex(target_dates, fill_value=call_data.min())
                 
-                # Percentile features
-                features[f'calls_q75_{window}'] = call_data.rolling(window, min_periods=1).quantile(0.75).reindex(target_dates, fill_value=call_data.quantile(0.75))
-                features[f'calls_q25_{window}'] = call_data.rolling(window, min_periods=1).quantile(0.25).reindex(target_dates, fill_value=call_data.quantile(0.25))
+                # Clean rolling stats
+                roll_mean = roll_mean.replace([np.inf, -np.inf], call_data.mean()).fillna(call_data.mean())
+                roll_std = roll_std.replace([np.inf, -np.inf], call_data.std()).fillna(call_data.std())
+                roll_max = roll_max.replace([np.inf, -np.inf], call_data.max()).fillna(call_data.max())
+                roll_min = roll_min.replace([np.inf, -np.inf], call_data.min()).fillna(call_data.min())
+                
+                features[f'calls_mean{window}'] = roll_mean
+                features[f'calls_std{window}'] = roll_std
+                features[f'calls_max{window}'] = roll_max
+                features[f'calls_min{window}'] = roll_min
+                
+                # Safe percentile features
+                try:
+                    roll_q75 = call_data.rolling(window, min_periods=1).quantile(0.75).reindex(target_dates, fill_value=call_data.quantile(0.75))
+                    roll_q25 = call_data.rolling(window, min_periods=1).quantile(0.25).reindex(target_dates, fill_value=call_data.quantile(0.25))
+                    
+                    roll_q75 = roll_q75.replace([np.inf, -np.inf], call_data.quantile(0.75)).fillna(call_data.quantile(0.75))
+                    roll_q25 = roll_q25.replace([np.inf, -np.inf], call_data.quantile(0.25)).fillna(call_data.quantile(0.25))
+                    
+                    features[f'calls_q75_{window}'] = roll_q75
+                    features[f'calls_q25_{window}'] = roll_q25
+                except:
+                    features[f'calls_q75_{window}'] = call_data.quantile(0.75)
+                    features[f'calls_q25_{window}'] = call_data.quantile(0.25)
         
-        # Trend and momentum
+        # Trend and momentum with safe calculations
         if len(call_data) >= 7:
-            features['calls_trend7'] = call_data.rolling(7, min_periods=3).apply(
-                lambda x: np.polyfit(range(len(x)), x, 1)[0] if len(x) > 2 else 0
-            ).reindex(target_dates, fill_value=0)
+            def safe_trend(x):
+                try:
+                    if len(x) > 2:
+                        trend = np.polyfit(range(len(x)), x, 1)[0]
+                        return trend if np.isfinite(trend) else 0
+                    else:
+                        return 0
+                except:
+                    return 0
             
-            features['calls_trend14'] = call_data.rolling(14, min_periods=5).apply(
-                lambda x: np.polyfit(range(len(x)), x, 1)[0] if len(x) > 4 else 0
-            ).reindex(target_dates, fill_value=0)
+            trend7 = call_data.rolling(7, min_periods=3).apply(safe_trend).reindex(target_dates, fill_value=0)
+            trend14 = call_data.rolling(14, min_periods=5).apply(safe_trend).reindex(target_dates, fill_value=0)
+            
+            trend7 = trend7.replace([np.inf, -np.inf], 0).fillna(0).clip(-1000, 1000)
+            trend14 = trend14.replace([np.inf, -np.inf], 0).fillna(0).clip(-1000, 1000)
+            
+            features['calls_trend7'] = trend7
+            features['calls_trend14'] = trend14
         
-        # Momentum features
-        features['calls_mom3'] = call_data.pct_change(3).reindex(target_dates, fill_value=0)
-        features['calls_mom7'] = call_data.pct_change(7).reindex(target_dates, fill_value=0)
+        # Safe momentum features
+        mom3 = call_data.pct_change(3).replace([np.inf, -np.inf], 0).fillna(0).clip(-5, 5)
+        mom7 = call_data.pct_change(7).replace([np.inf, -np.inf], 0).fillna(0).clip(-5, 5)
         
-        # Volatility
-        features['calls_vol7'] = call_data.rolling(7, min_periods=3).std().reindex(target_dates, fill_value=call_data.std())
-        features['calls_vol14'] = call_data.rolling(14, min_periods=5).std().reindex(target_dates, fill_value=call_data.std())
+        features['calls_mom3'] = mom3.reindex(target_dates, fill_value=0)
+        features['calls_mom7'] = mom7.reindex(target_dates, fill_value=0)
         
-        LOG.info(f"Created {len(features.columns)} call history features")
+        # Safe volatility
+        vol7 = call_data.rolling(7, min_periods=3).std().replace([np.inf, -np.inf], call_data.std()).fillna(call_data.std())
+        vol14 = call_data.rolling(14, min_periods=5).std().replace([np.inf, -np.inf], call_data.std()).fillna(call_data.std())
+        
+        features['calls_vol7'] = vol7.reindex(target_dates, fill_value=call_data.std())
+        features['calls_vol14'] = vol14.reindex(target_dates, fill_value=call_data.std())
+        
+        # Final cleaning
+        for col in features.columns:
+            features[col] = features[col].replace([np.inf, -np.inf], 0).fillna(0)
+            # Clip extreme values
+            if features[col].std() > 0:
+                mean_val = features[col].mean()
+                std_val = features[col].std()
+                features[col] = features[col].clip(mean_val - 5*std_val, mean_val + 5*std_val)
+        
+        LOG.info(f"Created {len(features.columns)} clean call history features")
         return features
     
     def create_features_for_volume(self, aligned_data: Dict) -> Tuple[pd.DataFrame, pd.Series]:
-        """Create features for volume prediction"""
+        """Create features for volume prediction with robust data cleaning"""
         LOG.info("Creating features for volume prediction...")
         
         calls = aligned_data['calls']
@@ -1010,15 +674,47 @@ class AdvancedFeatureEngine:
         
         # Combine all features
         X = pd.concat(feature_sets, axis=1)
-        X = X.fillna(0)
+        
+        # Comprehensive data cleaning
+        LOG.info("Performing comprehensive data cleaning...")
+        
+        # Replace infinite values
+        X = X.replace([np.inf, -np.inf], np.nan)
+        
+        # Fill NaN values with appropriate defaults
+        for col in X.columns:
+            if X[col].isna().all():
+                X[col] = 0
+            else:
+                # Use median for robustness
+                X[col] = X[col].fillna(X[col].median())
+        
+        # Remove features with zero variance
+        zero_var_cols = X.columns[X.var() == 0]
+        if len(zero_var_cols) > 0:
+            LOG.info(f"Removing {len(zero_var_cols)} zero-variance features")
+            X = X.drop(columns=zero_var_cols)
+        
+        # Clip extreme outliers (beyond 5 standard deviations)
+        for col in X.columns:
+            if X[col].std() > 0:
+                mean_val = X[col].mean()
+                std_val = X[col].std()
+                lower_bound = mean_val - 5 * std_val
+                upper_bound = mean_val + 5 * std_val
+                X[col] = X[col].clip(lower_bound, upper_bound)
+        
+        # Final check for any remaining issues
+        assert not X.isnull().any().any(), "NaN values remain after cleaning"
+        assert not np.isinf(X.values).any(), "Infinite values remain after cleaning"
         
         self.feature_names = X.columns.tolist()
         
-        LOG.info(f"Volume prediction: {X.shape[1]} features, {len(y)} samples")
+        LOG.info(f"Volume prediction: {X.shape[1]} clean features, {len(y)} samples")
         return X, y
     
     def create_features_for_intent(self, aligned_data: Dict) -> Tuple[pd.DataFrame, pd.Series]:
-        """Create features for intent prediction"""
+        """Create features for intent prediction with robust data cleaning"""
         intents = aligned_data.get('intents')
         if intents is None:
             return None, None
@@ -1035,8 +731,9 @@ class AdvancedFeatureEngine:
         
         feature_sets = []
         
-        # Current intent distribution
+        # Current intent distribution (cleaned)
         current_intents = intents.reindex(target_dates, fill_value=0)
+        current_intents = current_intents.replace([np.inf, -np.inf], 0).fillna(0)
         current_intents.columns = [f'current_{col}' for col in current_intents.columns]
         feature_sets.append(current_intents)
         
@@ -1054,9 +751,38 @@ class AdvancedFeatureEngine:
         
         # Combine all features
         X = pd.concat(feature_sets, axis=1)
-        X = X.fillna(0)
         
-        LOG.info(f"Intent prediction: {X.shape[1]} features, {len(y_dominant)} samples")
+        # Comprehensive data cleaning for intent features
+        LOG.info("Cleaning intent prediction features...")
+        
+        # Replace infinite values
+        X = X.replace([np.inf, -np.inf], np.nan)
+        
+        # Fill NaN values
+        for col in X.columns:
+            if X[col].isna().all():
+                X[col] = 0
+            else:
+                X[col] = X[col].fillna(X[col].median())
+        
+        # Remove zero variance features
+        zero_var_cols = X.columns[X.var() == 0]
+        if len(zero_var_cols) > 0:
+            LOG.info(f"Removing {len(zero_var_cols)} zero-variance features from intent model")
+            X = X.drop(columns=zero_var_cols)
+        
+        # Clip extreme values
+        for col in X.columns:
+            if X[col].std() > 0:
+                mean_val = X[col].mean()
+                std_val = X[col].std()
+                X[col] = X[col].clip(mean_val - 5*std_val, mean_val + 5*std_val)
+        
+        # Final validation
+        assert not X.isnull().any().any(), "NaN values remain in intent features"
+        assert not np.isinf(X.values).any(), "Infinite values remain in intent features"
+        
+        LOG.info(f"Intent prediction: {X.shape[1]} clean features, {len(y_dominant)} samples")
         return X, y_dominant
 
 # ============================================================================
@@ -1863,120 +1589,118 @@ MODEL PERFORMANCE:
             f.write(guide)
 
 # ============================================================================
-#
-# ============================================================================
 # MAIN EXECUTION
 # ============================================================================
 
 def main():
-   """Main execution function"""
-   
-   safe_print("="*80)
-   safe_print("ADVANCED MAIL-TO-CALLS & INTENT PREDICTION SYSTEM")
-   safe_print("="*80)
-   safe_print("ADVANCED CAPABILITIES:")
-   safe_print("  ✓ Single day predictions (no compounding errors)")
-   safe_print("  ✓ Multi-day independent forecasts")
-   safe_print("  ✓ Intent classification with probabilities")
-   safe_print("  ✓ Advanced feature engineering")
-   safe_print("  ✓ Mail type optimization (volume + correlation)")
-   safe_print("  ✓ Confidence intervals at multiple levels")
-   safe_print("")
-   safe_print("PRODUCTION-GRADE: Ready for stakeholder deployment")
-   safe_print("="*80)
-   safe_print("")
-   
-   try:
-       orchestrator = AdvancedPipelineOrchestrator()
-       results = orchestrator.run_advanced_pipeline()
-       
-       if results['success']:
-           safe_print("\n" + "="*60)
-           safe_print("🎯 ADVANCED SYSTEM DEPLOYED SUCCESSFULLY!")
-           safe_print("="*60)
-           safe_print("")
-           safe_print("SYSTEM CAPABILITIES:")
-           safe_print(f"  📊 Mail Types Analyzed: {len(results.get('selected_mail_types', []))}")
-           
-           # Volume model performance
-           volume_r2 = 0
-           if results.get('volume_results'):
-               volume_r2 = max([r.get('cv_r2', 0) for r in results['volume_results'].values() if isinstance(r, dict)])
-           safe_print(f"  📈 Volume Model R²: {volume_r2:.3f}")
-           
-           # Intent model performance
-           if results.get('intent_results'):
-               intent_acc = max([r.get('cv_accuracy', 0) for r in results['intent_results'].values() if isinstance(r, dict)])
-               safe_print(f"  🎯 Intent Model Accuracy: {intent_acc:.3f}")
-           else:
-               safe_print("  🎯 Intent Model: Ready (pending intent data)")
-           
-           safe_print(f"  ⏱️  Build Time: {results['execution_time']:.1f} minutes")
-           safe_print("")
-           
-           safe_print("YOUR OPTIMIZED MAIL TYPES:")
-           mail_types = results.get('selected_mail_types', [])
-           for i, mail_type in enumerate(mail_types[:8]):
-               safe_print(f"  {i+1:2d}. {mail_type}")
-           if len(mail_types) > 8:
-               safe_print(f"  ... and {len(mail_types)-8} more")
-           safe_print("")
-           
-           safe_print("PREDICTION EXAMPLES:")
-           examples = results.get('examples', {})
-           
-           # Single day example
-           if 'single_day_advanced' in examples:
-               single = examples['single_day_advanced']
-               if single.get('status') == 'success':
-                   volume = single.get('predicted_call_volume', 0)
-                   conf_80 = single.get('confidence_intervals', {}).get('80%', {})
-                   safe_print(f"  📞 Single Day: {volume} calls (80% CI: {conf_80.get('lower', 0)}-{conf_80.get('upper', 0)})")
-                   
-                   if single.get('predicted_intent', {}).get('dominant_intent'):
-                       intent = single['predicted_intent']['dominant_intent']
-                       safe_print(f"  🎯 Dominant Intent: {intent}")
-           
-           # Multi-day example
-           if 'multi_day_independent' in examples:
-               multi = examples['multi_day_independent']
-               if multi.get('forecast_summary', {}).get('volume_forecast'):
-                   vol_forecast = multi['forecast_summary']['volume_forecast']
-                   avg_daily = vol_forecast.get('average_daily', 0)
-                   total_calls = vol_forecast.get('total_calls', 0)
-                   safe_print(f"  📅 5-Day Forecast: {avg_daily} avg/day ({total_calls} total)")
-           
-           safe_print("")
-           safe_print("READY FOR PRODUCTION:")
-           safe_print("  ✓ Independent predictions (no compounding errors)")
-           safe_print("  ✓ Intent classification with confidence scores")  
-           safe_print("  ✓ Multiple confidence interval levels")
-           safe_print("  ✓ Business day handling (skips weekends)")
-           safe_print("  ✓ Advanced feature engineering")
-           safe_print("")
-           safe_print(f"📁 All files saved to: {results['output_dir']}")
-           safe_print("📖 See ADVANCED_USAGE_GUIDE.txt for integration")
-           
-       else:
-           safe_print("\n" + "="*50)
-           safe_print("❌ PIPELINE FAILED")
-           safe_print("="*50)
-           safe_print(f"Error: {results['error']}")
-           safe_print(f"Runtime: {results['execution_time']:.1f} minutes")
-           safe_print("")
-           safe_print("Check logs for detailed error information")
-       
-       return 0 if results['success'] else 1
-       
-   except KeyboardInterrupt:
-       safe_print("\n⚠️  Pipeline interrupted by user")
-       return 1
-       
-   except Exception as e:
-       safe_print(f"\n💥 System error: {str(e)}")
-       safe_print("Check logs for full traceback")
-       return 1
+    """Main execution function"""
+    
+    safe_print("="*80)
+    safe_print("ADVANCED MAIL-TO-CALLS & INTENT PREDICTION SYSTEM")
+    safe_print("="*80)
+    safe_print("ADVANCED CAPABILITIES:")
+    safe_print("  ✓ Single day predictions (no compounding errors)")
+    safe_print("  ✓ Multi-day independent forecasts")
+    safe_print("  ✓ Intent classification with probabilities")
+    safe_print("  ✓ Advanced feature engineering")
+    safe_print("  ✓ Mail type optimization (volume + correlation)")
+    safe_print("  ✓ Confidence intervals at multiple levels")
+    safe_print("")
+    safe_print("PRODUCTION-GRADE: Ready for stakeholder deployment")
+    safe_print("="*80)
+    safe_print("")
+    
+    try:
+        orchestrator = AdvancedPipelineOrchestrator()
+        results = orchestrator.run_advanced_pipeline()
+        
+        if results['success']:
+            safe_print("\n" + "="*60)
+            safe_print("🎯 ADVANCED SYSTEM DEPLOYED SUCCESSFULLY!")
+            safe_print("="*60)
+            safe_print("")
+            safe_print("SYSTEM CAPABILITIES:")
+            safe_print(f"  📊 Mail Types Analyzed: {len(results.get('selected_mail_types', []))}")
+            
+            # Volume model performance
+            volume_r2 = 0
+            if results.get('volume_results'):
+                volume_r2 = max([r.get('cv_r2', 0) for r in results['volume_results'].values() if isinstance(r, dict)])
+            safe_print(f"  📈 Volume Model R²: {volume_r2:.3f}")
+            
+            # Intent model performance
+            if results.get('intent_results'):
+                intent_acc = max([r.get('cv_accuracy', 0) for r in results['intent_results'].values() if isinstance(r, dict)])
+                safe_print(f"  🎯 Intent Model Accuracy: {intent_acc:.3f}")
+            else:
+                safe_print("  🎯 Intent Model: Ready (pending intent data)")
+            
+            safe_print(f"  ⏱️  Build Time: {results['execution_time']:.1f} minutes")
+            safe_print("")
+            
+            safe_print("YOUR OPTIMIZED MAIL TYPES:")
+            mail_types = results.get('selected_mail_types', [])
+            for i, mail_type in enumerate(mail_types[:8]):
+                safe_print(f"  {i+1:2d}. {mail_type}")
+            if len(mail_types) > 8:
+                safe_print(f"  ... and {len(mail_types)-8} more")
+            safe_print("")
+            
+            safe_print("PREDICTION EXAMPLES:")
+            examples = results.get('examples', {})
+            
+            # Single day example
+            if 'single_day_advanced' in examples:
+                single = examples['single_day_advanced']
+                if single.get('status') == 'success':
+                    volume = single.get('predicted_call_volume', 0)
+                    conf_80 = single.get('confidence_intervals', {}).get('80%', {})
+                    safe_print(f"  📞 Single Day: {volume} calls (80% CI: {conf_80.get('lower', 0)}-{conf_80.get('upper', 0)})")
+                    
+                    if single.get('predicted_intent', {}).get('dominant_intent'):
+                        intent = single['predicted_intent']['dominant_intent']
+                        safe_print(f"  🎯 Dominant Intent: {intent}")
+            
+            # Multi-day example
+            if 'multi_day_independent' in examples:
+                multi = examples['multi_day_independent']
+                if multi.get('forecast_summary', {}).get('volume_forecast'):
+                    vol_forecast = multi['forecast_summary']['volume_forecast']
+                    avg_daily = vol_forecast.get('average_daily', 0)
+                    total_calls = vol_forecast.get('total_calls', 0)
+                    safe_print(f"  📅 5-Day Forecast: {avg_daily} avg/day ({total_calls} total)")
+            
+            safe_print("")
+            safe_print("READY FOR PRODUCTION:")
+            safe_print("  ✓ Independent predictions (no compounding errors)")
+            safe_print("  ✓ Intent classification with confidence scores")  
+            safe_print("  ✓ Multiple confidence interval levels")
+            safe_print("  ✓ Business day handling (skips weekends)")
+            safe_print("  ✓ Advanced feature engineering")
+            safe_print("")
+            safe_print(f"📁 All files saved to: {results['output_dir']}")
+            safe_print("📖 See ADVANCED_USAGE_GUIDE.txt for integration")
+            
+        else:
+            safe_print("\n" + "="*50)
+            safe_print("❌ PIPELINE FAILED")
+            safe_print("="*50)
+            safe_print(f"Error: {results['error']}")
+            safe_print(f"Runtime: {results['execution_time']:.1f} minutes")
+            safe_print("")
+            safe_print("Check logs for detailed error information")
+        
+        return 0 if results['success'] else 1
+        
+    except KeyboardInterrupt:
+        safe_print("\n⚠️  Pipeline interrupted by user")
+        return 1
+        
+    except Exception as e:
+        safe_print(f"\n💥 System error: {str(e)}")
+        safe_print("Check logs for full traceback")
+        return 1
 
 if __name__ == "__main__":
-   exit_code = main()
-   sys.exit(exit_code)
+    exit_code = main()
+    sys.exit(exit_code)
