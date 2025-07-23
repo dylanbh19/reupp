@@ -1,3 +1,190 @@
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> & C:/Users/BhungarD/python.exe "c:/Users/BhungarD/OneDrive - Computershare/Desktop/finprod/cleanmodel.py"
+================================================================================
+SMART MAIL-TO-CALLS PREDICTION WITH OUTLIER STRATEGIES
+================================================================================
+FEATURES:
+* Smart outlier handling (keep tax docs/dividend impact)
+* Multi-horizon predictions (1, 3, 5, 7 days)
+* Single day and multi-day inputs
+* Proper lag handling (mail today -> calls tomorrow)
+* Compare all strategies and pick the best
+================================================================================
+================================================================================
+SMART OUTLIER HANDLING: LOADING DATA WITH MULTIPLE STRATEGIES
+================================================================================
+ Loaded clean data (outliers removed): 71 days
+ Loaded raw call data: 88 days
+ Loaded raw mail data: 107 days, 196 types
+ Merged raw data: 82 days
+Detected 11 outlier days out of 82
+
+============================================================
+DATASET COMPARISON:
+
+REMOVED STRATEGY:
+  Days: 71
+  Call range: 7558 - 18209 (mean: 12299)
+  Mail range: 10306 - 534792 (mean: 169536)
+  Correlation: 0.172
+
+ORIGINAL STRATEGY:
+  Days: 82
+  Call range: 5 - 18209 (mean: 12183)
+  Mail range: 10306 - 3715509 (mean: 404796)
+  Correlation: 0.210
+
+SCALED STRATEGY:
+  Days: 82
+  Call range: 7558 - 18209 (mean: 12390)
+  Mail range: 10306 - 1230752 (mean: 237539)
+  Correlation: 0.254
+
+CAPPED STRATEGY:
+  Days: 82
+  Call range: 8352 - 16569 (mean: 12349)
+  Mail range: 10286 - 675703 (mean: 162497)
+  Correlation: 0.291
+
+================================================================================
+TRAINING MULTI-HORIZON MODELS FOR ALL STRATEGIES
+================================================================================
+
+==================== REMOVED STRATEGY ====================
+
+--- Training 1-day forecast model ---
+   1-day model: R = -2.783, MAE = 1687
+
+--- Training 3-day forecast model ---
+   3-day model: R = -3.803, MAE = 1928
+
+--- Training 5-day forecast model ---
+   5-day model: R = -3683.525, MAE = 23214
+
+--- Training 7-day forecast model ---
+   7-day model: R = -68645.704, MAE = 81421
+
+ removed: Trained 4 models
+
+==================== ORIGINAL STRATEGY ====================
+
+--- Training 1-day forecast model ---
+   1-day model: R = -2.065, MAE = 2120
+
+--- Training 3-day forecast model ---
+   3-day model: R = -1.098, MAE = 1522
+
+--- Training 5-day forecast model ---
+   5-day model: R = -0.828, MAE = 1608
+
+--- Training 7-day forecast model ---
+   7-day model: R = -1.684, MAE = 1438
+
+ original: Trained 4 models
+
+==================== SCALED STRATEGY ====================
+
+--- Training 1-day forecast model ---
+   1-day model: R = -4.122, MAE = 1819
+
+--- Training 3-day forecast model ---
+   3-day model: R = -1.138, MAE = 1337
+
+--- Training 5-day forecast model ---
+   5-day model: R = -1.056, MAE = 1354
+
+--- Training 7-day forecast model ---
+   7-day model: R = -1.014, MAE = 1308
+
+ scaled: Trained 4 models
+
+==================== CAPPED STRATEGY ====================
+
+--- Training 1-day forecast model ---
+   1-day model: R = -2.851, MAE = 1592
+
+--- Training 3-day forecast model ---
+   3-day model: R = -0.769, MAE = 1289
+
+--- Training 5-day forecast model ---
+   5-day model: R = -0.725, MAE = 1289
+
+--- Training 7-day forecast model ---
+   7-day model: R = -0.409, MAE = 1121
+
+ capped: Trained 4 models
+
+Best performing strategy: capped (avg R = -1.189)
+
+================================================================================
+COMPREHENSIVE STRATEGY EVALUATION
+================================================================================
+
+STRATEGY PERFORMANCE SUMMARY:
+--------------------------------------------------
+     REMOVED: Avg R = -18083.954, Avg MAE =   27063
+    ORIGINAL: Avg R = -1.419, Avg MAE =    1672
+      SCALED: Avg R = -1.833, Avg MAE =    1455
+      CAPPED: Avg R = -1.189, Avg MAE =    1323
+
+BEST PERFORMERS BY FORECAST HORIZON:
+---------------------------------------------
+1-day forecast: original (R = -2.065)
+3-day forecast: capped (R = -0.769)
+5-day forecast: capped (R = -0.725)
+7-day forecast: capped (R = -0.409)
+
+Comparison plot saved: smart_mail_prediction/strategy_comparison.png
+
+============================================================
+TESTING PREDICTION ENGINE
+============================================================
+ SINGLE DAY TEST:
+  Input: {'DRP Stmt.': 2000, 'Cheque': 1500, 'Envision': 1000, 'Notice': 800}
+  Strategy: capped
+  1_day: 14535 calls
+  3_day: 12472 calls
+  5_day: 12137 calls
+  7_day: 12351 calls
+
+ MULTI-DAY TEST:
+  Sequence: 3 days
+  Strategy: capped
+  1_day: 13773 calls
+  3_day: 12593 calls
+  5_day: 11736 calls
+  7_day: 11116 calls
+
+================================================================================
+SMART MAIL PREDICTION SYSTEM READY!
+================================================================================
+ Trained models for 4 outlier strategies
+ Best strategy: capped
+ Forecast horizons: [1, 3, 5, 7] days
+ Models saved to: smart_mail_prediction
+ Handles both single-day and multi-day inputs
+ Proper lag handling (mail today -> calls tomorrow+)
+
+READY FOR PRODUCTION:
+- Tax documents and dividend checks properly modeled
+- Multiple forecast horizons available
+- Best performing outlier strategy selected
+- Comprehensive evaluation completed
+ SUCCESS: Smart mail prediction system deployed!
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #!/usr/bin/env python
 """
 MAIL-TO-CALLS PREDICTION: SMART OUTLIER HANDLING & MULTI-HORIZON MODELING
