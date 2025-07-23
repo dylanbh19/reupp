@@ -1,3 +1,315 @@
+PRODUCTION-GRADE: Ready for stakeholder deployment
+================================================================================
+
+2025-07-23 09:16:19,017 | INFO | ================================================================================
+2025-07-23 09:16:19,018 | INFO | ADVANCED MAIL-TO-CALLS & INTENT PREDICTION SYSTEM
+2025-07-23 09:16:19,019 | INFO | ================================================================================
+2025-07-23 09:16:19,020 | INFO | CAPABILITIES:
+2025-07-23 09:16:19,021 | INFO |   - Single day predictions (no compounding)
+2025-07-23 09:16:19,022 | INFO |   - Multi-day independent forecasts
+2025-07-23 09:16:19,022 | INFO |   - Intent classification
+2025-07-23 09:16:19,023 | INFO |   - Advanced feature engineering
+2025-07-23 09:16:19,024 | INFO | ================================================================================
+2025-07-23 09:16:19,026 | INFO |
+PHASE 1: ADVANCED DATA LOADING & ANALYSIS
+2025-07-23 09:16:19,027 | INFO | Loading call and intent data...
+2025-07-23 09:16:19,027 | INFO | Loading callintent.csv...
+2025-07-23 09:16:35,349 | INFO | Loaded data/callintent.csv: 1053601 rows, 42 columns
+2025-07-23 09:16:35,355 | INFO | Using columns - Date: conversationstart, Intent: intent
+2025-07-23 09:16:38,276 | INFO | Found 1053601 call records from 2025+
+2025-07-23 09:16:39,646 | INFO | Processing 15 top intents from 38 total
+2025-07-23 09:16:40,033 | INFO | Created intent data: 15 intents
+2025-07-23 09:16:40,037 | INFO | Final call data: 88 business days
+2025-07-23 09:16:40,663 | INFO | Loading mail data...
+2025-07-23 09:16:40,663 | INFO | Loading mail.csv...
+2025-07-23 09:16:43,007 | INFO | Loaded data/mail.csv: 1409780 rows, 4 columns
+2025-07-23 09:16:43,008 | INFO | Mail columns - Date: mail_date, Volume: mail_volume, Type: mail_type
+2025-07-23 09:16:44,173 | INFO | Mail data: 107 business days, 197 mail types
+2025-07-23 09:16:44,195 | INFO | Analyzing mail types for optimal selection...
+2025-07-23 09:16:44,239 | INFO | Analyzing 82 days with 197 mail types
+2025-07-23 09:16:46,317 | INFO | Selected 15 mail types:
+2025-07-23 09:16:46,318 | INFO |   1. Due Diligence (Vol: 116462, Corr: -0.463)
+2025-07-23 09:16:46,319 | INFO |   2. DRP Stmt. (Vol: 4839540, Corr: 0.203)
+2025-07-23 09:16:46,319 | INFO |   3. Rep_1099Div (Vol: 67757, Corr: 0.437)
+2025-07-23 09:16:46,320 | INFO |   4. Envision (Vol: 5130345, Corr: 0.171)
+2025-07-23 09:16:46,321 | INFO |   5. DRS_Advices (Vol: 366283, Corr: 0.187)
+2025-07-23 09:16:46,322 | INFO |   6. Scheduled 1099B TAX INFO STATEMENT (Vol: 553690, Corr: 0.175)
+2025-07-23 09:16:46,323 | INFO |   7. Scheduled 1099 DIV (Vol: 715121, Corr: 0.172)
+2025-07-23 09:16:46,324 | INFO |   8. ACH Conf. (Vol: 307607, Corr: 0.182)
+2025-07-23 09:16:46,325 | INFO |   9. Scheduled SMS (Vol: 326743, Corr: 0.176)
+2025-07-23 09:16:46,326 | INFO |   10. Scheduled Combo 1099DIV & 1099B Form (Vol: 314633, Corr: 0.161)
+2025-07-23 09:16:46,340 | INFO | 
+PHASE 2: ADVANCED FEATURE ENGINEERING
+2025-07-23 09:16:46,342 | INFO | Creating features for volume prediction...
+2025-07-23 09:16:46,344 | INFO | Creating advanced mail features...
+2025-07-23 09:16:46,648 | INFO | Created 210 mail features
+2025-07-23 09:16:46,649 | INFO | Creating temporal features...
+2025-07-23 09:16:47,714 | INFO | Created 17 temporal features
+2025-07-23 09:16:47,715 | INFO | Creating call history features...
+2025-07-23 09:16:47,839 | INFO | Created 35 call history features
+2025-07-23 09:16:47,849 | INFO | Volume prediction: 262 features, 81 samples
+2025-07-23 09:16:47,851 | INFO | Creating features for intent prediction...
+2025-07-23 09:16:47,857 | INFO | Creating advanced mail features...
+2025-07-23 09:16:48,103 | INFO | Created 210 mail features
+2025-07-23 09:16:48,103 | INFO | Creating temporal features...
+2025-07-23 09:16:48,118 | INFO | Created 17 temporal features
+2025-07-23 09:16:48,119 | INFO | Creating call history features...
+2025-07-23 09:16:48,207 | INFO | Created 35 call history features
+2025-07-23 09:16:48,216 | INFO | Intent prediction: 277 features, 81 samples
+2025-07-23 09:16:48,217 | INFO | 
+PHASE 3: ADVANCED MODEL TRAINING
+2025-07-23 09:16:48,218 | INFO | Training volume prediction models...
+2025-07-23 09:16:48,220 | INFO |   Training ridge...
+2025-07-23 09:16:48,311 | ERROR |     ridge failed: 
+All the 5 fits failed.
+It is very likely that your model is misconfigured.
+You can try to debug the error by setting error_score='raise'.
+
+Below are more details about the failures:
+--------------------------------------------------------------------------------
+5 fits failed with the following error:
+Traceback (most recent call last):
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\model_selection\_validation.py", line 866, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\base.py", line 1389, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_ridge.py", line 1239, in fit
+    X, y = validate_data(
+           ~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<6 lines>...
+        y_numeric=True,
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 2961, in validate_data
+    X, y = check_X_y(X, y, **check_params)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 1370, in check_X_y
+    X = check_array(
+        X,
+    ...<12 lines>...
+        input_name="X",
+    )
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 1107, in check_array
+    _assert_all_finite(
+    ~~~~~~~~~~~~~~~~~~^
+        array,
+        ^^^^^^
+    ...<2 lines>...
+        allow_nan=ensure_all_finite == "allow-nan",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 120, in _assert_all_finite
+    _assert_all_finite_element_wise(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        X,
+        ^^
+    ...<4 lines>...
+        input_name=input_name,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 169, in _assert_all_finite_element_wise
+    raise ValueError(msg_err)
+ValueError: Input X contains infinity or a value too large for dtype('float64').
+
+2025-07-23 09:16:48,317 | INFO |   Training random_forest...
+2025-07-23 09:16:48,387 | ERROR |     random_forest failed: 
+All the 5 fits failed.
+It is very likely that your model is misconfigured.
+You can try to debug the error by setting error_score='raise'.
+
+Below are more details about the failures:
+--------------------------------------------------------------------------------
+5 fits failed with the following error:
+Traceback (most recent call last):
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\model_selection\_validation.py", line 866, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\base.py", line 1389, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\ensemble\_forest.py", line 375, in fit
+    estimator._compute_missing_values_in_feature_mask(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        X, estimator_name=self.__class__.__name__
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\tree\_classes.py", line 222, in _compute_missing_values_in_feature_mask
+    _assert_all_finite_element_wise(X, xp=np, allow_nan=True, **common_kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 169, in _assert_all_finite_element_wise
+    raise ValueError(msg_err)
+ValueError: Input X contains infinity or a value too large for dtype('float32').
+
+2025-07-23 09:16:48,389 | INFO |   Training gradient_boost...
+2025-07-23 09:16:48,458 | ERROR |     gradient_boost failed: 
+All the 5 fits failed.
+It is very likely that your model is misconfigured.
+You can try to debug the error by setting error_score='raise'.
+
+Below are more details about the failures:
+--------------------------------------------------------------------------------
+5 fits failed with the following error:
+Traceback (most recent call last):
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\model_selection\_validation.py", line 866, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\base.py", line 1389, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\ensemble\_gb.py", line 658, in fit
+    X, y = validate_data(
+           ~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        multi_output=True,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 2961, in validate_data
+    X, y = check_X_y(X, y, **check_params)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 1370, in check_X_y
+    X = check_array(
+        X,
+    ...<12 lines>...
+        input_name="X",
+    )
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 1107, in check_array
+    _assert_all_finite(
+    ~~~~~~~~~~~~~~~~~~^
+        array,
+        ^^^^^^
+    ...<2 lines>...
+        allow_nan=ensure_all_finite == "allow-nan",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 120, in _assert_all_finite
+    _assert_all_finite_element_wise(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        X,
+        ^^
+    ...<4 lines>...
+        input_name=input_name,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 169, in _assert_all_finite_element_wise
+    raise ValueError(msg_err)
+ValueError: Input X contains infinity or a value too large for dtype('float32').
+
+2025-07-23 09:16:48,462 | INFO | Best volume model R²: -inf
+2025-07-23 09:16:48,463 | INFO | Training intent prediction models...
+2025-07-23 09:16:48,463 | INFO |   Training logistic...
+2025-07-23 09:16:48,519 | ERROR |     logistic failed: 
+All the 4 fits failed.
+It is very likely that your model is misconfigured.
+You can try to debug the error by setting error_score='raise'.
+
+Below are more details about the failures:
+--------------------------------------------------------------------------------
+4 fits failed with the following error:
+Traceback (most recent call last):
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\model_selection\_validation.py", line 866, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\base.py", line 1389, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\linear_model\_logistic.py", line 1222, in fit
+    X, y = validate_data(
+           ~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<5 lines>...
+        accept_large_sparse=solver not in ["liblinear", "sag", "saga"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 2961, in validate_data
+    X, y = check_X_y(X, y, **check_params)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 1370, in check_X_y
+    X = check_array(
+        X,
+    ...<12 lines>...
+        input_name="X",
+    )
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 1107, in check_array
+    _assert_all_finite(
+    ~~~~~~~~~~~~~~~~~~^
+        array,
+        ^^^^^^
+    ...<2 lines>...
+        allow_nan=ensure_all_finite == "allow-nan",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 120, in _assert_all_finite
+    _assert_all_finite_element_wise(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        X,
+        ^^
+    ...<4 lines>...
+        input_name=input_name,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 169, in _assert_all_finite_element_wise
+    raise ValueError(msg_err)
+ValueError: Input X contains infinity or a value too large for dtype('float64').
+
+2025-07-23 09:16:48,523 | INFO |   Training random_forest...
+2025-07-23 09:16:48,661 | ERROR |     random_forest failed: 
+All the 4 fits failed.
+It is very likely that your model is misconfigured.
+You can try to debug the error by setting error_score='raise'.
+
+Below are more details about the failures:
+--------------------------------------------------------------------------------
+4 fits failed with the following error:
+Traceback (most recent call last):
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\model_selection\_validation.py", line 866, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\base.py", line 1389, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\ensemble\_forest.py", line 375, in fit
+    estimator._compute_missing_values_in_feature_mask(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        X, estimator_name=self.__class__.__name__
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\tree\_classes.py", line 222, in _compute_missing_values_in_feature_mask
+    _assert_all_finite_element_wise(X, xp=np, allow_nan=True, **common_kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BhungarD\Lib\site-packages\sklearn\utils\validation.py", line 169, in _assert_all_finite_element_wise
+    raise ValueError(msg_err)
+ValueError: Input X contains infinity or a value too large for dtype('float32').
+
+2025-07-23 09:16:48,664 | INFO | Best intent model accuracy: 0.000
+2025-07-23 09:16:48,664 | INFO |
+PHASE 4: CREATING ADVANCED PREDICTION ENGINE
+2025-07-23 09:16:48,675 | INFO | 
+PHASE 5: GENERATING ADVANCED EXAMPLES
+2025-07-23 09:16:48,676 | INFO | Generating advanced examples...
+2025-07-23 09:16:48,773 | ERROR | Single day prediction failed: 'NoneType' object has no attribute 'predict'
+2025-07-23 09:16:48,774 | INFO | Generating 5-day independent forecasts...
+2025-07-23 09:16:48,788 | ERROR | Single day prediction failed: 'NoneType' object has no attribute 'predict'
+2025-07-23 09:16:48,790 | WARNING | Prediction failed for 2025-07-28
+2025-07-23 09:16:48,806 | ERROR | Single day prediction failed: 'NoneType' object has no attribute 'predict'
+2025-07-23 09:16:48,807 | WARNING | Prediction failed for 2025-07-29
+
+
+
+
+
 #!/usr/bin/env python
 """
 ADVANCED MAIL-TO-CALLS & INTENT PREDICTION SYSTEM
