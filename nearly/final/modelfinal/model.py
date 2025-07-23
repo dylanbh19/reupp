@@ -1,3 +1,107 @@
+
+PHASE 1: LOADING DATA
+-------------------------
+2025-07-23 09:59:55,159 | INFO | Loading data\callintent.csv...
+2025-07-23 10:00:00,886 | INFO | Loaded 1053601 rows with utf-8 encoding
+2025-07-23 10:00:01,310 | INFO | calls quality score: 0.30
+2025-07-23 10:00:01,311 | INFO | Call columns: date=conversationstart, intent=intent
+2025-07-23 10:00:02,993 | INFO | Processed 8 intents: ['Unknown', 'Repeat Caller', 'Transfer', 'Associate', 'Tax Information', 'Recent Activity', 'Sell', 'Beneficiary Information']
+2025-07-23 10:00:03,044 | INFO | Processed 88 business days of call data
+2025-07-23 10:00:03,045 | INFO | Call volume stats: mean=11861, std=3488
+2025-07-23 10:00:03,122 | INFO | Loading data\mail.csv...
+2025-07-23 10:00:03,781 | INFO | Loaded 1409780 rows with utf-8 encoding
+2025-07-23 10:00:03,887 | INFO | mail quality score: 1.00
+2025-07-23 10:00:03,887 | INFO | Mail columns: date=mail_date, volume=mail_volume, type=mail_type
+2025-07-23 10:00:04,217 | INFO | Processed 107 business days, 197 mail types
+2025-07-23 10:00:04,250 | INFO | Aligned 82 days of data
+
+PHASE 2: BUILDING SIMPLE MODEL
+-----------------------------------
+2025-07-23 10:00:04,295 | INFO | Selected 8 mail types by combined ranking
+2025-07-23 10:00:04,295 | INFO |   1. DRP Stmt.: vol=4839540, corr=0.203
+2025-07-23 10:00:04,296 | INFO |   2. COA: vol=184329, corr=0.245
+2025-07-23 10:00:04,296 | INFO |   3. Rep_1099Div: vol=67757, corr=0.437
+2025-07-23 10:00:04,296 | INFO |   4. DRS_Advices: vol=366283, corr=0.187
+2025-07-23 10:00:04,297 | INFO |   5. Transfer: vol=95660, corr=0.288
+2025-07-23 10:00:04,323 | INFO | Selecting 15 best features from 33
+2025-07-23 10:00:04,332 | INFO | Final feature set: 15 features, 81 samples
+2025-07-23 10:00:04,333 | INFO | Training SIMPLE models with overfitting prevention...
+2025-07-23 10:00:04,863 | INFO | Validation plot saved: production_mail_system\plots\ridge_conservative_validation.png
+2025-07-23 10:00:04,863 | INFO |   ridge_conservative Results:
+2025-07-23 10:00:04,863 | INFO |     CV R2: -3911.973 (+/- 7786.717)
+2025-07-23 10:00:04,864 | INFO |     Test R2: -5.440
+2025-07-23 10:00:04,864 | INFO |     Test MAE: 1707
+2025-07-23 10:00:04,864 | INFO |     Overfitting: YES (5.854)
+2025-07-23 10:00:05,979 | INFO | Validation plot saved: production_mail_system\plots\rf_conservative_validation.png
+2025-07-23 10:00:05,980 | INFO |   rf_conservative Results:
+2025-07-23 10:00:05,980 | INFO |     CV R2: -1.160 (+/- 0.396)
+2025-07-23 10:00:05,980 | INFO |     Test R2: -3.497
+2025-07-23 10:00:05,981 | INFO |     Test MAE: 1349
+2025-07-23 10:00:05,981 | INFO |     Overfitting: YES (4.070)
+2025-07-23 10:00:05,981 | WARNING | No simple model met quality thresholds
+
+PHASE 3: BUILDING ADVANCED MODEL
+-------------------------------------
+2025-07-23 10:00:06,006 | INFO | Selected 12 mail types by combined ranking
+2025-07-23 10:00:06,007 | INFO |   1. DRP Stmt.: vol=4839540, corr=0.203
+2025-07-23 10:00:06,007 | INFO |   2. COA: vol=184329, corr=0.245
+2025-07-23 10:00:06,007 | INFO |   3. Rep_1099Div: vol=67757, corr=0.437
+2025-07-23 10:00:06,008 | INFO |   4. DRS_Advices: vol=366283, corr=0.187
+2025-07-23 10:00:06,008 | INFO |   5. Transfer: vol=95660, corr=0.288
+2025-07-23 10:00:06,025 | INFO | Selecting 25 best features from 48
+2025-07-23 10:00:06,028 | INFO | Final feature set: 25 features, 81 samples
+2025-07-23 10:00:06,032 | INFO | Training ADVANCED models...
+2025-07-23 10:00:07,280 | INFO | Validation plot saved: production_mail_system\plots\advanced_volume_validation.png
+2025-07-23 10:00:07,280 | INFO |   advanced_volume Results:
+2025-07-23 10:00:07,281 | INFO |     CV R2: -1.346 (+/- 1.006)
+2025-07-23 10:00:07,281 | INFO |     Test R2: -3.041
+2025-07-23 10:00:07,281 | INFO |     Test MAE: 1426
+2025-07-23 10:00:07,282 | INFO |     Overfitting: YES (3.757)
+
+PHASE 4: CREATING PREDICTION ENGINE
+----------------------------------------
+
+PHASE 5: COMPREHENSIVE TESTING
+----------------------------------
+2025-07-23 10:00:07,283 | INFO | Testing SIMPLE model...
+2025-07-23 10:00:07,283 | INFO | Testing ADVANCED model...
+2025-07-23 10:00:07,285 | INFO | Test report saved: production_mail_system\TEST_REPORT.txt
+
+PHASE 6: SAVING MODELS
+-------------------------
+
+================================================================================
+PRODUCTION SYSTEM DEPLOYMENT COMPLETE
+================================================================================
+SIMPLE MODEL: FAILED
+ADVANCED VOLUME MODEL: FAILED
+ADVANCED INTENT MODEL: FAILED
+
+EXECUTION TIME: 0.2 minutes
+OUTPUT DIRECTORY: production_mail_system
+VALIDATION PLOTS: production_mail_system/plots/
+TEST REPORT: production_mail_system\TEST_REPORT.txt
+
+ANTI-OVERFITTING MEASURES:
+* Feature selection applied
+* Conservative model parameters
+* Cross-validation used
+* Overfitting detection active
+* Validation plots generated
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> 
+
+
+
+
+
+
+
+
+
+
+
+
+
 #!/usr/bin/env python
 """
 PRODUCTION-GRADE MAIL-TO-CALLS PREDICTION SYSTEM
