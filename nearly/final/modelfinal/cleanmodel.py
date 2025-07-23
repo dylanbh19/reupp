@@ -1,3 +1,188 @@
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> & C:/Users/BhungarD/python.exe "c:/Users/BhungarD/OneDrive - Computershare/Desktop/finprod/cleanmodel.py"
+SIMPLE MAIL-TO-CALLS PREDICTION THAT ACTUALLY WORKS
+============================================================
+APPROACH:
+* Use capped outlier strategy (best correlation)
+* Top 5 mail types only
+* Simple features (no complex lags)
+* Just 1-day prediction (mail today -> calls tomorrow)
+* Must achieve R > 0.1 to be acceptable
+============================================================
+============================================================
+LOADING DATA WITH CAPPED OUTLIER STRATEGY
+============================================================
+Loading calls: data/callintent.csv
+Call data: 88 business days
+Loading mail: data/mail.csv
+Mail data: 107 business days, 196 mail types
+Merged data: 82 days
+Applied capping at 95th percentile
+Total mail vs calls correlation: 0.291
+
+============================================================
+CREATING SIMPLE FEATURES
+============================================================
+Top 5 mail types:
+  1. DRP Stmt.: 3,798,356
+  2. Cheque: 3,286,058
+  3. Notice: 1,465,789
+  4. Envision: 977,003
+  5. DRS_Advices: 349,123
+Created 12 simple features:
+  - DRPStmt.
+  - Cheque
+  - Notice
+  - Envision
+  - DRSAdvices
+  - total_mail
+  - log_total_mail
+  - calls_yesterday
+  - weekday
+  - month
+  - is_month_end
+  - biggest_mail_pct
+Dataset: 81 samples
+
+============================================================
+TRAINING SIMPLE MODELS
+============================================================
+Train: 56 samples, Test: 25 samples
+
+Testing linear...
+  Train R: 0.545
+  Test R:  -0.699
+  Test MAE: 796
+  Overfitting: 1.244
+
+Testing ridge...
+  Train R: 0.544
+  Test R:  -0.643
+  Test MAE: 775
+  Overfitting: 1.188
+
+Testing ridge_strong...
+  Train R: 0.530
+  Test R:  -0.834
+  Test MAE: 823
+  Overfitting: 1.364
+
+Testing forest_simple...
+  Train R: 0.711
+  Test R:  -1.008
+  Test MAE: 899
+  Overfitting: 1.720
+
+Testing forest_tiny...
+  Train R: 0.525
+  Test R:  -5.881
+  Test MAE: 1842
+  Overfitting: 6.406
+
+ NO MODEL MEETS MINIMUM THRESHOLD!
+   All models had R < 0.1
+
+ FAILED: No model achieved minimum performance
+ FAILED: No acceptable model found
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> & C:/Users/BhungarD/python.exe "c:/Users/BhungarD/OneDrive - Computershare/Desktop/finprod/cleanmodel.py"
+SIMPLE MAIL-TO-CALLS PREDICTION THAT ACTUALLY WORKS
+============================================================
+APPROACH:
+* Use capped outlier strategy (best correlation)
+* Top 5 mail types only
+* Simple features (no complex lags)
+* Just 1-day prediction (mail today -> calls tomorrow)
+* Must achieve R > 0.1 to be acceptable
+============================================================
+============================================================
+LOADING DATA WITH CAPPED OUTLIER STRATEGY
+============================================================
+Loading calls: data/callintent.csv
+Call data: 88 business days
+Loading mail: data/mail.csv
+Mail data: 107 business days, 196 mail types
+Merged data: 82 days
+Applied capping at 95th percentile
+Total mail vs calls correlation: 0.291
+
+============================================================
+CREATING SIMPLE FEATURES
+============================================================
+Top 10 mail types:
+  1. DRP Stmt.: 3,798,356
+  2. Cheque: 3,286,058
+  3. Notice: 1,465,789
+  4. Envision: 977,003
+  5. DRS_Advices: 349,123
+  6. ACH Conf.: 288,871
+  7. Proxy (US): 273,254
+  8. Purch_Adv: 263,990
+  9. Dir_Cred_Confirm_Ltr: 232,362
+  10. Tax StndAlone: 196,270
+Created 17 simple features:
+  - DRPStmt.
+  - Cheque
+  - Notice
+  - Envision
+  - DRSAdvices
+  - ACHConf.
+  - Proxy(US)
+  - PurchAdv
+  - DirCredConfirmL
+  - TaxStndAlone
+  - total_mail
+  - log_total_mail
+  - calls_yesterday
+  - weekday
+  - month
+  - is_month_end
+  - biggest_mail_pct
+Dataset: 81 samples
+
+============================================================
+TRAINING SIMPLE MODELS
+============================================================
+Train: 56 samples, Test: 25 samples
+
+Testing linear...
+  Train R: 0.591
+  Test R:  -1.055
+  Test MAE: 831
+  Overfitting: 1.646
+
+Testing ridge...
+  Train R: 0.590
+  Test R:  -0.928
+  Test MAE: 788
+  Overfitting: 1.518
+
+Testing ridge_strong...
+  Train R: 0.569
+  Test R:  -1.368
+  Test MAE: 951
+  Overfitting: 1.937
+
+Testing forest_simple...
+  Train R: 0.727
+  Test R:  -1.146
+  Test MAE: 927
+  Overfitting: 1.873
+
+Testing forest_tiny...
+  Train R: 0.556
+  Test R:  -6.168
+  Test MAE: 1875
+  Overfitting: 6.724
+
+ NO MODEL MEETS MINIMUM THRESHOLD!
+   All models had R < 0.1
+
+ FAILED: No model achieved minimum performance
+ FAILED: No acceptable model found
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod
+
+
+
+
 #!/usr/bin/env python
 """
 SIMPLE MAIL-TO-CALLS PREDICTION THAT ACTUALLY WORKS
