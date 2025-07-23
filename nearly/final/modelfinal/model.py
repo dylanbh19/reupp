@@ -1,4 +1,107 @@
+
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> & C:/Users/BhungarD/python.exe "c:/Users/BhungarD/OneDrive - Computershare/Desktop/finprod/model.py"
+================================================================================
+MAIL-TO-CALLS PREDICTION: SIMPLE FIRST, THEN ADVANCED
+================================================================================
+STRATEGY:
+  1. Build SIMPLE working model (guaranteed)
+  2. Try ADVANCED features (if possible)
+  3. You get minimum simple model, maximum full system
+================================================================================
+
  PHASE 1: BUILDING SIMPLE MODEL
+ PHASE 1: Loading data for SIMPLE model...
+2025-07-23 09:46:33,357 | INFO | Mail columns: date=mail_date, volume=mail_volume, type=mail_type
+2025-07-23 09:46:41,705 | INFO | Call date column: conversationstart
+2025-07-23 09:46:46,204 | INFO | Combined data: 82 days, 197 mail types
+2025-07-23 09:46:46,206 | INFO | Date range: 2025-02-05 00:00:00 to 2025-05-30 00:00:00
+2025-07-23 09:46:46,206 | INFO | Average daily calls: 12183
+  Creating SIMPLE features...
+2025-07-23 09:46:46,396 | INFO | Top 10 mail types: ['Envision', 'DRP Stmt.', 'Cheque', 'Scheduled PAYMENT CHECKS', 'Notice']...
+2025-07-23 09:46:46,680 | INFO | Simple features: 81 samples x 19 features
+ Training SIMPLE models...
+2025-07-23 09:46:46,681 | INFO |   Training 10% quantile model...
+2025-07-23 09:46:46,706 | INFO |     Validation MAE: 2356
+2025-07-23 09:46:46,707 | INFO |   Training 25% quantile model...
+2025-07-23 09:46:46,726 | INFO |     Validation MAE: 680
+2025-07-23 09:46:46,727 | INFO |   Training 50% quantile model...
+2025-07-23 09:46:46,757 | INFO |     Validation MAE: 897
+2025-07-23 09:46:46,758 | INFO |   Training 75% quantile model...
+2025-07-23 09:46:46,786 | INFO |     Validation MAE: 1633
+2025-07-23 09:46:46,787 | INFO |   Training 90% quantile model...
+2025-07-23 09:46:46,804 | INFO |     Validation MAE: 3294
+2025-07-23 09:46:46,805 | INFO |   Training bootstrap ensemble...
+2025-07-23 09:46:48,845 | INFO |     Successfully trained 20 bootstrap models
+ SIMPLE MODEL: SUCCESS!
+ Testing SIMPLE model...
+2025-07-23 09:46:50,020 | INFO |   Testing: High Volume Day
+2025-07-23 09:46:50,318 | INFO |     Most likely: 14041 calls
+2025-07-23 09:46:50,319 | INFO |     Range (25-75%): 13495 - 15170 calls
+2025-07-23 09:46:50,319 | INFO |   Testing: Low Volume Day
+2025-07-23 09:46:50,580 | INFO |     Most likely: 14039 calls
+2025-07-23 09:46:50,581 | INFO |     Range (25-75%): 13493 - 15171 calls
+2025-07-23 09:46:50,582 | INFO |   Testing: Mixed Mail Day
+2025-07-23 09:46:50,814 | INFO |     Most likely: 14040 calls
+2025-07-23 09:46:50,815 | INFO |     Range (25-75%): 13495 - 15171 calls
+
+ PHASE 2: TRYING ADVANCED MODEL
+ PHASE 2: Trying ADVANCED features...
+2025-07-23 09:47:04,719 | INFO | Found intent column: intent
+2025-07-23 09:47:07,828 | INFO | Top intents: ['Unknown', 'Repeat Caller', 'Transfer', 'Associate', 'Tax Information']...
+2025-07-23 09:47:08,605 | INFO | Advanced: 15 mail types, 10 intents
+  Creating ADVANCED features...
+2025-07-23 09:47:08,971 | INFO | Advanced features: 82 aligned days
+2025-07-23 09:47:09,111 | INFO | Advanced features: 81 samples x 31 features
+ Training ADVANCED models...
+2025-07-23 09:47:09,113 | INFO |   Training advanced volume model...
+2025-07-23 09:47:09,386 | INFO |     Volume model MAE: 1011
+2025-07-23 09:47:09,389 | INFO |   Training advanced intent model...
+2025-07-23 09:47:09,603 | INFO |     Intent model accuracy: 1.000
+ ADVANCED MODEL: SUCCESS!
+ Testing ADVANCED model...
+2025-07-23 09:47:09,866 | INFO |   Advanced model has 3 components
+2025-07-23 09:47:09,867 | INFO |     ✓ Volume prediction model ready
+2025-07-23 09:47:09,867 | INFO |     ✓ Intent prediction model ready
+
+============================================================
+ FINAL RESULTS
+============================================================
+ SIMPLE MODEL: 6 models trained
+    Top mail types: 10
+    Test scenarios: 3
+    Example prediction: 14041 calls
+ ADVANCED MODEL: 3 components
+    Volume prediction: Ready
+    Intent prediction: Ready
+
+ SUCCESS: You have at least a simple working model!
+ All models saved to: mail_calls_models
+ See USAGE_GUIDE.txt for how to use your models
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PHASE 1: BUILDING SIMPLE MODEL
  PHASE 1: Loading data for SIMPLE model...
 2025-07-23 09:36:25,311 | INFO | Mail columns: date=mail_date, volume=mail_volume, type=mail_type
 2025-07-23 09:36:38,738 | INFO | Call date column: conversationstart
