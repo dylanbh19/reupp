@@ -1,3 +1,213 @@
+2025-07-23 09:24:09,010 | INFO | ================================================================================
+2025-07-23 09:24:09,011 | INFO | ADVANCED MAIL-TO-CALLS & INTENT PREDICTION SYSTEM
+2025-07-23 09:24:09,012 | INFO | ================================================================================
+2025-07-23 09:24:09,014 | INFO | CAPABILITIES:
+2025-07-23 09:24:09,015 | INFO |   - Single day predictions (no compounding)
+2025-07-23 09:24:09,016 | INFO |   - Multi-day independent forecasts
+2025-07-23 09:24:09,017 | INFO |   - Intent classification
+2025-07-23 09:24:09,017 | INFO |   - Advanced feature engineering
+2025-07-23 09:24:09,018 | INFO | ================================================================================
+2025-07-23 09:24:09,019 | INFO |
+PHASE 1: ADVANCED DATA LOADING & ANALYSIS
+2025-07-23 09:24:09,020 | INFO | Loading call and intent data...
+2025-07-23 09:24:09,021 | INFO | Loading callintent.csv...
+2025-07-23 09:24:21,309 | INFO | Loaded data/callintent.csv: 1053601 rows, 42 columns
+2025-07-23 09:24:21,311 | INFO | Using columns - Date: conversationstart, Intent: intent
+2025-07-23 09:24:23,551 | INFO | Found 1053601 call records from 2025+
+2025-07-23 09:24:24,730 | INFO | Processing 15 top intents from 38 total
+2025-07-23 09:24:25,009 | INFO | Created intent data: 15 intents
+2025-07-23 09:24:25,011 | INFO | Final call data: 88 business days
+2025-07-23 09:24:25,386 | INFO | Loading mail data...
+2025-07-23 09:24:25,387 | INFO | Loading mail.csv...
+2025-07-23 09:24:26,700 | INFO | Loaded data/mail.csv: 1409780 rows, 4 columns
+2025-07-23 09:24:26,701 | INFO | Mail columns - Date: mail_date, Volume: mail_volume, Type: mail_type
+2025-07-23 09:24:27,345 | INFO | Mail data: 107 business days, 197 mail types
+2025-07-23 09:24:27,359 | INFO | Analyzing mail types for optimal selection...
+2025-07-23 09:24:27,380 | INFO | Analyzing 82 days with 197 mail types
+2025-07-23 09:24:28,363 | INFO | Selected 15 mail types:
+2025-07-23 09:24:28,364 | INFO |   1. Due Diligence (Vol: 116462, Corr: -0.463)
+2025-07-23 09:24:28,364 | INFO |   2. DRP Stmt. (Vol: 4839540, Corr: 0.203)
+2025-07-23 09:24:28,365 | INFO |   3. Rep_1099Div (Vol: 67757, Corr: 0.437)
+2025-07-23 09:24:28,365 | INFO |   4. Envision (Vol: 5130345, Corr: 0.171)
+2025-07-23 09:24:28,365 | INFO |   5. DRS_Advices (Vol: 366283, Corr: 0.187)
+2025-07-23 09:24:28,366 | INFO |   6. Scheduled 1099B TAX INFO STATEMENT (Vol: 553690, Corr: 0.175)
+2025-07-23 09:24:28,366 | INFO |   7. Scheduled 1099 DIV (Vol: 715121, Corr: 0.172)
+2025-07-23 09:24:28,366 | INFO |   8. ACH Conf. (Vol: 307607, Corr: 0.182)
+2025-07-23 09:24:28,367 | INFO |   9. Scheduled SMS (Vol: 326743, Corr: 0.176)
+2025-07-23 09:24:28,367 | INFO |   10. Scheduled Combo 1099DIV & 1099B Form (Vol: 314633, Corr: 0.161)
+2025-07-23 09:24:28,370 | INFO |
+PHASE 2: ADVANCED FEATURE ENGINEERING
+2025-07-23 09:24:28,371 | INFO | Creating features for volume prediction...
+2025-07-23 09:24:28,372 | INFO | Creating advanced mail features...
+2025-07-23 09:24:28,914 | INFO | Created 210 clean mail features
+2025-07-23 09:24:28,914 | INFO | Creating temporal features...
+2025-07-23 09:24:29,459 | INFO | Created 17 temporal features
+2025-07-23 09:24:29,459 | INFO | Creating call history features...
+2025-07-23 09:24:29,574 | INFO | Created 35 clean call history features
+2025-07-23 09:24:29,578 | INFO | Performing comprehensive data cleaning...
+2025-07-23 09:24:29,991 | ERROR | Advanced pipeline failed: ufunc 'isinf' not supported for the input types, and the inputs could not be safely coerced to any supported types according to the casting rule ''safe''
+2025-07-23 09:24:29,994 | ERROR | Traceback (most recent call last):
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 1313, in run_advanced_pipeline
+    X_vol, y_vol = feature_engine.create_features_for_volume(aligned_data)
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod\model.py", line 708, in create_features_for_volume
+    assert not np.isinf(X.values).any(), "Infinite values remain after cleaning"
+               ~~~~~~~~^^^^^^^^^^
+TypeError: ufunc 'isinf' not supported for the input types, and the inputs could not be safely coerced to any supported types according to the casting rule ''safe''
+
+
+==================================================
+ PIPELINE FAILED
+==================================================
+Error: ufunc 'isinf' not supported for the input types, and the inputs could not be safely coerced to any supported types according to the casting rule ''safe''
+Runtime: 0.3 minutes
+
+Check logs for detailed error information
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> & C:/Users/BhungarD/python.exe "c:/Users/BhungarD/OneDrive - Computershare/Desktop/finprod/model.py"
+================================================================================
+ADVANCED MAIL-TO-CALLS & INTENT PREDICTION SYSTEM
+================================================================================
+ADVANCED CAPABILITIES:
+   Single day predictions (no compounding errors)
+   Multi-day independent forecasts
+   Intent classification with probabilities
+   Advanced feature engineering
+   Mail type optimization (volume + correlation)
+   Confidence intervals at multiple levels
+
+PRODUCTION-GRADE: Ready for stakeholder deployment
+================================================================================
+
+2025-07-23 09:28:23,239 | INFO | ================================================================================
+2025-07-23 09:28:23,240 | INFO | ADVANCED MAIL-TO-CALLS & INTENT PREDICTION SYSTEM
+2025-07-23 09:28:23,242 | INFO | ================================================================================
+2025-07-23 09:28:23,243 | INFO | CAPABILITIES:
+2025-07-23 09:28:23,243 | INFO |   - Single day predictions (no compounding)
+2025-07-23 09:28:23,244 | INFO |   - Multi-day independent forecasts
+2025-07-23 09:28:23,245 | INFO |   - Intent classification
+2025-07-23 09:28:23,245 | INFO |   - Advanced feature engineering
+2025-07-23 09:28:23,246 | INFO | ================================================================================
+2025-07-23 09:28:23,247 | INFO |
+PHASE 1: ADVANCED DATA LOADING & ANALYSIS
+2025-07-23 09:28:23,247 | INFO | Loading call and intent data...
+2025-07-23 09:28:23,248 | INFO | Loading callintent.csv...
+2025-07-23 09:28:32,634 | INFO | Loaded data/callintent.csv: 1053601 rows, 42 columns
+2025-07-23 09:28:32,635 | INFO | Using columns - Date: conversationstart, Intent: intent
+2025-07-23 09:28:34,327 | INFO | Found 1053601 call records from 2025+
+2025-07-23 09:28:35,384 | INFO | Processing 15 top intents from 38 total
+2025-07-23 09:28:35,590 | INFO | Created intent data: 15 intents
+2025-07-23 09:28:35,591 | INFO | Final call data: 88 business days
+2025-07-23 09:28:35,924 | INFO | Loading mail data...
+2025-07-23 09:28:35,924 | INFO | Loading mail.csv...
+2025-07-23 09:28:37,034 | INFO | Loaded data/mail.csv: 1409780 rows, 4 columns
+2025-07-23 09:28:37,035 | INFO | Mail columns - Date: mail_date, Volume: mail_volume, Type: mail_type
+2025-07-23 09:28:37,579 | INFO | Mail data: 107 business days, 197 mail types
+2025-07-23 09:28:37,587 | INFO | Analyzing mail types for optimal selection...
+2025-07-23 09:28:37,590 | INFO | Analyzing 82 days with 197 mail types
+2025-07-23 09:28:38,498 | INFO | Selected 15 mail types:
+2025-07-23 09:28:38,498 | INFO |   1. Due Diligence (Vol: 116462, Corr: -0.463)
+2025-07-23 09:28:38,499 | INFO |   2. DRP Stmt. (Vol: 4839540, Corr: 0.203)
+2025-07-23 09:28:38,499 | INFO |   3. Rep_1099Div (Vol: 67757, Corr: 0.437)
+2025-07-23 09:28:38,499 | INFO |   4. Envision (Vol: 5130345, Corr: 0.171)
+2025-07-23 09:28:38,500 | INFO |   5. DRS_Advices (Vol: 366283, Corr: 0.187)
+2025-07-23 09:28:38,500 | INFO |   6. Scheduled 1099B TAX INFO STATEMENT (Vol: 553690, Corr: 0.175)
+2025-07-23 09:28:38,500 | INFO |   7. Scheduled 1099 DIV (Vol: 715121, Corr: 0.172)
+2025-07-23 09:28:38,501 | INFO |   8. ACH Conf. (Vol: 307607, Corr: 0.182)
+2025-07-23 09:28:38,501 | INFO |   9. Scheduled SMS (Vol: 326743, Corr: 0.176)
+2025-07-23 09:28:38,501 | INFO |   10. Scheduled Combo 1099DIV & 1099B Form (Vol: 314633, Corr: 0.161)
+2025-07-23 09:28:38,505 | INFO |
+PHASE 2: ADVANCED FEATURE ENGINEERING
+2025-07-23 09:28:38,506 | INFO | Creating features for volume prediction...
+2025-07-23 09:28:38,506 | INFO | Creating advanced mail features...
+2025-07-23 09:28:39,004 | INFO | Created 210 clean mail features
+2025-07-23 09:28:39,004 | INFO | Creating temporal features...
+2025-07-23 09:28:39,376 | INFO | Created 17 temporal features
+2025-07-23 09:28:39,376 | INFO | Creating call history features...
+2025-07-23 09:28:39,481 | INFO | Created 35 clean call history features
+2025-07-23 09:28:39,484 | INFO | Performing comprehensive data cleaning...
+2025-07-23 09:28:39,816 | INFO | Volume prediction: 262 clean features, 81 samples
+2025-07-23 09:28:39,817 | INFO | Creating features for intent prediction...
+2025-07-23 09:28:39,820 | INFO | Creating advanced mail features...
+2025-07-23 09:28:40,269 | INFO | Created 210 clean mail features
+2025-07-23 09:28:40,270 | INFO | Creating temporal features...
+2025-07-23 09:28:40,277 | INFO | Created 17 temporal features
+2025-07-23 09:28:40,278 | INFO | Creating call history features...
+2025-07-23 09:28:40,381 | INFO | Created 35 clean call history features
+2025-07-23 09:28:40,387 | INFO | Cleaning intent prediction features...
+2025-07-23 09:28:40,711 | INFO | Intent prediction: 277 clean features, 81 samples
+2025-07-23 09:28:40,712 | INFO |
+PHASE 3: ADVANCED MODEL TRAINING
+2025-07-23 09:28:40,712 | INFO | Training volume prediction models...
+2025-07-23 09:28:40,713 | INFO |   Training ridge...
+2025-07-23 09:28:40,862 | INFO |     CV R²: -312.904, Test R²: -157.805
+2025-07-23 09:28:40,862 | INFO |   Training random_forest...
+2025-07-23 09:28:43,130 | INFO |     CV R²: -4.698, Test R²: -12.205
+2025-07-23 09:28:43,131 | INFO |   Training gradient_boost...
+2025-07-23 09:28:48,844 | INFO |     CV R²: -15.092, Test R²: -30.757
+2025-07-23 09:28:48,845 | INFO | Best volume model R²: -4.698
+2025-07-23 09:28:48,845 | INFO | Training intent prediction models...
+2025-07-23 09:28:48,846 | INFO |   Training logistic...
+2025-07-23 09:28:48,978 | INFO |     CV Accuracy: nan
+2025-07-23 09:28:48,978 | INFO |   Training random_forest...
+2025-07-23 09:28:50,137 | INFO |     CV Accuracy: 0.984
+2025-07-23 09:28:50,137 | INFO | Best intent model accuracy: 0.984
+2025-07-23 09:28:50,137 | INFO |
+PHASE 4: CREATING ADVANCED PREDICTION ENGINE
+2025-07-23 09:28:50,141 | INFO |
+PHASE 5: GENERATING ADVANCED EXAMPLES
+2025-07-23 09:28:50,141 | INFO | Generating advanced examples...
+2025-07-23 09:28:50,204 | WARNING | Intent prediction failed: X has 262 features, but RandomForestClassifier is expecting 277 features as input.
+2025-07-23 09:28:50,205 | INFO | Generating 5-day independent forecasts...
+2025-07-23 09:28:50,266 | WARNING | Intent prediction failed: X has 262 features, but RandomForestClassifier is expecting 277 features as input.
+2025-07-23 09:28:50,338 | WARNING | Intent prediction failed: X has 262 features, but RandomForestClassifier is expecting 277 features as input.
+2025-07-23 09:28:50,408 | WARNING | Intent prediction failed: X has 262 features, but RandomForestClassifier is expecting 277 features as input.
+2025-07-23 09:28:50,470 | WARNING | Intent prediction failed: X has 262 features, but RandomForestClassifier is expecting 277 features as input.
+2025-07-23 09:28:50,535 | WARNING | Intent prediction failed: X has 262 features, but RandomForestClassifier is expecting 277 features as input.
+2025-07-23 09:28:50,603 | WARNING | Intent prediction failed: X has 262 features, but RandomForestClassifier is expecting 277 features as input.
+2025-07-23 09:28:50,669 | WARNING | Intent prediction failed: X has 262 features, but RandomForestClassifier is expecting 277 features as input.
+2025-07-23 09:28:50,670 | INFO | Generated 4 advanced examples
+2025-07-23 09:28:50,670 | INFO |
+PHASE 6: SAVING ADVANCED RESULTS
+2025-07-23 09:28:50,797 | INFO | All advanced results saved successfully
+2025-07-23 09:28:50,798 | INFO |
+================================================================================
+2025-07-23 09:28:50,799 | INFO | ADVANCED PIPELINE COMPLETED SUCCESSFULLY!
+2025-07-23 09:28:50,800 | INFO | Execution time: 0.5 minutes
+2025-07-23 09:28:50,801 | INFO | Selected mail types: 15
+2025-07-23 09:28:50,802 | INFO | Volume model R²: -4.698
+2025-07-23 09:28:50,802 | INFO | Intent model accuracy: nan
+2025-07-23 09:28:50,803 | INFO | ================================================================================
+
+============================================================
+ ADVANCED SYSTEM DEPLOYED SUCCESSFULLY!
+============================================================
+
+SYSTEM CAPABILITIES:
+   Mail Types Analyzed: 15
+   Volume Model R: -4.698
+   Intent Model Accuracy: nan
+    Build Time: 0.5 minutes
+
+YOUR OPTIMIZED MAIL TYPES:
+   1. Due Diligence
+   2. DRP Stmt.
+   3. Rep_1099Div
+   4. Envision
+   5. DRS_Advices
+   6. Scheduled 1099B TAX INFO STATEMENT
+   7. Scheduled 1099 DIV
+   8. ACH Conf.
+  ... and 7 more
+
+PREDICTION EXAMPLES:
+   Single Day: 8805 calls (80% CI: 7121-10489)
+
+ System error: 'NoneType' object has no attribute 'get'
+Check logs for full traceback
+
+
+
+
 #!/usr/bin/env python
 """
 ADVANCED MAIL-TO-CALLS & INTENT PREDICTION SYSTEM
