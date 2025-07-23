@@ -1,3 +1,119 @@
+ PHASE 1: BUILDING SIMPLE MODEL
+ PHASE 1: Loading data for SIMPLE model...
+2025-07-23 09:36:25,311 | INFO | Mail columns: date=mail_date, volume=mail_volume, type=mail_type
+2025-07-23 09:36:38,738 | INFO | Call date column: conversationstart
+2025-07-23 09:36:45,157 | INFO | Combined data: 82 days, 197 mail types
+2025-07-23 09:36:45,159 | INFO | Date range: 2025-02-05 00:00:00 to 2025-05-30 00:00:00
+2025-07-23 09:36:45,159 | INFO | Average daily calls: 12183
+  Creating SIMPLE features...
+2025-07-23 09:36:45,385 | INFO | Top 10 mail types: ['Envision', 'DRP Stmt.', 'Cheque', 'Scheduled PAYMENT CHECKS', 'Notice']...
+2025-07-23 09:36:45,751 | INFO | Simple features: 81 samples x 19 features
+ Training SIMPLE models...
+2025-07-23 09:36:45,752 | INFO |   Training 10% quantile model...
+2025-07-23 09:36:45,868 | INFO |     Validation MAE: 2356
+2025-07-23 09:36:45,869 | INFO |   Training 25% quantile model...
+2025-07-23 09:36:45,885 | INFO |     Validation MAE: 680
+2025-07-23 09:36:45,885 | INFO |   Training 50% quantile model...
+2025-07-23 09:36:45,907 | INFO |     Validation MAE: 897
+2025-07-23 09:36:45,907 | INFO |   Training 75% quantile model...
+2025-07-23 09:36:45,932 | INFO |     Validation MAE: 1633
+2025-07-23 09:36:45,932 | INFO |   Training 90% quantile model...
+2025-07-23 09:36:45,954 | INFO |     Validation MAE: 3294
+2025-07-23 09:36:45,955 | INFO |   Training bootstrap ensemble...
+2025-07-23 09:36:47,993 | INFO |     Successfully trained 20 bootstrap models
+ SIMPLE MODEL: SUCCESS!
+ Testing SIMPLE model...
+2025-07-23 09:36:48,355 | INFO |   Testing: High Volume Day
+2025-07-23 09:36:48,361 | WARNING | Quantile 0.1 prediction failed: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+
+2025-07-23 09:36:48,363 | WARNING | Quantile 0.25 prediction failed: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+
+2025-07-23 09:36:48,364 | WARNING | Quantile 0.5 prediction failed: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+
+2025-07-23 09:36:48,365 | WARNING | Quantile 0.75 prediction failed: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+
+2025-07-23 09:36:48,366 | WARNING | Quantile 0.9 prediction failed: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+
+2025-07-23 09:36:48,369 | WARNING |     No predictions for High Volume Day
+2025-07-23 09:36:48,369 | INFO |   Testing: Low Volume Day
+2025-07-23 09:36:48,377 | WARNING | Quantile 0.1 prediction failed: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+
+2025-07-23 09:36:48,378 | WARNING | Quantile 0.25 prediction failed: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+
+2025-07-23 09:36:48,380 | WARNING | Quantile 0.5 prediction failed: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+
+2025-07-23 09:36:48,381 | WARNING | Quantile 0.75 prediction failed: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+
+2025-07-23 09:36:48,382 | WARNING | Quantile 0.9 prediction failed: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+
+2025-07-23 09:36:48,435 | WARNING |     No predictions for Low Volume Day
+2025-07-23 09:36:48,440 | INFO |   Testing: Mixed Mail Day
+2025-07-23 09:36:48,454 | WARNING | Quantile 0.1 prediction failed: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+
+2025-07-23 09:36:48,461 | WARNING | Quantile 0.25 prediction failed: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+
+2025-07-23 09:36:48,462 | WARNING | Quantile 0.5 prediction failed: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+
+2025-07-23 09:36:48,463 | WARNING | Quantile 0.75 prediction failed: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+
+2025-07-23 09:36:48,466 | WARNING | Quantile 0.9 prediction failed: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+
+2025-07-23 09:36:48,492 | WARNING |     No predictions for Mixed Mail Day
+
+ PHASE 2: TRYING ADVANCED MODEL
+ PHASE 2: Trying ADVANCED features...
+2025-07-23 09:37:02,496 | INFO | Found intent column: intent
+2025-07-23 09:37:06,757 | INFO | Top intents: ['Unknown', 'Repeat Caller', 'Transfer', 'Associate', 'Tax Information']...
+2025-07-23 09:37:07,806 | INFO | Advanced: 15 mail types, 10 intents
+  Creating ADVANCED features...
+2025-07-23 09:37:08,211 | INFO | Advanced features: 82 aligned days
+2025-07-23 09:37:08,377 | INFO | Advanced features: 81 samples x 31 features
+ Training ADVANCED models...
+2025-07-23 09:37:08,378 | INFO |   Training advanced volume model...
+2025-07-23 09:37:08,847 | INFO |     Volume model MAE: 1011
+2025-07-23 09:37:08,847 | INFO |   Training advanced intent model...
+2025-07-23 09:37:09,177 | INFO |     Intent model accuracy: 1.000
+ ADVANCED MODEL: SUCCESS!
+ Testing ADVANCED model...
+2025-07-23 09:37:09,309 | INFO |   Advanced model has 3 components
+2025-07-23 09:37:09,310 | INFO |     ✓ Volume prediction model ready
+2025-07-23 09:37:09,311 | INFO |     ✓ Intent prediction model ready
+
+============================================================
+ FINAL RESULTS
+============================================================
+ SIMPLE MODEL: 6 models trained
+    Top mail types: 10
+    Test scenarios: 0
+ ADVANCED MODEL: 3 components
+    Volume prediction: Ready
+    Intent prediction: Ready
+
+ SUCCESS: You have at least a simple working model!
+ All models saved to: mail_calls_models
+ See USAGE_GUIDE.txt for how to use your models
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\finprod> 
+
+
+
+
+
+
 #!/usr/bin/env python
 """
 MAIL-TO-CALLS PREDICTION: SIMPLE FIRST, THEN ADVANCED
