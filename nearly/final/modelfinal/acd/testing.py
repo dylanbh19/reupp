@@ -1,3 +1,69 @@
+rD/OneDrive - Computershare/Desktop/acdmodel/testing.py"
+2025-07-24 22:03:46 [INFO] - Results will be saved to: C:\Users\BhungarD\OneDrive - Computershare\Desktop\acdmodel\mail_call_prediction_system\rigorous_test_results
+2025-07-24 22:03:46 [INFO] - Starting Rigorous Model Testing...
+2025-07-24 22:03:46 [INFO] - Successfully loaded model 'forest_simple' from mail_call_prediction_system\models\best_model.pkl
+2025-07-24 22:03:46 [INFO] - Loading and preparing data...
+2025-07-24 22:03:47 [INFO] - All data loaded and merged successfully.
+2025-07-24 22:03:47 [INFO] - Recreating features to match the trained model...
+2025-07-24 22:03:50 [INFO] - Feature set recreated with 264 samples and 62 features.
+2025-07-24 22:03:50 [INFO] - --- Starting Time Series Cross-Validation ---
+2025-07-24 22:03:50 [INFO] - Fold 1/5 | Test R²: -0.484 | Test MAE: 1197.60
+2025-07-24 22:03:51 [INFO] - Fold 2/5 | Test R²: -0.053 | Test MAE: 1312.14
+2025-07-24 22:03:51 [INFO] - Fold 3/5 | Test R²: -0.105 | Test MAE: 4150.99
+2025-07-24 22:03:51 [INFO] - Fold 4/5 | Test R²: -0.025 | Test MAE: 3158.11
+2025-07-24 22:03:51 [INFO] - Fold 5/5 | Test R²: -0.336 | Test MAE: 1778.83
+2025-07-24 22:03:51 [INFO] - --- Cross-Validation Summary ---
+2025-07-24 22:03:51 [INFO] - Average R²: -0.201 (Std: 0.179)
+2025-07-24 22:03:51 [INFO] - Average MAE: 2319.53 (Std: 1150.95)
+2025-07-24 22:03:51 [INFO] - --- Analyzing Feature Importance ---
+2025-07-24 22:03:51 [INFO] - Top 10 most important features:
+2025-07-24 22:03:51 [INFO] -  1. month                          | Importance: 0.6558
+2025-07-24 22:03:51 [INFO] -  2. calls_yesterday                | Importance: 0.0551
+2025-07-24 22:03:51 [INFO] -  3. calls_avg7                     | Importance: 0.0454
+2025-07-24 22:03:51 [INFO] -  4. Proxy(US)_avg7                 | Importance: 0.0367
+2025-07-24 22:03:51 [INFO] -  5. calls_avg3                     | Importance: 0.0274
+2025-07-24 22:03:51 [INFO] -  6. calls_2days_ago                | Importance: 0.0246
+2025-07-24 22:03:51 [INFO] -  7. Proxy(US)_lag3                 | Importance: 0.0205
+2025-07-24 22:03:51 [INFO] -  8. weekday                        | Importance: 0.0148
+2025-07-24 22:03:51 [INFO] -  9. DRPStmt._lag2                  | Importance: 0.0100
+2025-07-24 22:03:51 [INFO] - 10. Proxy(US)_lag2                 | Importance: 0.0097
+2025-07-24 22:03:51 [INFO] - Feature importance plot saved to mail_call_prediction_system\rigorous_test_results\feature_importance.png
+2025-07-24 22:03:51 [INFO] - --- Analyzing Error by Day of the Week ---
+2025-07-24 22:03:51 [INFO] - Mean Absolute Error by Day of Week:
+2025-07-24 22:03:51 [INFO] -    Mon: 2200.12
+2025-07-24 22:03:51 [INFO] -    Tue: 1637.79
+2025-07-24 22:03:51 [INFO] -    Wed: 1647.84
+2025-07-24 22:03:51 [INFO] -    Thu: 2710.29
+2025-07-24 22:03:51 [INFO] -    Fri: 1487.83
+2025-07-24 22:03:51 [INFO] -    nan: 5185.61
+2025-07-24 22:03:51 [INFO] -    nan: 8072.08
+2025-07-24 22:03:52 [INFO] - Error analysis plot saved to mail_call_prediction_system\rigorous_test_results\error_by_day.png
+2025-07-24 22:03:52 [INFO] - Rigorous testing complete.
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\acdm
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # File: testing.py (Corrected Version)
 import pandas as pd
 import numpy as np
