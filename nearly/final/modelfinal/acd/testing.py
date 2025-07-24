@@ -1,3 +1,63 @@
+
+
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\acdmodel> C:\Users\BhungarD\python.exe "c:/Users/BhungarD/OneDrive - Computershare/Desktop/acdmodel/testing.py"
+2025-07-24 21:56:54 [INFO] - Results will be saved to: C:\Users\BhungarD\OneDrive - Computershare\Desktop\acdmodel\mail_call_prediction_system\rigorous_test_results
+2025-07-24 21:56:54 [INFO] - Starting Rigorous Model Testing...
+2025-07-24 21:56:54 [INFO] - Successfully loaded model 'forest_simple' from mail_call_prediction_system\models\best_model.pkl
+2025-07-24 21:56:54 [INFO] - Loading and preparing data...
+c:\Users\BhungarD\OneDrive - Computershare\Desktop\acdmodel\testing.py:70: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  merged_data = pd.merge(merged_data, econ, on='date', how='left').fillna(method='ffill')
+2025-07-24 21:56:55 [INFO] - All data loaded and merged successfully.
+2025-07-24 21:56:56 [INFO] - Feature set recreated with 260 samples and 68 features.
+2025-07-24 21:56:56 [ERROR] - FATAL: Features created for testing do not match features the model was trained on.
+2025-07-24 21:56:56 [ERROR] - Model needs 62 features, but test data has 68.  
+2025-07-24 21:56:56 [ERROR] - Missing from data: {'Proxy(US)_avg7', 'Envision_today', 'calls_2days_ago', 'total_mail_lag1', 'DRPStmt._avg3', 'Cheque1099_today', 'total_mail_lag3', 'DRPStmt._today', 'day_of_month', 'DRPStmt._lag3', 'DRPStmt._lag1', 'total_mail_today', 'DRPStmt._avg7', 'DRPStmt._lag2', 'Proxy(US)_avg3', 'Cheque_today', 'total_mail_avg3', 'Notice_today', 'Proxy(US)_lag2', 'DRP1099_today', 'ScheduledPAYMEN_today', 'total_mail_lag2', 'calls_yesterday', 'total_mail_avg7', 'Proxy(US)_lag1', 'Proxy(US)_lag3', 'is_month_end', 'Proxy(US)_today'}
+2025-07-24 21:56:56 [ERROR] - Extra in data: {'DowJones', 'calls_lag1', 'Regional_Banks', 'Gold', 'DRPStmt_lag1', 'Dollar_Index', 'High_Dividend', 'DRPStmt_avg3', 'calls_lag3', 'Oil', 'Utilities', '30Y_Treasury', 'Technology', 'ProxyUS_lag2', 'ProxyUS_lag1', 'ProxyUS_lag3', 'DRPStmt_avg7', 'Corporate_Bond_ETF', 'DRPStmt_lag2', 'VIX9D', 'Dividend_Aristocrats', '2Y_Treasury', 'DRPStmt_lag3', 'ProxyUS_avg7', 'Russell2000', 'Banking', '10Y_Treasury', 'ProxyUS_avg3', 'calls_lag2', 'VXN', 'NASDAQ', 'VIX', 'Dividend_ETF', 'REITs'}
+tures.
+2025-07-24 21:56:56 [ERROR] - FATAL: Features created for testing do not match features the model was trained on.
+2025-07-24 21:56:56 [ERROR] - Model needs 62 features, but test data has 68.  
+2025-07-24 21:56:56 [ERROR] - Missing from data: {'Proxy(US)_avg7', 'Envision_today', 'calls_2days_ago', 'total_mail_lag1', 'DRPStmt._avg3', 'Cheque1099_today', 'total_mail_lag3', 'DRPStmt._today', 'day_of_month', 'DRPStmt._lag3', 'DRPStmt._lag1', 'total_mail_today', 'DRPStmt._avg7', 'DRPStmt._lag2', 'Proxy(US)_avg3', 'Cheque_today', 'total_mail_avg3', 'Notice_today', 'Proxy(US)_lag2', 'DRP1099_today', 'ScheduledPAYMEN_today', 'total_mail_lag2', 'calls_yesterday', 'total_mail_avg7', 'Proxy(US)_lag1', 'Proxy(US)_lag3', 'is_month_end', 'Proxy(US)_today'}
+2025-07-24 21:56:56 [ERROR] - Extra in data: {'DowJones', 'calls_lag1', 'Regional_Banks', 'Gold', 'DRPStmt_lag1', 'Dollar_Index', 'High_Dividend', 'DRPStmt_avg3', 'calls_lag3', 'Oil', 'Utilities', '30Y_Treasury', 'Technology', 'ProxyUS_lag2', 'ProxyUS_lag1', 'ProxyUS_lag3', 'DRPStmt_avg7', 'Corporate_Bond_ETF', 'DRPStmt_lag2', 'VIX9D', 'Dividend_Aristocrats', '2Y_Treasury', 'DRPStmt_lag3', 'ProxyUS_avg7', 'Russell2000', 'Banking', '10Y_Treasury', 'ProxyUS_avg3', 'calls_lag2', 'VXN', 'NASDAQ', 'VIX', 'Dividend_ETF', 'REITs'}
+2025-07-24 21:56:56 [ERROR] - Missing from data: {'Proxy(US)_avg7', 'Envision_today', 'calls_2days_ago', 'total_mail_lag1', 'DRPStmt._avg3', 'Cheque1099_today', 'total_mail_lag3', 'DRPStmt._today', 'day_of_month', 'DRPStmt._lag3', 'DRPStmt._lag1', 'total_mail_today', 'DRPStmt._avg7', 'DRPStmt._lag2', 'Proxy(US)_avg3', 'Cheque_today', 'total_mail_avg3', 'Notice_today', 'Proxy(US)_lag2', 'DRP1099_today', 'ScheduledPAYMEN_today', 'total_mail_lag2', 'calls_yesterday', 'total_mail_avg7', 'Proxy(US)_lag1', 'Proxy(US)_lag3', 'is_month_end', 'Proxy(US)_today'}
+2025-07-24 21:56:56 [ERROR] - Extra in data: {'DowJones', 'calls_lag1', 'Regional_Banks', 'Gold', 'DRPStmt_lag1', 'Dollar_Index', 'High_Dividend', 'DRPStmt_avg3', 'calls_lag3', 'Oil', 'Utilities', '30Y_Treasury', 'Technology', 'ProxyUS_lag2', 'ProxyUS_lag1', 'ProxyUS_lag3', 'DRPStmt_avg7', 'Corporate_Bond_ETF', 'DRPStmt_lag2', 'VIX9D', 'Dividend_Aristocrats', '2Y_Treasury', 'DRPStmt_lag3', 'ProxyUS_avg7', 'Russell2000', 'Banking', '10Y_Treasury', 'ProxyUS_avg3', 'calls_lag2', 'VXN', 'NASDAQ', 'VIX', 'Dividend_ETF', 'REITs'}
+DRP1099_today', 'ScheduledPAYMEN_today', 'total_mail_lag2', 'calls_yesterday', 'total_mail_avg7', 'Proxy(US)_lag1', 'Proxy(US)_lag3', 'is_month_end', 'Proxy(US)_today'}
+2025-07-24 21:56:56 [ERROR] - Extra in data: {'DowJones', 'calls_lag1', 'Regional_Banks', 'Gold', 'DRPStmt_lag1', 'Dollar_Index', 'High_Dividend', 'DRPStmt_avg3', 'calls_lag3', 'Oil', 'Utilities', '30Y_Treasury', 'Technology', 'ProxyUS_lag2', 'ProxyUS_lag1', 'ProxyUS_lag3', 'DRPStmt_avg7', 'Corporate_Bond_ETF', 'DRPStmt_lag2', 'VIX9D', 'Dividend_Aristocrats', '2Y_Treasury', 'DRPStmt_lag3', 'ProxyUS_avg7', 'Russell2000', 'Banking', '10Y_Treasury', 'ProxyUS_avg3', 'calls_lag2', 'VXN', 'NASDAQ', 'VIX', 'Dividend_ETF', 'REITs'}
+avg3', 'calls_lag3', 'Oil', 'Utilities', '30Y_Treasury', 'Technology', 'ProxyUS_lag2', 'ProxyUS_lag1', 'ProxyUS_lag3', 'DRPStmt_avg7', 'Corporate_Bond_ETF', 'DRPStmt_lag2', 'VIX9D', 'Dividend_Aristocrats', '2Y_Treasury', 'DRPStmt_lag3', 'ProxyUS_avg7', 'Russell2000', 'Banking', '10Y_Treasury', 'ProxyUS_avg3', 'calls_lag2', 'VXN', 'NASDAQ', 'VIX', 'Dividend_ETF', 'REITs'}
+ 'DRPStmt_lag2', 'VIX9D', 'Dividend_Aristocrats', '2Y_Treasury', 'DRPStmt_lag3', 'ProxyUS_avg7', 'Russell2000', 'Banking', '10Y_Treasury', 'ProxyUS_avg3', 'calls_lag2', 'VXN', 'NASDAQ', 'VIX', 'Dividend_ETF', 'REITs'}
+calls_lag2', 'VXN', 'NASDAQ', 'VIX', 'Dividend_ETF', 'REITs'}
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\acdmodel>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # File: test_model_rigorously.py
 import pandas as pd
 import numpy as np
