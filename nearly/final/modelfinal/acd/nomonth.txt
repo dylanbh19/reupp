@@ -1,0 +1,190 @@
+rD/OneDrive - Computershare/Desktop/acdmodel/acd.py"
+COMPREHENSIVE MAIL-TO-CALLS PREDICTION SYSTEM
+================================================================================
+APPROACH:
+1. Load clean call data (Date, ACDCalls) + mail data
+2. Comprehensive EDA with plots and correlations
+3. Feature engineering with proper lag analysis
+4. Simple models first, evaluate thoroughly
+5. Build prediction system for daily/weekly inputs
+================================================================================
+================================================================================
+STEP 1A: LOADING CLEAN CALL DATA
+================================================================================
+ Loading: ACDMail.csv
+   Loaded with utf-8 encoding
+   Raw data: 547 rows
+   Columns: ['Date', 'Product', 'ACDCalls']
+   Removing US holidays from call data using CSV file...
+   Found 2 US holidays to remove:
+     - 2024-10-14: Columbus Day
+     - 2024-11-11: Veterans Day
+   Removed 2 holiday rows.
+   Data after holiday removal: 372 rows.
+REMOVEDDDDHOLIDAYSSSSSSSSSSS
+ Clean call data: 372 business days
+   Date range: 2024-01-02 to 2025-06-30
+   Call volume: 2280 to 15764
+   Daily average: 10020 calls
+
+================================================================================
+STEP 1B: LOADING MAIL DATA
+================================================================================
+ Loading: mail.csv
+   Loaded with utf-8 encoding
+   Raw data: 1,409,780 rows, 4 columns
+   Using: date=mail_date, volume=mail_volume, type=mail_type
+ Clean mail data: 401 business days
+   Date range: 2023-08-01 to 2025-05-30
+   Mail types: 228
+
+================================================================================
+STEP 1C: MERGING CALL AND MAIL DATA
+================================================================================
+   Call data: 372 days
+   Mail data: 401 days
+   Common dates: 337 days
+ Merged dataset: 337 days
+   Columns: 230 (date + calls + 228 mail types)
+   Date range: 2024-01-02 to 2025-05-30
+
+================================================================================
+STEP 2: COMPREHENSIVE EDA AND VISUALIZATION
+================================================================================
+
+--- Creating Overview Plots ---
+   Overall correlation: -0.019
+
+--- Creating Time Series Plots ---
+
+--- Analyzing Correlations ---
+   Top 10 correlations with call volume:
+    1. Elig_Enr_DedChg_Ltr           : r= -0.349
+    2. Sales_Chk_CPM                 : r= -0.305
+    3. Sales_Wire_CPM                : r= -0.268
+    4. Award_Status                  : r= -0.268
+    5. Bank_Account_Update           : r= -0.254
+    6. BROKER_TRANSFER               : r= -0.245
+    7. Sales_Wire                    : r= -0.240
+    8. MultiClientLaser              : r=  0.218
+    9. MultiClientLodgeCourier       : r=  0.218
+   10. RecordsProcessing             : r=  0.218
+
+--- Analyzing Mail Types ---
+   Top 8 mail types by volume:
+    1. Cheque                   : 13,495,552 total, r=-0.093
+    2. DRP Stmt.                : 12,132,767 total, r= 0.001
+    3. Scheduled PAYMENT CHECKS : 9,894,910 total, r=-0.052
+    4. Envision                 : 5,829,010 total, r= 0.058
+    5. Proxy (US)               : 5,703,365 total, r= 0.087
+    6. Notice                   : 4,924,059 total, r= 0.041
+    7. Cheque 1099              : 4,018,239 total, r=-0.079
+    8. DRP 1099                 : 3,613,191 total, r=-0.074
+
+--- Analyzing Lag Relationships ---
+   Lag 0 days: correlation = -0.019
+   Lag 1 days: correlation = -0.019
+   Lag 2 days: correlation = -0.019
+   Lag 3 days: correlation = -0.020
+   Lag 4 days: correlation = -0.020
+   Lag 5 days: correlation = -0.021
+   Lag 6 days: correlation = -0.022
+   Lag 7 days: correlation = -0.022
+   Best lag: 6 days (correlation: -0.022)
+
+ EDA Complete! Plots saved to: mail_call_prediction_system\eda_plots
+
+================================================================================
+STEP 3: FEATURE ENGINEERING
+================================================================================
+   Using lag: 6 days
+   Top mail types: 8
+ Created 61 features from 324 samples
+   Mail features: 48
+   Call history: 4
+   Temporal: 14
+
+================================================================================
+STEP 4: SIMPLE MODEL TRAINING
+================================================================================
+   Train: 243 samples
+   Test: 81 samples
+
+--- Testing linear ---
+   Train R: 0.663
+   Test R:  -115.726
+   Test MAE: 10828
+   Test MAPE: 104.8%
+   Overfitting: 116.389
+
+--- Testing ridge_light ---
+   Train R: 0.663
+   Test R:  -114.403
+   Test MAE: 10753
+   Test MAPE: 104.0%
+   Overfitting: 115.066
+
+--- Testing ridge_strong ---
+   Train R: 0.663
+   Test R:  -107.201
+   Test MAE: 10334
+   Test MAPE: 100.1%
+   Overfitting: 107.863
+
+--- Testing forest_simple ---
+   Train R: 0.819
+   Test R:  0.528
+   Test MAE: 1146
+   Test MAPE: 11.2%
+   Overfitting: 0.291
+    NEW BEST! (Score: 0.433)
+
+ BEST MODEL: forest_simple
+   Test R: 0.528
+   Test MAE: 1146
+   Test MAPE: 11.2%
+
+--- Creating Model Validation Plots ---
+   Validation plots saved: mail_call_prediction_system\models/model_validation.png
+
+================================================================================
+STEP 5: TESTING PREDICTION SYSTEM
+================================================================================
+ PREDICTION TEST SUCCESSFUL!
+   Mail Input: {'Cheque': 2000, 'DRP Stmt.': 1500, 'Scheduled PAYMENT CHECKS': 1200, 'Envision': 1000, 'Proxy (US)': 800}
+   Predicted Calls (+6 days): 12,957
+   Total Mail Volume: 6,500
+   Model Used: forest_simple
+
+================================================================================
+ SUCCESS! COMPREHENSIVE SYSTEM DEPLOYED!
+================================================================================
+ Data: 337 days merged successfully
+ EDA: Full analysis with 8 top mail types
+ Features: 61 engineered features
+ Model: forest_simple (R=0.528)
+ Lag: 6 days optimal
+ Files: Saved to mail_call_prediction_system/
+
+PREDICTION CAPABILITY:
+- Input: Daily mail volumes by type
+- Output: Call volume 6 days ahead
+- Use cases: Workforce planning, capacity management
+
+NEXT STEPS:
+1. Review EDA plots for insights
+2. Test with your own mail volume inputs
+3. Monitor prediction accuracy over time
+4. Retrain with more data as available
+ MAIL-TO-CALLS PREDICTION SYSTEM READY FOR PRODUCTION!
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\acdmodel> C:\Users\BhungarD\python.exe "c:/Users/BhungarD/OneDrive - Computershare/Desktop/acdmodel/testing.py"
+2025-07-24 22:07:46 [INFO] - Results will be saved to: C:\Users\BhungarD\OneDrive - Computershare\Desktop\acdmodel\mail_call_prediction_system\rigorous_test_results
+2025-07-24 22:07:46 [INFO] - Starting Rigorous Model Testing...
+2025-07-24 22:07:46 [INFO] - Successfully loaded model 'forest_simple' from mail_call_prediction_system\models\best_model.pkl
+2025-07-24 22:07:46 [INFO] - Loading and preparing data...
+2025-07-24 22:07:47 [INFO] - All data loaded and merged successfully.
+2025-07-24 22:07:47 [INFO] - Recreating features to match the trained model...
+2025-07-24 22:07:50 [INFO] - Feature set recreated with 264 samples and 62 features.
+2025-07-24 22:07:50 [ERROR] - FATAL: Features created for testing do not match features the model was trained on.
+2025-07-24 22:07:50 [ERROR] - Model needs 61 features, but test data has 62.
+2025-07-24 22:07:50 [ERROR] - Extra in data: {'month'}
