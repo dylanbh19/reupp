@@ -135,3 +135,64 @@ holiday_date,holiday_name
 2030-11-11,Veterans Day
 2030-11-28,Thanksgiving
 2030-12-25,Christmas Day
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Loading: ACDMail.csv
+   Loaded with utf-8 encoding
+   Raw data: 547 rows
+   Columns: ['Date', 'Product', 'ACDCalls']
+   Removing US holidays from call data using CSV file...
+ SYSTEM ERROR: Error tokenizing data. C error: Expected 2 fields in line 3, saw 3
+
+Traceback (most recent call last):
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\acdmodel\acd.py", line 1141, in main
+    call_data = data_manager.load_call_data()
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\acdmodel\acd.py", line 208, in load_call_data
+    df_clean = remove_us_holidays(df_clean, 'date')
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\acdmodel\acd.py", line 82, in remove_us_holidays
+    holidays_df = pd.read_csv("us_holidays.csv")
+  File "C:\Users\BhungarD\Lib\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\BhungarD\Lib\site-packages\pandas\io\parsers\readers.py", line 626, in _read
+    return parser.read(nrows)
+           ~~~~~~~~~~~^^^^^^^
+  File "C:\Users\BhungarD\Lib\site-packages\pandas\io\parsers\readers.py", line 1923, in read
+    ) = self._engine.read(  # type: ignore[attr-defined]
+        ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        nrows
+        ^^^^^
+    )
+    ^
+  File "C:\Users\BhungarD\Lib\site-packages\pandas\io\parsers\c_parser_wrapper.py", line 234, in read
+    chunks = self._reader.read_low_memory(nrows)
+  File "parsers.pyx", line 838, in pandas._libs.parsers.TextReader.read_low_memory
+  File "parsers.pyx", line 905, in pandas._libs.parsers.TextReader._read_rows 
+  File "parsers.pyx", line 874, in pandas._libs.parsers.TextReader._tokenize_rows
+  File "parsers.pyx", line 891, in pandas._libs.parsers.TextReader._check_tokenize_status
+  File "parsers.pyx", line 2061, in pandas._libs.parsers.raise_parser_error   
+pandas.errors.ParserError: Error tokenizing data. C error: Expected 2 fields in line 3, saw 3
+
+ SYSTEM FAILED: Error tokenizing data. C error: Expected 2 fields in line 3, saw 3
+
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\acdmodel> 
