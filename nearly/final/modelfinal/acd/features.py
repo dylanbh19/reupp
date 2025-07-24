@@ -1,3 +1,54 @@
+2025-07-24 22:58:57,608 [INFO] - Results will be saved to: C:\Users\BhungarD\OneDrive - Computershare\Desktop\acdmodel\feature_investigation_results
+2025-07-24 22:58:57,609 [INFO] - STEP 1: Loading and merging all data sources...
+2025-07-24 22:58:58,656 [INFO] - Successfully merged 'expanded_economic_data.csv'
+2025-07-24 22:58:58,662 [INFO] - Successfully merged 'economic_data_for_model.csv'
+2025-07-24 22:58:58,665 [INFO] - Final merged dataset has 276 rows and 257 columns.
+2025-07-24 22:58:58,676 [INFO] - STEP 2: Investigating feature correlations...
+2025-07-24 22:58:59,153 [INFO] - Found 25 features with correlation > 0.1.
+2025-07-24 22:58:59,153 [INFO] - Top correlated features (feature, best_lag, correlation):
+2025-07-24 22:58:59,154 [INFO] -   - 10Y_Treasury (lag 13): 0.177
+2025-07-24 22:58:59,154 [INFO] -   - 30Y_Treasury (lag 13): 0.136
+2025-07-24 22:58:59,155 [INFO] -   - ACH 1099 (lag 3): -0.148
+2025-07-24 22:58:59,155 [INFO] -   - ACH Conf. (lag 1): -0.218
+2025-07-24 22:58:59,155 [INFO] -   - Check (lag 2): -0.126
+2025-07-24 22:58:59,156 [INFO] -   - Cheque (lag 4): -0.125
+2025-07-24 22:58:59,156 [INFO] -   - Cheque 1099 (lag 13): -0.201
+2025-07-24 22:58:59,156 [INFO] -   - Class Action (lag 0): 0.147
+2025-07-24 22:58:59,157 [INFO] -   - Corporate_Bond_ETF (lag 13): -0.182
+2025-07-24 22:58:59,157 [INFO] -   - DRP 1099 (lag 7): -0.115
+2025-07-24 22:58:59,157 [INFO] -   - DRP Stmt. (lag 0): 0.161
+2025-07-24 22:58:59,157 [INFO] -   - Dividend_Aristocrats (lag 12): -0.140
+2025-07-24 22:58:59,158 [INFO] -   - Dollar_Index (lag 14): 0.234
+2025-07-24 22:58:59,158 [INFO] -   - Due Diligence (lag 4): -0.189
+2025-07-24 22:58:59,158 [INFO] -   - Envision (lag 9): -0.159
+2025-07-24 22:58:59,158 [INFO] -   - Foreign Credit (lag 3): -0.158
+2025-07-24 22:58:59,159 [INFO] -   - Foreign Wire (lag 3): -0.171
+2025-07-24 22:58:59,159 [INFO] -   - Funds Not (lag 14): -0.114
+2025-07-24 22:58:59,160 [INFO] -   - General Comm (lag 1): -0.106
+2025-07-24 22:58:59,160 [INFO] -   - InterestRate_10Y (lag 13): 0.177
+2025-07-24 22:58:59,160 [INFO] -   - Invoice (lag 9): -0.184
+2025-07-24 22:58:59,161 [INFO] -   - LTR Transmittal (lag 14): -0.120
+2025-07-24 22:58:59,161 [INFO] -   - Label Mailing (lag 10): -0.165
+2025-07-24 22:58:59,161 [INFO] -   - NASDAQ (lag 14): 0.133
+2025-07-24 22:58:59,162 [INFO] -   - Notice (lag 0): 0.106
+2025-07-24 22:58:59,704 [INFO] - STEP 3: Creating model features from selected predictors...
+2025-07-24 22:58:59,732 [INFO] - Created final modeling dataset with 262 samples and 52 features.
+2025-07-24 22:58:59,732 [INFO] - STEP 4: Training and evaluating the model...
+2025-07-24 22:58:59,888 [INFO] - --- MODEL EVALUATION ---
+2025-07-24 22:58:59,888 [INFO] - R-squared (R2): 0.364
+2025-07-24 22:58:59,888 [INFO] - Mean Absolute Error (MAE): 2,404
+2025-07-24 22:59:00,386 [INFO] - Model explanation plots saved successfully.
+2025-07-24 22:59:00,387 [INFO] - --- Feature Investigation Complete ---
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\acdmodel> 
+
+
+
+
+
+
+
+
+
 #!/usr/bin/env python
 """
 Feature Investigator & Modeling Pipeline
