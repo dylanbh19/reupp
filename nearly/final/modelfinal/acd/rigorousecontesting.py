@@ -1,3 +1,94 @@
+ MAIL-TO-CALLS PREDICTION SYSTEM READY FOR PRODUCTION!
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\acdmodel> C:\Users\BhungarD\python.exe "c:/Users/BhungarD/OneDrive - Computershare/Desktop/acdmodel/testingecon.py"
+2025-07-24 22:42:53,439 [INFO] - Results will be saved to: C:\Users\BhungarD\OneDrive - Computershare\Desktop\acdmodel\mail_call_prediction_system\rigorous_test_results
+2025-07-24 22:42:53,440 [INFO] - Starting Rigorous Model Testing...
+2025-07-24 22:42:53,619 [INFO] - Successfully loaded model 'forest_simple' from mail_call_prediction_system/models/best_model.pkl
+2025-07-24 22:42:53,620 [INFO] - Loading and preparing data...
+2025-07-24 22:42:54,808 [INFO] - Loading and merging economic data...
+2025-07-24 22:42:54,817 [INFO] - All data loaded and merged successfully.
+2025-07-24 22:42:54,843 [INFO] - Recreating features to match the trained model...
+2025-07-24 22:43:17,146 [INFO] - Feature set recreated with 332 samples and 1263 potential features.
+2025-07-24 22:43:17,155 [INFO] - Aligning test data features with the model's requirements...
+2025-07-24 22:43:17,156 [ERROR] - FATAL: The testing data is missing features that the model was trained on. 
+2025-07-24 22:43:17,156 [ERROR] - Missing features: ['10Y_Treasury', '2Y_Treasury', '30Y_Treasury', 'Banking', 'Corporate_Bond_ETF', 'Dividend_Aristocrats', 'Dividend_ETF', 'Dollar_Index', 'DowJones', 'Gold', 'High_Dividend', 'NASDAQ', 'Oil', 'REITs', 'Regional_Banks', 'Russell2000', 'ScheduledPAYMEN_avg3', 'ScheduledPAYMEN_avg7', 'ScheduledPAYMEN_lag1', 'ScheduledPAYMEN_lag2', 'ScheduledPAYMEN_lag3', 'Technology', 'Utilities', 'VIX', 'VIX9D', 'VXN']
+2025-07-24 22:43:17,156 [ERROR] - This is often caused by a mismatch in the raw data (e.g., different columns in economic_data.csv).                                         C:\Users\BhungarD\python.exe "c:/Users/BhungarD/OneDrive - Computershare/Desktop/acdmodel/testingecon.py"el>
+2025-07-24 22:48:11,164 [INFO] - Results will be saved to: C:\Users\BhungarD\OneDrive - Computershare\Desktop\acdmodel\mail_call_prediction_system\rigorous_test_results
+2025-07-24 22:48:11,164 [INFO] - Starting Self-Healing Rigorous Model Testing...
+2025-07-24 22:48:11,335 [INFO] - Successfully loaded model 'forest_simple' from mail_call_prediction_system/models/best_model.pkl
+2025-07-24 22:48:11,336 [INFO] - Loading and preparing all available data...
+2025-07-24 22:48:12,339 [INFO] - Economic data successfully loaded.
+2025-07-24 22:48:12,342 [INFO] - All data loaded and merged successfully.
+2025-07-24 22:48:12,350 [INFO] - Recreating feature set from test data...
+2025-07-24 22:48:30,161 [INFO] - Feature set recreated with 268 samples and 1263 potential features.
+2025-07-24 22:48:30,168 [INFO] - Aligning test data features with the model's requirements...
+2025-07-24 22:48:30,169 [WARNING] - SELF-HEALING: Test data is missing 26 features required by the model.    
+2025-07-24 22:48:30,170 [WARNING] - This may happen if source data (e.g., mail types, economic data) has changed.
+2025-07-24 22:48:30,170 [WARNING] - Adding missing features and filling with 0.
+2025-07-24 22:48:30,171 [INFO] -   -> Added missing feature 'Gold' with value 0.
+2025-07-24 22:48:30,172 [INFO] -   -> Added missing feature '10Y_Treasury' with value 0.
+2025-07-24 22:48:30,173 [INFO] -   -> Added missing feature '30Y_Treasury' with value 0.
+2025-07-24 22:48:30,174 [INFO] -   -> Added missing feature 'ScheduledPAYMEN_lag2' with value 0.
+2025-07-24 22:48:30,175 [INFO] -   -> Added missing feature 'Dividend_Aristocrats' with value 0.
+2025-07-24 22:48:30,176 [INFO] -   -> Added missing feature 'VXN' with value 0.
+2025-07-24 22:48:30,177 [INFO] -   -> Added missing feature 'REITs' with value 0.
+2025-07-24 22:48:30,178 [INFO] -   -> Added missing feature 'VIX9D' with value 0.
+2025-07-24 22:48:30,179 [INFO] -   -> Added missing feature 'Dollar_Index' with value 0.
+2025-07-24 22:48:30,180 [INFO] -   -> Added missing feature 'Oil' with value 0.
+2025-07-24 22:48:30,180 [INFO] -   -> Added missing feature 'NASDAQ' with value 0.
+2025-07-24 22:48:30,181 [INFO] -   -> Added missing feature 'Banking' with value 0.
+2025-07-24 22:48:30,182 [INFO] -   -> Added missing feature 'ScheduledPAYMEN_avg7' with value 0.
+2025-07-24 22:48:30,183 [INFO] -   -> Added missing feature 'Corporate_Bond_ETF' with value 0.
+2025-07-24 22:48:30,183 [INFO] -   -> Added missing feature 'Technology' with value 0.
+2025-07-24 22:48:30,184 [INFO] -   -> Added missing feature 'ScheduledPAYMEN_lag1' with value 0.
+2025-07-24 22:48:30,184 [INFO] -   -> Added missing feature 'Russell2000' with value 0.
+2025-07-24 22:48:30,185 [INFO] -   -> Added missing feature 'High_Dividend' with value 0.
+2025-07-24 22:48:30,186 [INFO] -   -> Added missing feature 'DowJones' with value 0.
+2025-07-24 22:48:30,186 [INFO] -   -> Added missing feature 'Regional_Banks' with value 0.
+2025-07-24 22:48:30,187 [INFO] -   -> Added missing feature 'VIX' with value 0.
+2025-07-24 22:48:30,188 [INFO] -   -> Added missing feature 'Dividend_ETF' with value 0.
+2025-07-24 22:48:30,189 [INFO] -   -> Added missing feature '2Y_Treasury' with value 0.
+2025-07-24 22:48:30,189 [INFO] -   -> Added missing feature 'Utilities' with value 0.
+2025-07-24 22:48:30,190 [INFO] -   -> Added missing feature 'ScheduledPAYMEN_avg3' with value 0.
+2025-07-24 22:48:30,190 [INFO] -   -> Added missing feature 'ScheduledPAYMEN_lag3' with value 0.
+2025-07-24 22:48:30,191 [INFO] - Feature alignment complete.
+2025-07-24 22:48:30,192 [INFO] - Making predictions on 268 test samples...
+2025-07-24 22:48:30,197 [INFO] - Evaluating model performance...
+2025-07-24 22:48:30,199 [INFO] -
+RIGOROUS TEST REPORT for 'forest_simple'
+==================================================
+PERFORMANCE METRICS:
+  - R-squared (R²): 0.0235
+  - Mean Absolute Error (MAE): 2,017.16
+==================================================
+
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\BhungarD\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BhungarD\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 33: character maps to <undefined>
+Call stack:
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\acdmodel\testingecon.py", line 225, in <module>   
+    run_self_healing_test()
+  File "c:\Users\BhungarD\OneDrive - Computershare\Desktop\acdmodel\testingecon.py", line 222, in run_self_healing_test
+    logger.info("✅ Self-Healing testing complete. All results saved.")
+Message: '✅ Self-Healing testing complete. All results saved.'
+Arguments: ()
+2025-07-24 22:48:30,520 [INFO] - ✅ Self-Healing testing complete. All results saved.
+
+
+
+
+
+
+
+
+
+
+
 #!/usr/bin/env python
 """
 Self-Healing Rigorous Model Testing Script
