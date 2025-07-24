@@ -1,0 +1,32 @@
+# File: generate_holidays.py
+import pandas as pd
+import holidays
+
+def create_holiday_csv(start_year=2020, end_year=2030, filename="us_holidays.csv"):
+    """
+    Generates a CSV file of US federal holidays for a given range of years.
+    """
+    print(f"Generating holidays from {start_year} to {end_year}...")
+
+    # Get all holidays for the specified years
+    # The holidays library returns a dictionary of {date: name}
+    us_holidays_dict = holidays.US(years=range(start_year, end_year + 1))
+
+    # Convert the dictionary to a list of tuples and then to a DataFrame
+    holidays_list = list(us_holidays_dict.items())
+    holidays_df = pd.DataFrame(holidays_list, columns=['holiday_date', 'holiday_name'])
+
+    # IMPORTANT: Format the date column to 'YYYY-MM-DD' as requested
+    holidays_df['holiday_date'] = pd.to_datetime(holidays_df['holiday_date']).dt.strftime('%Y-%m-%d')
+    
+    # Sort by date
+    holidays_df = holidays_df.sort_values('holiday_date').reset_index(drop=True)
+
+    # Save to CSV
+    holidays_df.to_csv(filename, index=False)
+    
+    print(f"✅ Success! Saved {len(holidays_df)} holidays to '{filename}'")
+
+if __name__ == "__main__":
+    create_holiday_csv()
+
