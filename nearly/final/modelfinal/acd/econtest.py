@@ -1,3 +1,27 @@
+rD/OneDrive - Computershare/Desktop/acdmodel/testingecon.py"
+2025-07-24 22:32:56 [INFO] - Results will be saved to: C:\Users\BhungarD\OneDrive - Computershare\Desktop\acdmodel\mail_call_prediction_system\rigorous_test_results
+2025-07-24 22:32:56 [INFO] - Starting Rigorous Model Testing...
+2025-07-24 22:32:57 [INFO] - Successfully loaded model 'forest_simple' from mail_call_prediction_system\models\best_model.pkl
+2025-07-24 22:32:57 [INFO] - Loading and preparing data...
+2025-07-24 22:32:58 [INFO] - Loading and merging economic data...
+c:\Users\BhungarD\OneDrive - Computershare\Desktop\acdmodel\testingecon.py:76: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.    
+  merged_data[economic_cols] = merged_data[economic_cols].fillna(method='ffill')
+2025-07-24 22:32:58 [INFO] - All data loaded and merged successfully.
+2025-07-24 22:32:58 [INFO] - Recreating features to match the trained model...
+2025-07-24 22:32:59 [INFO] - Feature set recreated with 268 samples and 69 features.
+2025-07-24 22:32:59 [ERROR] - FATAL: Features created for testing do not match features the model was trained on.
+2025-07-24 22:32:59 [ERROR] - Model needs 69 features, but test data has 69.
+2025-07-24 22:32:59 [ERROR] - Missing from data: {'NASDAQ_avg3', 'NASDAQ_avg7', 'DowJones_avg3', 'NASDAQ_lag3', 'DowJones_lag2', 'DowJones_avg7', 'DowJones_lag3', 'NASDAQ_lag1', 'DowJones_lag1', 'NASDAQ_lag2'}
+2025-07-24 22:32:59 [ERROR] - Extra in data: {'Cheque1099_avg7', 'Cheque1099_avg3', 'Cheque1099_lag1', 'Cheque1099_lag3', 'DRP1099_avg3', 'DRP1099_lag1', 'DRP1099_lag3', 'DRP1099_lag2', 'Cheque1099_lag2', 'DRP1099_avg7'}
+
+
+
+
+
+
+
+
+
 # File: testing.py (Corrected Version)
 import pandas as pd
 import numpy as np
