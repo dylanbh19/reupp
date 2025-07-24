@@ -1,4 +1,12 @@
-Here’s the corrected code to replace your existing `remove_us_holidays` function. Replace the entire function with this:
+The error is because of incorrect import/usage of the holidays library. Here’s the fix:
+
+**At the top of your file, make sure you have:**
+
+```python
+import holidays
+```
+
+**Then use this corrected `remove_us_holidays` function:**
 
 ```python
 def remove_us_holidays(df, date_col='date'):
@@ -14,28 +22,14 @@ def remove_us_holidays(df, date_col='date'):
     end_date = df[date_col].max().date()
     safe_print(f"   Date range: {start_date} to {end_date}")
     
-    # Get US holidays for the years in your data
-    years = range(start_date.year, end_date.year + 1)
-    us_holidays = holidays.US(years=list(years))
-    
-    # Debug: Show all holidays in range
-    all_holidays_in_range = []
-    for holiday_date in us_holidays.keys():
-        if start_date <= holiday_date <= end_date:
-            all_holidays_in_range.append(holiday_date)
-    
-    safe_print(f"   Total US holidays in date range: {len(all_holidays_in_range)}")
-    
-    # Create list of holiday dates as datetime.date objects
-    holiday_dates_list = []
-    for holiday_date in us_holidays.keys():
-        if start_date <= holiday_date <= end_date:
-            holiday_dates_list.append(holiday_date)
+    # Get US holidays - CORRECTED SYNTAX
+    us_holidays = holidays.UnitedStates()  # Or holidays.US()
     
     # Find holidays in your data
-    # Convert both to same format for comparison
     df['temp_date'] = df[date_col].dt.date
-    holiday_mask = df['temp_date'].isin(holiday_dates_list)
+    
+    # Check each date individually
+    holiday_mask = df['temp_date'].apply(lambda x: x in us_holidays)
     
     # Get the actual holidays found
     holidays_found = df[holiday_mask]['temp_date'].unique()
@@ -49,17 +43,6 @@ def remove_us_holidays(df, date_col='date'):
             safe_print(f"     - {holiday_date}: {holiday_name} (calls: {call_volume})")
     else:
         safe_print("   No US holidays found in date range")
-        safe_print("   Double-checking some known holidays...")
-        # Check for specific holidays as a debug
-        test_dates = [
-            datetime(2024, 1, 1).date(),   # New Year's Day
-            datetime(2024, 7, 4).date(),   # Independence Day
-            datetime(2024, 12, 25).date(), # Christmas
-        ]
-        for test_date in test_dates:
-            if start_date <= test_date <= end_date:
-                if test_date in df['temp_date'].values:
-                    safe_print(f"     - {test_date} is in data but not detected as holiday!")
     
     # Remove holidays
     df_no_holidays = df[~holiday_mask].copy()
@@ -71,80 +54,109 @@ def remove_us_holidays(df, date_col='date'):
     safe_print(f"   Removed {len(holidays_found)} holiday rows")
     safe_print(f"   Data after holiday removal: {len(df_no_holidays)} rows")
     
-    # Additional check for low volume days that might be holidays
-    if 'call_volume' in df_no_holidays.columns:
-        low_volume_threshold = df_no_holidays['call_volume'].quantile(0.05)
-        low_volume_days = df_no_holidays[df_no_holidays['call_volume'] < low_volume_threshold]
-        if len(low_volume_days) > 0:
-            safe_print(f"   WARNING: {len(low_volume_days)} days with unusually low volume (<{low_volume_threshold:.0f}) remain")
-            safe_print("   These might be holidays or other special days:")
-            for idx, row in low_volume_days.head(5).iterrows():
-                safe_print(f"     - {row['date'].date()}: {row['call_volume']:.0f} calls")
+    return df_no_holidays
+```
+
+**If the above still doesn’t work, use this simpler version:**
+
+```python
+def remove_us_holidays(df, date_col='date'):
+    """Remove US holidays from call data - simplified version"""
+    safe_print("   Removing US holidays from call data...")
+    
+    original_len = len(df)
+    
+    # Create US holidays object
+    us_holidays = holidays.US()
+    
+    # Create a list to store indices to drop
+    indices_to_drop = []
+    
+    # Check each date
+    for idx, row in df.iterrows():
+        date_value = row[date_col]
+        if pd.notna(date_value):
+            # Convert to date object if needed
+            if hasattr(date_value, 'date'):
+                check_date = date_value.date()
+            else:
+                check_date = date_value
+            
+            # Check if it's a holiday
+            if check_date in us_holidays:
+                indices_to_drop.append(idx)
+                holiday_name = us_holidays.get(check_date)
+                safe_print(f"   Found holiday: {check_date} - {holiday_name}")
+    
+    # Drop holiday rows
+    df_no_holidays = df.drop(indices_to_drop).copy()
+    
+    safe_print(f"   Removed {len(indices_to_drop)} holiday rows")
+    safe_print(f"   Data remaining: {len(df_no_holidays)} rows")
     
     return df_no_holidays
 ```
 
-Also, add this alternative function if the above doesn’t work, which removes both holidays AND low-volume outliers:
+**Alternative: If holidays library is problematic, here’s a manual approach:**
 
 ```python
-def remove_holidays_and_outliers(df, date_col='date', call_col='call_volume'):
-    """Remove US holidays and call volume outliers"""
-    safe_print("   Removing US holidays and outliers...")
+def remove_us_holidays_manual(df, date_col='date'):
+    """Remove US holidays manually without holidays library"""
+    safe_print("   Removing US holidays (manual method)...")
     
-    original_len = len(df)
+    # Define major US holidays that affect call centers
+    # Format: (month, day)
+    fixed_holidays = [
+        (1, 1),   # New Year's Day
+        (7, 4),   # Independence Day
+        (12, 25), # Christmas Day
+        (12, 24), # Christmas Eve (many businesses close early)
+        (12, 31), # New Year's Eve
+    ]
     
-    # First remove holidays
-    df = remove_us_holidays(df, date_col)
+    # Create date column for comparison
+    df['temp_month'] = df[date_col].dt.month
+    df['temp_day'] = df[date_col].dt.day
     
-    # Then remove outliers (very low call volumes)
-    if call_col in df.columns:
-        # Calculate IQR for outlier detection
-        Q1 = df[call_col].quantile(0.25)
-        Q3 = df[call_col].quantile(0.75)
-        IQR = Q3 - Q1
-        
-        # Define outlier bounds
-        lower_bound = Q1 - 1.5 * IQR
-        upper_bound = Q3 + 1.5 * IQR
-        
-        # But also set a minimum threshold
-        min_threshold = max(1000, df[call_col].quantile(0.02))
-        lower_bound = max(lower_bound, min_threshold)
-        
-        safe_print(f"   Outlier bounds: [{lower_bound:.0f}, {upper_bound:.0f}]")
-        
-        # Remove outliers
-        outlier_mask = (df[call_col] < lower_bound) | (df[call_col] > upper_bound)
-        outliers = df[outlier_mask]
-        
-        if len(outliers) > 0:
-            safe_print(f"   Found {len(outliers)} outlier days:")
-            for idx, row in outliers.head(10).iterrows():
-                safe_print(f"     - {row[date_col].date()}: {row[call_col]:.0f} calls")
-        
-        df = df[~outlier_mask].copy()
+    # Create mask for holidays
+    holiday_mask = df.apply(
+        lambda row: (row['temp_month'], row['temp_day']) in fixed_holidays, 
+        axis=1
+    )
     
-    safe_print(f"   Total removed: {original_len - len(df)} days")
-    safe_print(f"   Remaining data: {len(df)} days")
+    # Also check for very low volume days (likely holidays)
+    if 'call_volume' in df.columns:
+        threshold = df['call_volume'].quantile(0.02)  # Bottom 2%
+        low_volume_mask = df['call_volume'] < threshold
+        safe_print(f"   Low volume threshold: {threshold:.0f} calls")
+        
+        # Combine masks
+        remove_mask = holiday_mask | low_volume_mask
+    else:
+        remove_mask = holiday_mask
     
-    return df
+    # Show what we're removing
+    holidays_found = df[remove_mask]
+    if len(holidays_found) > 0:
+        safe_print(f"   Removing {len(holidays_found)} holiday/low-volume days:")
+        for idx, row in holidays_found.head(10).iterrows():
+            safe_print(f"     - {row[date_col].date()}: {row.get('call_volume', 'N/A')} calls")
+    
+    # Remove holidays
+    df_clean = df[~remove_mask].copy()
+    
+    # Clean up temp columns
+    df_clean = df_clean.drop(['temp_month', 'temp_day'], axis=1)
+    
+    safe_print(f"   Data after removal: {len(df_clean)} rows")
+    
+    return df_clean
 ```
 
-To use this in your DataManager class, replace the holiday removal line with:
+**To use the manual version, replace this line in your DataManager class:**
 
 ```python
-# Replace this line:
-df_clean = remove_us_holidays(df_clean, 'date')
-
-# With this (for holidays + outliers):
-df_clean = remove_holidays_and_outliers(df_clean, 'date', 'call_volume')
+df_clean = remove_us_holidays_manual(df_clean, 'date')
 ```
 
-This improved code:
-
-1. Better handles date format conversion
-1. Provides detailed debugging output
-1. Shows which holidays were found and their call volumes
-1. Checks for known holidays if none are detected
-1. Identifies remaining low-volume days that might be missed holidays
-1. Optionally removes outliers along with holidays​​​​​​​​​​​​​​​​
+The manual version doesn’t require the holidays library and will remove both fixed holidays and extremely low volume days that are likely holidays or closures.​​​​​​​​​​​​​​​​
