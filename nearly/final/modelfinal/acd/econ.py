@@ -484,11 +484,12 @@ class ModelBuilder:
 # ============================================================================
 
 class PredictionSystem:
-    def __init__(self, model_info, top_mail_types, best_lag):
+    def __init__(self, model_info, top_mail_types, best_lag, economic_cols): # <-- MODIFIED
         self.model = model_info['model']
         self.features = model_info['features']
         self.top_mail_types = top_mail_types
         self.best_lag = best_lag
+        self.economic_columns = economic_cols # <-- ADDED
 
     def predict_calls(self, mail_input, call_history=None, econ_input=None):
         try:
@@ -534,12 +535,20 @@ def run_prediction_scenarios(prediction_system, merged_data, top_mail_types):
         safe_print("⚠️  Cannot run scenarios, no top mail types found.")
         return
 
+    # --- (NEW) Create sample economic data ---
+    # Use the average value for each economic indicator as a default
+    avg_econ_data = merged_data[prediction_system.economic_columns].mean().to_dict()
+    safe_print("   Using average economic data for scenarios:")
+    safe_print(f"   {avg_econ_data}")
+
     avg_mail_volumes = merged_data[top_mail_types].mean()
     
     safe_print("\n--- Testing Single-Day Prediction (Average Mail Day) ---")
     single_day_input = {k: int(v) for k, v in avg_mail_volumes.to_dict().items()}
 
-    result = prediction_system.predict_calls(single_day_input)
+    # --- (MODIFIED) Pass the economic data to the prediction function ---
+    result = prediction_system.predict_calls(single_day_input, econ_input=avg_econ_data)
+    
     if result['status'] == 'success':
         safe_print(f"   ➡️ Mail Input: {single_day_input}")
         safe_print(f"   ✅ Predicted Calls: {result['predicted_calls']:,}")
@@ -549,7 +558,9 @@ def run_prediction_scenarios(prediction_system, merged_data, top_mail_types):
     safe_print("\n--- Testing Weekly Prediction (Simulated 5-Day Week) ---")
     for day in range(1, 6):
         weekly_input = {mail_type: int(avg_vol * np.random.uniform(0.8, 1.2)) for mail_type, avg_vol in avg_mail_volumes.items()}
-        result = prediction_system.predict_calls(weekly_input)
+        
+        # --- (MODIFIED) Pass the economic data here too ---
+        result = prediction_system.predict_calls(weekly_input, econ_input=avg_econ_data)
         
         safe_print(f"\n   Day {day} Simulation:")
         safe_print(f"   ➡️ Mail Input: {weekly_input}")
@@ -614,7 +625,9 @@ def main():
             return {'success': False, 'error': 'No acceptable model found'}
         
         model_info = {'model': best_model, 'model_name': best_name, 'features': X.columns.tolist(), 'performance': results[best_name]}
-        prediction_system = PredictionSystem(model_info, eda_results['top_mail_types'], eda_results['best_lag'][0])
+        
+        # --- (MODIFIED) Pass economic_cols to the PredictionSystem ---
+        prediction_system = PredictionSystem(model_info, eda_results['top_mail_types'], eda_results['best_lag'][0], economic_cols)
         
         safe_print("\n" + "=" * 80)
         safe_print("🎯 SUCCESS! COMPREHENSIVE SYSTEM DEPLOYED!")
@@ -636,165 +649,4 @@ if __name__ == "__main__":
     if result.get('success'):
         safe_print("\n🚀 MAIL-TO-CALLS PREDICTION SYSTEM READY FOR PRODUCTION!")
     else:
-        safe_print(f"\n💥 SYSTEM FAILED: {result.get('error')}")  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-rD/OneDrive - Computershare/Desktop/acdmodel/econtest.py"
-COMPREHENSIVE MAIL-TO-CALLS PREDICTION SYSTEM
-================================================================================
-================================================================================
-STEP 1A: LOADING CLEAN CALL DATA
-================================================================================
- Loading: ACDMail.csv
-   Loaded with utf-8 encoding
-   Raw data: 547 rows
-   Columns: ['Date', 'Product', 'ACDCalls']
-   Removing US holidays from call data using CSV file...
-   Found 2 US holidays to remove:
-     - 2024-10-14: Columbus Day
-     - 2024-11-11: Veterans Day
-   Removed 2 holiday rows.
-   Data after holiday removal: 372 rows.
- Clean call data: 372 business days
-   Date range: 2024-01-02 to 2025-06-30
-
-================================================================================
-STEP 1B: LOADING MAIL DATA
-================================================================================
- Loading: mail.csv
-   Loaded with utf-8 encoding
-   Raw data: 1,409,780 rows, 4 columns
-   Using: date=mail_date, volume=mail_volume, type=mail_type
- Clean mail data: 401 business days
-   Date range: 2023-08-01 to 2025-05-30
-
-================================================================================
-STEP 1C: MERGING CALL AND MAIL DATA
-================================================================================
- Merged dataset: 337 days
-   Date range: 2024-01-02 to 2025-05-30
-
-================================================================================
-STEP 1D: MERGING ECONOMIC DATA
-================================================================================
- Economic data successfully merged.
-
-================================================================================
-STEP 2: COMPREHENSIVE EDA AND VISUALIZATION
-================================================================================
-
---- Creating Overview Plots ---
-
---- Analyzing Correlations ---
-   Top 10 correlations with call volume:
-Utilities              -0.537179
-Oil                     0.431219
-Dividend_ETF           -0.413697
-Corporate_Bond_ETF     -0.411609
-High_Dividend          -0.409159
-REITs                  -0.401826
-Dividend_Aristocrats   -0.398625
-Gold                   -0.374125
-Elig_Enr_DedChg_Ltr    -0.349253
-Banking                -0.324682
-Name: call_volume, dtype: float64
-
---- Analyzing Mail Types ---
-   Top 8 mail types by volume:
-DowJones                    1.380986e+07
-Cheque                      1.349555e+07
-DRP Stmt.                   1.213277e+07
-Scheduled PAYMENT CHECKS    9.894910e+06
-NASDAQ                      5.952835e+06
-Envision                    5.829010e+06
-Proxy (US)                  5.703365e+06
-Notice                      4.924059e+06
-dtype: float64
-
---- Analyzing Lag Relationships ---
-   Lag 0 days: correlation = -0.021
-   Lag 1 days: correlation = 0.028
-   Lag 2 days: correlation = -0.032
-   Lag 3 days: correlation = -0.020
-   Lag 4 days: correlation = -0.014
-   Lag 5 days: correlation = -0.001
-   Lag 6 days: correlation = -0.020
-   Lag 7 days: correlation = -0.031
-   Best lag: 1 days (correlation: 0.028)
-
- EDA Complete! Plots saved to: mail_call_prediction_system\eda_plots
-
-================================================================================
-STEP 3: FEATURE ENGINEERING
-================================================================================
-   Using lag: 1 days
- Created 69 features from 329 samples
-
-================================================================================
-STEP 4: SIMPLE MODEL TRAINING
-================================================================================
-   Train: 246 samples, Test: 83 samples
-
---- Testing linear ---
-   Test R: -140.764, Test MAE: 9863
-    NEW BEST!
-
---- Testing ridge ---
-   Test R: -120.779, Test MAE: 9205
-    NEW BEST!
-
---- Testing forest_simple ---
-   Test R: 0.666, Test MAE: 1040
-    NEW BEST!
-
- BEST MODEL: forest_simple (R: 0.666)
-
---- Creating Model Validation Plots ---
-
-================================================================================
- SUCCESS! COMPREHENSIVE SYSTEM DEPLOYED!
- Best Model: forest_simple (R=0.666)
-
-================================================================================
-STEP 6: RUNNING PREDICTION SCENARIOS
-================================================================================
-
---- Testing Single-Day Prediction (Average Mail Day) ---
-    Prediction failed: "['Oil', 'Dividend_ETF', 'Dollar_Index', 'Gold', 'High_Dividend', 'Banking', 'Regional_Banks', 'Corporate_Bond_ETF', 'Dividend_Aristocrats', 'REITs', 'Technology', 'Utilities', 'DowJones', '2Y_Treasury', 'NASDAQ', 'Russell2000', '10Y_Treasury', '30Y_Treasury', 'VIX', 'VIX9D', 'VXN'] not in index"       
-
---- Testing Weekly Prediction (Simulated 5-Day Week) ---
-
-   Day 1 Simulation:
-    Mail Input: {'DowJones': 42600, 'Cheque': 44355, 'DRP Stmt.': 41868, 'Scheduled PAYMENT CHECKS': 25922, 'NASDAQ': 16547, 'Envision': 14629, 'Proxy (US)': 17576, 'Notice': 14374}
-    Prediction failed: "['Oil', 'Dividend_ETF', 'Dollar_Index', 'Gold', 'High_Dividend', 'Banking', 'Regional_Banks', 'Corporate_Bond_ETF', 'Dividend_Aristocrats', 'REITs', 'Technology', 'Utilities', 'DowJones', '2Y_Treasury', 'NASDAQ', 'Russell2000', '10Y_Treasury', '30Y_Treasury', 'VIX', 'VIX9D', 'VXN'] not in index"       
-
-   Day 2 Simulation:
-    Mail Input: {'DowJones': 43666, 'Cheque': 43274, 'DRP Stmt.': 41037, 'Scheduled PAYMENT CHECKS': 32040, 'NASDAQ': 18689, 'Envision': 14471, 'Proxy (US)': 18143, 'Notice': 16828}
-    Prediction failed: "['Oil', 'Dividend_ETF', 'Dollar_Index', 'Gold', 'High_Dividend', 'Banking', 'Regional_Banks', 'Corporate_Bond_ETF', 'Dividend_Aristocrats', 'REITs', 'Technology', 'Utilities', 'DowJones', '2Y_Treasury', 'NASDAQ', 'Russell2000', '10Y_Treasury', '30Y_Treasury', 'VIX', 'VIX9D', 'VXN'] not in index"       
-
-   Day 3 Simulation:
-    Mail Input: {'DowJones': 44659, 'Cheque': 32219, 'DRP Stmt.': 43028, 'Scheduled PAYMENT CHECKS': 27904, 'NASDAQ': 17084, 'Envision': 17531, 'Proxy (US)': 19214, 'Notice': 15285}
-    Prediction failed: "['Oil', 'Dividend_ETF', 'Dollar_Index', 'Gold', 'High_Dividend', 'Banking', 'Regional_Banks', 'Corporate_Bond_ETF', 'Dividend_Aristocrats', 'REITs', 'Technology', 'Utilities', 'DowJones', '2Y_Treasury', 'NASDAQ', 'Russell2000', '10Y_Treasury', '30Y_Treasury', 'VIX', 'VIX9D', 'VXN'] not in index"       
-
-   Day 4 Simulation:
-    Mail Input: {'DowJones': 33872, 'Cheque': 36103, 'DRP Stmt.': 31683, 'Scheduled PAYMENT CHECKS': 29009, 'NASDAQ': 15613, 'Envision': 20249, 'Proxy (US)': 14947, 'Notice': 15686}
-    Prediction failed: "['Oil', 'Dividend_ETF', 'Dollar_Index', 'Gold', 'High_Dividend', 'Banking', 'Regional_Banks', 'Corporate_Bond_ETF', 'Dividend_Aristocrats', 'REITs', 'Technology', 'Utilities', 'DowJones', '2Y_Treasury', 'NASDAQ', 'Russell2000', '10Y_Treasury', '30Y_Treasury', 'VIX', 'VIX9D', 'VXN'] not in index"       
-
-   Day 5 Simulation:
-    Mail Input: {'DowJones': 42772, 'Cheque': 47381, 'DRP Stmt.': 30924, 'Scheduled PAYMENT CHECKS': 32483, 'NASDAQ': 15111, 'Envision': 20594, 'Proxy (US)': 16205, 'Notice': 12553}
-    Prediction failed: "['Oil', 'Dividend_ETF', 'Dollar_Index', 'Gold', 'High_Dividend', 'Banking', 'Regional_Banks', 'Corporate_Bond_ETF', 'Dividend_Aristocrats', 'REITs', 'Technology', 'Utilities', 'DowJones', '2Y_Treasury', 'NASDAQ', 'Russell2000', '10Y_Treasury', '30Y_Treasury', 'VIX', 'VIX9D', 'VXN'] not in index"       
-
- MAIL-TO-CALLS PREDICTION SYSTEM READY FOR PRODUCTION!
+        safe_print(f"\n💥 SYSTEM FAILED: {result.get('error')}")
