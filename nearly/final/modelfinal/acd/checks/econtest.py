@@ -650,3 +650,159 @@ if __name__ == "__main__":
         safe_print("\n🚀 MAIL-TO-CALLS PREDICTION SYSTEM READY FOR PRODUCTION!")
     else:
         safe_print(f"\n💥 SYSTEM FAILED: {result.get('error')}")
+
+
+
+
+
+
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\acdmodel> C:\Users\BhungarD\python.exe "c:/Users/BhungarD/OneDrive - Computershare/Desktop/acdmodel/econtest.py"
+COMPREHENSIVE MAIL-TO-CALLS PREDICTION SYSTEM
+================================================================================
+================================================================================
+STEP 1A: LOADING CLEAN CALL DATA
+================================================================================
+ Loading: ACDMail.csv
+   Loaded with utf-8 encoding
+   Raw data: 547 rows
+   Columns: ['Date', 'Product', 'ACDCalls']
+   Removing US holidays from call data using CSV file...
+   Found 2 US holidays to remove:
+     - 2024-10-14: Columbus Day
+     - 2024-11-11: Veterans Day
+   Removed 2 holiday rows.
+   Data after holiday removal: 372 rows.
+ Clean call data: 372 business days
+   Date range: 2024-01-02 to 2025-06-30
+
+================================================================================
+STEP 1B: LOADING MAIL DATA
+================================================================================
+ Loading: mail.csv
+   Loaded with utf-8 encoding
+   Raw data: 1,409,780 rows, 4 columns
+   Using: date=mail_date, volume=mail_volume, type=mail_type
+ Clean mail data: 401 business days
+   Date range: 2023-08-01 to 2025-05-30
+
+================================================================================
+STEP 1C: MERGING CALL AND MAIL DATA
+================================================================================
+ Merged dataset: 337 days
+   Date range: 2024-01-02 to 2025-05-30
+
+================================================================================
+STEP 1D: MERGING ECONOMIC DATA
+================================================================================
+ Economic data successfully merged.
+
+================================================================================
+STEP 2: COMPREHENSIVE EDA AND VISUALIZATION
+================================================================================
+
+--- Creating Overview Plots ---
+
+--- Analyzing Correlations ---
+   Top 10 correlations with call volume:
+Utilities              -0.537179
+Oil                     0.431219
+Dividend_ETF           -0.413697
+Corporate_Bond_ETF     -0.411609
+High_Dividend          -0.409159
+REITs                  -0.401826
+Dividend_Aristocrats   -0.398625
+Gold                   -0.374125
+Elig_Enr_DedChg_Ltr    -0.349253
+Banking                -0.324682
+Name: call_volume, dtype: float64
+
+--- Analyzing Mail Types ---
+   Top 8 mail types by volume:
+DowJones                    1.380986e+07
+Cheque                      1.349555e+07
+DRP Stmt.                   1.213277e+07
+Scheduled PAYMENT CHECKS    9.894910e+06
+NASDAQ                      5.952835e+06
+Envision                    5.829010e+06
+Proxy (US)                  5.703365e+06
+Notice                      4.924059e+06
+dtype: float64
+
+--- Analyzing Lag Relationships ---
+   Lag 0 days: correlation = -0.021
+   Lag 1 days: correlation = 0.028
+   Lag 2 days: correlation = -0.032
+   Lag 3 days: correlation = -0.020
+   Lag 4 days: correlation = -0.014
+   Lag 5 days: correlation = -0.001
+   Lag 6 days: correlation = -0.020
+   Lag 7 days: correlation = -0.031
+   Best lag: 1 days (correlation: 0.028)
+
+ EDA Complete! Plots saved to: mail_call_prediction_system\eda_plots
+
+================================================================================
+STEP 3: FEATURE ENGINEERING
+================================================================================
+   Using lag: 1 days
+ Created 69 features from 329 samples
+
+================================================================================
+STEP 4: SIMPLE MODEL TRAINING
+================================================================================
+   Train: 246 samples, Test: 83 samples
+
+--- Testing linear ---
+   Test R: -140.764, Test MAE: 9863
+    NEW BEST!
+
+--- Testing ridge ---
+   Test R: -120.779, Test MAE: 9205
+    NEW BEST!
+
+--- Testing forest_simple ---
+   Test R: 0.666, Test MAE: 1040
+    NEW BEST!
+
+ BEST MODEL: forest_simple (R: 0.666)
+
+--- Creating Model Validation Plots ---
+
+================================================================================
+ SUCCESS! COMPREHENSIVE SYSTEM DEPLOYED!
+ Best Model: forest_simple (R=0.666)
+
+================================================================================
+STEP 6: RUNNING PREDICTION SCENARIOS
+================================================================================
+   Using average economic data for scenarios:
+   {'Oil': 73.2063502190021, 'Dividend_ETF': 124.28145502016876, 'Dollar_Index': 104.1808903181942, 'Gold': 2593.4086022985443, 'High_Dividend': 109.98658071002903, 'Banking': 50.080747666627786, 'Regional_Banks': 53.967258125101424, 'Corporate_Bond_ETF': 104.64197755355156, 'Dividend_Aristocrats': 98.6023435281363, 'REITs': 86.07146114270128, 'Technology': 217.0730445929734, 'Utilities': 71.99343243833819, 'DowJones': 40978.81230294881, '2Y_Treasury': 4.718492568777294, 'NASDAQ': 17664.197474267432, 'Russell2000': 2124.3672958057077, '10Y_Treasury': 4.268255189901289, '30Y_Treasury': 4.51370920059589, 'VIX': 17.52228489544696, 'VIX9D': 16.996528186854693, 'VXN': 20.949465983699266}
+
+--- Testing Single-Day Prediction (Average Mail Day) ---
+    Mail Input: {'DowJones': 40978, 'Cheque': 40046, 'DRP Stmt.': 36002, 'Scheduled PAYMENT CHECKS': 29361, 'NASDAQ': 17664, 'Envision': 17296, 'Proxy (US)': 16923, 'Notice': 14611}
+    Predicted Calls: 11,716
+
+--- Testing Weekly Prediction (Simulated 5-Day Week) ---
+
+   Day 1 Simulation:
+    Mail Input: {'DowJones': 42782, 'Cheque': 40303, 'DRP Stmt.': 32582, 'Scheduled PAYMENT CHECKS': 23962, 'NASDAQ': 17637, 'Envision': 19081, 'Proxy (US)': 15634, 'Notice': 16268}
+    Predicted Calls: 11,642
+
+   Day 2 Simulation:
+    Mail Input: {'DowJones': 38854, 'Cheque': 43469, 'DRP Stmt.': 39904, 'Scheduled PAYMENT CHECKS': 30349, 'NASDAQ': 16368, 'Envision': 19059, 'Proxy (US)': 17425, 'Notice': 15143}
+    Predicted Calls: 11,759
+
+   Day 3 Simulation:
+    Mail Input: {'DowJones': 43520, 'Cheque': 39797, 'DRP Stmt.': 40956, 'Scheduled PAYMENT CHECKS': 35213, 'NASDAQ': 14474, 'Envision': 15618, 'Proxy (US)': 17968, 'Notice': 16955}
+    Predicted Calls: 11,565
+
+   Day 4 Simulation:
+    Mail Input: {'DowJones': 35651, 'Cheque': 44382, 'DRP Stmt.': 35681, 'Scheduled PAYMENT CHECKS': 27522, 'NASDAQ': 15750, 'Envision': 15866, 'Proxy (US)': 16243, 'Notice': 15367}
+    Predicted Calls: 11,499
+
+   Day 5 Simulation:
+    Mail Input: {'DowJones': 38869, 'Cheque': 45912, 'DRP Stmt.': 35537, 'Scheduled PAYMENT CHECKS': 33785, 'NASDAQ': 19416, 'Envision': 16103, 'Proxy (US)': 16469, 'Notice': 14759}
+    Predicted Calls: 11,706
+
+ MAIL-TO-CALLS PREDICTION SYSTEM READY FOR PRODUCTION!
+PS C:\Users\BhungarD\OneDrive - Computershare\Desktop\acdmodel> 
